@@ -14,23 +14,6 @@ export default defineNuxtConfig({
     },
   },
 
-  content: {
-    highlight: {
-      // Theme used in all color schemes.
-      theme: 'github-dark',
-      preload: [
-        'python',
-        'bash',
-        'shell',
-        'json',
-        'vue',
-        'javascript',
-        'typescript',
-        'markdown',
-        'css',
-      ]
-    },
-  },
   runtimeConfig: {
     MONGO_URI: process.env.MONGO_URI,
   },

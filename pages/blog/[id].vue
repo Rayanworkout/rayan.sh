@@ -1,5 +1,8 @@
 <script setup lang="ts">
 import { likeArticleApi } from '~/utils/likeArticle';
+import MarkdownIt from 'markdown-it';
+import mdHighlight from 'markdown-it-highlightjs';
+
 const route = useRoute();
 
 const articleId = route.params.id;
@@ -16,6 +19,9 @@ let article: any = reactive({
 
 });
 
+const renderedHtml = ref(''); // Ref to store the rendered HTML
+
+
 const response = await useFetch(`/api/v1/articles/${articleId}`);
 
 const success = (response.data.value as { success?: boolean }).success;
@@ -25,7 +31,10 @@ if (success) {
   if (Array.isArray((response.data.value as { data?: string | unknown[] | undefined }).data)) {
     const articleResponse = (response.data.value as { data?: string | unknown[] | undefined }).data;
     // First element of the array
-    article.value = articleResponse?.[0] ?? null;
+    article.value = articleResponse?.[0];
+    // Convert markdown to html
+    const md = new MarkdownIt().use(mdHighlight);
+    renderedHtml.value = md.render(article.value.content);
     error.value = false;
   }
 
@@ -61,8 +70,7 @@ const likeArticle = () => {
           </div>
         </div>
         <transition name="fade">
-          <div v-if="!error" class="article-content">
-            {{ article?.value.content }}
+          <div v-if="!error" class="article-content" v-html="renderedHtml">
           </div>
         </transition>
       </div>

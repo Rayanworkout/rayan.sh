@@ -1,94 +1,181 @@
-
 :root {
-    --text: #f7f4f4;
-    --background: #262626;
-    --primary: #86bbe4;
-    --secondary: #1e5280;
-    --accent: #3b90d9;
+  --text: #f7f4f4;
+  --background: #262626;
+  --primary: #86bbe4;
+  --secondary: #1e5280;
+  --accent: #3b90d9;
+}
+
+* {
+  background-color: var(--background);
+  color: var(--text);
+  font-family: 'Montserrat', sans-serif;
+  font-size: 18px;
+  line-height: 1.5;
+  margin: 0;
+  padding: 0;
+  scroll-behavior: smooth;
+}
+
+/* Code blocks */
+  
+
+
+pre code.hljs {
+  display: block;
+  overflow-x: auto;
+  padding: 1em
+}
+
+code.hljs {
+  padding: 3px 5px
+}
+
+.hljs {
+  color: #abb2bf;
+  border: 1px solid var(--text);
+  background-color: #292d34;
+  border-radius: 10px;
+  transition: all 0.2s ease-in-out;
+
+}
+
+.hljs-comment,
+.hljs-quote {
+  color: #5c6370;
+  font-style: italic;
+}
+
+.hljs-doctag,
+.hljs-formula,
+.hljs-keyword {
+  color: #c678dd
+}
+
+.hljs-deletion,
+.hljs-name,
+.hljs-section,
+.hljs-selector-tag,
+.hljs-subst {
+  color: #e06c75
+}
+
+.hljs-literal {
+  color: #56b6c2
+}
+
+.hljs-addition,
+.hljs-attribute,
+.hljs-meta .hljs-string,
+.hljs-regexp,
+.hljs-string {
+  color: #98c379
+}
+
+.hljs-attr,
+.hljs-number,
+.hljs-selector-attr,
+.hljs-selector-class,
+.hljs-selector-pseudo,
+.hljs-template-variable,
+.hljs-type,
+.hljs-variable {
+  color: #d19a66
+}
+
+.hljs-bullet,
+.hljs-link,
+.hljs-meta,
+.hljs-selector-id,
+.hljs-symbol,
+.hljs-title {
+  color: #61aeee
+}
+
+.hljs-built_in,
+.hljs-class .hljs-title,
+.hljs-title.class_ {
+  color: #e6c07b
+}
+
+.hljs-emphasis {
+  font-style: italic
+}
+
+.hljs-strong {
+  font-weight: 700
+}
+
+.hljs-link {
+  text-decoration: underline
+}
+
+.hljs span {
+  background-color: #292d34;
+}
+
+
+.hljs:hover {
+  cursor: pointer;
+}
+
+/* Transitions */
+
+/* Classic fade */
+
+.fade-enter-active,
+.fade-leave-active {
+  transition: opacity 1s;
+}
+
+.fade-enter-from,
+.fade-leave-to {
+  opacity: 0;
+}
+
+
+/* Fade2 */
+
+.fade2-enter-active,
+.fade2-leave-active {
+  transition: opacity 0.3s;
+}
+
+.fade2-enter-from,
+.fade2-leave-to {
+  opacity: 0;
+}
+
+
+
+/* Back */
+.back-enter-active,
+.back-leave-active {
+  transition: opacity 2s;
+}
+
+.back-enter-from,
+.back-leave-to {
+  opacity: 0;
+}
+
+
+/* Cursor animation */
+
+.cursor {
+  animation: blinkCursor 1.5s infinite;
+}
+
+@keyframes blinkCursor {
+  0% {
+    opacity: 1;
   }
-  
-  * {
-    background-color: var(--background);
-    color: var(--text);
-    font-family: 'Montserrat', sans-serif;
-    font-size: 18px;
-    line-height: 1.5;
-    margin: 0;
-    padding: 0;
-    scroll-behavior: smooth;
-  }
-  
-  /* Code blocks */
-  
-  .hljs {
-    background-color: #292d34;
-    border-radius: 10px;
-    transition: all 0.2s ease-in-out;
-  }
-  
-  
-  .hljs span {
-    background-color: #292d34;
-  }
-  
-  
-  /* Transitions */
-  
-  /* Classic fade */
-  
-  .fade-enter-active,
-  .fade-leave-active {
-    transition: opacity 1s;
-  }
-  
-  .fade-enter-from,
-  .fade-leave-to {
+
+  50% {
     opacity: 0;
   }
-  
-  
-  /* Fade2 */
-  
-  .fade2-enter-active,
-  .fade2-leave-active {
-    transition: opacity 0.3s;
+
+  100% {
+    opacity: 1;
   }
-  
-  .fade2-enter-from,
-  .fade2-leave-to {
-    opacity: 0;
-  }
-  
-  
-  
-  /* Back */
-  .back-enter-active,
-  .back-leave-active {
-    transition: opacity 2s;
-  }
-  
-  .back-enter-from,
-  .back-leave-to {
-    opacity: 0;
-  }
-  
-  
-  /* Cursor animation */
-  
-  .cursor {
-    animation: blinkCursor 1.5s infinite;
-  }
-  
-  @keyframes blinkCursor {
-    0% {
-      opacity: 1;
-    }
-  
-    50% {
-      opacity: 0;
-    }
-  
-    100% {
-      opacity: 1;
-    }
-  }
+}
