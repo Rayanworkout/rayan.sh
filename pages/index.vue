@@ -51,8 +51,7 @@ const handleCategoryFilter = (category: string) => {
         articles,
         filteredArticles
     );
-}
-
+};
 
 </script>
 
