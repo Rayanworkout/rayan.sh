@@ -1,5 +1,5 @@
+import { serverSupabaseUser } from '#supabase/server';
 import { supabase } from '~/server/db/client';
-import { serverSupabaseUser } from '#supabase/server'
 
 
 export default defineEventHandler(async (event) => {

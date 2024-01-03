@@ -4,7 +4,7 @@ import { supabase } from '~/server/db/client';
 import { formatDate } from '~/utils/formatDate';
 
 // Types
-import { type Article } from '~/types/article.type'
+import { type Article } from '~/types/article.type';
 
 interface IAllArticles {
     forEach(arg0: (article: Article) => void): unknown;

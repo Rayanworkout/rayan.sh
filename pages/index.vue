@@ -21,7 +21,7 @@ const state = reactive({
 // Before filtering
 let articles: Article[];
 
-const { data: response } = await useFetch('/api/v2/articles/all')
+const { data: response } = await useFetch('/api/v1/articles/all')
 
 // Using ? to check if the value is not null or undefined
 const success = response.value?.success
@@ -49,6 +49,7 @@ const handleCategoryFilter = (category: string) => {
         filteredArticles
     );
 };
+
 
 </script>
 

@@ -24,7 +24,7 @@ const article: any = reactive({
 
 const renderedHtml = ref(''); // Ref to store the rendered HTML
 
-const { data: response } = await useFetch(`/api/v2/articles/${articleId}`);
+const { data: response } = await useFetch(`/api/v1/articles/${articleId}`);
 
 // Using ? to check if the value is not null or undefined
 const success = (response.value as { success?: boolean })?.success;
