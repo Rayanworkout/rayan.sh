@@ -3,7 +3,6 @@ import ArticleModel, { IArticle } from '~/server/models/article.model';
 
 export default defineEventHandler(async (event) => {
     try {
-
         const idRegex = /\b[0-9a-f]{24}\b/;
 
         // Read request body

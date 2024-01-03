@@ -1,7 +1,6 @@
 import mongoose, { Schema, Document } from 'mongoose';
 
 export interface IArticle extends Document {
-    getTagsArray(): any;
     title: string,
     description: string;
     content: boolean;
@@ -29,11 +28,6 @@ const ArticleSchema: Schema = new Schema({
     }],
     creation_date: { type: Date, required: true, default: Date.now },
 });
-
-
-ArticleSchema.methods.getTagsArray = function() {
-    return this.tags.map((tag: any) => tag.name);
-};
 
 
 export default mongoose.model<IArticle>('Article', ArticleSchema);

@@ -6,7 +6,14 @@ export default defineNuxtConfig({
     'bootstrap-icons/font/bootstrap-icons.css',
     'assets/css/style.css'
   ],
-  modules: ['@nuxtjs/google-fonts', 'nuxt-security'],
+  modules: ['@nuxtjs/google-fonts', 'nuxt-security', '@nuxtjs/supabase'],
+  supabase: {
+    redirectOptions: {
+      login: '/login',
+      callback: '/dashboard',
+      exclude: ["/", "/about", "/blog/*"],
+    }
+  },
   googleFonts: {
     families: {
       Montserrat: [500, 700],
