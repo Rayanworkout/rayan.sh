@@ -30,7 +30,7 @@ const { data: response } = await useFetch(`/api/v1/articles/${articleId}`);
 const success = (response.value as { success?: boolean })?.success;
 
 if (success) {
-  article.value = response.value?.data as unknown as Article;
+  article.value = (response.value as any).data as Article;
 
   const md = new MarkdownIt();
   md.use(mdHighlight);
@@ -60,7 +60,7 @@ const likeArticle = () => {
           </div>
           <div class="mt-3 tags w-75 mx-auto">
             <!-- <span v-for="tag in article.value.tags" :key="tag"> -->
-              <SmallArticleTag :tag="article.value.tags.name" />
+            <SmallArticleTag :tag="article.value.tags.name" />
             <!-- </span> -->
           </div>
           <div class="mt-3 article-likes mx-auto">

@@ -7,7 +7,7 @@ defineProps<{ tag: string }>()
 
 
 <template>
-    <a href="#" class="tag">{{ tag }}</a>
+    <div class="tag">{{ tag }}</div>
 </template>
 
 

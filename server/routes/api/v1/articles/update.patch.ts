@@ -23,7 +23,7 @@ export default defineEventHandler(async (event) => {
         const articleID = query.id;
 
 
-        const { data, error } = await supabase
+        const { error } = await supabase
             .from('articles')
             .update(body)
             .eq('id', articleID)

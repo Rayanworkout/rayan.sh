@@ -24,11 +24,5 @@ export default defineNuxtConfig({
     MONGO_URI: process.env.MONGO_URI,
   },
   sourcemap: false,
-  // Backend API
-  nitro: {
-    plugins: [
-      "~/server/index.ts",
-    ]
-  },
 
 });

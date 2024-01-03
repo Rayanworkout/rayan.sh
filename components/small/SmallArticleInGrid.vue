@@ -1,41 +1,39 @@
 
 <script setup lang="ts">
-import { type ArticleInGridType } from '~/types/article.type'
+import { type Article } from '~/types/article.type'
 
-// defineProps<{ article: ArticleInGridType }>()
-defineProps<{ article: any }>()
-
+defineProps<{ article: Article }>()
 
 </script>
 
 
 <template>
-    <div class="article mx-auto">
-        <div class="row mb-2 border-bottom">
-            <div class="col-md-6">
-                <NuxtLink :to="`/blog/${article.id}`" class="article-link">
+    <NuxtLink :to="`/blog/${article.id}`" class="article-link">
+        <div class="article mx-auto">
+            <div class="row mb-2 border-bottom">
+                <div class="col-md-6">
                     <h4>{{ article.title }}</h4>
 
                     <div class="mb-2 date">
-                        <small>{{ article.creation_date }}</small>
+
+                        <small>{{ article.created_at }}</small>
                         <div class="category"><small>{{ article.category.name }}</small></div>
                         <div v-if="article.likes > 1"><small><i class="bi bi-heart icon"></i> {{ article.likes }}</small>
                         </div>
+
                     </div>
-                </NuxtLink>
-            </div>
+                </div>
 
-            <div class="col-md-6 text-center pb-3 d-flex justify-content-center align-items-center">
-                <!-- <span v-for="tag in article.tags" :key="tag._id"> -->
+                <div class="col-md-6 text-center pb-3 d-flex justify-content-center align-items-center">
+                    <!-- <span v-for="tag in article.tags" :key="tag._id"> -->
                     <SmallArticleTag :tag="article.tags.name" />
-                <!-- </span>  -->
-            </div>
-        </div>
-        <NuxtLink to="/" class="article-link">
-            <p>{{ article.description }}</p>
-        </NuxtLink>
+                    <!-- </span>  -->
+                </div>
 
-    </div>
+            </div>
+            <p>{{ article.description }}</p>
+        </div>
+    </NuxtLink>
 </template>
   
 
