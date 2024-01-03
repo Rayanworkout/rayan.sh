@@ -2,6 +2,8 @@ import CategoryModel, { ICategory } from '~/server/models/category.model';
 
 
 
+// Use a cookie here to validate requests from the client
+
 // Define the type for the response data structure
 interface IResponse {
     success: boolean;

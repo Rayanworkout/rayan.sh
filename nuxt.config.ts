@@ -11,7 +11,7 @@ export default defineNuxtConfig({
     redirectOptions: {
       login: '/login',
       callback: '/dashboard',
-      exclude: ["/", "/about", "/blog/*"],
+      exclude: ["/", "/about", "/blog/*", "/api/*"],
     }
   },
   googleFonts: {
