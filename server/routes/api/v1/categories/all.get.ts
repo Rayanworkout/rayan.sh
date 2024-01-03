@@ -1,24 +1,27 @@
-import CategoryModel, { ICategory } from '~/server/models/category.model';
-
-
-
-// Use a cookie here to validate requests from the client
-
-// Define the type for the response data structure
-interface IResponse {
-    success: boolean;
-    data: string[];
-}
-
-
+import { supabase } from '~/server/db/client';
 
 export default defineEventHandler(async (event) => {
     try {
-        // Query DB for existing tags
-        const allCategories: ICategory[] | undefined = await CategoryModel.find()
-        return { success: true, data: allCategories } as unknown as IResponse;
+
+        let { data: categories, error } = await supabase
+            .from('categories')
+            .select('id, name')
+            
+        if (categories) {
+            const cleanCategoriesList = categories;
+
+            return { success: true, data: cleanCategoriesList };
+        } else {
+            return { success: false, data: null };
+        }
+
 
     } catch (error: any) {
-        return {success: false, error: error.message} as unknown as IResponse;
+
+        return { success: false, data: null };
+
     }
+
 });
+
+

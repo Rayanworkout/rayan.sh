@@ -1,6 +1,6 @@
 <script setup lang="ts">
 // Types
-import { type ArticleInGridType } from '~/types/article.type';
+import { type Article } from '~/types/article.type';
 
 definePageMeta({
     title: 'Dashboard',
@@ -18,14 +18,14 @@ const success = response.data.value?.success;
 // Handle articles with correct typings
 // This variable contains all articles
 // Before filtering
-let articles: ArticleInGridType[] | undefined;
+let articles: Article[] | undefined;
 
 const filteredCategories = ref<string[]>([]);
 
 if (success) {
     // Check if response data is an array of articles
     if (Array.isArray(response.data.value?.data)) {
-        articles = response.data.value?.data as ArticleInGridType[];
+        articles = response.data.value?.data as Article[];
     } else {
         // Handle the case where data is a string or undefined
         console.error('Unexpected data type received:', typeof response.data.value?.data);

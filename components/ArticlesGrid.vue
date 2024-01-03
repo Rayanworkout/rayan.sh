@@ -12,7 +12,7 @@ defineProps(['articles', 'state'])
         <div v-if="state.error" class="text-center">Error while fetching the articles ...</div>
         <div v-else>
             <TransitionGroup name="fade2">
-                <div v-for="article in articles" :key="article._id">
+                <div v-for="article in articles" :key="article.id">
                     <SmallArticleInGrid :article="article" />
                 </div>
             </TransitionGroup>

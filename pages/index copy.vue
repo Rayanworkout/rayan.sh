@@ -2,44 +2,47 @@
 <script setup lang="ts">
 
 // Types
-import { type Article } from '~/types/article.type'
+import { type ArticleInGridType } from '~/types/article.type';
 
 // Utils
 // Function to apply filters to articles
 // By modyfing the filteredArticles variable
 import { handleInput } from '~/utils/inputFilter';
 
-const filteredArticles = ref<Article[] | undefined>()
-const filteredCategories = ref<string[]>([]);
 
+// Initialize reactive variables
+const filteredArticles = ref<ArticleInGridType[] | undefined>([])
 
-const state = reactive({
+const state = ref({
     error: false,
 });
 
+const response = await useFetch('/api/v1/articles/all');
+const success = response.data.value?.success;
+
+// Handle articles with correct typings
 // This variable contains all articles
 // Before filtering
-let articles: Article[];
+let articles: ArticleInGridType[] | undefined;
 
-const { data: response } = await useFetch('/api/v2/articles/all')
-
-// Using ? to check if the value is not null or undefined
-const success = response.value?.success
+const filteredCategories = ref<string[]>([]);
 
 if (success) {
-    const fetchedArticles = response.value?.data as unknown as Article[];
-    if (fetchedArticles) {
-        articles = fetchedArticles as Article[];
-        filteredArticles.value = fetchedArticles;
+    // Check if response data is an array of articles
+    if (Array.isArray(response.data.value?.data)) {
+        articles = response.data.value?.data as ArticleInGridType[];
+        filteredArticles.value = articles;
+    } else {
+        // Handle the case where data is a string or undefined
+        console.error('Unexpected data type received:', typeof response.data.value?.data);
     }
 } else {
-    state.error = true
-};
-
+    state.value.error = true;
+}
 
 const filterInput = (input: string) => {
     handleInput(input, filteredArticles, articles);
-};
+}
 
 const handleCategoryFilter = (category: string) => {
     handleCategoryClicked(

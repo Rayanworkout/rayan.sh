@@ -6,7 +6,7 @@ export const handleInput = (
 
     input: string,
 
-    filteredArticles: Ref<ArticleInGridType[] | undefined>,
+    filteredArticles: any,
 
     articles: any
 

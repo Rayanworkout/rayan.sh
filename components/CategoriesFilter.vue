@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import ArticleCategory from './small/SmallArticleCategory.vue'
-import { type ArticleInGridType } from '~/types/article.type'
+import { type Article } from '~/types/article.type'
 
 let allCategories: string[][] | undefined;
 
@@ -21,7 +21,7 @@ interface IResponse {
     data: {
         value: {
             success: boolean;
-            data: ArticleInGridType["category"][];
+            data: Article["category"][];
         }
     }
 }
@@ -33,7 +33,7 @@ const success = categories.data.value?.success;
 
 
 if (success) {
-    const list: ArticleInGridType["category"][] | undefined = categories.data.value?.data;
+    const list: Article["category"][] | undefined = categories.data.value?.data;
 
     if (Array.isArray(list)) {
         // Get the categories names

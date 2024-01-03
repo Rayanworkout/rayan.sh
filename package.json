@@ -23,7 +23,6 @@
     "bootstrap": "^5.3.2",
     "bootstrap-icons": "^1.11.2",
     "markdown-it": "^14.0.0",
-    "markdown-it-highlightjs": "^4.0.1",
-    "mongoose": "^8.0.3"
+    "markdown-it-highlightjs": "^4.0.1"
   }
 }

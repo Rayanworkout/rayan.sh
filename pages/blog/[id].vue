@@ -1,5 +1,9 @@
 <script setup lang="ts">
 import { likeArticleApi } from '~/utils/likeArticle';
+// Types
+import { type Article } from '~/types/article.type'
+
+// Utils
 import MarkdownIt from 'markdown-it';
 import mdHighlight from 'markdown-it-highlightjs';
 
@@ -9,11 +13,10 @@ const articleId = route.params.id;
 
 const error = ref(false);
 
-
-let article: any = reactive({
+const article: any = reactive({
   title: '',
   creation_date: '',
-  tags: [],
+  tags: '',
   likes: 0,
   content: '',
 
@@ -21,26 +24,22 @@ let article: any = reactive({
 
 const renderedHtml = ref(''); // Ref to store the rendered HTML
 
+const { data: response } = await useFetch(`/api/v2/articles/${articleId}`);
 
-const response = await useFetch(`/api/v1/articles/${articleId}`);
-
-const success = (response.data.value as { success?: boolean }).success;
-
+// Using ? to check if the value is not null or undefined
+const success = (response.value as { success?: boolean })?.success;
 
 if (success) {
-  if (Array.isArray((response.data.value as { data?: string | unknown[] | undefined }).data)) {
-    const articleResponse = (response.data.value as { data?: string | unknown[] | undefined }).data;
-    // First element of the array
-    article.value = articleResponse?.[0];
-    // Convert markdown to html
-    const md = new MarkdownIt().use(mdHighlight);
-    renderedHtml.value = md.render(article.value.content);
-    error.value = false;
-  }
+  article.value = response.value?.data as unknown as Article;
 
+  const md = new MarkdownIt();
+  md.use(mdHighlight);
+  renderedHtml.value = md.render(article.value.content);
 } else {
   error.value = true;
-}
+};
+
+// console.log(article.value);
 
 const likeArticle = () => {
   likeArticleApi(String(articleId), article.value.likes);
@@ -55,14 +54,14 @@ const likeArticle = () => {
       <div class="article-container mx-auto">
 
         <div class="pb-5 text-center">
-          <h1>{{ article?.value.title }}</h1>
+          <h1>{{ article.value.title }}</h1>
           <div>
-            <small>{{ article?.value.creation_date }}</small>
+            <small>{{ article.value.created_at }}</small>
           </div>
           <div class="mt-3 tags w-75 mx-auto">
-            <span v-for="tag in article?.value.tags" :key="tag">
-              <SmallArticleTag :tag="tag.name" />
-            </span>
+            <!-- <span v-for="tag in article.value.tags" :key="tag"> -->
+              <SmallArticleTag :tag="article.value.tags.name" />
+            <!-- </span> -->
           </div>
           <div class="mt-3 article-likes mx-auto">
             <div @click="likeArticle"><i class="bi bi-heart icon"></i></div>

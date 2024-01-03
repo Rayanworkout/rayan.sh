@@ -2,7 +2,8 @@
 <script setup lang="ts">
 import { type ArticleInGridType } from '~/types/article.type'
 
-defineProps<{ article: ArticleInGridType }>()
+// defineProps<{ article: ArticleInGridType }>()
+defineProps<{ article: any }>()
 
 
 </script>
@@ -12,7 +13,7 @@ defineProps<{ article: ArticleInGridType }>()
     <div class="article mx-auto">
         <div class="row mb-2 border-bottom">
             <div class="col-md-6">
-                <NuxtLink :to="`/blog/${article._id}`" class="article-link">
+                <NuxtLink :to="`/blog/${article.id}`" class="article-link">
                     <h4>{{ article.title }}</h4>
 
                     <div class="mb-2 date">
@@ -25,9 +26,9 @@ defineProps<{ article: ArticleInGridType }>()
             </div>
 
             <div class="col-md-6 text-center pb-3 d-flex justify-content-center align-items-center">
-                <span v-for="tag in article.tags" :key="tag._id">
-                    <SmallArticleTag :tag="tag.name" />
-                </span>
+                <!-- <span v-for="tag in article.tags" :key="tag._id"> -->
+                    <SmallArticleTag :tag="article.tags.name" />
+                <!-- </span>  -->
             </div>
         </div>
         <NuxtLink to="/" class="article-link">

@@ -1,58 +1,41 @@
-import ArticleModel from '~/server/models/article.model';
+import { supabase } from '~/server/db/client';
 import { serverSupabaseUser } from '#supabase/server'
 
 
 export default defineEventHandler(async (event) => {
+    try {
 
-    // Check if user is authenticated
-    const user = await serverSupabaseUser(event);
+        // Check if user is authenticated
+        const user = await serverSupabaseUser(event);
 
-    if (!user) {
-        return {
-            status: 401,
-            message: "unauthorized",
+        if (!user) {
+            return {
+                status: 401,
+                message: "unauthorized",
+            };
         };
-    } else {
-        try {
 
-            const idRegex = /\b[0-9a-f]{24}\b/;
+        const query = getQuery(event)
+        const articleID = query.id;
 
-            const query = getQuery(event)
-            const articleID = query.id;
 
-            // Check the format of the article id to prevent
-            // Cast error from mongoose
-            if (!articleID || !idRegex.test(articleID.toString())) {
-                // article id not provided
-                return createError({
-                    statusCode: 400,
-                    statusMessage: "article id not provided or incorrect format",
-                });
-            }
+        const { error } = await supabase
+            .from('articles')
+            .delete()
+            .eq('id', articleID)
 
-            // Trying to delete the article
-            const deletedArticle = await ArticleModel.findByIdAndDelete(articleID);
-
-            if (deletedArticle) {
-                // Success
-                setResponseStatus(event, 200, 'article deleted');
-                return deletedArticle;
-            } else {
-                // article not found
-                return createError({
-                    statusCode: 404,
-                    statusMessage: "article not found",
-                });
-            }
-
-        } catch (error) {
-            console.error("An error occurred when deleting a article:", error);
-
-            return createError({
-                statusCode: 500,
-                statusMessage: "an error occured during article deletion",
-            });
+        if (error) {
+            return { success: false, message: 'could not delete article' };
+        } else {
+            return { success: true, message: 'article deleted' };
         }
+
+    } catch (error: any) {
+
+        return { success: false, message: error.message };
+
     }
 
 });
+
+

@@ -1,14 +1,14 @@
 
 import { type Ref } from "vue";
-import { type ArticleInGridType } from '~/types/article.type'
+import { type ArticleInGridType as Article } from '~/types/article.type'
 
 const filterArticles = (
 
     filteredCategories: string[],
 
-    articles: ArticleInGridType[] | undefined,
+    articles: Article[] | undefined,
 
-    filteredArticles: Ref<ArticleInGridType[] | undefined>) => {
+    filteredArticles: Ref<Article[]>) => {
 
     if (articles) {
         // I filter articles based on the categories clicked
@@ -16,8 +16,8 @@ const filterArticles = (
             // Check if the article's category is included in the filtered categories array
             return filteredCategories.includes(article.category.name);
         });
-    }
-}
+    };
+};
 
 
 export const handleCategoryClicked = (
@@ -25,12 +25,15 @@ export const handleCategoryClicked = (
 
     filteredCategories: Ref<string[]>,
 
-    articles: ArticleInGridType[] | undefined,
+    articles: Article[],
 
-    filteredArticles: Ref<ArticleInGridType[] | undefined>) => {
+    filteredArticles: Ref<Article[] | undefined>) => {
 
     // The category prop passed is the category clicked as string
 
+    // I check if I have articles to filter
+    // If not, I return
+    if (!filteredArticles) return;
 
     // I get the categories clicked with this event handler
     // Then I filter articles and I pass them as props
@@ -55,6 +58,6 @@ export const handleCategoryClicked = (
 
 
     // And finally I filter articles
-    filterArticles(filteredCategories.value, articles, filteredArticles);
+    filterArticles(filteredCategories.value, articles, filteredArticles as Ref<Article[]>);
 
 }

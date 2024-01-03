@@ -1,26 +1,65 @@
-import ArticleModel, { IArticle } from '~/server/models/article.model';
+import { supabase } from '~/server/db/client';
+
+// Utils
 import { formatDate } from '~/utils/formatDate';
 
-// Define the type for the response data structure
-interface IResponse {
-    success: boolean;
-    data?: IArticle[] | string;
-}
+// Types
+import { type Article } from '~/types/article.type'
+
+interface IAllArticles {
+    forEach(arg0: (article: Article) => void): unknown;
+    id: number;
+    created_at: string;
+    title: string;
+    description: string;
+    likes: number;
+    category: {
+        name: string;
+    };
+    tags: {
+        name: string;
+    };
+}[];
 
 export default defineEventHandler(async (event) => {
     try {
-        // Query DB for existing articles
-        // lean() returns a plain JS object instead of a Mongoose document
-        // So I can modify the object without worrying about persisting it
-        // populate() replaces the ObjectId with the actual object
-        // So I can get the name
-        const allArticles: IArticle[] = await ArticleModel.find().sort({creation_date: -1}).populate('tags').populate('category').lean();
-        // Convert datetime to string
-        allArticles.forEach((article: IArticle) => article.creation_date = formatDate(article.creation_date));
 
-        return { success: true, data: allArticles } as IResponse;
+        let { data: articles, error } = await supabase
+            .from('articles')
+            .select(
+                `id,
+                created_at,
+                title,
+                description,
+                likes,
+                category (
+                    name
+                    ),
+                tags (
+                    name
+                    )
+                `)
+            
+        if (articles) {
+            let cleanArticleList = articles as unknown as IAllArticles;
+            
+            // Format the date of each article
+            cleanArticleList.forEach((article: Article) => {
+                article.created_at = formatDate(article.created_at);
+            });
+
+            return { success: true, data: cleanArticleList };
+        } else {
+            return { success: false, data: null };
+        }
+
+
     } catch (error: any) {
-        return { success: false, data: error.message } as IResponse;
+
+        return { success: false, data: null };
+
     }
+
 });
+
 

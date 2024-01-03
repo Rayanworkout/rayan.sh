@@ -1,38 +1,45 @@
-import ArticleModel, { IArticle } from '~/server/models/article.model';
 import { formatDate } from '~/utils/formatDate';
+import { supabase } from '~/server/db/client';
 
-
-// Define the type for the response data structure
-interface IResponse {
-  success: boolean;
-  data?: IArticle[] | string;
-}
+// Types
+import { type Article } from '~/types/article.type'
 
 
 
 export default defineEventHandler(async (event) => {
-  const articleId = getRouterParam(event, 'id')
+    const articleId = getRouterParam(event, 'id')
+    try {
 
+        let { data: article, error } = await supabase
+            .from('articles')
+            .select(`
+            id,
+            created_at,
+            title,
+            description,
+            content,
+            likes,
+            category (
+                name
+                ),
+            tags (
+                name
+            )`)
+            .eq('id', articleId)
 
+        if (article) {
+            let cleanArticle = article[0] as unknown as Article;
+            cleanArticle.created_at = formatDate(cleanArticle.created_at);
 
-  try {
-    // Query DB for a specific article
-    // lean() returns a plain JS object instead of a Mongoose document
-    // So I can modify the object without worrying about persisting it
-    // populate() replaces the ObjectId with the actual object
-    // So I can get the name
-    const article: IArticle[] = await ArticleModel.find({ _id: articleId }).populate('tags').populate('category').lean();
-    // Convert datetime to string
-    article[0].creation_date = formatDate(article[0].creation_date);
+            return { success: true, data: cleanArticle };
+        } else {
+            return { success: false, data: null };
+        }
 
+    } catch (error: any) {
 
-    return { success: true, data: article } as IResponse;
-  } catch (error: any) {
-    return { success: false, data: error.message } as IResponse;
-  }
+        console.log(error.message)
+        return { success: false, data: null };
+    }
 
-
-
-
-
-});    
+}); 

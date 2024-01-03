@@ -1,68 +1,48 @@
-import TagModel, { ITag } from '~/server/models/tag.model';
+import { supabase } from '~/server/db/client';
 import { serverSupabaseUser } from '#supabase/server'
 
 
 export default defineEventHandler(async (event) => {
+    try {
 
-    // Check if user is authenticated
-    const user = await serverSupabaseUser(event);
+        // Check if user is authenticated
+        const user = await serverSupabaseUser(event);
 
-    if (!user) {
-        return {
-            status: 401,
-            message: "unauthorized",
+        if (!user) {
+            return {
+                status: 401,
+                message: "unauthorized",
+            };
         };
-    } else {
-        try {
 
-            const idRegex = /\b[0-9a-f]{24}\b/;
+        // Read request body
+        const body = await readBody(event);
+        const newName = body.name;
 
-            // Read request body
-            const body = await readBody(event);
+        const query = getQuery(event)
+        const oldTagName = query.name;
 
-            // Get name from request
-            const name = body.name as string | undefined;
 
-            // Get tag id from request
-            const query = getQuery(event)
-            const tagId = query.id;
+        const { data, error } = await supabase
+            .from('tags')
+            .update({ name: newName })
+            .eq('name', oldTagName)
+            .select()
+        if (error) {
 
-            // Check the format of the tag id to prevent
-            // Cast error from mongoose
-            if (!tagId || !name || !idRegex.test(tagId.toString())) {
-                // Tag id not provided
-                return createError({
-                    statusCode: 400,
-                    statusMessage: "tag id / name not provided or incorrect",
-                });
-            }
+            console.log(error.message);
+            return { success: false, message: 'could not update tag' };
 
-            // Trying to update the tag
-            // { name } must be wrapped in { } to be interpreted as an object
-            const tag: ITag | null = await TagModel.findOneAndUpdate({ _id: tagId }, { name }, {
-                new: true, runValidators: true
-            });
-
-            if (tag) {
-                // Success
-                setResponseStatus(event, 200, 'tag updated');
-                return tag;
-            } else {
-                // Tag not found
-                return createError({
-                    statusCode: 404,
-                    statusMessage: "tag not found",
-                });
-            }
-
-        } catch (error) {
-            console.error("An error occurred when updating a tag:", error);
-
-            return createError({
-                statusCode: 500,
-                statusMessage: "an error occured during tag update",
-            });
+        } else {
+            return { success: true, message: 'tag updated' };
         }
+
+    } catch (error: any) {
+
+        return { success: false, message: error.message };
+
     }
 
 });
+
+

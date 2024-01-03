@@ -1,64 +1,49 @@
-import ArticleModel, { IArticle } from '~/server/models/article.model';
+import { supabase } from '~/server/db/client';
 import { serverSupabaseUser } from '#supabase/server'
 
 
 export default defineEventHandler(async (event) => {
+    try {
 
-    // Check if user is authenticated
-    const user = await serverSupabaseUser(event);
+        // Check if user is authenticated
+        const user = await serverSupabaseUser(event);
 
-    if (!user) {
-        return {
-            status: 401,
-            message: "unauthorized",
+        if (!user) {
+            return {
+                status: 401,
+                message: "unauthorized",
+            };
         };
-    } else {
-        try {
-            const idRegex = /\b[0-9a-f]{24}\b/;
 
-            // Read request body
-            const body = await readBody(event);
+        // Read request body
+        const body = await readBody(event);
 
-            // Get article id from request
-            const query = getQuery(event)
-            const articleId = query.id;
+        // Get article id from request
+        const query = getQuery(event)
+        const articleID = query.id;
 
-            // Check the format of the article id to prevent
-            // Cast error from mongoose
-            if (!articleId || !idRegex.test(articleId.toString())) {
-                // article id not provided
-                return createError({
-                    statusCode: 400,
-                    statusMessage: "article id not provided or incorrect",
-                });
-            }
 
-            // Trying to update the article
-            // { body } must be wrapped in { } to be interpreted as an object
-            const article: IArticle | null = await ArticleModel.findOneAndUpdate({ _id: articleId }, body, {
-                new: true, runValidators: true
-            });
+        const { data, error } = await supabase
+            .from('articles')
+            .update(body)
+            .eq('id', articleID)
+            .select()
 
-            if (article) {
-                // Success
-                setResponseStatus(event, 200, 'article updated');
-                return article;
-            } else {
-                // article not found
-                return createError({
-                    statusCode: 404,
-                    statusMessage: "article not found",
-                });
-            }
+        if (error) {
 
-        } catch (error) {
-            console.error("An error occurred when updating a article:", error);
+            console.log(error.message);
+            return { success: false, message: 'could not update article' };
 
-            return createError({
-                statusCode: 500,
-                statusMessage: "an error occured during article update",
-            });
+        } else {
+            return { success: true, message: 'article updated' };
         }
+
+    } catch (error: any) {
+
+        return { success: false, message: error.message };
+
     }
 
 });
+
+

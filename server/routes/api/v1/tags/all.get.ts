@@ -1,27 +1,27 @@
-import TagModel, { ITag } from '~/server/models/tag.model';
-import { serverSupabaseUser } from '#supabase/server'
-
+import { supabase } from '~/server/db/client';
 
 export default defineEventHandler(async (event) => {
+    try {
 
-    // Check if user is authenticated
-    const user = await serverSupabaseUser(event);
+        let { data: tags, error } = await supabase
+            .from('tags')
+            .select('id, name')
+            
+        if (tags) {
+            const cleantagsList = tags;
 
-    if (!user) {
-        return {
-            status: 401,
-            message: "unauthorized",
-        };
-
-    } else {
-        try {
-            // Query DB for existing tags
-            const allTags: ITag[] = await TagModel.find()
-            return { success: true, data: allTags };
-
-        } catch (error: any) {
-            return { success: false, error: error.message };
+            return { success: true, data: cleantagsList };
+        } else {
+            return { success: false, data: null };
         }
+
+
+    } catch (error: any) {
+
+        return { success: false, data: null };
+
     }
 
 });
+
+

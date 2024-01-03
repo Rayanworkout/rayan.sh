@@ -1,4 +1,4 @@
-import CategoryModel from '~/server/models/category.model';
+import { supabase } from '~/server/db/client';
 import { serverSupabaseUser } from '#supabase/server'
 
 
@@ -12,46 +12,34 @@ export default defineEventHandler(async (event) => {
             status: 401,
             message: "unauthorized",
         };
-    } else {
-        try {
-            const idRegex = /\b[0-9a-f]{24}\b/;
+    };
 
-            const query = getQuery(event)
-            const categoryID = query.id;
+    try {
 
-            // Check the format of the category id to prevent
-            // Cast error from mongoose
-            if (!categoryID || !idRegex.test(categoryID.toString())) {
-                // category id not provided
-                return createError({
-                    statusCode: 400,
-                    statusMessage: "category id not provided or incorrect format",
-                });
-            }
+        const query = getQuery(event)
+        const categoryName = query.name;
 
-            // Trying to delete the category
-            const deletedCategory = await CategoryModel.findByIdAndDelete(categoryID);
-
-            if (deletedCategory) {
-                // Success
-                setResponseStatus(event, 200, 'category deleted');
-                return deletedCategory;
-            } else {
-                // category not found
-                return createError({
-                    statusCode: 404,
-                    statusMessage: "category not found",
-                });
-            }
-
-        } catch (error) {
-            console.error("An error occurred when deleting a category:", error);
-
-            return createError({
-                statusCode: 500,
-                statusMessage: "an error occured during category deletion",
-            });
+        if (!categoryName) {
+            return { success: false, message: "no category name provided" };
         }
+
+        const { error } = await supabase
+            .from('categories')
+            .delete()
+            .eq('name', categoryName)
+        
+
+        if (error) {
+            return { success: false, message: error };
+        } else {
+            return { success: true, message: 'category deleted' };
+        }
+
+
+    } catch (error: any) {
+        return { success: false, message: "could not delete category" };
     }
+
+
 
 });

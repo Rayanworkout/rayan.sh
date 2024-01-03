@@ -1,4 +1,4 @@
-import TagModel from '~/server/models/tag.model';
+import { supabase } from '~/server/db/client';
 import { serverSupabaseUser } from '#supabase/server'
 
 
@@ -12,47 +12,31 @@ export default defineEventHandler(async (event) => {
             status: 401,
             message: "unauthorized",
         };
-    } else {
-        try {
+    };
 
-            const idRegex = /\b[0-9a-f]{24}\b/;
+    try {
 
-            const query = getQuery(event)
-            const tagId = query.id;
+        const query = getQuery(event)
+        const tagName = query.name;
 
-            // Check the format of the tag id to prevent
-            // Cast error from mongoose
-            if (!tagId || !idRegex.test(tagId.toString())) {
-                // Tag id not provided
-                return createError({
-                    statusCode: 400,
-                    statusMessage: "tag id not provided or incorrect format",
-                });
-            }
-
-            // Trying to delete the tag
-            const deletedTag = await TagModel.findByIdAndDelete(tagId);
-
-            if (deletedTag) {
-                // Success
-                setResponseStatus(event, 200, 'tag deleted');
-                return deletedTag;
-            } else {
-                // Tag not found
-                return createError({
-                    statusCode: 404,
-                    statusMessage: "tag not found",
-                });
-            }
-
-        } catch (error) {
-            console.error("An error occurred when deleting a tag:", error);
-
-            return createError({
-                statusCode: 500,
-                statusMessage: "an error occured during tag deletion",
-            });
+        if (!tagName) {
+            return { success: false, message: "no tag name provided" };
         }
+
+        const { error } = await supabase
+            .from('tags')
+            .delete()
+            .eq('name', tagName)
+
+        if (error) {
+            return { success: false, message: error };
+        } else {
+            return { success: true, message: 'tag deleted' };
+        }
+
+
+    } catch (error: any) {
+        return { success: false, message: "could not delete tag" };
     }
 
 });
