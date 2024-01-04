@@ -36,9 +36,7 @@ const login = async () => {
             errorRef.value = ''
         }, 3000)
     }
-}
-
-
+};
 </script>
 
 
