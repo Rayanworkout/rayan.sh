@@ -25,14 +25,15 @@ export default defineEventHandler(async (event) => {
             .eq('id', articleID)
 
         if (error) {
-            return { success: false, message: 'could not delete article' };
+            setResponseStatus(event, 400, 'could not delete article');
+
         } else {
             return { success: true, message: 'article deleted' };
         }
 
     } catch (error: any) {
 
-        return { success: false, message: error.message };
+        setResponseStatus(event, 500, 'could not delete article');
 
     }
 

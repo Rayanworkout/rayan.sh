@@ -20,7 +20,8 @@ export default defineEventHandler(async (event) => {
         const tagName = query.name;
 
         if (!tagName) {
-            return { success: false, message: "no tag name provided" };
+            setResponseStatus(event, 403, 'no tag name provided');
+
         }
 
         const { error } = await supabase
@@ -29,14 +30,14 @@ export default defineEventHandler(async (event) => {
             .eq('name', tagName)
 
         if (error) {
-            return { success: false, message: error };
+            setResponseStatus(event, 400, 'could not delete tag');
         } else {
             return { success: true, message: 'tag deleted' };
         }
 
 
     } catch (error: any) {
-        return { success: false, message: "could not delete tag" };
+        setResponseStatus(event, 500, 'could not delete tag');
     }
 
 });

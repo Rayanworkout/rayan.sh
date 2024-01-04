@@ -12,13 +12,14 @@ export default defineEventHandler(async (event) => {
 
             return { success: true, data: cleanCategoriesList };
         } else {
-            return { success: false, data: null };
+            setResponseStatus(event, 400, 'could not fetch categories');
+
         }
 
 
     } catch (error: any) {
 
-        return { success: false, data: null };
+        setResponseStatus(event, 500, 'could not fetch categories');
 
     }
 

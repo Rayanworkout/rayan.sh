@@ -41,14 +41,15 @@ export default defineEventHandler(async (event) => {
             })
 
         if (error) {
-            return { success: false, message: `could not create article: ${error.message} ` };
+            setResponseStatus(event, 400, 'could not create article');
+
         } else {
             return { success: true, message: 'article created' };
         }
 
     } catch (error: any) {
 
-        return { success: false, message: error.message };
+        setResponseStatus(event, 500, 'could not create article');
 
     }
 

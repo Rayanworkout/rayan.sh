@@ -12,13 +12,13 @@ export default defineEventHandler(async (event) => {
 
             return { success: true, data: cleantagsList };
         } else {
-            return { success: false, data: null };
+            setResponseStatus(event, 400, 'could not fetch tags');
         }
 
 
     } catch (error: any) {
 
-        return { success: false, data: null };
+        setResponseStatus(event, 500, 'could not fetch tags');
 
     }
 

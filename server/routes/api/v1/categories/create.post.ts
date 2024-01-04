@@ -32,13 +32,14 @@ export default defineEventHandler(async (event) => {
 
             return { success: true, message: 'category created' };
         } else if (error) {
-            return { success: false, message: error };
+            setResponseStatus(event, 400, 'could not create category');
+
         }
 
 
     } catch (error: any) {
 
-        return { success: false, data: null };
+        setResponseStatus(event, 500, 'could not create category');
 
     }
 

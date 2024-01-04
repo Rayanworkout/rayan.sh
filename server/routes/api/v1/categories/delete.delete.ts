@@ -20,7 +20,8 @@ export default defineEventHandler(async (event) => {
         const categoryName = query.name;
 
         if (!categoryName) {
-            return { success: false, message: "no category name provided" };
+            setResponseStatus(event, 400, 'no category name provided');
+
         }
 
         const { error } = await supabase
@@ -30,14 +31,16 @@ export default defineEventHandler(async (event) => {
         
 
         if (error) {
-            return { success: false, message: error };
+            setResponseStatus(event, 400, 'could not delete category ');
+
         } else {
             return { success: true, message: 'category deleted' };
         }
 
 
     } catch (error: any) {
-        return { success: false, message: "could not delete category" };
+        setResponseStatus(event, 500, 'could not delete category ');
+
     }
 
 

@@ -22,6 +22,11 @@ export default defineEventHandler(async (event) => {
         const query = getQuery(event)
         const oldTagName = query.name;
 
+        if (!newName || newName === '') {
+            setResponseStatus(event, 403, 'no tag name provided');
+
+        }
+
 
         const { data, error } = await supabase
             .from('tags')
@@ -31,7 +36,7 @@ export default defineEventHandler(async (event) => {
         if (error) {
 
             console.log(error.message);
-            return { success: false, message: 'could not update tag' };
+            setResponseStatus(event, 400, 'could not update tag');
 
         } else {
             return { success: true, message: 'tag updated' };
@@ -39,7 +44,7 @@ export default defineEventHandler(async (event) => {
 
     } catch (error: any) {
 
-        return { success: false, message: error.message };
+        setResponseStatus(event, 500, 'could not update tag');
 
     }
 

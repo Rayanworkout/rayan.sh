@@ -50,13 +50,15 @@ export default defineEventHandler(async (event) => {
 
             return { success: true, data: cleanArticleList };
         } else {
-            return { success: false, data: null };
+            setResponseStatus(event, 400, 'could not fetch articles');
+
         }
 
 
     } catch (error: any) {
 
-        return { success: false, data: null };
+        setResponseStatus(event, 500, 'could not fetch article');
+
 
     }
 

@@ -1,6 +1,12 @@
 export default defineNuxtConfig({
   ssr: true,
   devtools: { enabled: false },
+  security: {
+    headers: {
+      contentSecurityPolicy: false,
+    }
+  },
+
   css: [
     'bootstrap/dist/css/bootstrap.css',
     'bootstrap-icons/font/bootstrap-icons.css',
@@ -18,10 +24,6 @@ export default defineNuxtConfig({
     families: {
       Montserrat: [500, 700],
     },
-  },
-
-  runtimeConfig: {
-    MONGO_URI: process.env.MONGO_URI,
   },
   sourcemap: false,
 

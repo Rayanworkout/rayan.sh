@@ -32,7 +32,7 @@ export default defineEventHandler(async (event) => {
         if (error) {
 
             console.log(error.message);
-            return { success: false, message: 'could not update category' };
+            setResponseStatus(event, 400, 'could not update category');
 
         } else {
             return { success: true, message: 'category updated' };
@@ -40,7 +40,7 @@ export default defineEventHandler(async (event) => {
 
     } catch (error: any) {
 
-        return { success: false, message: error.message };
+        setResponseStatus(event, 500, 'could not update category');
 
     }
 

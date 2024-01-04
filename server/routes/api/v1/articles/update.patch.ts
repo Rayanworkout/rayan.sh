@@ -32,7 +32,8 @@ export default defineEventHandler(async (event) => {
         if (error) {
 
             console.log(error.message);
-            return { success: false, message: 'could not update article' };
+            setResponseStatus(event, 400, 'could not update article');
+
 
         } else {
             return { success: true, message: 'article updated' };
@@ -40,7 +41,7 @@ export default defineEventHandler(async (event) => {
 
     } catch (error: any) {
 
-        return { success: false, message: error.message };
+        setResponseStatus(event, 500, 'could not update article');
 
     }
 

@@ -13,8 +13,6 @@ export default defineEventHandler(async (event) => {
         const body = await readBody(event)
         const newLikes = body.likes;
 
-        console.log(newLikes)
-
         // Increment likes counter
         const { data, error } = await supabase
             .from('articles')
@@ -22,16 +20,15 @@ export default defineEventHandler(async (event) => {
             .eq('id', articleID)
             .select()
 
-        if (error) {
+        if (error || data.length === 0 || !data) {
 
-            console.log(error.message);
-            return { success: false, message: 'could not like article' };
+            setResponseStatus(event, 400, 'could not like article');
 
         } else {
             return { success: true, message: 'like added' };
         }
     } catch (error: any) {
-        return { success: false, message: error.message };
+        setResponseStatus(event, 500, 'could not like article');
 
     }
 
