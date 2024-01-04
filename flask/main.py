@@ -18,12 +18,19 @@ def build():
     """Endpoint to receive github webhook
     and trigger build process"""
 
-    secret_header = request.headers.get("X-Hub-Signature-256")
-    # payload = request.data
-    # secret_key = os.getenv("GITHUB_WEBHOOK_SECRET")
+    # Check if branch is main
+    # If not, do nothing
     
-    secret_key = "It's a Secret to Everybody"
-    payload =  b"Hello, World!"
+    json_body = request.json
+    branch = json_body["ref"].split("/")[-1]
+    
+    if branch != "main":
+        return {"status": "success", "message": "Not main branch"}
+    
+    secret_header = request.headers.get("X-Hub-Signature-256")
+    payload = request.data
+    secret_key = os.getenv("GITHUB_WEBHOOK_SECRET")
+
 
     if verify_signature(
         payload_body=payload,
