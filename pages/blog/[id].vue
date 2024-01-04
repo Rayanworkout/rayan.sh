@@ -32,14 +32,12 @@ const success = (response.value as { success?: boolean })?.success;
 if (success) {
   article.value = (response.value as any).data as Article;
 
-  const md = new MarkdownIt();
-  md.use(mdHighlight);
+  const md = new MarkdownIt().use(mdHighlight);
   renderedHtml.value = md.render(article.value.content);
 } else {
   error.value = true;
 };
 
-// console.log(article.value);
 
 const likeArticle = () => {
   likeArticleApi(String(articleId), article.value.likes);
