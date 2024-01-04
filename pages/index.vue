@@ -27,9 +27,10 @@ const { data: response } = await useFetch('/api/v1/articles/all')
 const success = response.value?.success
 
 if (success) {
-    const fetchedArticles = response.value?.data as unknown as Article[];
+    let fetchedArticles = response.value?.data as unknown as Article[];
     if (fetchedArticles) {
-        articles = fetchedArticles as Article[];
+        fetchedArticles = fetchedArticles.filter(article => article.published === true) as Article[];
+        articles = fetchedArticles;
         filteredArticles.value = fetchedArticles;
     }
 } else {
@@ -49,7 +50,6 @@ const handleCategoryFilter = (category: string) => {
         filteredArticles
     );
 };
-
 
 </script>
 

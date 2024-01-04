@@ -9,6 +9,8 @@ const email = ref('')
 const password = ref('')
 const errorRef = ref('')
 
+const userLoggedIn = ref(false);
+
 const login = async () => {
     try {
         const { error } = await client.auth.signInWithPassword({
@@ -20,8 +22,12 @@ const login = async () => {
             errorRef.value = error.message
             throw error
         } else {
-            location.reload()
-            router.push('/dashboard')
+            userLoggedIn.value = true
+
+            setTimeout(() => {
+                location.reload()
+                router.push('/dashboard')
+            }, 1500);
 
         }
     } catch (error: any) {
@@ -50,8 +56,9 @@ const login = async () => {
                     <label class="pb-2">Password</label>
                     <input type="password" v-model="password" placeholder="Password">
                 </div>
-                    <div class="py-2 error" style="color: rgb(253, 47, 47);">{{ errorRef }}</div>
-                <button @click="login" class="login mb-3"><i class="bi bi-box-arrow-in-right"></i></button>
+                <div class="py-1 error" style="color: rgb(253, 47, 47);">{{ errorRef }}</div>
+                <button v-show="!userLoggedIn" @click="login" class="login mb-3"><i class="bi bi-box-arrow-in-right"></i></button>
+                <div v-show="userLoggedIn"><i class="bi bi-person-check-fill"></i></div>
             </form>
         </div>
     </div>
@@ -59,7 +66,6 @@ const login = async () => {
 
 
 <style scoped>
-
 input {
     outline: none;
     border: 1px solid var(--primary);
@@ -87,15 +93,15 @@ form {
     background-color: var(--background-color);
 }
 
-.login i {
-    font-size: larger;
+.login i, i {
+    font-size: 30px;
     color: var(--text-color);
     transition: 0.2s ease-in-out;
 }
 
 .login {
     border: none;
-  outline: none;
+    outline: none;
     text-decoration: none;
     color: var(--text-color);
 }
