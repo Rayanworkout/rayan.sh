@@ -30,7 +30,7 @@ if (success) {
     }
 } else {
     state.value.error = true;
-}
+};
 
 
 const publish = (articleId: number) => {
