@@ -51,7 +51,6 @@ const handleCategoryFilter = (category: string) => {
     );
 };
 
-
 </script>
 
 
