@@ -1,4 +1,37 @@
 
+<script setup lang="ts">
+
+const userLoggedIn = ref(false);
+
+const user = useSupabaseUser();
+const client = useSupabaseClient();
+const router = useRouter();
+
+
+if (user.value) {
+    userLoggedIn.value = true;
+} else {
+    userLoggedIn.value = false;
+};
+
+
+const logout = async () => {
+    try {
+        const { error } = await client.auth.signOut();
+        if (error) throw error;
+        router.push('/');
+        location.reload();
+
+
+    } catch (error: any) {
+        console.error(error.message);
+    }
+}
+
+
+</script>
+
+
 
 <template>
     <nav class="navbar border-bottom">
@@ -8,7 +41,10 @@
 
             </div>
             <div class="d-flex justify-content-end mx-3">
-                <NuxtLink to="/about" class="about">About</NuxtLink>
+                <NuxtLink v-if="$route.path !== '/about'" to="/about" class="about">About</NuxtLink>
+                <NuxtLink v-if="$route.path !== '/login' && !userLoggedIn" to="/login" class="about mx-4">Login</NuxtLink>
+                <NuxtLink v-if="userLoggedIn" @click="logout" class="about mx-4" key="key">Logout</NuxtLink>
+
             </div>
         </div>
     </nav>
@@ -46,5 +82,6 @@
 .about:hover {
     color: var(--primary);
     transform: scale(1.05);
+    cursor: pointer;
 }
 </style>

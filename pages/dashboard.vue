@@ -33,21 +33,6 @@ if (success) {
 } else {
     state.value.error = true;
 }
-
-const router = useRouter();
-const client = useSupabaseClient();
-
-
-const logout = async () => {
-    try {
-        const { error } = await client.auth.signOut();
-        if (error) throw error;
-        router.push('/');
-    } catch (error: any) {
-        console.error(error.message);
-    }
-}
-
 </script>
 
 
@@ -56,7 +41,6 @@ const logout = async () => {
     <div class="container my-5">
         <div class="text-center">
             <h1>Dashboard</h1>
-            <button class="btn btn-primary" @click="logout">Logout</button>
             <p>Here you can manage your articles.</p>
         </div>
         <ArticlesGrid :articles="articles" :state="state" />
