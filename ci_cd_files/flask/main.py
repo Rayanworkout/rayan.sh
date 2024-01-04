@@ -38,7 +38,7 @@ def build():
         secret_token=secret_key,
         ):
 
-        script_path = "../pipeline.sh"
+        script_path = "../../pipeline.sh"
 
         try:
             subprocess.run([script_path], check=True, shell=True)
