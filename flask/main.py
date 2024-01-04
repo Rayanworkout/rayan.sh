@@ -1,15 +1,16 @@
 import subprocess
-from flask import Flask
+from flask import Flask, request
 
 app = Flask(__name__)
 
-@app.route("/build")
+@app.route("/build", methods=["POST"])
 def build():
     """Endpoint to receive github webhook
     and trigger build process"""
     
-    script_path = './pipeline.sh'
-
+    data = request.get_json()
+    script_path = '../pipeline.sh'
+    
     try:
         subprocess.run([script_path], check=True, shell=True)
         print("Bash script executed successfully")
@@ -24,4 +25,6 @@ def build():
 
 
 if __name__ == "__main__":
-    app.run()
+    app.run(
+        host="0.0.0.0"
+    )
