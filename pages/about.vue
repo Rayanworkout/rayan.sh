@@ -22,7 +22,7 @@ const typeWriter = () => {
         typewriter.value += text.charAt(index.value);
         index.value++;
         setTimeout(typeWriter, delay);
-    }
+    };
 };
 
 
