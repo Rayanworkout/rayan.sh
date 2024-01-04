@@ -12,6 +12,7 @@ interface IAllArticles {
     created_at: string;
     title: string;
     description: string;
+    published: boolean;
     likes: number;
     category: {
         name: string;
@@ -31,6 +32,7 @@ export default defineEventHandler(async (event) => {
                 created_at,
                 title,
                 description,
+                published,
                 likes,
                 category (
                     name
@@ -39,10 +41,10 @@ export default defineEventHandler(async (event) => {
                     name
                     )
                 `)
-            
+
         if (articles) {
             let cleanArticleList = articles as unknown as IAllArticles;
-            
+
             // Format the date of each article
             cleanArticleList.forEach((article: Article) => {
                 article.created_at = formatDate(article.created_at);
@@ -58,8 +60,6 @@ export default defineEventHandler(async (event) => {
     } catch (error: any) {
 
         setResponseStatus(event, 500, 'could not fetch article');
-
-
     }
 
 });

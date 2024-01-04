@@ -26,7 +26,7 @@ const logout = async () => {
     } catch (error: any) {
         console.error(error.message);
     }
-}
+};
 
 
 </script>
@@ -44,6 +44,7 @@ const logout = async () => {
                 <NuxtLink v-if="$route.path !== '/about'" to="/about" class="about">About</NuxtLink>
                 <NuxtLink v-if="$route.path !== '/login' && !userLoggedIn" to="/login" class="about mx-4">Login</NuxtLink>
                 <NuxtLink v-if="userLoggedIn" @click="logout" class="about mx-4" key="key">Logout</NuxtLink>
+                <NuxtLink v-if="userLoggedIn" to="/dashboard" class="about" key="key">Dashboard</NuxtLink>
 
             </div>
         </div>
