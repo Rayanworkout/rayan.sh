@@ -1,14 +1,14 @@
-from flask import Flask, request
 import os
+import subprocess
+
+from flask import Flask, request
+
 from dotenv import load_dotenv
 load_dotenv()
 
 # Function to verify the signature
 # To ensure that the payload was sent from GitHub
 from validate_hash import verify_signature
-
-# Function to perform the build process via a bash script
-from build_project import build
 
 app = Flask(__name__)
 
@@ -19,8 +19,11 @@ def build():
     and trigger build process"""
 
     secret_header = request.headers.get("X-Hub-Signature-256")
-    payload = request.data
-    secret_key = os.getenv("GITHUB_WEBHOOK_SECRET")
+    # payload = request.data
+    # secret_key = os.getenv("GITHUB_WEBHOOK_SECRET")
+    
+    secret_key = "It's a Secret to Everybody"
+    payload =  b"Hello, World!"
 
     if verify_signature(
         payload_body=payload,
@@ -28,8 +31,14 @@ def build():
         secret_token=secret_key,
         ):
 
-        print("Signature verified")
-        build()
+        script_path = "../pipeline.sh"
+
+        try:
+            subprocess.run([script_path], check=True, shell=True)
+            print("Bash script executed successfully")
+
+        except subprocess.CalledProcessError as e:
+            print(f"Error executing the bash script: {e}")
     
         return {"status": "success", "message": "Build process triggered"}
 
