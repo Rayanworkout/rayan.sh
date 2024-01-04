@@ -6,7 +6,11 @@ export default defineNuxtConfig({
       contentSecurityPolicy: false,
     }
   },
-
+  app: {
+    head: {
+      link: [{ rel: 'stylesheet', href: 'https://cdn.jsdelivr.net/npm/highlight.js/styles/atom-one-dark.min.css' }]
+    }
+  },
   css: [
     'bootstrap/dist/css/bootstrap.css',
     'bootstrap-icons/font/bootstrap-icons.css',
