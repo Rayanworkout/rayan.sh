@@ -1,3 +1,6 @@
+# Stop if an error occurs
+set -e
+
 echo "> Pulling changes ..."
 git pull origin main
 echo "> Done"

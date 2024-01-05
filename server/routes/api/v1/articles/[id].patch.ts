@@ -14,17 +14,21 @@ export default defineEventHandler(async (event) => {
     };
 
     try {
-        const { name } = await readBody(event);
+        // Read request body
+        const body = await readBody(event);
 
-        const createCategory = await prisma.category.create({
-            data: {
-                name: name
-            }
-        });
-        return createCategory;
+        const { context: { params } } = event;
+        const id = params?.id ?? '';
 
+        const updatePost = await prisma.article.update({
+            where: {
+                id: parseInt(id)
+            },
+            data: body
+        })
+        return updatePost;
     } catch (error) {
         console.error(error);
-        setResponseStatus(event, 400, 'could not create category');
+        setResponseStatus(event, 400, 'could not update post');
     }
 });

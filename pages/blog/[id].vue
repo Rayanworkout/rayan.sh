@@ -1,5 +1,4 @@
 <script setup lang="ts">
-import { likeArticleApi } from '~/utils/likeArticle';
 // Types
 import { type Article } from '~/types/article.type'
 
@@ -11,7 +10,7 @@ const route = useRoute();
 
 const articleId = route.params.id;
 
-const error = ref(false);
+const errorRef = ref(false);
 
 const article: any = reactive({
   title: '',
@@ -22,27 +21,44 @@ const article: any = reactive({
 
 });
 
-const renderedHtml = ref(''); // Ref to store the rendered HTML
 
-const { data: response } = await useFetch(`/api/v1/articles/${articleId}`);
+const { data: fetchedArticle, error } = await useFetch(`/api/v1/articles/${articleId}`);
 
-// Using ? to check if the value is not null or undefined
-const success = (response.value as { success?: boolean })?.success;
 
-if (success) {
-  article.value = (response.value as any).data as Article;
-
-  const md = new MarkdownIt().use(mdHighlight);
-  renderedHtml.value = md.render(article.value.content);
+if (error.value) {
+  console.log(error.value);
+  errorRef.value = true;
 } else {
-  error.value = true;
+
+  article.value = fetchedArticle.value;
+  const md = new MarkdownIt().use(mdHighlight);
+  article.value.content = md.render((fetchedArticle.value as Article).content);
+
+}
+
+
+
+const likeArticle = async () => {
+  try {
+    const { data, error } = await useFetch(`/api/v1/articles/like/${articleId}`, {
+      method: 'POST',
+    });
+
+    if (error.value) {
+      console.log("Could not like article");
+      console.log(error);
+    } else {
+      article.value.likes++;;
+    }
+
+
+  } catch (error) {
+    console.log(error);
+  }
 };
 
 
-const likeArticle = () => {
-  likeArticleApi(String(articleId), article.value.likes);
-  article.value.likes++;
-}
+
 </script>
 
 
@@ -57,9 +73,9 @@ const likeArticle = () => {
             <small>{{ article.value.created_at }}</small>
           </div>
           <div class="mt-3 tags w-75 mx-auto">
-            <!-- <span v-for="tag in article.value.tags" :key="tag"> -->
-            <SmallArticleTag :tag="article.value.tags.name" />
-            <!-- </span> -->
+            <span v-for="tag in article.value.tags" :key="tag">
+              <SmallArticleTag :tag="tag.name" />
+            </span>
           </div>
           <div class="mt-3 article-likes mx-auto">
             <div @click="likeArticle"><i class="bi bi-heart icon"></i></div>
@@ -67,7 +83,7 @@ const likeArticle = () => {
           </div>
         </div>
         <transition name="fade">
-          <div v-if="!error" class="article-content" v-html="renderedHtml">
+          <div v-if="!error" class="article-content" v-html="article.value.content">
           </div>
         </transition>
       </div>

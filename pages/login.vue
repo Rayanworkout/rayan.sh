@@ -45,7 +45,6 @@ const login = async () => {
         <div class="text-center">
             <form class="mx-auto" @submit.prevent="login">
                 <h1 class="my-3">Login</h1>
-
                 <div class="form-group py-3 mx-auto">
                     <input type="email" v-model="email" placeholder="Enter email">
                 </div>
@@ -90,6 +89,7 @@ form {
     padding: 2rem;
     background-color: var(--background-color);
     width: 70%;
+    transition: all 0.3s ease-in-out;
 }
 
 form input {
@@ -114,6 +114,12 @@ i {
 .login:hover {
     color: var(--primary);
     transform: scale(1.05);
+}
+
+form:hover {
+    transform: scale(1.02);
+    border-color: var(--primary);
+    cursor: pointer;
 }
 
 

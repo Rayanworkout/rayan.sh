@@ -13,18 +13,21 @@ export default defineEventHandler(async (event) => {
         };
     };
 
-    try {
-        const { name } = await readBody(event);
 
-        const createCategory = await prisma.category.create({
-            data: {
-                name: name
+    try {
+        const { context: { params } } = event;
+        const id = params?.id;
+
+        const deleteTag = await prisma.tag.delete({
+            where: {
+                //@ts-ignore
+                id: parseInt(id)
             }
         });
-        return createCategory;
-
+        return deleteTag;
+        
     } catch (error) {
         console.error(error);
-        setResponseStatus(event, 400, 'could not create category');
+        setResponseStatus(event, 400, 'could not get tags');
     }
 });

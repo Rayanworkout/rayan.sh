@@ -1,58 +1,62 @@
+import { prisma } from '~/prisma/db'
 import { serverSupabaseUser } from '#supabase/server';
-import { supabase } from '~/server/db/client';
 
 
 export default defineEventHandler(async (event) => {
-    try {
 
-        // Check if user is authenticated
-        const user = await serverSupabaseUser(event);
 
-        if (!user) {
-            return {
-                status: 401,
-                message: "unauthorized",
-            };
+    // Check if user is authenticated
+    const user = await serverSupabaseUser(event);
+
+    if (!user) {
+        return {
+            status: 401,
+            message: "unauthorized",
         };
+    };
 
-        // Read request body
-        const body = await readBody(event);
 
-        const { title,
-            description,
+    try {
+        const {
+            title,
             content,
-            published,
-            likes,
-            category, // An array of category ids
-            tags, // An array of tag ids
-        } = body;
+            description,
+            category,
+            tags,
+        } = await readBody(event);
 
-
-        const { error } = await supabase
-            .from('articles')
-            .insert({
+        const createPost = await prisma.article.create({
+            data: {
                 title,
                 description,
                 content,
-                published,
-                likes,
-                category,
-                tags,
-            })
+                published: false,
+                likes: 0,
+                category: {
+                    connect: {
+                        name: category
+                    }
+                },
+                tags: {
+                    connect: tags.map((tag: string) => {
+                        return {
+                            name: tag
+                        }
+                    })
+                },
+            }
 
-        if (error) {
-            setResponseStatus(event, 400, 'could not create article');
-
-        } else {
-            return { success: true, message: 'article created' };
         }
 
-    } catch (error: any) {
 
-        setResponseStatus(event, 500, 'could not create article');
+        );
 
+        return createPost;
+
+    } catch (error) {
+        console.error(error);
+        setResponseStatus(event, 400, 'could not create article');
     }
 
+
 });
-
-

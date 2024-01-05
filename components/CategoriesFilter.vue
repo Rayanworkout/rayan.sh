@@ -1,6 +1,4 @@
 <script setup lang="ts">
-import ArticleCategory from './small/SmallArticleCategory.vue'
-import { type Article } from '~/types/article.type'
 
 let allCategories: string[][] | undefined;
 
@@ -15,25 +13,13 @@ const splitCategories = (categories: string[] | string | undefined) => {
     }
 };
 
-
-// Define the type for the response data structure
-interface IResponse {
-    data: {
-        value: {
-            success: boolean;
-            data: Article["category"][];
-        }
-    }
-}
-
-
 // Fetch categories
-const categories = await useFetch('/api/v1/categories/all') as unknown as IResponse;
-const success = categories.data.value?.success;
+const { data: categories, error: error } = await useFetch('/api/v1/categories/all');
 
-
-if (success) {
-    const list: Article["category"][] | undefined = categories.data.value?.data;
+if (error.value) {
+    console.log(error.value);
+} else {
+    const list = categories.value;
 
     if (Array.isArray(list)) {
         // Get the categories names
@@ -43,7 +29,6 @@ if (success) {
         allCategories = splitCategories(listNames);
     }
 }
-
 
 // Define the emits list, here when a category is clicked
 defineEmits(["categoryClicked"]);
@@ -57,8 +42,8 @@ defineProps(["clickedCategories"]);
     <ul v-for="categoriesList in allCategories" :key="categoriesList[0]"
         class="list-inline list-unstyled d-flex justify-content-center pt-3 category-list">
         <div v-for="category in categoriesList">
-            <ArticleCategory :category="category" class="category" :class="{ active: clickedCategories.includes(category) }"
-            @click="$emit('categoryClicked', category);" />
+            <SmallArticleCategory :category="category" class="category"
+                :class="{ active: clickedCategories.includes(category) }" @click="$emit('categoryClicked', category);" />
         </div>
     </ul>
 </template>
