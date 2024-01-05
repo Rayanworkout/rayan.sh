@@ -23,6 +23,11 @@ defineProps<{ tag: string }>()
     margin: 5px;
 }
 
+.tag.active {
+  background-color: var(--primary);
+  color: var(--background);
+}
+
 
 .tag:hover {
     color: var(--primary);

@@ -2,16 +2,6 @@
 
 let allCategories: string[][] | undefined;
 
-// Same thing for categories
-const splitCategories = (categories: string[] | string | undefined) => {
-    if (categories) {
-        const result: string[][] = [];
-        for (let i = 0; i < categories.length; i += 4) {
-            result.push(Array.isArray(categories) ? categories.slice(i, i + 4) : [categories]);
-        }
-        return result;
-    }
-};
 
 // Fetch categories
 const { data: categories, error: error } = await useFetch('/api/v1/categories/all');
@@ -26,7 +16,7 @@ if (error.value) {
         const listNames = list.map((category) => category.name);
         listNames.unshift('ALL');
         // Split the categories in 4 columns
-        allCategories = splitCategories(listNames);
+        allCategories = splitElements(listNames);
     }
 }
 

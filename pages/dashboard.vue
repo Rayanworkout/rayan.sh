@@ -8,52 +8,44 @@ definePageMeta({
     middleware: 'auth',
 });
 
-const state = ref({
+const allArticles = ref<Article[]>();
+
+const state = reactive({
     error: false,
 });
 
-const response = await useFetch('/api/v1/articles/all');
-const success = response.data.value?.success;
+const { data: articles, error } = await useFetch('/api/v1/articles/all');
 
-// Handle articles with correct typings
-// This variable contains all articles
-// Before filtering
-let articles: Article[] | undefined;
 
-if (success) {
-    // Check if response data is an array of articles
-    if (Array.isArray(response.data.value?.data)) {
-        articles = response.data.value?.data as Article[];
-    } else {
-        // Handle the case where data is a string or undefined
-        console.error('Unexpected data type received:', typeof response.data.value?.data);
-    }
+if (error.value) {
+    console.log(error.value);
+    state.error = true;
 } else {
-    state.value.error = true;
-};
+    allArticles.value = articles.value as any;
+}
 
 
-const publish = (articleId: number) => {
-    $fetch(`/api/v1/articles/update/${articleId}`, {
-        method: 'PATCH',
-        body: JSON.stringify({
-            published: true,
-        }),
-    });
+const router = useRouter();
+
+const update = (id: number) => {
+    router.push(`/blog/update/${id}`);
+    console.log(id);
 };
 
-const unpublish = (articleId: number) => {
-    $fetch(`/api/v1/articles/update/${articleId}`, {
-        method: 'PATCH',
-        body: JSON.stringify({
-            published: false,
-        }),
-    });
+const publish = async (id: number) => {
+    const { data: response } = await useFetch(`/api/v1/articles/publish/${id}`);
+    window.location.reload();
 };
 
-const update = (articleId: number) => {
-    console.log('update')
+const unpublish = async (id: number) => {
+    const { data: response } = await useFetch(`/api/v1/articles/unpublish/${id}`);
+    window.location.reload();
 };
+
+const create = () => {
+    router.push('/blog/new');
+};
+
 
 </script>
 
@@ -64,6 +56,7 @@ const update = (articleId: number) => {
         <div class="text-center">
             <h1>Dashboard</h1>
             <p>Here you can manage your articles.</p>
+            <div class="py-2 my-4 mx-auto new" @click="create">New</div>
         </div>
         <table class="table table-striped table-dark table-hover table-responsive mx-auto text-center">
             <thead>
@@ -77,12 +70,14 @@ const update = (articleId: number) => {
                 </tr>
             </thead>
             <tbody>
-                <tr v-for="article in articles" :key="article.id">
+                <tr v-for="article in allArticles" :key="article.id">
                     <th scope="row">{{ article.id }}</th>
-                    <td @click="update(article.id)">{{ article.title }}</td>
-                    <td>{{ article.created_at }}</td>
+                    <td @click="update(article.id)" class="title">{{ article.title }}</td>
+                    <td>{{ article.createdAt }}</td>
                     <td>{{ article.category.name }}</td>
-                    <td>{{ article.tags.name }}</td>
+                    <td><span v-for="(tag, index) in article.tags" :key="index">
+                            {{ tag.name }}<template v-if="index !== article.tags.length - 1"><br></template>
+                        </span></td>
                     <td v-if="article.published" @click="unpublish(article.id)"><i class="bi bi-check-lg"></i></td>
                     <td v-else @click="publish(article.id)"><i class="bi bi-x-lg"></i></td>
                 </tr>
@@ -98,5 +93,35 @@ i {
     font-size: 1.2rem;
     color: var(--text);
     background-color: transparent;
+}
+
+i:hover, .new:hover {
+    cursor: pointer;
+    border: 1px solid var(--primary);
+    border-radius: 15px;
+    padding: 4px;
+}
+.title:hover {
+    color: var(--primary);
+    cursor: pointer;
+
+}
+.new {
+    font-size: 1.2rem;
+    color: var(--text);
+    background-color: transparent;
+    border: 1px solid var(--text);
+    border-radius: 15px;
+    width: 50%;
+}
+
+span {
+    color: var(--text);
+    background-color: transparent;
+}
+
+td,
+th {
+    vertical-align: middle;
 }
 </style>

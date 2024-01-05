@@ -11,7 +11,7 @@ const state = reactive({
     loading: true,
 });
 
-const { data: articles, error } = await useFetch('/api/v1/articles/all');
+const { data: articles, error } = await useFetch('/api/v1/articles/feed');
 
 
 if (error.value) {
