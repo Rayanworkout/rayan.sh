@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import { routerKey } from 'vue-router';
 import { type Article } from '~/types/article.type';
 
 // This page is only accessible for logged in users
@@ -8,11 +9,22 @@ definePageMeta({
   middleware: 'auth',
 });
 
+const router = useRouter();
+
 // First I initialize the variables
 const categories = ref();
 const tagsList = ref();
 const selectedCategory = ref('');
-const clickedTags = ref<Article["tags"]>([]);
+const clickedTags = ref<string[]>([]);
+
+const newArticle = ref({
+  created: false,
+  title: '',
+  description: '',
+  content: '',
+  category: '',
+  tags: [''],
+});
 
 // Then I fetch data from the API
 const { data: fetchedCategories } = await useFetch('/api/v1/categories/all');
@@ -21,7 +33,7 @@ if (fetchedCategories) {
   categories.value = fetchedCategories.value;
 }
 if (fetchedTags) {
-  tagsList.value = fetchedTags.value;
+  tagsList.value = fetchedTags.value?.map((tag: { name: any; }) => tag.name);
   tagsList.value = splitElements(tagsList.value);
 }
 
@@ -30,11 +42,11 @@ const updateSelectedCategory = (e: any) => {
   selectedCategory.value = e.target.value;
 }
 
-const clickTag = (tag: { name: any; }) => {
-  if (!clickedTags.value.includes(tag.name)) {
-    clickedTags.value.push(tag.name);
+const clickTag = (tag: string) => {
+  if (!clickedTags.value.includes(tag)) {
+    clickedTags.value.push(tag);
   } else {
-    const index = clickedTags.value.indexOf(tag.name);
+    const index = clickedTags.value.indexOf(tag);
     if (index > -1) {
       clickedTags.value.splice(index, 1);
     }
@@ -43,9 +55,28 @@ const clickTag = (tag: { name: any; }) => {
 
 
 const publish = async (e: any) => {
-  console.log('publish')
-}
 
+  const category = selectedCategory.value;
+  const tags = clickedTags.value;
+
+  // Other fields are already binded to the newArticle variable
+  // with v-model in the template
+  newArticle.value.category = category
+  newArticle.value.tags = tags
+
+  const { data: response, error } = await useFetch('/api/v1/articles/create', {
+    method: 'POST',
+    body: JSON.stringify(newArticle.value),
+  });
+
+  if (!error.value) {
+    newArticle.value.created = true;
+    setTimeout(() => {
+      newArticle.value.created = false;
+    }, 3000);
+    router.push('/dashboard');
+  }
+}
 
 </script>
 
@@ -56,11 +87,12 @@ const publish = async (e: any) => {
     <div class="text-center">
       <form class="mx-auto" @submit.prevent="publish">
         <h1 class="my-3">New Article</h1>
+        <div v-show="newArticle.created" class="success">Article successfully created !</div>
         <div class="form-group py-3 mx-auto">
-          <input type="text" placeholder="Title">
+          <input type="text" placeholder="Title" v-model="newArticle.title">
         </div>
         <div class="form-group py-3 mx-auto">
-          <input type="text" placeholder="Description">
+          <input type="text" placeholder="Description" v-model="newArticle.description">
         </div>
         <div class="form-group py-3 mx-auto">
           <label class="mb-2" for="selectCategory">Category</label><br>
@@ -74,14 +106,14 @@ const publish = async (e: any) => {
 
           <ul v-for="list in tagsList" :key="list[0]">
             <li v-for="tag in list">
-              <SmallArticleTag :tag="tag.name" @click="clickTag(tag)" :class="{ active: clickedTags.includes(tag.name) }" />
+              <SmallArticleTag :tag="tag" @click="clickTag(tag)" :class="{ active: clickedTags.includes(tag) }" />
             </li>
           </ul>
         </div>
         <div class="form-group py-3 mx-auto">
-          <textarea type="text" placeholder="content" rows="10"/>
+          <textarea type="text" rows="10" v-model="newArticle.content" />
         </div>
-        <button @click="publish" class="login mb-3"><i class="bi bi-send"></i></button>
+        <button class="login mb-3"><i class="bi bi-send"></i></button>
       </form>
     </div>
   </div>
@@ -118,6 +150,12 @@ textarea:focus {
 input::placeholder,
 textarea::placeholder {
   color: var(--text-color);
+}
+
+.success {
+  color: var(--primary);
+  font-size: 1.2rem;
+  font-weight: bold;
 }
 
 select {
