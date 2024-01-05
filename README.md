@@ -17,7 +17,7 @@ ___
 ####  The CI/CD pipeline is fully automated and lightweight, triggered by a Flask server listening for GitHub webhooks.
 #### - User Authentication
 #### I've implemented secure user authentication with Supabase.
-### - Database
+#### - Database
 #### The databasz is currently a postgres database from supabase but I will soon migrate to a self hosted local SQLite database with Prisma ORM.
 
 ## Markdown Support
