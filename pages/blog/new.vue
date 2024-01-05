@@ -1,6 +1,4 @@
 <script setup lang="ts">
-import { routerKey } from 'vue-router';
-import { type Article } from '~/types/article.type';
 
 // This page is only accessible for logged in users
 definePageMeta({
@@ -95,15 +93,23 @@ const publish = async (e: any) => {
           <input type="text" placeholder="Description" v-model="newArticle.description">
         </div>
         <div class="form-group py-3 mx-auto">
-          <label class="mb-2" for="selectCategory">Category</label><br>
+          <div class="category">
+            <label for="selectCategory">Category</label><i class="bi bi-plus"></i><br>
+          </div>
           <select @input="updateSelectedCategory" id="selectCategory">
+
             <option v-for="category in categories" :key="category.name" :value="category.name">
               {{ category.name }}
             </option>
           </select>
         </div>
+        <div class="w-50">
+          <v-select chips label="Select"
+            :items="['California', 'Colorado', 'Florida', 'Georgia', 'Texas', 'Wyoming']"
+            :density="'compact'"
+            :flat="true"></v-select>
+        </div>
         <div class="form-group py-3 mx-auto">
-
           <ul v-for="list in tagsList" :key="list[0]">
             <li v-for="tag in list">
               <SmallArticleTag :tag="tag" @click="clickTag(tag)" :class="{ active: clickedTags.includes(tag) }" />
@@ -150,6 +156,12 @@ textarea:focus {
 input::placeholder,
 textarea::placeholder {
   color: var(--text-color);
+}
+
+.category {
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .success {

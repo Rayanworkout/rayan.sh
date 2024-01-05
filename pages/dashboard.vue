@@ -95,17 +95,20 @@ i {
     background-color: transparent;
 }
 
-i:hover, .new:hover {
+i:hover,
+.new:hover {
     cursor: pointer;
     border: 1px solid var(--primary);
     border-radius: 15px;
     padding: 4px;
 }
+
 .title:hover {
     color: var(--primary);
     cursor: pointer;
 
 }
+
 .new {
     font-size: 1.2rem;
     color: var(--text);

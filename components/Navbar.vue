@@ -45,6 +45,7 @@ const logout = async () => {
                 <NuxtLink v-if="$route.path !== '/login' && !userLoggedIn" to="/login" class="about">Login</NuxtLink>
                 <NuxtLink v-if="userLoggedIn" @click="logout" class="about" key="key">Logout</NuxtLink>
                 <NuxtLink v-if="userLoggedIn" to="/dashboard" class="about" key="key">Dashboard</NuxtLink>
+                
             </div>
         </div>
     </nav>
