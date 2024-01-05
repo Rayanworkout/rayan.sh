@@ -16,7 +16,9 @@ ___
 #### Hosting the website on a Debian VPS, served with PM2 behind an Apache reverse proxy, ensures stability.
 ####  The CI/CD pipeline is fully automated and lightweight, triggered by a Flask server listening for GitHub webhooks.
 #### - User Authentication
-#### I've implemented secure user authentication and a reliable database setup with Supabase.
+#### I've implemented secure user authentication with Supabase.
+### - Database
+#### The databasz is currently a postgres database from supabase but I will soon migrate to a self hosted local SQLite database with Prisma ORM.
 
 ## Markdown Support
 #### Articles are composed in Markdown and seamlessly transformed into readable HTML with code syntax highlighting.
