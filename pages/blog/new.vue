@@ -103,12 +103,7 @@ const publish = async (e: any) => {
             </option>
           </select>
         </div>
-        <div class="w-50">
-          <v-select chips label="Select"
-            :items="['California', 'Colorado', 'Florida', 'Georgia', 'Texas', 'Wyoming']"
-            :density="'compact'"
-            :flat="true"></v-select>
-        </div>
+
         <div class="form-group py-3 mx-auto">
           <ul v-for="list in tagsList" :key="list[0]">
             <li v-for="tag in list">

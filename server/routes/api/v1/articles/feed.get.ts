@@ -1,12 +1,13 @@
 import { prisma } from '~/prisma/db'
-import {formatDate} from '~/utils/formatDate'
+import { formatDate } from '~/utils/formatDate'
 
 export default defineEventHandler(async (event) => {
     try {
         const feed = await prisma.article.findMany({
-            where: { 
+            where: {
                 published: true
             },
+            orderBy: { createdAt: 'desc' },
             include: {
                 category: true,
                 tags: true,
@@ -17,7 +18,7 @@ export default defineEventHandler(async (event) => {
         feed.forEach((article: any) => {
             article.createdAt = formatDate(String(article.createdAt));
         });
-        
+
         return feed;
 
     } catch (error) {

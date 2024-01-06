@@ -20,7 +20,9 @@ const logout = async () => {
         const { error } = await client.auth.signOut();
         if (error) throw error;
         router.push('/');
-        location.reload();
+        setTimeout(() => {
+            window.location.reload();
+        }, 500);
 
 
     } catch (error: any) {

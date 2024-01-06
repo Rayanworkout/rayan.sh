@@ -25,7 +25,6 @@ const login = async () => {
             userLoggedIn.value = true
 
             setTimeout(() => {
-                location.reload()
                 router.push('/dashboard')
             }, 1500);
 

@@ -19,7 +19,8 @@ export default defineEventHandler(async (event) => {
             include: {
                 category: true,
                 tags: true,
-            }
+            },
+            orderBy: { createdAt: 'desc' },
         });
 
         // Filter date of each article
