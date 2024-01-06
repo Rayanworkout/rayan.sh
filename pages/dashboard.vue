@@ -19,7 +19,6 @@ const state = reactive({
 const showMessage = (message: string) => {
     state.message = message;
     state.showToaste = true;
-    console.log(message)
     setTimeout(() => {
         state.message = '';
         state.showToaste = false;
@@ -43,7 +42,6 @@ const router = useRouter();
 
 const update = (id: number) => {
     router.push(`/blog/update/${id}`);
-    console.log(id);
 };
 
 const publish = async (id: number) => {

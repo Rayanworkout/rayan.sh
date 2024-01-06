@@ -6,19 +6,23 @@ export default defineEventHandler(async (event) => {
     // Check if user is authenticated
     const user = await serverSupabaseUser(event);
 
-    if (!user) {
-        return {
-            status: 401,
-            message: "unauthorized",
-        };
-    };
+    // if (!user) {
+    //     return {
+    //         status: 401,
+    //         message: "unauthorized",
+    //     };
+    // };
 
     try {
+        
         // Read request body
+    
         const body = await readBody(event);
 
         const { context: { params } } = event;
         const id = params?.id ?? '';
+
+        
 
         const updatePost = await prisma.article.update({
             where: {
