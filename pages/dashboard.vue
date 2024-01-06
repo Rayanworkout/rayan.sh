@@ -1,6 +1,8 @@
 <script setup lang="ts">
 // Types
 import { type Article } from '~/types/article.type';
+import { showToast } from '~/utils/frontend/showToast';
+
 
 definePageMeta({
     title: 'Dashboard',
@@ -15,17 +17,6 @@ const state = reactive({
     showToaste: false,
     message: '',
 });
-
-const showMessage = (message: string) => {
-    state.message = message;
-    state.showToaste = true;
-    setTimeout(() => {
-        state.message = '';
-        state.showToaste = false;
-        window.location.reload();
-
-    }, 1500);
-};
 
 const { data: articles, error } = await useFetch('/api/v1/articles/all');
 
@@ -46,12 +37,12 @@ const update = (id: number) => {
 
 const publish = async (id: number) => {
     const { data: response } = await useFetch(`/api/v1/articles/publish/${id}`);
-    showMessage("Published");
+    showToast("Published", state);
 };
 
 const unpublish = async (id: number) => {
     const { data: response } = await useFetch(`/api/v1/articles/unpublish/${id}`);
-    showMessage("Unpublished");
+    showToast("Unpublished", state);
 };
 
 const create = () => {
@@ -71,7 +62,7 @@ const remove = async (id: number) => {
         console.log(error.value);
         state.error = true;
     } else {
-        showMessage("Deleted");
+        showToast("Deleted", state);
     }
 };
 
@@ -164,26 +155,4 @@ th {
     vertical-align: middle;
 }
 
-
-.mytoast {
-    position: absolute;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    top: 100px;
-    right: 50px;
-    z-index: 999;
-    background-color: var(--background);
-    border: 1px solid var(--text);
-    color: var(--text);
-    padding: 12px;
-    width: 200px;
-    border-radius: 15px;
-    font-size: 1.2rem;
-    animation: toast 3s ease-in-out;
-}
-
-.mytoast i {
-    margin-left: 10px;
-}
 </style>

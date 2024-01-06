@@ -160,6 +160,31 @@ code.hljs {
 }
 
 
+/* My toast */
+
+.mytoast {
+  position: absolute;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  top: 100px;
+  right: 50px;
+  z-index: 999;
+  background-color: var(--background);
+  border: 1px solid var(--text);
+  color: var(--text);
+  padding: 12px;
+  width: 200px;
+  border-radius: 15px;
+  font-size: 1.2rem;
+  animation: toast 3s ease-in-out;
+}
+
+.mytoast i {
+  margin-left: 10px;
+}
+
+
 /* Cursor animation */
 
 .cursor {

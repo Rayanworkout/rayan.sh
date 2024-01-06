@@ -1,5 +1,5 @@
 import { prisma } from '~/prisma/db';
-import { formatDate } from '~/utils/formatDate';
+import { formatDate } from '~/utils/frontend/formatDate';
 import { serverSupabaseUser } from '#supabase/server';
 
 export default defineEventHandler(async (event) => {

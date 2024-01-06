@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import { splitElements } from '~/utils/frontend/splitElements';
 
 let allCategories: string[][] | undefined;
 

@@ -1,6 +1,7 @@
 
 <script setup lang="ts">
 import { type Article } from '~/types/article.type'
+import { handleCategoryClicked } from '~/utils/frontend/categoryFilter';
 
 const allArticles = ref<Article[]>();
 const filteredArticles = ref();

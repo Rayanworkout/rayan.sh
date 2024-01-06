@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import { splitElements } from '~/utils/frontend/splitElements';
 
 // This page is only accessible for logged in users
 definePageMeta({
