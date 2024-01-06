@@ -29,7 +29,7 @@ if (error.value || tagsError.value || categoriesError.value) {
   allTags.value = splitElements(allTags.value);
   clickedTags.value = article.value.tags.map((tag: { name: any; }) => tag.name);
   allCategories.value = fetchedCategories.value;
-  selectedCategory.value = article.value.category.name;
+  selectedCategory.value = article.value.category.id;
 }
 
 
@@ -55,8 +55,8 @@ const sendArticle = async () => {
       title: article.value.title,
       description: article.value.description,
       content: article.value.content,
-      category: selectedCategory.value,
-      // tags: clickedTags.value
+      categoryId: parseInt(selectedCategory.value),
+      tags: clickedTags.value
     })
   });
 
@@ -70,6 +70,7 @@ const sendArticle = async () => {
 const updateSelectedCategory = (e: any) => {
   selectedCategory.value = e.target.value;
 }
+
 
 </script>
 
@@ -93,7 +94,7 @@ const updateSelectedCategory = (e: any) => {
             </div>
             <select @input="updateSelectedCategory" id="selectCategory" :value="selectedCategory">
 
-              <option v-for="category in allCategories" :key="category.name" :value="category.name">
+              <option v-for="category in allCategories" :key="category.name" :value="category.id">
                 {{ category.name }}
               </option>
             </select>

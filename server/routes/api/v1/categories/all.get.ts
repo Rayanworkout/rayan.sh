@@ -5,6 +5,7 @@ export default defineEventHandler(async (event) => {
     try {
         const categories = await prisma.category.findMany({
             select: {
+                id: true,
                 name: true,
             }
         })
