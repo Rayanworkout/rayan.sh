@@ -21,6 +21,7 @@ defineProps<{ tag: string }>()
     text-decoration: none;
     color: var(--text);
     margin: 5px;
+    width: fit-content;
 }
 
 .tag.active {
@@ -30,7 +31,6 @@ defineProps<{ tag: string }>()
 
 
 .tag:hover {
-    color: var(--primary);
     border-color: var(--primary);
     cursor: pointer;
 }

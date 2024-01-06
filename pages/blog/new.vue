@@ -62,7 +62,7 @@ const publish = async (e: any) => {
   newArticle.value.category = category
   newArticle.value.tags = tags
 
-  const { data: response, error } = await useFetch('/api/v1/articles/create', {
+  const { data, error } = await useFetch('/api/v1/articles/create', {
     method: 'POST',
     body: JSON.stringify(newArticle.value),
   });

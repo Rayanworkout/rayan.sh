@@ -10,15 +10,13 @@ export default defineEventHandler(async (event) => {
         if (id) {
             const getPost = await prisma.article.findUnique({
                 where: {
-                    //@ts-ignore
-                    id: parseInt(id)
+                    id: Number(id)
                 },
                 include: {
                     category: true,
                     tags: true,
                 }
             })
-
             return getPost;
         }
     } catch (error) {
