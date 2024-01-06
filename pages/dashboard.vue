@@ -93,13 +93,13 @@ const remove = async (id: number) => {
             </thead>
             <tbody>
                 <tr v-for="article in allArticles" :key="article.id">
-                    <th scope="row">{{ article.id }}</th>
-                    <td @click="update(article.id)" class="title">{{ article.title }}</td>
-                    <td>{{ article.createdAt }}</td>
-                    <td>{{ article.category.name }}</td>
-                    <td><span v-for="(tag, index) in article.tags" :key="index">
-                            {{ tag.name }}<template v-if="index !== article.tags.length - 1"><br></template>
-                        </span></td>
+                        <th scope="row">{{ article.id }}</th>
+                        <td @click="update(article.id)" class="elem">{{ article.title }}</td>
+                        <td @click="update(article.id)" class="elem">{{ article.createdAt }}</td>
+                        <td @click="update(article.id)" class="elem">{{ article.category.name }}</td>
+                        <td @click="update(article.id)" class="elem"><span v-for="(tag, index) in article.tags" :key="index">
+                                {{ tag.name }}<template v-if="index !== article.tags.length - 1"><br></template>
+                            </span></td>
                     <td v-if="article.published" @click="unpublish(article.id)"><i class="bi bi-check-lg"></i></td>
                     <td v-else @click="publish(article.id)"><i class="bi bi-x-lg"></i></td>
                     <td @click="remove(article.id)"><i class="bi bi-trash"></i></td>
@@ -130,10 +130,9 @@ i:hover {
     color: var(--primary);
 }
 
-.title:hover {
+.elem:hover {
     color: var(--primary);
     cursor: pointer;
-
 }
 
 .new {
@@ -154,5 +153,4 @@ td,
 th {
     vertical-align: middle;
 }
-
 </style>

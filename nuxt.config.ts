@@ -1,4 +1,3 @@
-import vuetify, { transformAssetUrls } from 'vite-plugin-vuetify'
 
 export default defineNuxtConfig({
   ssr: true,
@@ -18,12 +17,7 @@ export default defineNuxtConfig({
     'bootstrap-icons/font/bootstrap-icons.css',
     'assets/css/style.css'
   ],
-  modules: ['@nuxtjs/google-fonts', 'nuxt-security', '@nuxtjs/supabase', (_options, nuxt) => {
-    nuxt.hooks.hook('vite:extendConfig', (config) => {
-      // @ts-expect-error
-      config.plugins.push(vuetify({ autoImport: true }))
-    })
-  },],
+  modules: ['@nuxtjs/google-fonts', 'nuxt-security', '@nuxtjs/supabase'],
   supabase: {
     redirectOptions: {
       login: '/login',
@@ -37,16 +31,5 @@ export default defineNuxtConfig({
     },
   },
   sourcemap: false,
-
-  build: {
-    transpile: ['vuetify'],
-  },
-  vite: {
-    vue: {
-      template: {
-        transformAssetUrls,
-      },
-    },
-  },
 
 });
