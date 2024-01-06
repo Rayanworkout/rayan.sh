@@ -14,7 +14,7 @@ const allArticles = ref<Article[]>();
 
 const state = reactive({
     error: false,
-    showToaste: false,
+    showToast: false,
     message: '',
 });
 
@@ -73,7 +73,7 @@ const remove = async (id: number) => {
 
 <template>
     <div class="container my-5">
-        <div class="mytoast" v-show="state.showToaste">{{ state.message }} <i class="bi bi-check-circle-fill"></i></div>
+        <div class="mytoast" v-show="state.showToast">{{ state.message }} <i class="bi bi-check-circle-fill"></i></div>
         <div class="text-center">
             <h1>Dashboard</h1>
             <p>Here you can manage your articles.</p>

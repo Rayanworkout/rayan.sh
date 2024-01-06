@@ -1,11 +1,26 @@
 
+const router = useRouter();
 
-export const showToast = async (message: string, state: any) => {
-    state.message = message;
-    state.showToaste = true;
+
+export const showToast = async (
+
+    // Message to show in toast
+    message: string,
+    
+    // The current state of the component
+    state: any,
+    
+    // The path to push to after the toast is done
+    push: string = '/',
+    
+    ) => {
+    
+        state.message = message;
+    state.showToast = true;
     setTimeout(() => {
         state.message = '';
-        state.showToaste = false;
-        window.location.reload();
+        state.showToast = false;
+
+        router.push(push);
     }, 1500);
 };

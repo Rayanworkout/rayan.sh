@@ -1,5 +1,7 @@
 <script setup lang="ts">
 import { splitElements } from '~/utils/frontend/splitElements';
+import { showToast } from '~/utils/frontend/showToast';
+import { routerKey } from 'vue-router';
 
 
 const route = useRoute();
@@ -17,20 +19,9 @@ const allCategories: any = ref();
 const selectedCategory = ref('');
 
 const state = reactive({
-    showToaste: true,
+    showToast: false,
     message: '',
 });
-
-const showMessage = (message: string) => {
-    state.message = message;
-    state.showToaste = true;
-    setTimeout(() => {
-        state.message = '';
-        state.showToaste = false;
-        window.location.reload();
-
-    }, 1500);
-};
 
 
 const { data: fetchedArticle, error } = await useFetch(`/api/v1/articles/${articleId}`);
@@ -82,6 +73,7 @@ const sendArticle = async () => {
     console.log(error);
   } else {
     article.value = data.value;
+    showToast('Article updated !', state, '/dashboard');
   }
 }
 
@@ -96,7 +88,7 @@ const updateSelectedCategory = (e: any) => {
 <template>
   <section class="my-5 py-3">
     <div class="container">
-      <div class="mytoast" v-show="state.showToaste">{{ state.message }} <i class="bi bi-check-circle-fill"></i></div>
+      <div class="mytoast" v-show="state.showToast">{{ state.message }} <i class="bi bi-check-circle-fill"></i></div>
       <div class="text-center">
         <form class="mx-auto" @submit.prevent="sendArticle">
           <h1 class="my-3">Update</h1>
