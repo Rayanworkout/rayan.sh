@@ -71,8 +71,8 @@ const publish = async (e: any) => {
     newArticle.value.created = true;
     setTimeout(() => {
       newArticle.value.created = false;
-    }, 3000);
-    router.push('/dashboard');
+      router.push('/dashboard');
+    }, 2000);
   }
 }
 
@@ -85,7 +85,7 @@ const publish = async (e: any) => {
     <div class="text-center">
       <form class="mx-auto" @submit.prevent="publish">
         <h1 class="my-3">New Article</h1>
-        <div v-show="newArticle.created" class="success">Article successfully created !</div>
+        <div v-show="newArticle.created" class="success">Article created !</div>
         <div class="form-group py-3 mx-auto">
           <input type="text" placeholder="Title" v-model="newArticle.title">
         </div>

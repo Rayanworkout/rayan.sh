@@ -30,7 +30,7 @@ defineProps(["clickedCategories"]);
 
 <template>
     <ul v-for="categoriesList in allCategories" :key="categoriesList[0]"
-        class="list-inline list-unstyled d-flex justify-content-center pt-3 category-list">
+        class="list-inline list-unstyled d-flex justify-content-center pt-2 category-list">
         <div v-for="category in categoriesList">
             <SmallArticleCategory :category="category" class="category"
                 :class="{ active: clickedCategories.includes(category) }" @click="$emit('categoryClicked', category);" />

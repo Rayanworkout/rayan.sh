@@ -12,7 +12,21 @@ const allArticles = ref<Article[]>();
 
 const state = reactive({
     error: false,
+    showToaste: false,
+    message: '',
 });
+
+const showMessage = (message: string) => {
+    state.message = message;
+    state.showToaste = true;
+    console.log(message)
+    setTimeout(() => {
+        state.message = '';
+        state.showToaste = false;
+        window.location.reload();
+
+    }, 1500);
+};
 
 const { data: articles, error } = await useFetch('/api/v1/articles/all');
 
@@ -34,16 +48,33 @@ const update = (id: number) => {
 
 const publish = async (id: number) => {
     const { data: response } = await useFetch(`/api/v1/articles/publish/${id}`);
-    window.location.reload();
+    showMessage("Published");
 };
 
 const unpublish = async (id: number) => {
     const { data: response } = await useFetch(`/api/v1/articles/unpublish/${id}`);
-    window.location.reload();
+    showMessage("Unpublished");
 };
 
 const create = () => {
     router.push('/blog/new');
+};
+
+const remove = async (id: number) => {
+    const confirm = window.confirm('Are you sure you want to delete this article?');
+    if (!confirm) return;
+
+    const { data: response, error } = await useFetch(`/api/v1/articles/${id}`,
+        {
+            method: 'DELETE',
+        });
+
+    if (error.value) {
+        console.log(error.value);
+        state.error = true;
+    } else {
+        showMessage("Deleted");
+    }
 };
 
 
@@ -53,6 +84,7 @@ const create = () => {
 
 <template>
     <div class="container my-5">
+        <div class="mytoast" v-show="state.showToaste">{{ state.message }} <i class="bi bi-check-circle-fill"></i></div>
         <div class="text-center">
             <h1>Dashboard</h1>
             <p>Here you can manage your articles.</p>
@@ -67,6 +99,7 @@ const create = () => {
                     <th scope="col">Category</th>
                     <th scope="col">Tags</th>
                     <th scope="col">Published</th>
+                    <th scope="col">#</th>
                 </tr>
             </thead>
             <tbody>
@@ -80,6 +113,7 @@ const create = () => {
                         </span></td>
                     <td v-if="article.published" @click="unpublish(article.id)"><i class="bi bi-check-lg"></i></td>
                     <td v-else @click="publish(article.id)"><i class="bi bi-x-lg"></i></td>
+                    <td @click="remove(article.id)"><i class="bi bi-trash"></i></td>
                 </tr>
             </tbody>
         </table>
@@ -95,12 +129,16 @@ i {
     background-color: transparent;
 }
 
-i:hover,
 .new:hover {
     cursor: pointer;
     border: 1px solid var(--primary);
     border-radius: 15px;
     padding: 4px;
+}
+
+i:hover {
+    cursor: pointer;
+    color: var(--primary);
 }
 
 .title:hover {
@@ -126,5 +164,28 @@ span {
 td,
 th {
     vertical-align: middle;
+}
+
+
+.mytoast {
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    top: 100px;
+    right: 50px;
+    z-index: 999;
+    background-color: var(--background);
+    border: 1px solid var(--text);
+    color: var(--text);
+    padding: 12px;
+    width: 200px;
+    border-radius: 15px;
+    font-size: 1.2rem;
+    animation: toast 3s ease-in-out;
+}
+
+.mytoast i {
+    margin-left: 10px;
 }
 </style>
