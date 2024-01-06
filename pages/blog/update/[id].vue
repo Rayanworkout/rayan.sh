@@ -88,7 +88,7 @@ const updateSelectedCategory = (e: any) => {
 <template>
   <section class="my-5 py-3">
     <div class="container">
-      <div class="mytoast" v-show="state.showToast">{{ state.message }} <i class="bi bi-check-circle-fill"></i></div>
+      <div class="mytoast animate__animated animate__bounceInRight" v-show="state.showToast">{{ state.message }} <i class="bi bi-check-circle-fill"></i></div>
       <div class="text-center">
         <form class="mx-auto" @submit.prevent="sendArticle">
           <h1 class="my-3">Update</h1>
@@ -120,7 +120,7 @@ const updateSelectedCategory = (e: any) => {
           <div class="form-group py-3 mx-auto">
             <textarea type="text" rows="10" v-model="article.content" />
           </div>
-          <button class="mb-3">OK</button>
+          <button class="mb-3">Save</button>
         </form>
       </div>
     </div>
@@ -129,6 +129,22 @@ const updateSelectedCategory = (e: any) => {
 
 
 <style scoped>
+
+button {
+  background-color: transparent;
+  border: 1px solid var(--primary);
+  border-radius: 15px;
+  padding: 0.5rem 1rem;
+  outline: none;
+  color: var(--primary);
+  font-size: 1rem;
+}
+
+button:hover {
+  cursor: pointer;
+  background-color: var(--primary);
+  color: var(--background);
+}
 
 .category {
   display: flex;

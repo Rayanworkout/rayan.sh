@@ -37,12 +37,15 @@ const update = (id: number) => {
 
 const publish = async (id: number) => {
     const { data: response } = await useFetch(`/api/v1/articles/publish/${id}`);
-    showToast("Published", state);
+    showToast("Published", state, '/dashboard');
+    window.location.reload();
 };
 
 const unpublish = async (id: number) => {
     const { data: response } = await useFetch(`/api/v1/articles/unpublish/${id}`);
-    showToast("Unpublished", state);
+    showToast("Unpublished", state, '/dashboard');
+    window.location.reload();
+
 };
 
 const create = () => {
@@ -62,7 +65,8 @@ const remove = async (id: number) => {
         console.log(error.value);
         state.error = true;
     } else {
-        showToast("Deleted", state);
+        showToast("Deleted", state, '/dashboard');
+        window.location.reload();
     }
 };
 
@@ -73,7 +77,7 @@ const remove = async (id: number) => {
 
 <template>
     <div class="container my-5">
-        <div class="mytoast" v-show="state.showToast">{{ state.message }} <i class="bi bi-check-circle-fill"></i></div>
+        <div class="mytoast animate__animated animate__bounceInRight" v-show="state.showToast">{{ state.message }} <i class="bi bi-check-circle-fill"></i></div>
         <div class="text-center">
             <h1>Dashboard</h1>
             <p>Here you can manage your articles.</p>

@@ -177,7 +177,6 @@ code.hljs {
   width: 200px;
   border-radius: 15px;
   font-size: 1.2rem;
-  animation: toast 3s ease-in-out;
 }
 
 .mytoast i {

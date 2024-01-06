@@ -15,7 +15,8 @@ export default defineNuxtConfig({
   css: [
     'bootstrap/dist/css/bootstrap.css',
     'bootstrap-icons/font/bootstrap-icons.css',
-    'assets/css/style.css'
+    'assets/css/style.css',
+    'animate.css',
   ],
   modules: ['@nuxtjs/google-fonts', 'nuxt-security', '@nuxtjs/supabase'],
   supabase: {

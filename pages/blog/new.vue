@@ -1,11 +1,18 @@
 <script setup lang="ts">
 import { splitElements } from '~/utils/frontend/splitElements';
+import { showToast } from '~/utils/frontend/showToast';
 
 // This page is only accessible for logged in users
 definePageMeta({
   title: 'Creation Page',
   description: 'Write an articles',
   middleware: 'auth',
+});
+
+const state = reactive({
+    error: false,
+    showToast: false,
+    message: '',
 });
 
 const router = useRouter();
@@ -17,7 +24,6 @@ const selectedCategory = ref('');
 const clickedTags = ref<string[]>([]);
 
 const newArticle = ref({
-  created: false,
   title: '',
   description: '',
   content: '',
@@ -69,11 +75,8 @@ const publish = async (e: any) => {
   });
 
   if (!error.value) {
-    newArticle.value.created = true;
-    setTimeout(() => {
-      newArticle.value.created = false;
-      router.push('/dashboard');
-    }, 2000);
+    // Success
+    showToast("Article created", state, '/dashboard');
   }
 }
 
@@ -86,7 +89,7 @@ const publish = async (e: any) => {
     <div class="text-center">
       <form class="mx-auto" @submit.prevent="publish">
         <h1 class="my-3">New Article</h1>
-        <div v-show="newArticle.created" class="success">Article created !</div>
+        <div class="mytoast animate__animated animate__bounceInRight" v-show="state.showToast">{{ state.message }} <i class="bi bi-check-circle-fill"></i></div>
         <div class="form-group py-3 mx-auto">
           <input type="text" placeholder="Title" v-model="newArticle.title">
         </div>
@@ -158,12 +161,6 @@ textarea::placeholder {
   display: flex;
   justify-content: center;
   align-items: center;
-}
-
-.success {
-  color: var(--primary);
-  font-size: 1.2rem;
-  font-weight: bold;
 }
 
 select {
