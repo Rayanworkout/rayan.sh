@@ -75,9 +75,11 @@ const remove = async (id: number) => {
         state.error = true;
     } else {
         showToast("Deleted", state, '/dashboard');
-        setTimeout
+        setTimeout(() => {
+            window.location.reload();
+        }, 1500);
     }
-};
+};  
 
 
 const filterInput = () => {
@@ -132,7 +134,6 @@ const filterInput = () => {
 
 
 <style scoped>
-
 table th {
     background-color: var(--secondary);
     color: var(--text);

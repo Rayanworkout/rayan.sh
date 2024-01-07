@@ -4,7 +4,6 @@ import { serverSupabaseUser } from '#supabase/server';
 
 export default defineEventHandler(async (event) => {
 
-
     // Check if user is authenticated
     const user = await serverSupabaseUser(event);
 
@@ -50,7 +49,6 @@ export default defineEventHandler(async (event) => {
 
 
         );
-
         return createPost;
 
     } catch (error) {

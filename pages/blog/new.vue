@@ -12,9 +12,8 @@ definePageMeta({
 const state = reactive({
   showToast: false,
   message: '',
+  error: false,
 });
-
-const router = useRouter();
 
 // First I initialize the variables
 const categories = ref();
@@ -47,9 +46,6 @@ const updateSelectedCategory = (e: any) => {
 }
 
 const clickTag = (tag: string) => {
-  console.log(
-    saveOk.value,
-  )
   if (!clickedTags.value.includes(tag)) {
     clickedTags.value.push(tag);
   } else {
@@ -83,6 +79,10 @@ const publish = async (e: any) => {
   if (!error.value) {
     // Success
     showToast("Article created", state, '/dashboard');
+  } else {
+    // Error
+    console.log(error.value);
+    state.error = true;
   }
 }
 
@@ -100,6 +100,8 @@ const publish = async (e: any) => {
         </div>
         <div class="mytoast animate__animated animate__bounceInRight" v-show="state.showToast">{{ state.message }} <i
             class="bi bi-check-circle-fill"></i></div>
+        <div class="mytoast animate__animated animate__bounceInRight" v-show="state.error">An error occured <i
+            class="bi bi-x-circle-fill"></i></div>
         <div class="form-group py-3 mx-auto">
           <input type="text" placeholder="Title" v-model="newArticle.title">
         </div>
