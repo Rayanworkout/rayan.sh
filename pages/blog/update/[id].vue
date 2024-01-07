@@ -120,7 +120,7 @@ const updateSelectedCategory = (e: any) => {
           <div class="form-group py-3 mx-auto">
             <textarea type="text" rows="10" v-model="article.content" />
           </div>
-          <button class="mb-3">Save</button>
+          <button v-show="!state.showToast" class="save">Save</button>
         </form>
       </div>
     </div>
@@ -168,6 +168,12 @@ ul {
 li {
   display: inline-block;
   margin-right: 10px;
+}
+.save {
+  position: fixed;
+  top: 100px;
+  right: 0;
+  margin: 1rem;
 }
 
 input,

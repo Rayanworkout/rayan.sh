@@ -10,7 +10,6 @@ definePageMeta({
 });
 
 const state = reactive({
-    error: false,
     showToast: false,
     message: '',
 });

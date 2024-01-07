@@ -2,6 +2,7 @@
 <script setup lang="ts">
 import { type Article } from '~/types/article.type'
 import { handleCategoryClicked } from '~/utils/frontend/categoryFilter';
+import {filterArticles} from '~/utils/frontend/filterArticles';
 
 const allArticles = ref<Article[]>();
 const filteredArticles = ref();
@@ -24,19 +25,6 @@ if (error.value) {
     state.loading = false;
 }
 
-const filterInput = (input: string) => {
-    // Filter data that is already fetched
-    // User can search for keywords in title and description
-    if (input.length > 0) {
-        filteredArticles.value = allArticles.value?.filter((article: any) => {
-            return article.title.toLowerCase().includes(input.toLowerCase()) ||
-                article.description.toLowerCase().includes(input.toLowerCase());
-        });
-    } else {
-        filteredArticles.value = allArticles.value;
-    }
-};
-
 const handleCategoryFilter = (category: string) => {
     handleCategoryClicked(
         category,
@@ -45,6 +33,10 @@ const handleCategoryFilter = (category: string) => {
         filteredArticles
     );
 };
+
+const filterInput = (value: string) => {
+    filterArticles(value, filteredArticles, allArticles);
+}
 
 </script>
 

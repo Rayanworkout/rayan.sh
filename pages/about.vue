@@ -3,7 +3,7 @@
 import { ref, onMounted, computed } from 'vue';
 
 definePageMeta({
-  key: route => route.fullPath
+    key: route => route.fullPath
 });
 
 const text = "Minimalist 26 years old self-taught developer driven by interests in Web Development, " +
@@ -41,16 +41,14 @@ const showCursor = computed(() => index.value < text.length);
         <div class="about mx-auto">
             <p>{{ typewriter }} <span v-show="showCursor" class="cursor">_</span></p>
 
-            <div class="infos"><i class="bi bi-envelope px-2"></i><a href="mailto:rayan13170@protonmail.com"
+            <div class="infos animate__animated animate__fadeInLeft"><i class="bi bi-envelope px-2"></i><a href="mailto:rayan13170@protonmail.com"
                     class="mail">rayan13170@protonmail.com</a></div>
-            <div class="infos"><a href="https://github.com/Rayanworkout" target="_blank"><i
+            <div class="infos animate__animated animate__fadeInRight"><a href="https://github.com/Rayanworkout" target="_blank"><i
                         class="bi bi-github px-2"></i>Rayanworkout</a>
             </div>
         </div>
         <div>
-            <Transition name="back">
-                <NuxtLink to="/" class="btn my-btn mx-auto" v-show="!showCursor">Back</NuxtLink>
-            </Transition>
+            <NuxtLink to="/" class="btn my-btn mx-auto animate__animated animate__fadeInUp" v-show="!showCursor">Back</NuxtLink>
         </div>
     </div>
 </template>
@@ -63,7 +61,7 @@ const showCursor = computed(() => index.value < text.length);
     border-radius: 5px;
     padding: 1rem;
     margin-bottom: 0.5rem;
-    transition: all 0.3s ease-in-out;
+    transition: all 0.2s ease-in-out;
 }
 
 .about:hover {
@@ -94,7 +92,7 @@ const showCursor = computed(() => index.value < text.length);
 
 
 .my-btn {
-
+    transition: all 0.2s ease-in-out;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -102,7 +100,6 @@ const showCursor = computed(() => index.value < text.length);
     color: var(--text-color);
     padding: 0.5rem;
     width: 60px;
-    transition: 1s;
     border-radius: 10px;
 }
 

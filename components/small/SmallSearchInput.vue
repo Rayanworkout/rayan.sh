@@ -36,6 +36,5 @@ input {
     input {
         width: 50%;
     }
-
 }
 </style>
