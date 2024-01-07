@@ -79,7 +79,7 @@ const remove = async (id: number) => {
             window.location.reload();
         }, 1500);
     }
-};  
+};
 
 
 const filterInput = () => {
@@ -152,12 +152,6 @@ input {
     max-width: 500px;
 }
 
-@media (max-width: 768px) {
-    input {
-        width: 50%;
-    }
-}
-
 i {
     font-size: 1.2rem;
     color: var(--text);
@@ -198,5 +192,16 @@ span {
 td,
 th {
     vertical-align: middle;
+}
+
+
+@media (max-width: 768px) {
+    .new {
+        border: none;
+    }
+
+    input {
+        width: 50%;
+    }
 }
 </style>

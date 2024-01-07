@@ -20,11 +20,7 @@ export default defineNuxtConfig({
   ],
   modules: ['@nuxtjs/google-fonts', 'nuxt-security', '@nuxtjs/supabase'],
   supabase: {
-    redirectOptions: {
-      login: '/login',
-      callback: '/dashboard',
-      exclude: ["/", "/about", "/blog/*", "/api/*", "/dashboard", "/logout", "/new", "/login"]
-    }
+    redirect: false,
   },
   googleFonts: {
     families: {
