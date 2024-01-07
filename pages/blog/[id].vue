@@ -12,6 +12,8 @@ const articleId = route.params.id;
 
 const errorRef = ref(false);
 
+const makeBounce = ref(false);
+
 const article: any = reactive({
   title: '',
   creation_date: '',
@@ -48,7 +50,12 @@ const likeArticle = async () => {
       console.log("Could not like article");
       console.log(error);
     } else {
-      article.value.likes++;;
+      article.value.likes++;
+      makeBounce.value = true;
+
+      setTimeout(() => {
+        makeBounce.value = false;
+      }, 200);
     }
 
 
@@ -78,7 +85,7 @@ const likeArticle = async () => {
             </span>
           </div>
           <div class="mt-3 article-likes mx-auto">
-            <div @click="likeArticle"><i class="bi bi-heart icon"></i></div>
+            <div @click="likeArticle" :class="{ 'bounce': makeBounce }"><i class="bi bi-heart icon"></i></div>
             <div v-if="article.value.likes > 1">{{ article.value.likes }}</div>
           </div>
         </div>
@@ -93,6 +100,23 @@ const likeArticle = async () => {
 
 
 <style scoped>
+
+.bounce {
+  animation: bounce 0.4s ease;
+}
+
+@keyframes bounce {
+    0% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.3);
+    }
+    100% {
+        transform: scale(1);
+    }
+}
+
 .article-container {
   width: 75%;
 }

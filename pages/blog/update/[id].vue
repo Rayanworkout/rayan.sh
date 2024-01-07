@@ -1,15 +1,12 @@
 <script setup lang="ts">
 import { splitElements } from '~/utils/frontend/splitElements';
 import { showToast } from '~/utils/frontend/showToast';
-import { routerKey } from 'vue-router';
-
 
 const route = useRoute();
 
+// Initialize the variables
+// Some will contain full lists and others selected / filtered elements
 const articleId = route.params.id;
-
-const errorRef = ref(false);
-
 const article: any = ref();
 
 const allTags: any = ref();
@@ -18,29 +15,38 @@ const clickedTags = ref<string[]>([]);
 const allCategories: any = ref();
 const selectedCategory = ref('');
 
+// Initialize the state for the toast and the error
 const state = reactive({
-    showToast: false,
-    message: '',
+  showToast: false,
+  message: '',
+  error: false,
 });
 
-
+// Fetch data from the API
 const { data: fetchedArticle, error } = await useFetch(`/api/v1/articles/${articleId}`);
 const { data: tags, error: tagsError } = await useFetch(`/api/v1/tags/all`);
 const { data: fetchedCategories, error: categoriesError } = await useFetch('/api/v1/categories/all');
 
 
+// If data is ok, I update the variables
 if (error.value || tagsError.value || categoriesError.value) {
   console.log(error.value);
-  errorRef.value = true;
+  state.error = true;
 } else {
   article.value = fetchedArticle.value;
   allTags.value = tags.value?.map((tag: { name: any; }) => tag.name);
+
+  // Split by lines of 4 if there are too much tags
   allTags.value = splitElements(allTags.value);
+
+  // Displaying names instead of ids
   clickedTags.value = article.value.tags.map((tag: { name: any; }) => tag.name);
   allCategories.value = fetchedCategories.value;
   selectedCategory.value = article.value.category.id;
 }
 
+
+// And then the functions
 
 const clickTag = (tag: string) => {
   if (!clickedTags.value.includes(tag)) {
@@ -88,7 +94,8 @@ const updateSelectedCategory = (e: any) => {
 <template>
   <section class="my-5 py-3">
     <div class="container">
-      <div class="mytoast animate__animated animate__bounceInRight" v-show="state.showToast">{{ state.message }} <i class="bi bi-check-circle-fill"></i></div>
+      <div class="mytoast animate__animated animate__bounceInRight" v-show="state.showToast">{{ state.message }} <i
+          class="bi bi-check-circle-fill"></i></div>
       <div class="text-center">
         <form class="mx-auto" @submit.prevent="sendArticle">
           <h1 class="my-3">Update</h1>
@@ -129,7 +136,6 @@ const updateSelectedCategory = (e: any) => {
 
 
 <style scoped>
-
 button {
   background-color: transparent;
   border: 1px solid var(--primary);
@@ -151,6 +157,7 @@ button:hover {
   justify-content: center;
   align-items: center;
 }
+
 select {
   outline: none;
   border: 1px solid var(--primary);
@@ -169,6 +176,7 @@ li {
   display: inline-block;
   margin-right: 10px;
 }
+
 .save {
   position: fixed;
   top: 100px;

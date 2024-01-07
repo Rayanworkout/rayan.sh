@@ -10,8 +10,8 @@ definePageMeta({
 });
 
 const state = reactive({
-    showToast: false,
-    message: '',
+  showToast: false,
+  message: '',
 });
 
 const router = useRouter();
@@ -47,6 +47,9 @@ const updateSelectedCategory = (e: any) => {
 }
 
 const clickTag = (tag: string) => {
+  console.log(
+    saveOk.value,
+  )
   if (!clickedTags.value.includes(tag)) {
     clickedTags.value.push(tag);
   } else {
@@ -56,6 +59,10 @@ const clickTag = (tag: string) => {
     }
   }
 }
+
+const saveOk = computed(() => {
+  return newArticle.value.title !== '' && newArticle.value.description !== '' && newArticle.value.content !== ''; 
+});
 
 
 const publish = async (e: any) => {
@@ -87,8 +94,12 @@ const publish = async (e: any) => {
   <div class="container my-5">
     <div class="text-center">
       <form class="mx-auto" @submit.prevent="publish">
-        <h1 class="my-3">New Article</h1>
-        <div class="mytoast animate__animated animate__bounceInRight" v-show="state.showToast">{{ state.message }} <i class="bi bi-check-circle-fill"></i></div>
+        <h1 class="pt-3">New Article</h1>
+        <div class="d-flex justify-content-end">
+          <button v-show="!state.showToast" :disabled="!saveOk" class="login">Save</button>
+        </div>
+        <div class="mytoast animate__animated animate__bounceInRight" v-show="state.showToast">{{ state.message }} <i
+            class="bi bi-check-circle-fill"></i></div>
         <div class="form-group py-3 mx-auto">
           <input type="text" placeholder="Title" v-model="newArticle.title">
         </div>
@@ -117,7 +128,6 @@ const publish = async (e: any) => {
         <div class="form-group py-3 mx-auto">
           <textarea type="text" rows="10" v-model="newArticle.content" />
         </div>
-        <button class="login mb-3"><i class="bi bi-send"></i></button>
       </form>
     </div>
   </div>
@@ -190,9 +200,11 @@ i {
 }
 
 .login {
-  border: none;
-  outline: none;
-  text-decoration: none;
+  /* position: fixed; */
+  margin: 1rem;
+  border: 1px solid var(--primary);
+  border-radius: 15px;
+  padding: 0.5rem 1rem;
   color: var(--text-color);
 }
 

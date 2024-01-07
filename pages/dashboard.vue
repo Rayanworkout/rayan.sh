@@ -97,9 +97,9 @@ const filterInput = () => {
             <div class="py-2 my-2 mx-auto new" @click="create">New</div>
         </div>
         <div class="text-end p-3">
-            <input type="text" v-model="search" @input="filterInput">
+            <input type="text" v-model="search" @input="filterInput" placeholder=" Search ...">
         </div>
-        <table class="table table-striped table-dark table-hover table-responsive mx-auto text-center">
+        <table class="table table-hover table-responsive mx-auto text-center">
             <thead>
                 <tr>
                     <th scope="col">#</th>
@@ -132,6 +132,17 @@ const filterInput = () => {
 
 
 <style scoped>
+
+table th {
+    background-color: var(--secondary);
+    color: var(--text);
+}
+
+table td {
+    background-color: var(--background);
+    color: var(--text);
+}
+
 input {
     border: 1px solid #ccc;
     border-radius: 5px;
