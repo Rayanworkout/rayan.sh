@@ -17,22 +17,19 @@ export default defineEventHandler(async (event) => {
     const draftPosts = await prisma.article.findMany({
         where: {
             OR: [
-              {
+            {
                 title: {
-                    //@ts-ignore
-                    contains: searchString,
+                    contains: searchString?.toString(),
                 },
-              },
+            },
               {
                 content: {
-                    //@ts-ignore
-                    contains: searchString,
+                    contains: searchString?.toString(),
                 },
               },
               {
                 description: {
-                    //@ts-ignore
-                    contains: searchString,
+                    contains: searchString?.toString(),
                 },
               },
             ],

@@ -15,11 +15,10 @@ export default defineEventHandler(async (event) => {
 
     try {
         const { context: { params } } = event;
-        const id = params?.id;
+        const id = params?.id ?? '';
 
         const deleteCategory = await prisma.category.delete({
             where: {
-                //@ts-ignore
                 id: parseInt(id)
             }
         });
