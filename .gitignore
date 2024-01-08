@@ -27,5 +27,6 @@ logs
 *.sqlite
 *.sqlite3
 *.sql
+*.sqlite3-journal
 .venv
 migrations/
