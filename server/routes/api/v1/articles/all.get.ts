@@ -1,11 +1,16 @@
 import { prisma } from '~/prisma/db';
 import { formatDate } from '~/utils/frontend/formatDate';
- 
+import { getServerSession } from '#auth'
+
+
 
 export default defineEventHandler(async (event) => {
-    
 
-    
+    const session = await getServerSession(event)
+    if (!session) {
+        return { status: 'refused' }
+    }
+
     try {
         const feed = await prisma.article.findMany({
             include: {
@@ -19,7 +24,7 @@ export default defineEventHandler(async (event) => {
         feed.forEach((article: any) => {
             article.createdAt = formatDate(String(article.createdAt));
         });
-        
+
         return feed;
 
     } catch (error) {

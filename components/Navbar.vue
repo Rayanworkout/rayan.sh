@@ -10,7 +10,6 @@ if (data.value) {
 }
 
 
-
 const logout = async () => {
     try {
         await signOut();
