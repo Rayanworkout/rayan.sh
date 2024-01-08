@@ -2,7 +2,6 @@
 
 <script setup lang="ts">
 
-const client = useSupabaseClient();
 const router = useRouter()
 
 const email = ref('')
@@ -13,22 +12,24 @@ const userLoggedIn = ref(false);
 
 const login = async () => {
     try {
-        const { error } = await client.auth.signInWithPassword({
-            email: email.value,
-            password: password.value
+        const user = await useFetch('/api/v1/users/login', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({
+                email: email.value,
+                password: password.value
+            })
         });
 
-        if (error) {
-            errorRef.value = error.message
-            throw error
-        } else {
-            userLoggedIn.value = true
-
+        if (user.status.value === 'success') {
+            userLoggedIn.value = true;
             setTimeout(() => {
-                router.push('/dashboard')
-            }, 1500);
-
+                router.push('/')
+            }, 1000)
         }
+
     } catch (error: any) {
         errorRef.value = error.message
         setTimeout(() => {

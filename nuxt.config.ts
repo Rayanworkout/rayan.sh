@@ -18,10 +18,7 @@ export default defineNuxtConfig({
     'assets/css/style.css',
     'animate.css',
   ],
-  modules: ['@nuxtjs/google-fonts', 'nuxt-security', '@nuxtjs/supabase'],
-  supabase: {
-    redirect: false,
-  },
+  modules: ['@nuxtjs/google-fonts', 'nuxt-security'],
   googleFonts: {
     families: {
       Montserrat: [500, 700],

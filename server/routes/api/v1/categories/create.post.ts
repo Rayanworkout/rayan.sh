@@ -1,17 +1,8 @@
 import { prisma } from '~/prisma/db'
-import { serverSupabaseUser } from '#supabase/server';
+ 
 
 export default defineEventHandler(async (event) => {
 
-    // Check if user is authenticated
-    const user = await serverSupabaseUser(event);
-
-    if (!user) {
-        return {
-            status: 401,
-            message: "unauthorized",
-        };
-    };
 
     try {
         const { name } = await readBody(event);

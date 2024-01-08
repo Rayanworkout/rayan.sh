@@ -3,27 +3,11 @@
 
 const userLoggedIn = ref(false);
 
-const user = useSupabaseUser();
-const client = useSupabaseClient();
-const router = useRouter();
-
-
-if (user.value) {
-    userLoggedIn.value = true;
-} else {
-    userLoggedIn.value = false;
-};
 
 
 const logout = async () => {
     try {
-        const { error } = await client.auth.signOut();
-        if (error) throw error;
-        router.push('/');
-        setTimeout(() => {
-            window.location.reload();
-        }, 500);
-
+        
 
     } catch (error: any) {
         console.error(error.message);
