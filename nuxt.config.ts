@@ -18,7 +18,14 @@ export default defineNuxtConfig({
     'assets/css/style.css',
     'animate.css',
   ],
-  modules: ['@nuxtjs/google-fonts', 'nuxt-security'],
+  modules: ['@nuxtjs/google-fonts', 'nuxt-security', '@sidebase/nuxt-auth'],
+  
+  auth: {
+    baseURL: process.env.NEXTAUTH_URL,
+    provider: {
+      type: 'authjs'
+    }
+  },
   googleFonts: {
     families: {
       Montserrat: [500, 700],

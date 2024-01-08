@@ -10,33 +10,27 @@ const errorRef = ref('')
 
 const userLoggedIn = ref(false);
 
+const { signIn } = useAuth()
+
 const login = async () => {
     try {
-        const user = await useFetch('/api/v1/users/login', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify({
-                email: email.value,
-                password: password.value
-            })
+        const response = await signIn('credentials', {
+
+            email: email.value,
+            password: password.value
+
         });
 
-        if (user.status.value === 'success') {
-            userLoggedIn.value = true;
-            setTimeout(() => {
-                router.push('/')
-            }, 1000)
-        }
+        userLoggedIn.value = true;
+
+        console.log('response: ', response)
 
     } catch (error: any) {
         errorRef.value = error.message
-        setTimeout(() => {
-            errorRef.value = ''
-        }, 3000)
     }
-};
+}
+
+
 </script>
 
 
@@ -132,5 +126,4 @@ form:hover {
         width: 100%;
     }
 }
-
 </style>
