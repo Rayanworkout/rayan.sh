@@ -1,8 +1,7 @@
-import { NuxtAuthHandler } from '#auth'
-import CredentialsProvider from 'next-auth/providers/credentials'
-import { prisma } from '~/prisma/db'
-import bcrypt from "bcrypt";
-import { useRouter } from 'vue-router';
+import { NuxtAuthHandler } from '#auth';
+import bcrypt from 'bcrypt';
+import CredentialsProvider from 'next-auth/providers/credentials';
+import { prisma } from '~/prisma/db';
 
 // https://sidebase.io/nuxt-auth/configuration/nuxt-auth-handler
 export default NuxtAuthHandler({
@@ -29,29 +28,39 @@ export default NuxtAuthHandler({
                             email: credentials.email
                         }
                     });
-
                     if (!user) {
-                        throw createError({
-                            status: 404,
-                            message: 'user not found or password incorrect'
-                        });
-                    }
+                        // throw  createError({
+                        //     status: 404,
+                        //     message: 'user not found or password incorrect'
+                        // });
+                        return null;
+                    } else {
+                        // Checking if password is correct
+                        if (await bcrypt.compare(credentials.password, user.password)) {
 
-                    // Checking if password is correct
-                    if (await bcrypt.compare(credentials.password, user.password)) {
-                        // Passwords match
-                        return {
-                            ...user,
-                            password: undefined
+                            // Passwords match
+                            return {
+                                ...user,
+                                password: undefined
+                            }
+                        } else {
+                            // Passwords don't match
+                            // throw createError({
+                            //     status: 404,
+                            //     message: 'user not found or password incorrect'
+                            // });
+                            return null;
                         }
-
                     }
+
                 } catch (error) {
+
                     console.error(error);
-                    throw createError({
-                        status: 500,
-                        message: 'an error occured while logging in'
-                    });
+                    // throw createError({
+                    //     status: 500,
+                    //     message: 'an error occured while logging in'
+                    // });
+                    return null;
                 }
 
             }

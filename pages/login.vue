@@ -5,7 +5,7 @@
 definePageMeta({
     title: 'Login',
     description: 'Login to your account',
-    middleware   : 'guest',
+    middleware: 'guest',
 });
 
 
@@ -19,19 +19,18 @@ const { signIn } = useAuth()
 
 const login = async () => {
     try {
-        const response = await signIn('credentials', {
+        await signIn('credentials', {
 
             email: email.value,
             password: password.value
 
         });
 
-        userLoggedIn.value = true;
-
     } catch (error: any) {
+        console.log(error.message)
         errorRef.value = error.message
     }
-}
+};
 
 
 </script>

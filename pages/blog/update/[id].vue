@@ -1,4 +1,13 @@
 <script setup lang="ts">
+
+
+definePageMeta({
+    title: 'update',
+    description: 'update an articles',
+    middleware   : 'auth',
+});
+
+
 import { splitElements } from '~/utils/frontend/splitElements';
 import { showToast } from '~/utils/frontend/showToast';
 

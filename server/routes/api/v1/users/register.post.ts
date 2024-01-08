@@ -5,6 +5,8 @@ import bcrypt from "bcrypt";
 export default defineEventHandler(async (event) => {
 
 
+    // DELETE THIS ROUTE IN PRODUCTION
+
     try {
         const { email, password } = await readBody(event);
 

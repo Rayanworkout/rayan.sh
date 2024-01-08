@@ -55,9 +55,9 @@ const showMenu = ref(false);
                 <NuxtLink v-if="!userLoggedIn" to="/login" class="about nav-link"
                     :class="{ 'current': $route.path === '/login' }">Login
                 </NuxtLink>
-                <NuxtLink v-if="userLoggedIn" @click="logout" class="about nav-link">Logout</NuxtLink>
                 <NuxtLink v-if="userLoggedIn" to="/dashboard" class="about nav-link"
                     :class="{ 'current': $route.path === '/dashboard' }">Dashboard</NuxtLink>
+                <NuxtLink v-if="userLoggedIn" @click="logout" class="about nav-link">Logout</NuxtLink>
             </ul>
         </div>
     </nav>
@@ -91,6 +91,7 @@ const showMenu = ref(false);
 .navbar-brand:hover,
 .nav-link:hover {
     color: var(--primary);
+    cursor: pointer;
 }
 
 ul {
