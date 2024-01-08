@@ -2,7 +2,12 @@
 
 <script setup lang="ts">
 
-const router = useRouter()
+definePageMeta({
+    title: 'Login',
+    description: 'Login to your account',
+    middleware   : 'guest',
+});
+
 
 const email = ref('')
 const password = ref('')
@@ -22,8 +27,6 @@ const login = async () => {
         });
 
         userLoggedIn.value = true;
-
-        console.log('response: ', response)
 
     } catch (error: any) {
         errorRef.value = error.message

@@ -1,14 +1,20 @@
 
 <script setup lang="ts">
 
+const { data, signOut } = useAuth();
+
 const userLoggedIn = ref(false);
+
+if (data.value) {
+    userLoggedIn.value = true;
+}
 
 
 
 const logout = async () => {
     try {
-        
-
+        await signOut();
+        userLoggedIn.value = false;
     } catch (error: any) {
         console.error(error.message);
     }
@@ -32,8 +38,8 @@ const showMenu = ref(false);
         <div v-show="showMenu" class="w-100 text-end mx-3 sm-content">
             <ul class="navbar-nav animate__animated animate__fadeInDown">
                 <NuxtLink to="/blog" class="about nav-link" :class="{ 'current': $route.path === '/blog' }">Blog</NuxtLink>
-                <NuxtLink to="/about" class="about nav-link"
-                    :class="{ 'current': $route.path === '/about' }">About</NuxtLink>
+                <NuxtLink to="/about" class="about nav-link" :class="{ 'current': $route.path === '/about' }">About
+                </NuxtLink>
                 <NuxtLink v-if="!userLoggedIn" to="/login" class="about nav-link"
                     :class="{ 'current': $route.path === '/login' }">Login
                 </NuxtLink>

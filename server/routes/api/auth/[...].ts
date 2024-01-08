@@ -2,6 +2,7 @@ import { NuxtAuthHandler } from '#auth'
 import CredentialsProvider from 'next-auth/providers/credentials'
 import { prisma } from '~/prisma/db'
 import bcrypt from "bcrypt";
+import { useRouter } from 'vue-router';
 
 // https://sidebase.io/nuxt-auth/configuration/nuxt-auth-handler
 export default NuxtAuthHandler({
@@ -39,9 +40,6 @@ export default NuxtAuthHandler({
                     // Checking if password is correct
                     if (await bcrypt.compare(credentials.password, user.password)) {
                         // Passwords match
-                        // redirect user to dashboard
-
-
                         return {
                             ...user,
                             password: undefined
