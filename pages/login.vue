@@ -207,7 +207,7 @@ i {
     color: var(--primary);
 }
 
-form:hover {
+.blue-border:hover {
     transform: scale(1.02);
     border-color: var(--primary);
     cursor: pointer;

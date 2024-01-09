@@ -28,59 +28,55 @@ export default NuxtAuthHandler({
             clientSecret: process.env.GITHUB_CLIENT_SECRET,
         }),
 
-        // @ts-expect-error
-        CredentialsProvider.default({
-            name: 'Credentials',
-            credentials: {},
-            async authorize(credentials: {
-                email: string
-                password: string
-            }) {
+        // @ ts-expect-error
+    //     CredentialsProvider.default({
+    //         name: 'Credentials',
+    //         credentials: {},
+    //         async authorize(credentials: {
+    //             email: string
+    //             password: string
+    //         }) {
 
-                try {
-                    // Checking if user exists
-                    const user = await prisma.user.findUnique({
-                        where: {
-                            email: credentials.email
-                        }
-                    });
-                    if (!user) {
-                        // throw  createError({
-                        //     status: 404,
-                        //     message: 'user not found or password incorrect'
-                        // });
-                        return null;
-                    } else {
-                        // Checking if password is correct
-                        if (await bcrypt.compare(credentials.password, user.password)) {
+    //             try {
+    //                 // Checking if user exists
+    //                 const user = await prisma.user.findUnique({
+    //                     where: {
+    //                         email: credentials.email
+    //                     }
+    //                 });
+    //                 if (!user) {
+    //                     // throw  createError({
+    //                     //     status: 404,
+    //                     //     message: 'user not found or password incorrect'
+    //                     // });
+    //                     return null;
+    //                 } else {
+    //                     // Checking if password is correct
+    //                     if (await bcrypt.compare(credentials.password, user.password)) {
 
-                            // Passwords match
-                            return {
-                                ...user,
-                                password: undefined
-                            }
-                        } else {
-                            // Passwords don't match
-                            // throw createError({
-                            //     status: 404,
-                            //     message: 'user not found or password incorrect'
-                            // });
-                            return null;
-                        }
-                    }
+    //                         // Passwords match
+    //                         return {
+    //                             ...user,
+    //                             password: undefined
+    //                         }
+    //                     } else {
+    //                         // Passwords don't match
+    //                         // throw createError({
+    //                         //     status: 404,
+    //                         //     message: 'user not found or password incorrect'
+    //                         // });
+    //                         return null;
+    //                     }
+    //                 }
 
-                } catch (error) {
+    //             } catch (error) {
 
-                    console.error(error);
-                    // throw createError({
-                    //     status: 500,
-                    //     message: 'an error occured while logging in'
-                    // });
-                    return null;
-                }
+    //                 console.error(error);
+    //                 return null;
+    //             }
 
-            }
-        })
+    //         }
+    //     })
     ],
     session: {
         strategy: 'jwt',
@@ -110,8 +106,9 @@ export default NuxtAuthHandler({
             const allowedUser = [
                 "90798147",
             ];
-            // @ts-expect-error
-            if (allowedUser.includes(String(user.id)) || credentials.email === process.env.ADMIN_EMAIL) {
+
+            //  || credentials.email === process.env.ADMIN_EMAIL
+            if (allowedUser.includes(String(user.id))) {
                 isAllowedToSignIn = true
             }
             else {

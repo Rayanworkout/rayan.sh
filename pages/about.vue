@@ -41,14 +41,15 @@ const showCursor = computed(() => index.value < text.length);
         <div class="about mx-auto">
             <p>{{ typewriter }} <span v-show="showCursor" class="cursor">_</span></p>
 
-            <div class="infos animate__animated animate__fadeInLeft"><i class="bi bi-envelope px-2"></i><a href="mailto:rayan13170@protonmail.com"
-                    class="mail">rayan13170@protonmail.com</a></div>
-            <div class="infos animate__animated animate__fadeInRight"><a href="https://github.com/Rayanworkout" target="_blank"><i
-                        class="bi bi-github px-2"></i>Rayanworkout</a>
+            <div class="infos animate__animated animate__fadeInLeft"><i class="bi bi-envelope px-2"></i><a
+                    href="mailto:rayan13170@protonmail.com" class="mail">rayan13170@protonmail.com</a></div>
+            <div class="infos animate__animated animate__fadeInRight"><a href="https://github.com/Rayanworkout"
+                    target="_blank"><i class="bi bi-github px-2"></i>Rayanworkout</a>
             </div>
         </div>
         <div>
-            <NuxtLink to="/" class="btn my-btn mx-auto animate__animated animate__fadeInUp" v-show="!showCursor">Back</NuxtLink>
+            <NuxtLink to="/" class="btn my-btn mx-auto animate__animated animate__fadeInUp" v-show="!showCursor">Back
+            </NuxtLink>
         </div>
     </div>
 </template>
@@ -62,7 +63,18 @@ const showCursor = computed(() => index.value < text.length);
     padding: 1rem;
     margin-bottom: 0.5rem;
     transition: all 0.2s ease-in-out;
+
 }
+
+
+p,
+.infos,
+.infos a,
+.infos i {
+    background-color: transparent;
+}
+
+
 
 .about:hover {
     transform: scale(1.02);
@@ -122,5 +134,4 @@ const showCursor = computed(() => index.value < text.length);
     .infos i {
         font-size: 1.2rem;
     }
-}
-</style>
+}</style>

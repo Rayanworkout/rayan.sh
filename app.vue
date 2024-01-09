@@ -1,7 +1,10 @@
 <template>
     <div>
-        <Navbar />
+        <div v-if="$route.path !== '/'">
+            <Navbar />
+        </div>
         <NuxtPage />
     </div>
 </template>
-  
+
+
