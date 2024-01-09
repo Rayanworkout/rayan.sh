@@ -1,6 +1,15 @@
 import { NuxtAuthHandler } from '#auth';
+
+// Lib to hash password
 import bcrypt from 'bcrypt';
+
+// Main Next-Auth
 import CredentialsProvider from 'next-auth/providers/credentials';
+
+// Github Provider
+import GithubProvider from 'next-auth/providers/github'
+
+// ORM
 import { prisma } from '~/prisma/db';
 
 // https://sidebase.io/nuxt-auth/configuration/nuxt-auth-handler
@@ -12,6 +21,13 @@ export default NuxtAuthHandler({
     },
 
     providers: [
+
+        // @ts-expect-error You need to use .default here for it to work during SSR. May be fixed via Vite at some point
+        GithubProvider.default({
+            clientId: process.env.GITHUB_CLIENT_ID,
+            clientSecret: process.env.GITHUB_CLIENT_SECRET
+        }),
+
         // @ts-expect-error
         CredentialsProvider.default({
             name: 'Credentials',

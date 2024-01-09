@@ -1,19 +1,14 @@
 
 <script setup lang="ts">
 
-const { data, signOut } = useAuth();
+const { status, data, signOut } = useAuth();
 
-const userLoggedIn = ref(false);
-
-if (data.value) {
-    userLoggedIn.value = true;
-}
+const userLoggedIn = computed(() => status.value === 'authenticated' && data);
 
 
 const logout = async () => {
     try {
         await signOut();
-        userLoggedIn.value = false;
     } catch (error: any) {
         console.error(error.message);
     }

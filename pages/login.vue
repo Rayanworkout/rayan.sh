@@ -54,7 +54,7 @@ const login = async () => {
             // errors / success myself
             redirect: false
 
-        }); 
+        });
 
         if (error) {
             if (error === 'CredentialsSignin') {
@@ -74,10 +74,6 @@ const login = async () => {
         } else {
             // Success
             showToast('Logged in', state, '/dashboard')
-            setTimeout(() => {
-                window.location.reload()
-            }, 2000);
-
         }
 
 
@@ -100,12 +96,36 @@ const login = async () => {
 };
 
 
+const githubLogin = async () => {
+    try {
+        // @ts-expect-error
+        // https://sidebase.io/nuxt-auth/v0.6/application-side/custom-sign-in-page#optional-custom-error-handling
+        const { error } = await signIn('github');
+
+    } catch (error: any) {
+        if (error.status === 429) {
+            state.errorMessage = 'Too many requests, calm down ...'
+
+            setTimeout(() => {
+                state.errorMessage = ''
+            }, 3000);
+
+            return
+        }
+        state.errorMessage = "An error occurred"
+
+        setTimeout(() => {
+            state.errorMessage = ''
+        }, 3000);
+    }
+};
+
 </script>
 
 
 <template>
     <div class="container my-5">
-        <div class="text-center">
+        <div class="text-center blue-border mx-auto">
             <form class="mx-auto" @submit.prevent="login">
                 <h1 class="my-3">Login</h1>
                 <div class="mytoast animate__animated animate__bounceInRight" v-show="state.showToast">{{
@@ -116,9 +136,14 @@ const login = async () => {
                 <div class="form-group py-3 mx-auto">
                     <input type="password" v-model="password" placeholder="Password">
                 </div>
-                <div class="py-1 error" style="color: rgb(253, 47, 47);">{{ state.errorMessage }}</div>
+                <div class="py-1 error" style="color: rgb(253, 47, 47);">{{
+                    state.errorMessage }}</div>
                 <button @click="login" class="login mb-3"><i class="bi bi-box-arrow-in-right"></i></button>
             </form>
+            <div class="github">
+                <button @click="githubLogin" class="login"><i class="bi bi-github"></i> Sign in with GitHub</button>
+            </div>
+
         </div>
     </div>
 </template>
@@ -142,7 +167,7 @@ input::placeholder {
     color: var(--text-color);
 }
 
-form {
+.blue-border {
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -176,7 +201,6 @@ i {
 
 .login:hover {
     color: var(--primary);
-    transform: scale(1.05);
 }
 
 form:hover {
