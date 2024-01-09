@@ -8,7 +8,7 @@ export default defineEventHandler(async (event) => {
 
     const session = await getServerSession(event)
     if (!session) {
-        return { status: 'refused' }
+        return { status: 'unauthorized' }
     }
 
     try {

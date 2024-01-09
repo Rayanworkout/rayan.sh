@@ -1,11 +1,11 @@
 import { prisma } from '~/prisma/db'
-import { getServerSession } from '#auth' 
+import { getServerSession } from '#auth'
 
 export default defineEventHandler(async (event) => {
 
     const session = await getServerSession(event)
     if (!session) {
-        return { status: 'refused' }
+        return { status: 'unauthorized' }
     }
 
     try {

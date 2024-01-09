@@ -5,7 +5,7 @@ export default defineEventHandler(async (event) => {
 
     const session = await getServerSession(event)
     if (!session) {
-        return { status: 'refused' }
+        return { status: 'unauthorized' }
     }
 
     try {
@@ -18,7 +18,7 @@ export default defineEventHandler(async (event) => {
             }
         });
         return deleteTag;
-        
+
     } catch (error) {
         console.error(error);
         setResponseStatus(event, 400, 'could not get tags');

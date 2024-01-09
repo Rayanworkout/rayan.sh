@@ -43,7 +43,9 @@ const login = async () => {
             return
         }
 
-        const response = await signIn('credentials', {
+        // @ts-expect-error
+        // https://sidebase.io/nuxt-auth/v0.6/application-side/custom-sign-in-page#optional-custom-error-handling
+        const { error } = await signIn('credentials', {
 
             email: email.value,
             password: password.value,
@@ -52,13 +54,10 @@ const login = async () => {
             // errors / success myself
             redirect: false
 
-        });
+        }); 
 
-        // @ts-expect-error
-        // https://next-auth.js.org/getting-started/client#signin
-        if (response.error) {
-            // @ts-expect-error
-            if (response.error === 'CredentialsSignin') {
+        if (error) {
+            if (error === 'CredentialsSignin') {
                 state.errorMessage = 'Invalid credentials ...'
 
                 setTimeout(() => {
@@ -77,7 +76,7 @@ const login = async () => {
             showToast('Logged in', state, '/dashboard')
             setTimeout(() => {
                 window.location.reload()
-            }, 700);
+            }, 2000);
 
         }
 

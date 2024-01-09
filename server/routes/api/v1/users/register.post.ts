@@ -4,7 +4,7 @@ import bcrypt from "bcrypt";
 
 export default defineEventHandler(async (event) => {
 
-    return { status: 'refused' }
+    return { status: 'unauthorized' }
 
     // DELETE THIS ROUTE IN PRODUCTION
 
