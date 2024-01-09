@@ -43,7 +43,7 @@ const showCursor = computed(() => index.value < text.length);
             </div>
         </div>
         <div>
-            <NuxtLink to="/" class="btn my-btn mx-auto animate__animated animate__fadeInUp" v-show="!showCursor">Back
+            <NuxtLink @click="$router.go(-1)" class="btn my-btn mx-auto animate__animated animate__fadeInUp" v-show="!showCursor">Back
             </NuxtLink>
         </div>
     </div>

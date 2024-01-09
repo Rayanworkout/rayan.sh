@@ -6,6 +6,7 @@ const text = "Coming Soon ..."
 
 const index = ref(0);
 const progressBar = ref('0')
+const showLink = ref(false)
 
 const initialDelay = 500;  // Delay before typing starts
 const delay = 200; // in milliseconds
@@ -17,16 +18,17 @@ const typeWriter = () => {
         typewriter.value += text.charAt(index.value);
         index.value++;
         setTimeout(typeWriter, delay);
-
-        setInterval(() => {
-            progressBar.value = String(index.value / text.length * 60)
-        }, 100);
+    } else {
+        showLink.value = true
     };
 };
+
 
 onMounted(() => {
     setTimeout(typeWriter, initialDelay);
 });
+
+setInterval(() => progressBar.value = String(60), 100)
 
 </script>
 
@@ -41,10 +43,11 @@ onMounted(() => {
             <NuxtLink to="/" class="navbar-brand title">Rayan.sh<span class="cursor">__</span></NuxtLink>
             <h1 class="text-center">{{ typewriter }}</h1>
             <div class="progress" :style="{ '--progress': `${progressBar}%` }">
-                <div class="bar"></div>
+                <div class="bar" :style="{ width: progressBar + '%' }"></div>
             </div>
-            <div class="cta">
-                <NuxtLink to="/blog" class="cta">Check my blog <i class="bi bi-box-arrow-up-right"></i>
+            <div v-if="showLink" class="cta">
+                <NuxtLink to="/blog" class="cta animate__animated animate__fadeInUp">Check my blog <i
+                        class="bi bi-box-arrow-up-right"></i>
                 </NuxtLink>
             </div>
         </div>
@@ -79,14 +82,14 @@ h1 {
     background-color: transparent;
     text-decoration: none;
     padding: 5px;
+    background-color: #6096c3;
+    border-radius: 10px;
+    transition: all 0.2s ease-in-out;
 }
 
 .cta:hover,
 .cta i:hover {
-    color: var(--primary);
-    background-color: transparent;
-    text-decoration: none;
-    padding: 5px;
+    transform: scale(1.03);
 }
 
 .container {
@@ -110,7 +113,6 @@ h1 {
 /* Progress bar  */
 
 .progress {
-    /* --progress: 60%; */
 
     width: 30%;
     height: 40px;
@@ -121,7 +123,6 @@ h1 {
 }
 
 .progress .bar {
-    width: var(--progress);
     height: 100%;
     background: linear-gradient(#86bbe4, #6096c3, #86bbe4);
 
