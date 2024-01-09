@@ -91,12 +91,13 @@ const publish = async (e: any) => {
 
 
 <template>
-  <div class="container my-5">
+  <NavbarArticle />
+  <div class="main">
     <div class="text-center">
       <form class="mx-auto" @submit.prevent="publish">
         <h1 class="pt-3">New Article</h1>
         <div class="d-flex justify-content-end">
-          <button v-show="!state.showToast" :disabled="!saveOk" class="login">Save</button>
+          <button v-show="!state.showToast" :disabled="!saveOk" class="save">Save</button>
         </div>
         <div class="mytoast animate__animated animate__bounceInRight" v-show="state.showToast">{{ state.message }} <i
             class="bi bi-check-circle-fill"></i></div>
@@ -147,6 +148,11 @@ li {
   margin-right: 10px;
 }
 
+.main {
+  background-color: var(--background);
+  width: auto;
+}
+
 input,
 textarea {
   outline: none;
@@ -180,6 +186,8 @@ select {
   border-radius: 10px;
   padding: 0.5rem;
   background-color: transparent;
+  color: var(--text-color);
+  background-color: var(--background);
   width: 450px;
 }
 
@@ -188,36 +196,34 @@ form {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  border: 1px solid var(--primary);
   border-radius: 10px;
   background-color: var(--background-color);
   transition: all 0.3s ease-in-out;
 }
 
-.login i,
+.save i,
 i {
   font-size: 30px;
   color: var(--text-color);
   transition: 0.2s ease-in-out;
 }
 
-.login {
+.save {
   /* position: fixed; */
   margin: 1rem;
-  border: 1px solid var(--primary);
+  border-color: 1px solid var(--text-color);
+  background-color: transparent;
   border-radius: 15px;
   padding: 0.5rem 1rem;
   color: var(--text-color);
 }
 
-.login:hover {
+.save:hover {
   color: var(--primary);
-  transform: scale(1.05);
+  cursor: pointer;
 }
 
 form:hover {
-  transform: scale(1.02);
-  border-color: var(--primary);
   cursor: pointer;
 }
 

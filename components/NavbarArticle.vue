@@ -21,7 +21,7 @@ const showMenu = ref(false);
 
 
 <template>
-    <nav class="navbar navbar-expand-lg">
+    <nav class="navbar navbar-expand-lg pb-5">
         <NuxtLink v-show="$route.path !== '/'" to="/" class="navbar-brand mx-3">Rayan.sh</NuxtLink>
         <button class="toggle-button ms-auto" :class="{ 'active': showMenu }" aria-label="Toggle navigation"
             @click="showMenu = !showMenu">
@@ -62,7 +62,7 @@ const showMenu = ref(false);
 <style scoped>
 
 .navbar {
-    background-color: transparent;
+    background-color: var(--background);
 }
 
 /* Navbar elements */

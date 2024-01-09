@@ -70,8 +70,8 @@ const likeArticle = async () => {
 
 
 <template>
-  <Navbar />
-  <section class="my-5 py-3">
+  <NavbarArticle/>
+  <section class="py-5">
     <div class="container">
       <div class="article-container mx-auto">
         <div class="pb-5 text-center">

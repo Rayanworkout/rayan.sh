@@ -89,7 +89,8 @@ const filterInput = () => {
 
 
 <template>
-    <div class="container my-3">
+    <div class="main p-3">
+        <Navbar />
         <div class="mytoast animate__animated animate__bounceInRight" v-show="state.showToast">{{ state.message }} <i
                 class="bi bi-check-circle-fill"></i></div>
         <div class="text-center">
@@ -148,12 +149,18 @@ input {
     padding: 5px;
     width: 15%;
     max-width: 500px;
+    color: var(--background);
 }
 
 i {
     font-size: 1.2rem;
     color: var(--text);
     background-color: transparent;
+}
+
+.main {
+    background-color: var(--background);
+    min-height: 100vh;
 }
 
 .new {
