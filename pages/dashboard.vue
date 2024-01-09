@@ -17,7 +17,6 @@ const allArticles = ref<Article[]>();
 const filteredArticles = ref<Article[]>();
 
 const state = reactive({
-    error: false,
     showToast: false,
     message: '',
 });
@@ -27,7 +26,6 @@ const { data: articles, error } = await useFetch('/api/v1/articles/all');
 
 if (error.value) {
     console.log(error.value);
-    state.error = true;
 } else {
     allArticles.value = articles.value as any;
     filteredArticles.value = articles.value as unknown as Article[];
@@ -72,7 +70,6 @@ const remove = async (id: number) => {
 
     if (error.value) {
         console.log(error.value);
-        state.error = true;
     } else {
         showToast("Deleted", state, '/dashboard');
         setTimeout(() => {

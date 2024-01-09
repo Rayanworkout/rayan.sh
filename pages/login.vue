@@ -1,24 +1,32 @@
 
 <script setup lang="ts">
+import { showToast } from '~/utils/frontend/showToast';
 
 const email = ref('')
 const password = ref('')
-const errorRef = ref('')
 
 const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+const state = reactive({
+    error: false,
+    showToast: false,
+    message: '',
+    errorMessage: '',
+});
+
 
 const { signIn } = useAuth()
 
 const login = async () => {
     try {
 
-        // Check if password is not empty and
+        // Check if password is not empty
 
         if (password.value.length < 6) {
-            errorRef.value = 'Password must be at least 6 characters long'
+            state.errorMessage = 'Password must be at least 6 characters long'
 
             setTimeout(() => {
-                errorRef.value = ''
+                state.errorMessage = ''
             }, 3000);
 
             return
@@ -26,10 +34,10 @@ const login = async () => {
 
         // and if email has the right format
         if (!emailRegex.test(email.value)) {
-            errorRef.value = 'Invalid email format'
+            state.errorMessage = 'Invalid email format'
 
             setTimeout(() => {
-                errorRef.value = ''
+                state.errorMessage = ''
             }, 3000);
 
             return
@@ -40,10 +48,8 @@ const login = async () => {
             email: email.value,
             password: password.value,
 
-            // redirect to dashboard after login
-            // callbackUrl: '/dashboard',
-
-            // Don't redirect if an error occurs
+            // Don't redirect and handle
+            // errors / success myself
             redirect: false
 
         });
@@ -53,38 +59,43 @@ const login = async () => {
         if (response.error) {
             // @ts-expect-error
             if (response.error === 'CredentialsSignin') {
-                errorRef.value = 'Invalid credentials ...'
+                state.errorMessage = 'Invalid credentials ...'
 
                 setTimeout(() => {
-                    errorRef.value = ''
+                    state.errorMessage = ''
                 }, 3000);
 
             } else {
-                errorRef.value = "An error occurred"
+                state.errorMessage = "An error occurred"
 
                 setTimeout(() => {
-                    errorRef.value = ''
+                    state.errorMessage = ''
                 }, 3000);
             }
         } else {
-            errorRef.value = ''
+            // Success
+            showToast('Logged in', state, '/dashboard')
+            setTimeout(() => {
+                window.location.reload()
+            }, 700);
+
         }
 
 
     } catch (error: any) {
         if (error.status === 429) {
-            errorRef.value = 'Too many requests, calm down ...'
+            state.errorMessage = 'Too many requests, calm down ...'
 
             setTimeout(() => {
-                errorRef.value = ''
+                state.errorMessage = ''
             }, 3000);
 
             return
         }
-        errorRef.value = "An error occurred"
+        state.errorMessage = "An error occurred"
 
         setTimeout(() => {
-            errorRef.value = ''
+            state.errorMessage = ''
         }, 3000);
     }
 };
@@ -98,13 +109,15 @@ const login = async () => {
         <div class="text-center">
             <form class="mx-auto" @submit.prevent="login">
                 <h1 class="my-3">Login</h1>
+                <div class="mytoast animate__animated animate__bounceInRight" v-show="state.showToast">{{
+                    state.message }} <i class="bi bi-check-circle-fill"></i></div>
                 <div class="form-group py-3 mx-auto">
                     <input type="email" v-model="email" placeholder="Enter email">
                 </div>
                 <div class="form-group py-3 mx-auto">
                     <input type="password" v-model="password" placeholder="Password">
                 </div>
-                <div class="py-1 error" style="color: rgb(253, 47, 47);">{{ errorRef }}</div>
+                <div class="py-1 error" style="color: rgb(253, 47, 47);">{{ state.errorMessage }}</div>
                 <button @click="login" class="login mb-3"><i class="bi bi-box-arrow-in-right"></i></button>
             </form>
         </div>
