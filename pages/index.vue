@@ -1,13 +1,51 @@
 
 
+<script setup lang="ts">
+
+const text = "Coming Soon ..."
+
+const index = ref(0);
+const progressBar = ref('0')
+
+const initialDelay = 500;  // Delay before typing starts
+const delay = 200; // in milliseconds
+
+const typewriter = ref('');
+
+const typeWriter = () => {
+    if (index.value < text.length) {
+        typewriter.value += text.charAt(index.value);
+        index.value++;
+        setTimeout(typeWriter, delay);
+
+        setInterval(() => {
+            progressBar.value = String(index.value / text.length * 60)
+        }, 100);
+    };
+};
+
+onMounted(() => {
+    setTimeout(typeWriter, initialDelay);
+});
+
+</script>
+
+
+
+
+
 <template>
     <div class="bg-container">
         <NavbarIndex />
         <div class="container py-5">
-            <NuxtLink to="/" class="navbar-brand title">Rayan.sh</NuxtLink>
-            <h1 class="text-center">Coming Soon ...</h1>
-            <div class="progress">
+            <NuxtLink to="/" class="navbar-brand title">Rayan.sh<span class="cursor">__</span></NuxtLink>
+            <h1 class="text-center">{{ typewriter }}</h1>
+            <div class="progress" :style="{ '--progress': `${progressBar}%` }">
                 <div class="bar"></div>
+            </div>
+            <div class="cta">
+                <NuxtLink to="/blog" class="cta">Check my blog <i class="bi bi-box-arrow-up-right"></i>
+                </NuxtLink>
             </div>
         </div>
     </div>
@@ -33,6 +71,24 @@ h1 {
     background-color: transparent;
 }
 
+.cta,
+.cta i {
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: var(--text);
+    background-color: transparent;
+    text-decoration: none;
+    padding: 5px;
+}
+
+.cta:hover,
+.cta i:hover {
+    color: var(--primary);
+    background-color: transparent;
+    text-decoration: none;
+    padding: 5px;
+}
+
 .container {
     display: flex;
     flex-direction: column;
@@ -54,7 +110,7 @@ h1 {
 /* Progress bar  */
 
 .progress {
-    --progress: 60%;
+    /* --progress: 60%; */
 
     width: 30%;
     height: 40px;
@@ -102,10 +158,10 @@ h1 {
         font-size: 50px;
         font-weight: 500;
     }
+
     .progress {
         width: 90%;
         height: 30px;
     }
 }
-
 </style>

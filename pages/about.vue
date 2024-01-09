@@ -2,10 +2,6 @@
 <script setup lang="ts">
 import { ref, onMounted, computed } from 'vue';
 
-definePageMeta({
-    key: route => route.fullPath
-});
-
 const text = "Minimalist 26 years old self-taught developer driven by interests in Web Development, " +
     "Linux, and self-hosted stuff. Mainly Python and Javascript."
 
@@ -15,7 +11,6 @@ const initialDelay = 1500;  // Delay before typing starts
 const delay = 50; // in milliseconds
 
 const typewriter = ref('');
-
 
 const typeWriter = () => {
     if (index.value < text.length) {
