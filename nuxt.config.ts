@@ -9,7 +9,9 @@ export default defineNuxtConfig({
   },
   app: {
     head: {
-      link: [{ rel: 'stylesheet', href: 'https://cdn.jsdelivr.net/npm/highlight.js/styles/atom-one-dark.min.css' }]
+      link: [{ rel: 'stylesheet', href: 'https://cdn.jsdelivr.net/npm/highlight.js/styles/atom-one-dark.min.css' },
+      { rel: 'icon', type: 'image/x-icon', href: '/img/favicon.ico' }
+      ]
     }
   },
   css: [
@@ -19,7 +21,7 @@ export default defineNuxtConfig({
     'animate.css',
   ],
   modules: ['@nuxtjs/google-fonts', 'nuxt-security', '@sidebase/nuxt-auth'],
-  
+
   auth: {
     baseURL: process.env.NEXTAUTH_URL,
     provider: {

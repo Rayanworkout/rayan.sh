@@ -15,7 +15,8 @@ defineProps<{ article: Article }>()
                     <h4>{{ article.title }}</h4>
                     <div class="mb-2 date">
                         <small>{{ article.createdAt }}</small>
-                        <div class="category"><small>{{ article.category.name }}</small></div>
+                        <div class="category"><small><i class="bi bi-arrow-right-short icon"></i>{{
+                            article.category.name }}</small></div>
                         <div v-if="article.likes > 1"><small><i class="bi bi-heart icon"></i> {{ article.likes }}</small>
                         </div>
                     </div>
@@ -66,7 +67,7 @@ h4:hover {
 }
 
 .category small {
-    color: var(--primary);
+    font-weight: 600;
 }
 
 .icon {
