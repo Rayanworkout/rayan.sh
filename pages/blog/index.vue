@@ -67,7 +67,7 @@ const filterInput = (value: string) => {
 }
 
 .overlay {
-    background-color: rgba(0, 0, 0, 0.55);
-    min-height: 1000px;
+  background-color: rgba(0, 0, 0, 0.55);
+  min-height: 1000px;
 }
 </style>

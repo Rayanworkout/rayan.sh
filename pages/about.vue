@@ -31,25 +31,41 @@ const showCursor = computed(() => index.value < text.length);
 
 
 <template>
-    <div class="container">
+    <div class="bg-container">
+        <Navbar />
         <h1 class="text-center mt-5 pt-5 pb-3">About Me<span class="cursor">__</span></h1>
-        <div class="about mx-auto">
-            <p>{{ typewriter }} <span v-show="showCursor" class="cursor">_</span></p>
+        <div class="overlay">
+            <div class="about mx-auto">
+                <p>{{ typewriter }} <span v-show="showCursor" class="cursor">_</span></p>
 
-            <div class="infos animate__animated animate__fadeInLeft"><i class="bi bi-envelope px-2"></i><a
-                    href="mailto:rayan13170@protonmail.com" class="mail">rayan13170@protonmail.com</a></div>
-            <div class="infos animate__animated animate__fadeInRight"><a href="https://github.com/Rayanworkout"
-                    target="_blank"><i class="bi bi-github px-2"></i>Rayanworkout</a>
+                <div class="infos animate__animated animate__fadeInLeft"><i class="bi bi-envelope px-2"></i><a
+                        href="mailto:rayan13170@protonmail.com" class="mail">rayan13170@protonmail.com</a></div>
+                <div class="infos animate__animated animate__fadeInRight"><a href="https://github.com/Rayanworkout"
+                        target="_blank"><i class="bi bi-github px-2"></i>Rayanworkout</a>
+                </div>
             </div>
         </div>
         <div>
-            <NuxtLink @click="$router.go(-1)" class="btn my-btn mx-auto animate__animated animate__fadeInUp" v-show="!showCursor">Back
+            <NuxtLink @click="$router.go(-1)" class="btn my-btn mx-auto animate__animated animate__fadeInUp"
+                v-show="!showCursor">Back
             </NuxtLink>
         </div>
+
     </div>
 </template>
 
 <style scoped>
+.bg-container {
+    background-image: url('/img/about2.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+
+    width: 100%;
+    min-height: 1000px;
+}
+
+
 .about {
     width: 60%;
     text-align: center;
@@ -58,9 +74,8 @@ const showCursor = computed(() => index.value < text.length);
     padding: 1rem;
     margin-bottom: 0.5rem;
     transition: all 0.2s ease-in-out;
-
+    background-color: rgba(0, 0, 0, 0.55);
 }
-
 
 p,
 .infos,
@@ -70,9 +85,7 @@ p,
 }
 
 
-
 .about:hover {
-    transform: scale(1.02);
     border-color: var(--primary);
     cursor: pointer;
 }
@@ -129,4 +142,5 @@ p,
     .infos i {
         font-size: 1.2rem;
     }
-}</style>
+}
+</style>
