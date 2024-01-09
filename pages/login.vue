@@ -1,34 +1,91 @@
 
-
 <script setup lang="ts">
-
-definePageMeta({
-    title: 'Login',
-    description: 'Login to your account',
-    middleware: 'guest',
-});
-
 
 const email = ref('')
 const password = ref('')
 const errorRef = ref('')
 
-const userLoggedIn = ref(false);
+const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
 const { signIn } = useAuth()
 
 const login = async () => {
     try {
-        await signIn('credentials', {
+
+        // Check if password is not empty and
+
+        if (password.value.length < 6) {
+            errorRef.value = 'Password must be at least 6 characters long'
+
+            setTimeout(() => {
+                errorRef.value = ''
+            }, 3000);
+
+            return
+        }
+
+        // and if email has the right format
+        if (!emailRegex.test(email.value)) {
+            errorRef.value = 'Invalid email format'
+
+            setTimeout(() => {
+                errorRef.value = ''
+            }, 3000);
+
+            return
+        }
+
+        const response = await signIn('credentials', {
 
             email: email.value,
-            password: password.value
+            password: password.value,
+
+            // redirect to dashboard after login
+            // callbackUrl: '/dashboard',
+
+            // Don't redirect if an error occurs
+            redirect: false
 
         });
 
+        // @ts-expect-error
+        // https://next-auth.js.org/getting-started/client#signin
+        if (response.error) {
+            // @ts-expect-error
+            if (response.error === 'CredentialsSignin') {
+                errorRef.value = 'Invalid credentials ...'
+
+                setTimeout(() => {
+                    errorRef.value = ''
+                }, 3000);
+
+            } else {
+                errorRef.value = "An error occurred"
+
+                setTimeout(() => {
+                    errorRef.value = ''
+                }, 3000);
+            }
+        } else {
+            errorRef.value = ''
+        }
+
+
     } catch (error: any) {
-        console.log(error.message)
-        errorRef.value = error.message
+        if (error.status === 429) {
+            errorRef.value = 'Too many requests, calm down ...'
+
+            setTimeout(() => {
+                errorRef.value = ''
+            }, 3000);
+
+            return
+        }
+        errorRef.value = "An error occurred"
+
+        setTimeout(() => {
+            errorRef.value = ''
+        }, 3000);
     }
 };
 
@@ -48,9 +105,7 @@ const login = async () => {
                     <input type="password" v-model="password" placeholder="Password">
                 </div>
                 <div class="py-1 error" style="color: rgb(253, 47, 47);">{{ errorRef }}</div>
-                <button v-show="!userLoggedIn" @click="login" class="login mb-3"><i
-                        class="bi bi-box-arrow-in-right"></i></button>
-                <div v-show="userLoggedIn"><i class="bi bi-person-check-fill"></i></div>
+                <button @click="login" class="login mb-3"><i class="bi bi-box-arrow-in-right"></i></button>
             </form>
         </div>
     </div>
