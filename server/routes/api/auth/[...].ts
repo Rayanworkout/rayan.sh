@@ -25,7 +25,7 @@ export default NuxtAuthHandler({
         // @ts-expect-error You need to use .default here for it to work during SSR. May be fixed via Vite at some point
         GithubProvider.default({
             clientId: process.env.GITHUB_CLIENT_ID,
-            clientSecret: process.env.GITHUB_CLIENT_SECRET
+            clientSecret: process.env.GITHUB_CLIENT_SECRET,
         }),
 
         // @ts-expect-error
@@ -102,8 +102,23 @@ export default NuxtAuthHandler({
             }
 
             return session
+        },
+
+        async signIn({ user, account, email, credentials }) {
+            let isAllowedToSignIn = true
+
+            const allowedUser = [
+                "90798147",
+            ];
+            // @ts-expect-error
+            if (allowedUser.includes(String(user.id)) || credentials.email === process.env.ADMIN_EMAIL) {
+                isAllowedToSignIn = true
+            }
+            else {
+                isAllowedToSignIn = false
+            }
+            return isAllowedToSignIn
         }
+    },
 
-
-    }
-})
+});

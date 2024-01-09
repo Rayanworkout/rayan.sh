@@ -8,7 +8,7 @@ import { filterArticles } from '~/utils/frontend/filterArticles';
 definePageMeta({
     title: 'Dashboard',
     description: 'Manage your articles',
-    middleware   : 'auth',
+    middleware: 'auth',
 });
 
 const search = ref('');
@@ -82,6 +82,7 @@ const remove = async (id: number) => {
 const filterInput = () => {
     filterArticles(search.value, filteredArticles, allArticles);
 }
+
 
 </script>
 

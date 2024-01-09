@@ -100,7 +100,11 @@ const githubLogin = async () => {
     try {
         // @ts-expect-error
         // https://sidebase.io/nuxt-auth/v0.6/application-side/custom-sign-in-page#optional-custom-error-handling
-        const { error } = await signIn('github');
+        const { error } = await signIn('github', {
+
+            callbackUrl: '/dashboard',
+
+        });
 
     } catch (error: any) {
         if (error.status === 429) {
