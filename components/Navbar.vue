@@ -22,8 +22,8 @@ const showMenu = ref(false);
 
 <template>
     <nav class="navbar navbar-expand-lg">
-        <NuxtLink to="/" class="navbar-brand mx-3">Rayan.sh</NuxtLink>
-        <button class="toggle-button" :class="{ 'active': showMenu }" aria-label="Toggle navigation"
+        <NuxtLink v-show="$route.path !== '/'" to="/" class="navbar-brand mx-3">Rayan.sh</NuxtLink>
+        <button class="toggle-button ms-auto" :class="{ 'active': showMenu }" aria-label="Toggle navigation"
             @click="showMenu = !showMenu">
             <span></span>
             <span></span>
@@ -31,22 +31,22 @@ const showMenu = ref(false);
         </button>
         <div v-show="showMenu" class="w-100 text-end mx-3 sm-content">
             <ul class="navbar-nav animate__animated animate__fadeInDown">
-                <NuxtLink to="/blog" class="about nav-link" :class="{ 'current': $route.path === '/blog' }">Blog</NuxtLink>
-                <NuxtLink to="/about" class="about nav-link" :class="{ 'current': $route.path === '/about' }">About
+                <NuxtLink v-show="$route.path !== '/blog'" to="/blog" class="about nav-link" :class="{ 'current': $route.path === '/blog' }">Blog</NuxtLink>
+                <NuxtLink v-show="$route.path !== '/about'" to="/about" class="about nav-link" :class="{ 'current': $route.path === '/about' }">About
                 </NuxtLink>
-                <NuxtLink v-if="!userLoggedIn" to="/login" class="about nav-link"
+                <NuxtLink v-show="!userLoggedIn && $route.path !== '/login'" to="/login" class="about nav-link"
                     :class="{ 'current': $route.path === '/login' }">Login
                 </NuxtLink>
-                <NuxtLink v-if="userLoggedIn" @click="logout" class="about nav-link">Logout</NuxtLink>
-                <NuxtLink v-if="userLoggedIn" to="/dashboard" class="about nav-link">Dashboard</NuxtLink>
+                <NuxtLink v-show="userLoggedIn" @click="logout" class="about nav-link">Logout</NuxtLink>
+                <NuxtLink v-show="userLoggedIn" to="/dashboard" class="about nav-link">Dashboard</NuxtLink>
             </ul>
         </div>
         <div class="lg-content ms-auto mx-3">
             <ul class="navbar-nav animate__animated animate__fadeInDown">
-                <NuxtLink to="/blog" class="about nav-link" :class="{ 'current': $route.path === '/blog' }">Blog</NuxtLink>
-                <NuxtLink to="/about" class="about nav-link" :class="{ 'current': $route.path === '/about' }">About
+                <NuxtLink v-show="$route.path !== '/blog'" to="/blog" class="about nav-link" :class="{ 'current': $route.path === '/blog' }">Blog</NuxtLink>
+                <NuxtLink v-show="$route.path !== '/about'" to="/about" class="about nav-link" :class="{ 'current': $route.path === '/about' }">About
                 </NuxtLink>
-                <NuxtLink v-if="!userLoggedIn" to="/login" class="about nav-link"
+                <NuxtLink v-show="!userLoggedIn && $route.path !== '/login'" to="/login" class="about nav-link"
                     :class="{ 'current': $route.path === '/login' }">Login
                 </NuxtLink>
                 <NuxtLink v-if="userLoggedIn" to="/dashboard" class="about nav-link"

@@ -43,6 +43,8 @@ defineProps<{ article: Article }>()
     transition: all 0.3s ease-in-out;
     width: 60%;
     overflow: hidden;
+    background-color: rgba(0, 0, 0, 0.45);
+
 }
 
 h4 {

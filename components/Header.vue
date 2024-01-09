@@ -1,6 +1,6 @@
 
 <template>
-    <section class="header">
+    <section class="header mx-1">
         <header class="py-4 mx-auto">
             <div class="text-center">
                 <img src="/img/monkey.png" alt="">

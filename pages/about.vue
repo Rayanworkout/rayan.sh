@@ -31,7 +31,7 @@ const showCursor = computed(() => index.value < text.length);
 
 
 <template>
-    <div class="bg-container">
+    <div class="bg-container px-1">
         <Navbar />
         <h1 class="text-center mt-5 pt-5 pb-3">About Me<span class="cursor">__</span></h1>
         <div class="overlay">

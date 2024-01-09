@@ -70,10 +70,10 @@ const likeArticle = async () => {
 
 
 <template>
+  <Navbar />
   <section class="my-5 py-3">
     <div class="container">
       <div class="article-container mx-auto">
-
         <div class="pb-5 text-center">
           <h1>{{ article.value.title }}</h1>
           <div>
@@ -100,21 +100,32 @@ const likeArticle = async () => {
 
 
 <style scoped>
-
 .bounce {
   animation: bounce 0.4s ease;
 }
 
 @keyframes bounce {
-    0% {
-        transform: scale(1);
-    }
-    50% {
-        transform: scale(1.3);
-    }
-    100% {
-        transform: scale(1);
-    }
+  0% {
+    transform: scale(1);
+  }
+
+  50% {
+    transform: scale(1.3);
+  }
+
+  100% {
+    transform: scale(1);
+  }
+}
+
+nav {
+  color: black;
+}
+
+section {
+  background-color: var(--background);
+  min-height: 1000px;
+
 }
 
 .article-container {

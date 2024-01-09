@@ -38,7 +38,7 @@ setInterval(() => progressBar.value = String(60), 100)
 
 <template>
     <div class="bg-container">
-        <NavbarIndex />
+        <Navbar />
         <div class="container py-5">
             <NuxtLink to="/" class="navbar-brand title">Rayan.sh<span class="cursor">__</span></NuxtLink>
             <h1 class="text-center">{{ typewriter }}</h1>
@@ -168,6 +168,7 @@ h1 {
     .cta {
         font-size: 1.2rem;
     }
+
     .cta i {
         font-size: 1rem;
     }
