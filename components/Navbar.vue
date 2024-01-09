@@ -64,9 +64,6 @@ const showMenu = ref(false);
 .navbar {
     background-color: transparent;
 }
-.current {
-    border-bottom: 1px solid var(--primary);
-}
 
 /* Navbar elements */
 .nav-link {
@@ -162,5 +159,9 @@ li {
     .sm-content {
         display: none;
     }
+
+    .current {
+    border-bottom: 1px solid var(--primary);
+}
 }
 </style>

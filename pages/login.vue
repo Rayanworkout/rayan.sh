@@ -43,6 +43,13 @@ const login = async () => {
             return
         }
 
+        state.errorMessage = 'invalid credentials ...'
+
+        setTimeout(() => {
+            state.errorMessage = ''
+        }, 3000);
+        return
+
         // @ts-expect-error
         // https://sidebase.io/nuxt-auth/v0.6/application-side/custom-sign-in-page#optional-custom-error-handling
         const { error } = await signIn('credentials', {
@@ -128,8 +135,9 @@ const githubLogin = async () => {
 
 
 <template>
-    <div class="container my-5">
-        <div class="text-center blue-border mx-auto">
+    <div class="bg-container">
+        <Navbar />
+        <div class="text-center form-container mx-auto">
             <form class="mx-auto" @submit.prevent="login">
                 <h1 class="my-3">Login</h1>
                 <div class="mytoast animate__animated animate__bounceInRight" v-show="state.showToast">{{
@@ -140,10 +148,12 @@ const githubLogin = async () => {
                 <div class="form-group py-3 mx-auto">
                     <input type="password" v-model="password" placeholder="Password">
                 </div>
-                <div class="py-1 error" style="color: rgb(253, 47, 47);">{{
+                <div class="error" style="color: rgb(253, 47, 47);">{{
                     state.errorMessage }}</div>
-                <button @click="login" class="login mb-3"><i class="bi bi-box-arrow-in-right"></i></button>
+                <button v-show="emailRegex.test(email) && password.length > 4" @click="login" class="login mb-3"><i
+                        class="bi bi-unlock"></i></button>
             </form>
+            <div>or</div>
             <div class="github">
                 <button @click="githubLogin" class="login"><i class="bi bi-github"></i> Sign in with GitHub</button>
             </div>
@@ -154,31 +164,41 @@ const githubLogin = async () => {
 
 
 <style scoped>
+.bg-container {
+    background-image: url('/img/login.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+
+    width: 100%;
+    min-height: 1000px;
+}
+
 input {
     outline: none;
-    border: 1px solid var(--primary);
+    border: 1px solid var(--text);
     border-radius: 10px;
     padding: 0.5rem;
     background-color: transparent;
 }
 
 input:focus {
-    border: 1px solid var(--primary);
-    box-shadow: 0 0 0 0.25rem rgb(0 123 255 / 25%);
+    border: 1px solid var(--text);
+    box-shadow: 0 0 0 0.25rem rgba(96, 150, 195, 0.5);
 }
 
 input::placeholder {
     color: var(--text-color);
 }
 
-.blue-border {
+.form-container {
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    border: 1px solid var(--primary);
     border-radius: 10px;
     padding: 2rem;
+    padding-top: 100px;
     background-color: var(--background-color);
     width: 70%;
     transition: all 0.3s ease-in-out;
@@ -192,7 +212,6 @@ form input {
 .login i,
 i {
     font-size: 30px;
-    color: var(--text-color);
     transition: 0.2s ease-in-out;
 }
 
@@ -201,18 +220,13 @@ i {
     outline: none;
     text-decoration: none;
     color: var(--text-color);
+    background-color: transparent;
 }
 
-.login:hover {
+.login:hover,
+i:hover {
     color: var(--primary);
 }
-
-.blue-border:hover {
-    transform: scale(1.02);
-    border-color: var(--primary);
-    cursor: pointer;
-}
-
 
 @media (max-width: 768px) {
     form {

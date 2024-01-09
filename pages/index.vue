@@ -82,7 +82,7 @@ h1 {
     background-color: transparent;
     text-decoration: none;
     padding: 5px;
-    background-color: #6096c3;
+    background-color: rgba(0, 0, 0, 0.3);
     border-radius: 10px;
     transition: all 0.2s ease-in-out;
 }
@@ -163,6 +163,13 @@ h1 {
     .progress {
         width: 90%;
         height: 30px;
+    }
+
+    .cta {
+        font-size: 1.2rem;
+    }
+    .cta i {
+        font-size: 1rem;
     }
 }
 </style>

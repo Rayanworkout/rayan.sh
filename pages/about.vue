@@ -125,7 +125,8 @@ p,
 
 .my-btn:hover {
     transform: scale(1.05);
-    border-color: var(--primary);
+    border-color: var(--text);
+    background-color: rgba(0, 0, 0, 0.55);
     cursor: pointer;
 }
 
