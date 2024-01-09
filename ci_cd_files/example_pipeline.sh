@@ -1,3 +1,14 @@
+
+
+# npx prisma migrate deploy
+# or
+# node node_modules/prisma/build/index.js migrate deploy
+
+
+
+# Stop if an error occurs
+set -e
+
 echo "> Pulling changes ..."
 git pull origin main
 echo "> Done"

@@ -9,8 +9,6 @@ Restart=on-failure
 RestartSec=500ms
 User=rayan
 Group=sudo
-Environment=SUPABASE_URL="SUPABASE_URL"
-Environment=SUPABASE_KEY="SUPABASE_KEY"
 
 [Install]
 WantedBy=multi-user.target

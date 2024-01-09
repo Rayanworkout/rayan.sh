@@ -1,27 +1,17 @@
-import { supabase } from '~/server/db/client';
+import { prisma } from '~/prisma/db'
 
+// https://nuxt.com/docs/guide/directory-structure/server
 export default defineEventHandler(async (event) => {
+
     try {
-
-        let { data: tags, error } = await supabase
-            .from('tags')
-            .select('id, name')
-            
-        if (tags) {
-            const cleantagsList = tags;
-
-            return { success: true, data: cleantagsList };
-        } else {
-            setResponseStatus(event, 400, 'could not fetch tags');
-        }
-
-
-    } catch (error: any) {
-
-        setResponseStatus(event, 500, 'could not fetch tags');
-
-    }
-
+        const tags = await prisma.tag.findMany({
+            select: {
+                name: true,
+            }
+        })
+        return tags;
+    } catch (error) {
+        console.error(error);
+        setResponseStatus(event, 400, 'could not get tags');
+    };
 });
-
-

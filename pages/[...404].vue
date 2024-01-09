@@ -16,6 +16,10 @@
 
 
 <style scoped>
+
+.container {
+    background-color: var(--background);
+}
 .my-btn {
 
     display: flex;

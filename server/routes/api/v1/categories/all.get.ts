@@ -1,28 +1,17 @@
-import { supabase } from '~/server/db/client';
+import { prisma } from '~/prisma/db'
 
 export default defineEventHandler(async (event) => {
+
     try {
-
-        let { data: categories, error } = await supabase
-            .from('categories')
-            .select('id, name')
-            
-        if (categories) {
-            const cleanCategoriesList = categories;
-
-            return { success: true, data: cleanCategoriesList };
-        } else {
-            setResponseStatus(event, 400, 'could not fetch categories');
-
-        }
-
-
-    } catch (error: any) {
-
-        setResponseStatus(event, 500, 'could not fetch categories');
-
-    }
-
+        const categories = await prisma.category.findMany({
+            select: {
+                id: true,
+                name: true,
+            }
+        })
+        return categories;
+    } catch (error) {
+        console.error(error);
+        setResponseStatus(event, 400, 'could not get categories');
+    };
 });
-
-

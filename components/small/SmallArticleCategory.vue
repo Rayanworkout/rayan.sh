@@ -7,7 +7,7 @@ defineProps<{ category: string }>()
 
 
 <template>
-    <a href="#" class="category">{{ category }}</a>
+    <div class="category px-2">{{ category }}</div>
 </template>
 
 
@@ -21,6 +21,8 @@ defineProps<{ category: string }>()
     text-decoration: none;
     color: var(--text);
     margin: 5px;
+    background-color: rgba(0, 0, 0, 0.55);
+
 }
 
 
@@ -35,6 +37,4 @@ defineProps<{ category: string }>()
     border-color: var(--primary);
     cursor: pointer;
 }
-
-
 </style>

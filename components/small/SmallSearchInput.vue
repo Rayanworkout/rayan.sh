@@ -25,17 +25,21 @@ const handleInput = (e: any) => {
 
 <style scoped>
 input {
-    border: 1px solid #ccc;
+    border: 1px solid var(--text);
     border-radius: 5px;
     padding: 5px;
     width: 15%;
     max-width: 500px;
+    color: var(--background);
+}
+
+input:focus {
+    outline: none;
 }
 
 @media (max-width: 768px) {
     input {
         width: 50%;
     }
-
 }
 </style>

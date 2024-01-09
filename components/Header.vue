@@ -1,10 +1,11 @@
 
 <template>
-    <section class="container">
-        <header class="py-2 mt-3 mx-auto">
+    <section class="header mx-1">
+        <header class="py-4 mx-auto">
             <div class="text-center">
                 <img src="/img/monkey.png" alt="">
-                <p class="my-2">Some Dev / DevOps related small tutorials and useful config files with detailed comments.</p>
+                <p class="my-2">Some Dev / DevOps related small tutorials and useful config files with detailed comments.
+                </p>
             </div>
         </header>
     </section>

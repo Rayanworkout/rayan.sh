@@ -13,21 +13,18 @@ defineProps<{ article: Article }>()
             <div class="row mb-2 border-bottom">
                 <div class="col-md-6">
                     <h4>{{ article.title }}</h4>
-
                     <div class="mb-2 date">
-
-                        <small>{{ article.created_at }}</small>
-                        <div class="category"><small>{{ article.category.name }}</small></div>
+                        <small>{{ article.createdAt }}</small>
+                        <div class="category"><small><i class="bi bi-arrow-right-short icon"></i>{{
+                            article.category.name }}</small></div>
                         <div v-if="article.likes > 1"><small><i class="bi bi-heart icon"></i> {{ article.likes }}</small>
                         </div>
-
                     </div>
                 </div>
-
                 <div class="col-md-6 text-center pb-3 d-flex justify-content-center align-items-center">
-                    <!-- <span v-for="tag in article.tags" :key="tag._id"> -->
-                    <SmallArticleTag :tag="article.tags.name" />
-                    <!-- </span>  -->
+                    <span v-for="tag in article.tags" :key="tag.name">
+                        <SmallArticleTag :tag="tag.name" />
+                    </span>
                 </div>
 
             </div>
@@ -46,6 +43,8 @@ defineProps<{ article: Article }>()
     transition: all 0.3s ease-in-out;
     width: 60%;
     overflow: hidden;
+    background-color: rgba(0, 0, 0, 0.45);
+
 }
 
 h4 {
@@ -70,7 +69,7 @@ h4:hover {
 }
 
 .category small {
-    color: var(--primary);
+    font-weight: 600;
 }
 
 .icon {

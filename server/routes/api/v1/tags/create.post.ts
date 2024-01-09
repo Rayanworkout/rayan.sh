@@ -1,45 +1,27 @@
-import { serverSupabaseUser } from '#supabase/server';
-import { supabase } from '~/server/db/client';
-
+import { prisma } from '~/prisma/db'
+import { getServerSession } from '#auth'
 
 export default defineEventHandler(async (event) => {
+
+    const session = await getServerSession(event)
+    if (!session) {
+        return { status: 'unauthorized' }
+    }
+
     try {
+        const { name } = await readBody(event);
 
-        // Check if user is authenticated
-        const user = await serverSupabaseUser(event);
+        const createTag = await prisma.tag.create({
+            data: {
+                name: name
+            }
+        });
 
-        if (!user) {
-            return {
-                status: 401,
-                message: "unauthorized",
-            };
-        }
+        return createTag;
 
-        // Read request body
-        const body = await readBody(event);
-
-        // Get name from request
-        const name = body.name as string | undefined;
-
-        const { data, error } = await supabase
-            .from('tags')
-            .insert([
-                { name: name }
-            ])
-            .select()
-
-        if (data) {
-
-            return { success: true, message: 'tag created' };
-        } else if (error) {
-            setResponseStatus(event, 400, 'could not create tag');
-        }
-
-
-    } catch (error: any) {
-
-        setResponseStatus(event, 500, 'could not create tag');
-
+    } catch (error) {
+        console.error(error);
+        setResponseStatus(event, 400, 'could not create tag');
     }
 
 });
