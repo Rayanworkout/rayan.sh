@@ -148,7 +148,7 @@ const githubLogin = async () => {
                 <div class="form-group py-3 mx-auto">
                     <input type="password" v-model="password" placeholder="Password">
                 </div>
-                <div class="error" style="color: rgb(253, 47, 47);">{{
+                <div class="error mx-auto" style="color: rgb(253, 47, 47);">{{
                     state.errorMessage }}</div>
                 <button v-show="emailRegex.test(email) && password.length > 4" @click="login" class="login mb-3"><i
                         class="bi bi-unlock"></i></button>
@@ -174,13 +174,19 @@ const githubLogin = async () => {
     min-height: 1000px;
 }
 
+.error {
+    width: 60%;
+}
+
 input {
     outline: none;
     border: 1px solid var(--text);
     border-radius: 10px;
     padding: 0.5rem;
     background-color: transparent;
+    width: 270px;
 }
+
 
 input:focus {
     border: 1px solid var(--text);
@@ -202,11 +208,6 @@ input::placeholder {
     background-color: var(--background-color);
     width: 70%;
     transition: all 0.3s ease-in-out;
-}
-
-form input {
-    width: 100%;
-
 }
 
 .login i,

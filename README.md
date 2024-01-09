@@ -16,7 +16,7 @@ ______
 #### Hosting the website on a Debian VPS, served with PM2 behind an Apache reverse proxy, ensures stability.
 ####  The CI/CD pipeline is fully automated and lightweight, triggered by a Flask server listening for GitHub webhooks.
 #### - User Authentication
-#### I've implemented secure user authentication with JWT and persisting sessions.
+#### I've implemented secure user authentication with JWT and persisting sessions + Github provider.
 #### - Database
 #### The database is a self hosted local SQLite database with Prisma ORM.
 
