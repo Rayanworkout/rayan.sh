@@ -1,14 +1,16 @@
 
 
 <template>
-    <div class="container py-5 my-5">
-        <div class="text-center">
+    <NavbarArticle />
+    <div class="my-container">
+        <div class="text-center py-5">
             <h1>404</h1>
             <h4>Could not find this page <span class="cursor">_</span></h4>
+            <div class="img py-3">
+                <img src="/public/img/404.jpg" alt="compass in hand">
+            </div>
             <div>
-                <Transition name="back">
-                    <NuxtLink to="/" class="btn my-btn mx-auto">Home</NuxtLink>
-                </Transition>
+                <NuxtLink to="/" class="btn my-btn mx-auto">Home</NuxtLink>
             </div>
         </div>
     </div>
@@ -16,10 +18,16 @@
 
 
 <style scoped>
-
-.container {
+.my-container {
     background-color: var(--background);
+    height: 100vh;
 }
+
+.img img {
+    width: 500px;
+    border-radius: 10px;
+}
+
 .my-btn {
 
     display: flex;
