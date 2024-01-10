@@ -3,11 +3,11 @@
 <template>
     <NavbarArticle />
     <div class="my-container">
-        <div class="text-center py-5">
+        <div class="text-center py-3">
             <h1>404</h1>
             <h4>Could not find this page <span class="cursor">_</span></h4>
             <div class="img py-3">
-                <img src="/public/img/404.jpg" alt="compass in hand">
+                <img src="/img/404.jpg" alt="compass in hand">
             </div>
             <div>
                 <NuxtLink to="/" class="btn my-btn mx-auto">Home</NuxtLink>
