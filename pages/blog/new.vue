@@ -20,6 +20,7 @@ const categories = ref();
 const tagsList = ref();
 const selectedCategory = ref('');
 const clickedTags = ref<string[]>([]);
+const showModal = ref(false);
 
 const newArticle = ref({
   title: '',
@@ -57,12 +58,18 @@ const clickTag = (tag: string) => {
 }
 
 const saveOk = computed(() => {
-  return newArticle.value.title !== '' && newArticle.value.description !== '' && newArticle.value.content !== ''; 
+  return newArticle.value.title !== '' && newArticle.value.description !== '' && newArticle.value.content !== '';
 });
 
 
-const publish = async (e: any) => {
+const handleNewTagCategoryClick = (e: any) => {
+  e.preventDefault();
+  showModal.value = !showModal.value;
+}
 
+const publish = async (e: any) => {
+  e.preventDefault();
+  
   const category = selectedCategory.value;
   const tags = clickedTags.value;
 
@@ -75,6 +82,7 @@ const publish = async (e: any) => {
     method: 'POST',
     body: JSON.stringify(newArticle.value),
   });
+
 
   if (!error.value) {
     // Success
@@ -97,39 +105,42 @@ const publish = async (e: any) => {
       <form class="mx-auto" @submit.prevent="publish">
         <h1 class="pt-3">New Article</h1>
         <div class="d-flex justify-content-end">
-          <button v-show="!state.showToast" :disabled="!saveOk" class="save">Save</button>
+          <button v-show="!state.showToast && !showModal" :disabled="!saveOk" class="save">Save</button>
+          <button @click="handleNewTagCategoryClick" class="save">Add Tag / Category</button>
         </div>
+        <SmallAddTagCategoryDialog :showModal="showModal" @close="showModal = false" />
         <div class="mytoast animate__animated animate__bounceInRight" v-show="state.showToast">{{ state.message }} <i
             class="bi bi-check-circle-fill"></i></div>
         <div class="mytoast animate__animated animate__bounceInRight" v-show="state.error">An error occured <i
             class="bi bi-x-circle-fill"></i></div>
-        <div class="form-group py-3 mx-auto">
-          <input type="text" placeholder="Title" v-model="newArticle.title">
-        </div>
-        <div class="form-group py-3 mx-auto">
-          <input type="text" placeholder="Description" v-model="newArticle.description">
-        </div>
-        <div class="form-group py-3 mx-auto">
-          <div class="category">
-            <label for="selectCategory">Category</label><i class="bi bi-plus"></i><br>
+        <div v-show="!showModal">
+          <div class="form-group py-3 mx-auto">
+            <input type="text" placeholder="Title" v-model="newArticle.title">
           </div>
-          <select @input="updateSelectedCategory" id="selectCategory">
+          <div class="form-group py-3 mx-auto">
+            <input type="text" placeholder="Description" v-model="newArticle.description">
+          </div>
+          <div class="form-group py-3 mx-auto">
+            <div class="category pb-1">
+              <label for="selectCategory">Category</label>
+            </div>
+            <select @input="updateSelectedCategory" id="selectCategory">
 
-            <option v-for="category in categories" :key="category.name" :value="category.name">
-              {{ category.name }}
-            </option>
-          </select>
-        </div>
-
-        <div class="form-group py-3 mx-auto">
-          <ul v-for="list in tagsList" :key="list[0]">
-            <li v-for="tag in list">
-              <SmallArticleTag :tag="tag" @click="clickTag(tag)" :class="{ active: clickedTags.includes(tag) }" />
-            </li>
-          </ul>
-        </div>
-        <div class="form-group py-3 mx-auto">
-          <textarea type="text" rows="10" v-model="newArticle.content" />
+              <option v-for="category in categories" :key="category.name" :value="category.name">
+                {{ category.name }}
+              </option>
+            </select>
+          </div>
+          <div class="form-group py-3 mx-auto">
+            <ul v-for="list in tagsList" :key="list[0]">
+              <li v-for="tag in list">
+                <SmallArticleTag :tag="tag" @click="clickTag(tag)" :class="{ active: clickedTags.includes(tag) }" />
+              </li>
+            </ul>
+          </div>
+          <div class="form-group py-3 mx-auto">
+            <textarea type="text" rows="10" v-model="newArticle.content" />
+          </div>
         </div>
       </form>
     </div>
@@ -151,6 +162,7 @@ li {
 .main {
   background-color: var(--background);
   width: auto;
+  min-height: 100vh;
 }
 
 input,
@@ -220,10 +232,6 @@ i {
 
 .save:hover {
   color: var(--primary);
-  cursor: pointer;
-}
-
-form:hover {
   cursor: pointer;
 }
 

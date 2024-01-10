@@ -7,6 +7,10 @@ const text = "Minimalist 26 years old self-taught developer driven by interests 
 
 const index = ref(0);
 
+const showEmail = ref(false)
+const showGithub = ref(false)
+const showCursor = ref(true)
+
 const initialDelay = 1500;  // Delay before typing starts
 const delay = 50; // in milliseconds
 
@@ -17,16 +21,24 @@ const typeWriter = () => {
         typewriter.value += text.charAt(index.value);
         index.value++;
         setTimeout(typeWriter, delay);
-    };
+    } else {
+        setTimeout(() => {
+            showEmail.value = true
+        }, 500);
+        setTimeout(() => {
+            showGithub.value = true
+        }, 1000);
+
+        setTimeout(() => {
+            showCursor.value = false
+        }, 2500);
+    }
 };
 
 
 onMounted(() => {
     setTimeout(typeWriter, initialDelay);
 });
-
-const showCursor = computed(() => index.value < text.length);
-
 </script>
 
 
@@ -38,9 +50,9 @@ const showCursor = computed(() => index.value < text.length);
             <div class="about mx-auto">
                 <p>{{ typewriter }} <span v-show="showCursor" class="cursor">_</span></p>
 
-                <div class="infos animate__animated animate__fadeInLeft"><i class="bi bi-envelope px-2"></i><a
+                <div v-show="showEmail" class="infos animate__animated animate__fadeInUp"><i class="bi bi-envelope px-2"></i><a
                         href="mailto:rayan13170@protonmail.com" class="mail">rayan13170@protonmail.com</a></div>
-                <div class="infos animate__animated animate__fadeInRight"><a href="https://github.com/Rayanworkout"
+                <div v-show="showGithub" class="infos animate__animated animate__fadeInUp"><a href="https://github.com/Rayanworkout"
                         target="_blank"><i class="bi bi-github px-2"></i>Rayanworkout</a>
                 </div>
             </div>
