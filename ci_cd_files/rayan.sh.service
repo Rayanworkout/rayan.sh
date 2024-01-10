@@ -9,6 +9,14 @@ Restart=on-failure
 RestartSec=500ms
 User=rayan
 Group=sudo
+Environment=DB_PATH="DB_PATH"
+Environment=JWT_SECRET="SECRET"
+Environment=AUTH_ORIGIN="https://rayan.sh"
+Environment=GITHUB_CLIENT_ID="GITHUB_CLIENT_ID"
+Environment=GITHUB_CLIENT_SECRET="GITHUB_SECRET"
+Environment=ADMIN_EMAIL="EMAIL_ADMIN"
+
+
 
 [Install]
 WantedBy=multi-user.target

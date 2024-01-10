@@ -23,7 +23,7 @@ export default defineNuxtConfig({
   modules: ['@nuxtjs/google-fonts', 'nuxt-security', '@sidebase/nuxt-auth'],
 
   auth: {
-    baseURL: process.env.NEXTAUTH_URL,
+    baseURL: process.env.AUTH_ORIGIN,
     provider: {
       type: 'authjs'
     }
