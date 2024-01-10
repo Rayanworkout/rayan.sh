@@ -85,6 +85,7 @@ h1 {
     background-color: rgba(0, 0, 0, 0.3);
     border-radius: 10px;
     transition: all 0.2s ease-in-out;
+    border-radius: 10px;
 }
 
 .cta:hover,

@@ -68,7 +68,8 @@ const handleNewTagCategoryClick = (e: any) => {
 }
 
 const publish = async (e: any) => {
-
+  e.preventDefault();
+  
   const category = selectedCategory.value;
   const tags = clickedTags.value;
 
@@ -81,6 +82,7 @@ const publish = async (e: any) => {
     method: 'POST',
     body: JSON.stringify(newArticle.value),
   });
+
 
   if (!error.value) {
     // Success
