@@ -30,7 +30,7 @@ const showMenu = ref(false);
             <span></span>
         </button>
         <div v-show="showMenu" class="w-100 text-end mx-3 sm-content">
-            <ul class="navbar-nav animate__animated animate__fadeInDown">
+            <ul class="navbar-nav">
                 <NuxtLink v-show="$route.path !== '/blog'" to="/blog" class="about nav-link" :class="{ 'current': $route.path === '/blog' }">Blog</NuxtLink>
                 <NuxtLink v-show="$route.path !== '/about'" to="/about" class="about nav-link" :class="{ 'current': $route.path === '/about' }">About
                 </NuxtLink>
@@ -42,7 +42,7 @@ const showMenu = ref(false);
             </ul>
         </div>
         <div class="lg-content ms-auto mx-3">
-            <ul class="navbar-nav animate__animated animate__fadeInDown">
+            <ul class="navbar-nav">
                 <NuxtLink v-show="$route.path !== '/blog'" to="/blog" class="about nav-link" :class="{ 'current': $route.path === '/blog' }">Blog</NuxtLink>
                 <NuxtLink v-show="$route.path !== '/about'" to="/about" class="about nav-link" :class="{ 'current': $route.path === '/about' }">About
                 </NuxtLink>
