@@ -1,9 +1,10 @@
 :root {
-  --text: #f7f4f4;
+  --text: #607B96;
   --background: #262626;
   --primary: #6096c3;
 
   --new-background: #011627;
+  --accent: #FEA55F;
 }
 
 * {
@@ -17,7 +18,7 @@
 }
 
 /* Code blocks */
-  
+
 
 
 pre code.hljs {
