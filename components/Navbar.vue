@@ -22,14 +22,38 @@ const showMenu = ref(false);
 
 <template>
     <nav class="navbar navbar-expand-lg">
+        <NuxtLink to="/" class="navbar-brand mx-4">rayan.sh</NuxtLink>
+        <button class="toggle-button ms-auto" :class="{ 'active': showMenu }" aria-label="Toggle navigation"
+            @click="showMenu = !showMenu">
+            <span></span>
+            <span></span>
+            <span></span>
+        </button>
+        <div v-show="showMenu" class="w-100 text-end mx-3 sm-content">
+            <NuxtLink class="nav-link mt-4" to="/" :class="{ 'current': $route.path === '/' }">_hello</NuxtLink>
+            <div class="custom-border-bottom"></div>
+            <NuxtLink class="nav-link" to="/about" :class="{ 'current': $route.path === '/about' }">_about-me
+            </NuxtLink>
+            <div class="custom-border-bottom"></div>
+            <NuxtLink class="nav-link" to="#">_projects</NuxtLink>
+            <div class="custom-border-bottom"></div>
+            <NuxtLink class="nav-link" to="/blog" :class="{ 'current': $route.path === '/blog' }">_blog
+            </NuxtLink>
+            <div class="custom-border-bottom"></div>
+            <a class="nav-link" href="mailto:rayan13170@protonmail.com">_contact-me</a>
+            <div class="custom-border-bottom"></div>
+
+        </div>
         <div class="container-fluid">
-            <div class="w-100 mx-3 sm-content">
+            <div class="w-100 mx-3 lg-content">
                 <div class="navbar-nav">
                     <NuxtLink class="nav-link me-auto" aria-current="page" to="/">rayan.sh</NuxtLink>
-                    <NuxtLink class="nav-link" to="/">_hello</NuxtLink>
-                    <NuxtLink class="nav-link px-4" to="/about">_about-me</NuxtLink>
-                    <NuxtLink class="nav-link">_projects</NuxtLink>
-                    <NuxtLink class="nav-link px-4" to="/blog">_blog</NuxtLink>
+                    <NuxtLink class="nav-link" to="/" :class="{ 'current': $route.path === '/' }">_hello</NuxtLink>
+                    <NuxtLink class="nav-link px-4" to="/about" :class="{ 'current': $route.path === '/about' }">_about-me
+                    </NuxtLink>
+                    <NuxtLink class="nav-link" to="#">_projects</NuxtLink>
+                    <NuxtLink class="nav-link px-4" to="/blog" :class="{ 'current': $route.path === '/blog' }">_blog
+                    </NuxtLink>
                     <a class="nav-link contact" href="mailto:rayan13170@protonmail.com">_contact-me</a>
                 </div>
             </div>
@@ -44,7 +68,7 @@ const showMenu = ref(false);
     border-bottom: 1px solid #1E2D3D;
 }
 
-.nav-link {
+.nav-link, .navbar-brand {
     color: var(--text);
 }
 
@@ -52,11 +76,31 @@ const showMenu = ref(false);
     margin-left: auto;
 }
 
+
+/* SMALL CONTENT */
+
+.sm-content {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+    gap: 1rem;
+}
+
+.custom-border-bottom {
+    width: 100%;
+    border-bottom: 1px solid #1E2D3D;
+}
+
+
+/* END SMALL CONTENT */
+
 /* HOVERS */
 
-.nav-link:hover, .contact:hover {
-  background-color: #1e2d3d74;
-  color: white;
+.nav-link:hover,
+.contact:hover {
+    background-color: #1e2d3d74;
+    color: white;
 }
 
 
@@ -113,4 +157,39 @@ const showMenu = ref(false);
 }
 
 /* END TOGGLE BUTTON */
+
+
+/* MEDIA QUERIES */
+
+@media (max-width: 1000px) {
+    .lg-content {
+        display: none;
+    }
+
+    .current {
+        color: white;
+    }
+}
+
+@media (min-width: 1000px) {
+    .toggle-button {
+        display: none;
+    }
+
+    .sm-content {
+        display: none;
+    }
+
+    .navbar-brand {
+        display: none;
+    }
+
+    .current {
+        border-bottom: 2px solid var(--accent);
+        color: white;
+    }
+}
+
+
+/* END MEDIA QUERIES */
 </style>
