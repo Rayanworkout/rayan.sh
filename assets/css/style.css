@@ -2,13 +2,13 @@
   --text: #f7f4f4;
   --background: #262626;
   --primary: #6096c3;
-  --secondary: #1e5280;
-  --accent: #3b90d9;
+
+  --new-background: #011627;
 }
 
 * {
   color: var(--text);
-  font-family: 'Montserrat', sans-serif;
+  font-family: 'Fira Code', 'monospace';
   font-size: 18px;
   line-height: 1.5;
   margin: 0;

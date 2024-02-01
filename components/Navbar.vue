@@ -22,80 +22,43 @@ const showMenu = ref(false);
 
 <template>
     <nav class="navbar navbar-expand-lg">
-        <NuxtLink v-show="$route.path !== '/'" to="/" class="navbar-brand mx-3">Rayan.sh</NuxtLink>
-        <button class="toggle-button ms-auto" :class="{ 'active': showMenu }" aria-label="Toggle navigation"
-            @click="showMenu = !showMenu">
-            <span></span>
-            <span></span>
-            <span></span>
-        </button>
-        <div v-show="showMenu" class="w-100 text-end mx-3 sm-content">
-            <ul class="navbar-nav">
-                <NuxtLink v-show="$route.path !== '/blog'" to="/blog" class="about nav-link" :class="{ 'current': $route.path === '/blog' }">Blog</NuxtLink>
-                <NuxtLink v-show="$route.path !== '/about'" to="/about" class="about nav-link" :class="{ 'current': $route.path === '/about' }">About
-                </NuxtLink>
-                <NuxtLink v-show="!userLoggedIn && $route.path !== '/login'" to="/login" class="about nav-link"
-                    :class="{ 'current': $route.path === '/login' }">Login
-                </NuxtLink>
-                <NuxtLink v-show="userLoggedIn" @click="logout" class="about nav-link">Logout</NuxtLink>
-                <NuxtLink v-show="userLoggedIn" to="/dashboard" class="about nav-link">Dashboard</NuxtLink>
-            </ul>
-        </div>
-        <div class="lg-content ms-auto mx-3">
-            <ul class="navbar-nav">
-                <NuxtLink v-show="$route.path !== '/blog'" to="/blog" class="about nav-link" :class="{ 'current': $route.path === '/blog' }">Blog</NuxtLink>
-                <NuxtLink v-show="$route.path !== '/about'" to="/about" class="about nav-link" :class="{ 'current': $route.path === '/about' }">About
-                </NuxtLink>
-                <NuxtLink v-show="!userLoggedIn && $route.path !== '/login'" to="/login" class="about nav-link"
-                    :class="{ 'current': $route.path === '/login' }">Login
-                </NuxtLink>
-                <NuxtLink v-if="userLoggedIn" to="/dashboard" class="about nav-link"
-                    :class="{ 'current': $route.path === '/dashboard' }">Dashboard</NuxtLink>
-                <NuxtLink v-if="userLoggedIn" @click="logout" class="about nav-link">Logout</NuxtLink>
-            </ul>
+        <div class="container-fluid">
+            <div class="w-100 text-end mx-3 sm-content">
+                <div class="navbar-nav">
+                    <a class="nav-link main" aria-current="page" href="#">rayan.sh</a>
+                    <a class="nav-link" href="#">_hello</a>
+                    <a class="nav-link px-4" href="#">_about-me</a>
+                    <a class="nav-link">_projects</a>
+                    <a class="nav-link px-4">_blog</a>
+                    <a class="nav-link contact" href="#">_contact-me</a>
+                </div>
+
+            </div>
         </div>
     </nav>
 </template>
-  
 
 
 <style scoped>
 
 .navbar {
-    background-color: transparent;
+    height: 49px;
+    border-bottom: 1px solid #1E2D3D;
 }
 
-/* Navbar elements */
 .nav-link {
     color: var(--text);
-    font-size: 1.4rem;
 }
 
-
-/* Rayan.sh */
-.navbar-brand {
-    font-weight: 600;
-    font-size: 1.7rem;
-    cursor: pointer;
-    color: var(--text);
+.main {
+    margin-right: 45px;
 }
 
-.navbar-brand:hover,
-.nav-link:hover {
-    color: var(--primary);
-    cursor: pointer;
+.contact {
+    margin-left: auto;
 }
 
-ul {
-    list-style: none;
-    padding: 0;
-}
-
-li {
-    display: block;
-    margin-left: 15px;
-}
-
+/* TOGGLE BUTTON */
 
 .toggle-button {
     width: 60px;
@@ -145,23 +108,5 @@ li {
     width: 35%;
 }
 
-@media (max-width: 1000px) {
-    .lg-content {
-        display: none;
-    }
-}
-
-@media (min-width: 1000px) {
-    .toggle-button {
-        display: none;
-    }
-
-    .sm-content {
-        display: none;
-    }
-
-    .current {
-    border-bottom: 1px solid var(--primary);
-}
-}
+/* END TOGGLE BUTTON */
 </style>

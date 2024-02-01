@@ -134,7 +134,7 @@ const filterInput = () => {
 
 <style scoped>
 table th {
-    background-color: var(--secondary);
+    background-color: var(--primary);
     color: var(--text);
 }
 
