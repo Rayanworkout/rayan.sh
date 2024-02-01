@@ -23,12 +23,11 @@ const showMenu = ref(false);
 <template>
     <nav class="navbar navbar-expand-lg">
         <NuxtLink to="/" class="navbar-brand mx-4">rayan.sh</NuxtLink>
-        <button class="toggle-button ms-auto" :class="{ 'active': showMenu }" aria-label="Toggle navigation"
+        <div class="ms-auto mx-3" :class="{ 'active': showMenu }" aria-label="Toggle navigation"
             @click="showMenu = !showMenu">
-            <span></span>
-            <span></span>
-            <span></span>
-        </button>
+            <div class="x-icon"><i v-show="showMenu" class="bi bi-x-lg icon"></i></div>
+            <div class="hamburger-icon"><i v-show="!showMenu" class="bi bi-list icon"></i></div>
+        </div>
         <div v-show="showMenu" class="w-100 text-end mx-3 sm-content">
             <NuxtLink class="nav-link mt-4" to="/" :class="{ 'current': $route.path === '/' }">_hello</NuxtLink>
             <div class="custom-border-bottom"></div>
@@ -63,12 +62,19 @@ const showMenu = ref(false);
 
 
 <style scoped>
+.icon {
+    font-size: 1.8rem;
+    color: var(--text);
+    background-color: transparent;
+}
+
 .navbar {
     height: 60px;
     border-bottom: 1px solid #1E2D3D;
 }
 
-.nav-link, .navbar-brand {
+.nav-link,
+.navbar-brand {
     color: var(--text);
 }
 
@@ -106,58 +112,6 @@ const showMenu = ref(false);
 
 /* END HOVERS */
 
-/* TOGGLE BUTTON */
-
-.toggle-button {
-    width: 60px;
-    background-color: transparent;
-    border: none;
-    outline: none;
-    cursor: pointer;
-    display: flex;
-    flex-direction: column;
-}
-
-.toggle-button span {
-    display: block;
-    border-radius: 10px;
-    width: 30px;
-    height: 3px;
-    margin: 7px;
-    background-color: var(--text);
-    transition: 0.7s all;
-}
-
-.toggle-button span:nth-of-type(1) {
-    width: 30%;
-}
-
-.toggle-button span:nth-of-type(2) {
-    width: 60%;
-}
-
-.toggle-button span:nth-of-type(3) {
-    width: 30%;
-}
-
-.toggle-button.active span:nth-of-type(1) {
-    transform-origin: bottom;
-    transform: rotateZ(45deg) translate(8px, 6px);
-}
-
-.toggle-button.active span:nth-of-type(2) {
-    transform-origin: top;
-    transform: rotateZ(-45deg);
-}
-
-.toggle-button.active span:nth-of-type(3) {
-    transform-origin: bottom;
-    transform: translate(14px, -11px) rotateZ(45deg);
-    width: 35%;
-}
-
-/* END TOGGLE BUTTON */
-
 
 /* MEDIA QUERIES */
 
@@ -172,7 +126,7 @@ const showMenu = ref(false);
 }
 
 @media (min-width: 1000px) {
-    .toggle-button {
+    .x-icon, .hamburger-icon {
         display: none;
     }
 
