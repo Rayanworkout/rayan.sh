@@ -32,7 +32,7 @@ p {
 }
 
 span {
-    color: #4D5BCE;
+    color: var(--primary);
 }
 
 .green {

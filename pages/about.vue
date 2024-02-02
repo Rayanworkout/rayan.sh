@@ -31,7 +31,7 @@ const typeWriter = () => {
 
         setTimeout(() => {
             showCursor.value = false
-        }, 2500);
+        }, 1000);
     }
 };
 
@@ -48,7 +48,7 @@ onMounted(() => {
         <h1 class="text-center mt-5 pt-5 pb-3">About Me<span class="cursor">__</span></h1>
         <div class="overlay">
             <div class="about mx-auto">
-                <p>{{ typewriter }} <span v-show="showCursor" class="cursor">_</span></p>
+                <p>{{ typewriter }}<span v-show="showCursor" class="cursor">_</span></p>
 
                 <div v-show="showEmail" class="infos animate__animated animate__fadeInUp"><i
                         class="bi bi-envelope px-2"></i><a href="mailto:rayan13170@protonmail.com"
@@ -99,13 +99,6 @@ p,
 h1 {
     color: white;
 }
-
-
-.about:hover {
-    border-color: var(--primary);
-    cursor: pointer;
-}
-
 .infos {
     font-size: 0.8rem;
     display: flex;
@@ -128,7 +121,6 @@ h1 {
 
 
 .my-btn {
-    transition: all 0.2s ease-in-out;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -140,9 +132,8 @@ h1 {
 }
 
 .my-btn:hover {
-    transform: scale(1.05);
     border-color: var(--text);
-    background-color: rgba(0, 0, 0, 0.55);
+    background-color: transparent;
     cursor: pointer;
 }
 

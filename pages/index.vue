@@ -49,7 +49,7 @@ onMounted(() => {
                             <span>
                                 Hi all, I am
                             </span>
-                            <h1>Rayan</h1>
+                            <h1>Rayan<span class="cursor">__</span></h1>
                             <h2>> Backend developer</h2>
                             <div class="code my-5">
                                 <div class="comments-lg">
@@ -117,7 +117,7 @@ h1 {
 .head h2 {
     font-size: 32px;
     line-height: 1;
-    color: #4D5BCE;
+    color: var(--primary);
 }
 
 .link {

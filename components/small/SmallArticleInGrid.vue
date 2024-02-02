@@ -67,7 +67,7 @@ h4:hover {
 }
 
 .category small {
-    color: #4D5BCE;
+    color: var(--primary);
 }
 
 .icon {
