@@ -41,7 +41,6 @@ const showMenu = ref(false);
             <div class="custom-border-bottom"></div>
             <a class="nav-link" href="mailto:rayan13170@protonmail.com">_contact-me</a>
             <div class="custom-border-bottom"></div>
-
         </div>
         <div class="container-fluid">
             <div class="w-100 mx-3 lg-content">
@@ -58,10 +57,22 @@ const showMenu = ref(false);
             </div>
         </div>
     </nav>
+    <!-- Overlay -->
+    <div v-show="showMenu" class="overlay"></div>
 </template>
 
 
 <style scoped>
+.overlay {
+    position: fixed;
+    top: 60px;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(1, 22, 39, 0.95);
+    z-index: 999;
+}
+
 .icon {
     font-size: 1.8rem;
     color: var(--text);
@@ -75,7 +86,7 @@ const showMenu = ref(false);
 
 .nav-link,
 .navbar-brand {
-    color: var(--text);
+    color: #90a2b6;
 }
 
 .contact {
@@ -91,6 +102,7 @@ const showMenu = ref(false);
     align-items: flex-start;
     justify-content: center;
     gap: 1rem;
+    z-index: 1000;
 }
 
 .custom-border-bottom {
@@ -126,7 +138,9 @@ const showMenu = ref(false);
 }
 
 @media (min-width: 1000px) {
-    .x-icon, .hamburger-icon {
+
+    .x-icon,
+    .hamburger-icon {
         display: none;
     }
 

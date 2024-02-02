@@ -69,7 +69,7 @@ onMounted(() => {
                                     </p>
                                 </div>
                                 <p>
-                                    <span style="color: #4D5BCE;">const</span> <span
+                                    <span style="color: #4D5BCE;" class="const">const</span> <span
                                         style="color: #43D9AD;">githubLink</span> <span class="text-white">=</span> <a
                                         href="https://github.com/Rayanworkout" target="_blank"
                                         class="link">"https://github.com/Rayanworkout"</a>
