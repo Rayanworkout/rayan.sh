@@ -76,7 +76,7 @@ onMounted(() => {
 <style scoped>
 .bg-container {
     background-color: var(--new-background);
-    height: 100vh;
+    height: 110vh;
 }
 
 .head {
