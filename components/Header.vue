@@ -4,7 +4,8 @@
         <header class="py-4 mx-auto">
             <div class="text-center">
                 <img src="/img/monkey.png" alt="">
-                <p class="my-2"> > Here you can find some Dev / DevOps related small tutorials and useful config files with
+                <p class="my-2"> > Here you can find some <span class="green">Dev</span> / <span class="green">DevOps</span>
+                    related small tutorials and useful config files with
                     detailed comments, <span> enjoy !</span>
                 </p>
             </div>
@@ -26,10 +27,17 @@ img {
     border-radius: 100px;
 }
 
+p {
+    color: white;
+}
+
 span {
     color: #4D5BCE;
 }
 
+.green {
+    color: #43D9AD;
+}
 
 @media (max-width: 768px) {
     header {

@@ -16,7 +16,7 @@ const handleInput = (e: any) => {
 <template>
     <div class="container">
         <div class="text-center">
-            <input type="text" placeholder="Search" @keyup="handleInput">
+            <input type="text" placeholder="Search ..." @keyup="handleInput">
         </div>
     </div>
 </template>
