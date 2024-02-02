@@ -42,7 +42,7 @@ onMounted(() => {
             <!-- gradients -->
             <div class="css-blurry-gradient-blue"></div>
             <div class="css-blurry-gradient-green"></div>
-            <div class="hero">
+            <div class="hero my-5">
                 <div class="row">
                     <div class="col-md-8">
                         <div class="head my-5">
@@ -50,7 +50,7 @@ onMounted(() => {
                                 Hi all, I am
                             </span>
                             <h1>Rayan</h1>
-                            <h2>> Backend Developer</h2>
+                            <h2>> Backend developer</h2>
                             <div class="code my-5">
                                 <p class="action">
                                     // This website showcases some of my work
@@ -59,11 +59,11 @@ onMounted(() => {
                                     // you can also check my projects on Github
                                 </p>
                                 <p>
-                                    <span class="const">const</span> <span class="var-name">githubLink</span> <span
-                                        class="text-white">=</span> <a href="https://github.com/Rayanworkout" target="_blank"
+                                    <span style="color: #4D5BCE;">const</span> <span
+                                        style="color: #43D9AD;">githubLink</span> <span class="text-white">=</span> <a
+                                        href="https://github.com/Rayanworkout" target="_blank"
                                         class="link">"https://github.com/Rayanworkout"</a>
                                 </p>
-
                             </div>
                         </div>
 
@@ -107,14 +107,6 @@ h1 {
     font-size: 32px;
     line-height: 1;
     color: #4D5BCE;
-}
-
-.const {
-    color: #4D5BCE;
-}
-
-.var-name {
-    color: #43D9AD;
 }
 
 .link {
