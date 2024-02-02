@@ -11,7 +11,7 @@ defineProps(['articles', 'state'])
         </div>
         <div v-if="state.error" class="text-center">Error while fetching the articles ...</div>
         <div v-else>
-            <div v-for="article in articles" :key="article.id" class="animate__animated animate__fadeInUp">
+            <div v-for="article in articles" :key="article.id">
                 <SmallArticleInGrid :article="article" />
             </div>
         </div>

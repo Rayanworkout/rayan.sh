@@ -26,11 +26,17 @@ const handleInput = (e: any) => {
 <style scoped>
 input {
     border: 1px solid var(--text);
+    background-color: var(--new-background);
+
     border-radius: 5px;
     padding: 5px;
     width: 15%;
     max-width: 500px;
-    color: var(--background);
+    color: white;
+}
+
+input::placeholder {
+    color: var(--text);
 }
 
 input:focus {

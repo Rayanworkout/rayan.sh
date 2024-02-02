@@ -48,18 +48,18 @@ defineProps<{ article: Article }>()
 }
 
 h4 {
+    color: white;
     transition: all 0.3s ease-in-out;
 }
 
 h4:hover {
-    color: var(--primary);
+    color: white;
     width: fit-content;
     cursor: pointer;
 }
 
 .article:hover {
-    transform: scale(1.02);
-    border-color: var(--primary);
+    border-color: var(--accent);
     cursor: pointer;
 }
 
