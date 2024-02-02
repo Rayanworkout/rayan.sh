@@ -148,6 +148,7 @@ h1 {
 
     .comments p {
         font-size: 20px;
+        padding-left: 1rem;
     }
 
     .hello h1,
@@ -160,11 +161,11 @@ h1 {
     }
 
     .github span {
-        font-size: 20px;
+        font-size: 13px;
     }
 
     .github a {
-        font-size: 15px;
+        font-size: 13px;
     
     }
 
