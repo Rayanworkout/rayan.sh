@@ -100,6 +100,10 @@ const likeArticle = async () => {
 
 
 <style scoped>
+
+h1 {
+  color: white;
+}
 .bounce {
   animation: bounce 0.4s ease;
 }
