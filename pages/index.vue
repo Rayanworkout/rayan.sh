@@ -79,7 +79,7 @@ onMounted(() => {
 
                     </div>
                     <div class="col-md-4 game">
-                        hello
+                        
                     </div>
                 </div>
             </div>

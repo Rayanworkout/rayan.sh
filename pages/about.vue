@@ -9,7 +9,6 @@ const index = ref(0);
 
 const showEmail = ref(false)
 const showGithub = ref(false)
-const showCursor = ref(true)
 
 const initialDelay = 1500;  // Delay before typing starts
 const delay = 50; // in milliseconds
@@ -28,10 +27,6 @@ const typeWriter = () => {
         setTimeout(() => {
             showGithub.value = true
         }, 1000);
-
-        setTimeout(() => {
-            showCursor.value = false
-        }, 1000);
     }
 };
 
@@ -48,7 +43,7 @@ onMounted(() => {
         <h1 class="text-center mt-5 pt-5 pb-3">About Me<span class="cursor">__</span></h1>
         <div class="overlay">
             <div class="about mx-auto">
-                <p>{{ typewriter }}<span v-show="showCursor" class="cursor">_</span></p>
+                <p>{{ typewriter }}</p>
 
                 <div v-show="showEmail" class="infos animate__animated animate__fadeInUp"><i
                         class="bi bi-envelope px-2"></i><a href="mailto:rayan13170@protonmail.com"
@@ -61,7 +56,7 @@ onMounted(() => {
         </div>
         <div>
             <NuxtLink @click="$router.go(-1)" class="btn my-btn mx-auto animate__animated animate__fadeInUp"
-                v-show="!showCursor">Back
+                v-show="showGithub">Back
             </NuxtLink>
         </div>
 
