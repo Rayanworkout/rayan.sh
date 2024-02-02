@@ -94,8 +94,8 @@ const filterInput = () => {
         <div class="mytoast animate__animated animate__bounceInRight" v-show="state.showToast">{{ state.message }} <i
                 class="bi bi-check-circle-fill"></i></div>
         <div class="text-center">
-            <h1 class="pb-2">Dashboard</h1>
-            <div class="py-2 my-2 mx-auto new" @click="create">New</div>
+            <h1 class="py-4">Dashboard</h1>
+            <div class="py-2 mx-auto new" @click="create">New</div>
         </div>
         <div class="text-end p-3">
             <input type="text" v-model="search" @input="filterInput" placeholder=" Search ...">
@@ -135,12 +135,16 @@ const filterInput = () => {
 <style scoped>
 table th {
     background-color: var(--primary);
-    color: var(--text);
+    color: white;
 }
 
 table td {
-    background-color: var(--background);
-    color: var(--text);
+    background-color: var(--new-background);
+    color: white;
+}
+
+h1 {
+    color: white;
 }
 
 input {
@@ -149,7 +153,7 @@ input {
     padding: 5px;
     width: 15%;
     max-width: 500px;
-    color: var(--background);
+    color: var(--new-background);
 }
 
 i {
@@ -159,7 +163,7 @@ i {
 }
 
 .main {
-    background-color: var(--background);
+    background-color: var(--new-background);
     min-height: 100vh;
 }
 
@@ -174,9 +178,10 @@ i {
 
 .new:hover {
     cursor: pointer;
-    border: 1px solid var(--primary);
+    border: 1px solid white;
     border-radius: 15px;
     padding: 4px;
+    color: white;
 }
 
 i:hover {

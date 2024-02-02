@@ -108,11 +108,11 @@ const publish = async (e: any) => {
 
 
 <template>
-  <NavbarArticle />
   <div class="main">
+    <Navbar />
     <div class="text-center">
       <form class="mx-auto" @submit.prevent="publish">
-        <h1 class="pt-3">New Article</h1>
+        <h1 class="pt-4 text-white">New Article</h1>
         <div class="d-flex justify-content-end">
           <button v-show="!state.showToast && !showModal" :disabled="!saveOk" class="save">Save</button>
           <button @click="handleNewTagCategoryClick" class="save">Add Tag / Category</button>
@@ -169,7 +169,7 @@ li {
 }
 
 .main {
-  background-color: var(--background);
+  background-color: var(--new-background);
   width: auto;
   min-height: 100vh;
 }
@@ -208,7 +208,7 @@ select {
   padding: 0.5rem;
   background-color: transparent;
   color: var(--text-color);
-  background-color: var(--background);
+  background-color: var(--new-background);
   width: 450px;
 }
 
