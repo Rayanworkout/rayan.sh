@@ -1,6 +1,6 @@
 
 <script setup lang="ts">
-import { ref, onMounted, computed } from 'vue';
+import { ref, onMounted } from 'vue';
 
 const text = "Minimalist 26 years old self-taught developer driven by interests in Web Development, " +
     "Linux, and self-hosted stuff. Mainly Python and Javascript."
@@ -50,10 +50,12 @@ onMounted(() => {
             <div class="about mx-auto">
                 <p>{{ typewriter }} <span v-show="showCursor" class="cursor">_</span></p>
 
-                <div v-show="showEmail" class="infos animate__animated animate__fadeInUp"><i class="bi bi-envelope px-2"></i><a
-                        href="mailto:rayan13170@protonmail.com" class="mail">rayan13170@protonmail.com</a></div>
-                <div v-show="showGithub" class="infos animate__animated animate__fadeInUp"><a href="https://github.com/Rayanworkout"
-                        target="_blank"><i class="bi bi-github px-2"></i>Rayanworkout</a>
+                <div v-show="showEmail" class="infos animate__animated animate__fadeInUp"><i
+                        class="bi bi-envelope px-2"></i><a href="mailto:rayan13170@protonmail.com"
+                        class="mail">rayan13170@protonmail.com</a></div>
+                <div v-show="showGithub" class="infos animate__animated animate__fadeInUp"><a
+                        href="https://github.com/Rayanworkout" target="_blank"><i
+                            class="bi bi-github px-2"></i>Rayanworkout</a>
                 </div>
             </div>
         </div>
@@ -68,11 +70,7 @@ onMounted(() => {
 
 <style scoped>
 .bg-container {
-    background-image: url('/img/about2.jpg');
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
-
+    background-color: var(--new-background);
     width: 100%;
     min-height: 1000px;
 }
@@ -81,12 +79,12 @@ onMounted(() => {
 .about {
     width: 60%;
     text-align: center;
-    border: 1px solid #ccc;
+    /* border: 1px solid #ccc; */
     border-radius: 5px;
     padding: 1rem;
     margin-bottom: 0.5rem;
     transition: all 0.2s ease-in-out;
-    background-color: rgba(0, 0, 0, 0.55);
+    /* background-color: rgba(0, 0, 0, 0.55); */
 }
 
 p,
@@ -94,6 +92,12 @@ p,
 .infos a,
 .infos i {
     background-color: transparent;
+    color: white;
+
+}
+
+h1 {
+    color: white;
 }
 
 
@@ -129,7 +133,7 @@ p,
     justify-content: center;
     align-items: center;
     text-decoration: none;
-    color: var(--text-color);
+    color: white;
     padding: 0.5rem;
     width: 60px;
     border-radius: 10px;

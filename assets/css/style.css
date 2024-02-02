@@ -160,6 +160,7 @@ code.hljs {
 .cursor {
   animation: blinkCursor 1.5s infinite;
   background-color: transparent;
+  color: white;
 }
 
 @keyframes blinkCursor {
