@@ -45,19 +45,29 @@ onMounted(() => {
             <div class="hero my-5">
                 <div class="row">
                     <div class="col-md-8">
-                        <div class="head my-5">
+                        <div class="head">
                             <span>
                                 Hi all, I am
                             </span>
                             <h1>Rayan</h1>
                             <h2>> Backend developer</h2>
                             <div class="code my-5">
-                                <p class="action">
-                                    // This website showcases some of my work
-                                </p>
-                                <p>
-                                    // you can also check my projects on Github
-                                </p>
+                                <div class="comments-lg">
+                                    <p>
+                                        // This website showcases some of my work
+                                    </p>
+                                    <p>
+                                        // you can also check my projects on Github
+                                    </p>
+                                </div>
+                                <div class="comments-sm">
+                                    <p>
+                                        // This website showcases <br>some of my work
+                                    </p>
+                                    <p>
+                                        // you can also check my <br>projects on Github
+                                    </p>
+                                </div>
                                 <p>
                                     <span style="color: #4D5BCE;">const</span> <span
                                         style="color: #43D9AD;">githubLink</span> <span class="text-white">=</span> <a
@@ -68,7 +78,7 @@ onMounted(() => {
                         </div>
 
                     </div>
-                    <div class="col-md-4">
+                    <div class="col-md-4 game">
                         hello
                     </div>
                 </div>
@@ -86,6 +96,7 @@ onMounted(() => {
 
 .head {
     margin-left: 155px;
+    margin-top: 4rem;
 }
 
 
@@ -141,4 +152,53 @@ h1 {
     opacity: 0.5;
     z-index: 10;
 }
+
+.comments-sm {
+    font-size: 10px;
+}
+
+
+/* MEDIA QUERIES */
+
+@media (min-width: 768px) {
+    .comments-sm {
+        display: none;
+    }
+}
+
+
+@media (max-width: 768px) {
+    .game {
+        display: none;
+    }
+
+    .head {
+        margin-left: 0;
+        margin-top: 0;
+    }
+
+    h1 {
+        font-size: 38px;
+    }
+
+    .head h2 {
+        font-size: 20px;
+    }
+
+    .link {
+        font-size: 15px;
+    }
+
+    .comments-lg {
+        display: none;
+    }
+
+    .comments-sm {
+        display: block;
+    }
+
+}
+
+
+/* END MEDIA QUERIES */
 </style>
