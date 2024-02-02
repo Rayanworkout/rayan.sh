@@ -40,10 +40,9 @@ defineProps<{ article: Article }>()
     border-radius: 7px;
     padding: 1rem;
     margin-bottom: 1rem;
-    transition: all 0.3s ease-in-out;
     width: 60%;
     overflow: hidden;
-    background-color: rgba(0, 0, 0, 0.45);
+    background-color: rgba(0, 0, 0, 0.3);
 
 }
 

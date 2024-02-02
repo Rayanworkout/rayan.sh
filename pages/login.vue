@@ -165,10 +165,7 @@ const githubLogin = async () => {
 
 <style scoped>
 .bg-container {
-    background-image: url('/img/login.jpg');
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
+    background-color: var(--new-background);
 
     width: 100%;
     min-height: 1000px;
@@ -189,8 +186,7 @@ input {
 
 
 input:focus {
-    border: 1px solid var(--text);
-    box-shadow: 0 0 0 0.25rem rgba(96, 150, 195, 0.5);
+    border: 1px solid white;
 }
 
 input::placeholder {
@@ -226,7 +222,7 @@ i {
 
 .login:hover,
 i:hover {
-    color: var(--primary);
+    color: white;
 }
 
 @media (max-width: 768px) {
