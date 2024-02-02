@@ -55,7 +55,6 @@ const filterInput = (value: string) => {
 <style scoped>
 .bg-container {
     background-color: var(--new-background);
-
     width: 100%;
     min-height: 1000px;
 }

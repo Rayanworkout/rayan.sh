@@ -70,9 +70,9 @@ const likeArticle = async () => {
 
 
 <template>
-  <NavbarArticle/>
-  <section class="py-5">
-    <div class="container">
+  <section>
+    <Navbar/>
+    <div class="container py-5">
       <div class="article-container mx-auto">
         <div class="pb-5 text-center">
           <h1>{{ article.value.title }}</h1>
@@ -118,12 +118,8 @@ const likeArticle = async () => {
   }
 }
 
-nav {
-  color: black;
-}
-
 section {
-  background-color: var(--background);
+  background-color: var(--new-background);
   min-height: 1000px;
 
 }
@@ -143,7 +139,7 @@ section {
 .article-likes i:hover,
 .article-likes div:hover {
   cursor: pointer;
-  color: var(--primary);
+  color: white;
 }
 
 .tags {

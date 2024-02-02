@@ -36,7 +36,7 @@ defineProps<{ article: Article }>()
 
 <style scoped>
 .article {
-    border: 1px solid #ccc;
+    border: 1px solid var(--text);
     border-radius: 7px;
     padding: 1rem;
     margin-bottom: 1rem;
@@ -48,7 +48,6 @@ defineProps<{ article: Article }>()
 }
 
 h4 {
-    color: white;
     transition: all 0.3s ease-in-out;
 }
 
@@ -59,7 +58,7 @@ h4:hover {
 }
 
 .article:hover {
-    border-color: var(--accent);
+    border-color: white;
     cursor: pointer;
 }
 
