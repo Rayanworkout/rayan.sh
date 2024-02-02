@@ -19,7 +19,7 @@ defineProps<{ tag: string }>()
     padding: 5px;
     border-radius: 5px;
     text-decoration: none;
-    color: var(--text);
+    color: white;
     margin: 5px;
     width: fit-content;
 }
@@ -31,7 +31,7 @@ defineProps<{ tag: string }>()
 
 
 .tag:hover {
-    border-color: var(--primary);
+    border-color: white;
     cursor: pointer;
 }
 </style>

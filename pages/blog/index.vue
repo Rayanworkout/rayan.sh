@@ -42,13 +42,11 @@ const filterInput = (value: string) => {
 
 <template>
     <div class="bg-container">
-        <div class="overlay">
-            <Navbar />
-            <Header />
-            <SmallSearchInput @inputUpdate="filterInput" />
-            <CategoriesFilter @categoryClicked="handleCategoryFilter" :clickedCategories="filteredCategories" />
-            <ArticlesGrid :articles="filteredArticles" :state="state" />
-        </div>
+        <Navbar />
+        <Header />
+        <SmallSearchInput @inputUpdate="filterInput" />
+        <CategoriesFilter @categoryClicked="handleCategoryFilter" :clickedCategories="filteredCategories" />
+        <ArticlesGrid :articles="filteredArticles" :state="state" />
     </div>
 </template>
 
@@ -56,18 +54,8 @@ const filterInput = (value: string) => {
 
 <style scoped>
 .bg-container {
-    background-image: url('/img/city.jpg');
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
-    background-attachment: fixed;
-
+    background-color: var(--new-background);
     width: 100%;
     min-height: 1000px;
-}
-
-.overlay {
-  background-color: rgba(0, 0, 0, 0.55);
-  min-height: 1000px;
 }
 </style>

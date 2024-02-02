@@ -1,14 +1,15 @@
 :root {
-  --text: #f7f4f4;
+  --text: #607B96;
   --background: #262626;
-  --primary: #6096c3;
-  --secondary: #1e5280;
-  --accent: #3b90d9;
+  --primary: #4D5BCE;
+
+  --new-background: #011627;
+  --accent: #FEA55F;
 }
 
 * {
   color: var(--text);
-  font-family: 'Montserrat', sans-serif;
+  font-family: 'Fira Code', 'monospace';
   font-size: 18px;
   line-height: 1.5;
   margin: 0;
@@ -17,7 +18,7 @@
 }
 
 /* Code blocks */
-  
+
 
 
 pre code.hljs {
@@ -159,6 +160,7 @@ code.hljs {
 .cursor {
   animation: blinkCursor 1.5s infinite;
   background-color: transparent;
+  color: white;
 }
 
 @keyframes blinkCursor {

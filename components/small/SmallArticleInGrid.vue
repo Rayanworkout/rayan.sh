@@ -14,8 +14,8 @@ defineProps<{ article: Article }>()
                 <div class="col-md-6">
                     <h4>{{ article.title }}</h4>
                     <div class="mb-2 date">
-                        <small>{{ article.createdAt }}</small>
-                        <div class="category"><small><i class="bi bi-arrow-right-short icon"></i>{{
+                        <small class="creation">{{ article.createdAt }}</small>
+                        <div class="category"><small><i class="bi bi-arrow-right-short icon text-white"></i>{{
                             article.category.name }}</small></div>
                         <div v-if="article.likes > 1"><small><i class="bi bi-heart icon"></i> {{ article.likes }}</small>
                         </div>
@@ -36,30 +36,28 @@ defineProps<{ article: Article }>()
 
 <style scoped>
 .article {
-    border: 1px solid #ccc;
+    border: 1px solid var(--text);
     border-radius: 7px;
     padding: 1rem;
     margin-bottom: 1rem;
-    transition: all 0.3s ease-in-out;
     width: 60%;
     overflow: hidden;
-    background-color: rgba(0, 0, 0, 0.45);
+    background-color: rgba(0, 0, 0, 0.3);
 
 }
 
 h4 {
-    transition: all 0.3s ease-in-out;
+    color: white;
 }
 
 h4:hover {
-    color: var(--primary);
+    color: white;
     width: fit-content;
     cursor: pointer;
 }
 
 .article:hover {
-    transform: scale(1.02);
-    border-color: var(--primary);
+    border-color: white;
     cursor: pointer;
 }
 
@@ -69,7 +67,7 @@ h4:hover {
 }
 
 .category small {
-    font-weight: 600;
+    color: var(--primary);
 }
 
 .icon {

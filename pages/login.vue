@@ -139,7 +139,7 @@ const githubLogin = async () => {
         <Navbar />
         <div class="text-center form-container mx-auto">
             <form class="mx-auto" @submit.prevent="login">
-                <h1 class="my-3">Login</h1>
+                <h1 class="my-3">Login<span class="cursor">__</span></h1>
                 <div class="mytoast animate__animated animate__bounceInRight" v-show="state.showToast">{{
                     state.message }} <i class="bi bi-check-circle-fill"></i></div>
                 <div class="form-group py-3 mx-auto">
@@ -165,13 +165,14 @@ const githubLogin = async () => {
 
 <style scoped>
 .bg-container {
-    background-image: url('/img/login.jpg');
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
+    background-color: var(--new-background);
 
     width: 100%;
     min-height: 1000px;
+}
+
+h1 {
+    color: white;
 }
 
 .error {
@@ -189,8 +190,7 @@ input {
 
 
 input:focus {
-    border: 1px solid var(--text);
-    box-shadow: 0 0 0 0.25rem rgba(96, 150, 195, 0.5);
+    border: 1px solid white;
 }
 
 input::placeholder {
@@ -226,7 +226,7 @@ i {
 
 .login:hover,
 i:hover {
-    color: var(--primary);
+    color: white;
 }
 
 @media (max-width: 768px) {

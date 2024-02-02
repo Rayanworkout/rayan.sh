@@ -69,7 +69,7 @@ const handleNewTagCategoryClick = (e: any) => {
 
 const publish = async (e: any) => {
   e.preventDefault();
-  
+
   const category = selectedCategory.value;
   const tags = clickedTags.value;
 
@@ -80,8 +80,13 @@ const publish = async (e: any) => {
 
   const { data, error } = await useFetch('/api/v1/articles/create', {
     method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+    },
     body: JSON.stringify(newArticle.value),
   });
+
+  console.log(error)
 
 
   if (!error.value) {
@@ -91,6 +96,10 @@ const publish = async (e: any) => {
     // Error
     console.log(error.value);
     state.error = true;
+
+    setTimeout(() => {
+      state.error = false;
+    }, 2000);
   }
 }
 

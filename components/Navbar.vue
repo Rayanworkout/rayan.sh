@@ -22,137 +22,127 @@ const showMenu = ref(false);
 
 <template>
     <nav class="navbar navbar-expand-lg">
-        <NuxtLink v-show="$route.path !== '/'" to="/" class="navbar-brand mx-3">Rayan.sh</NuxtLink>
-        <button class="toggle-button ms-auto" :class="{ 'active': showMenu }" aria-label="Toggle navigation"
+        <NuxtLink to="/" class="navbar-brand mx-4">rayan.sh</NuxtLink>
+        <div class="ms-auto mx-3" :class="{ 'active': showMenu }" aria-label="Toggle navigation"
             @click="showMenu = !showMenu">
-            <span></span>
-            <span></span>
-            <span></span>
-        </button>
-        <div v-show="showMenu" class="w-100 text-end mx-3 sm-content">
-            <ul class="navbar-nav animate__animated animate__fadeInDown">
-                <NuxtLink v-show="$route.path !== '/blog'" to="/blog" class="about nav-link" :class="{ 'current': $route.path === '/blog' }">Blog</NuxtLink>
-                <NuxtLink v-show="$route.path !== '/about'" to="/about" class="about nav-link" :class="{ 'current': $route.path === '/about' }">About
-                </NuxtLink>
-                <NuxtLink v-show="!userLoggedIn && $route.path !== '/login'" to="/login" class="about nav-link"
-                    :class="{ 'current': $route.path === '/login' }">Login
-                </NuxtLink>
-                <NuxtLink v-show="userLoggedIn" @click="logout" class="about nav-link">Logout</NuxtLink>
-                <NuxtLink v-show="userLoggedIn" to="/dashboard" class="about nav-link">Dashboard</NuxtLink>
-            </ul>
+            <div class="x-icon"><i v-show="showMenu" class="bi bi-x-lg icon"></i></div>
+            <div class="hamburger-icon"><i v-show="!showMenu" class="bi bi-list icon"></i></div>
         </div>
-        <div class="lg-content ms-auto mx-3">
-            <ul class="navbar-nav animate__animated animate__fadeInDown">
-                <NuxtLink v-show="$route.path !== '/blog'" to="/blog" class="about nav-link" :class="{ 'current': $route.path === '/blog' }">Blog</NuxtLink>
-                <NuxtLink v-show="$route.path !== '/about'" to="/about" class="about nav-link" :class="{ 'current': $route.path === '/about' }">About
-                </NuxtLink>
-                <NuxtLink v-show="!userLoggedIn && $route.path !== '/login'" to="/login" class="about nav-link"
-                    :class="{ 'current': $route.path === '/login' }">Login
-                </NuxtLink>
-                <NuxtLink v-if="userLoggedIn" to="/dashboard" class="about nav-link"
-                    :class="{ 'current': $route.path === '/dashboard' }">Dashboard</NuxtLink>
-                <NuxtLink v-if="userLoggedIn" @click="logout" class="about nav-link">Logout</NuxtLink>
-            </ul>
+        <div v-show="showMenu" class="w-100 text-end mx-3 sm-content">
+            <NuxtLink class="nav-link mt-4" to="/" :class="{ 'current': $route.path === '/' }">_hello</NuxtLink>
+            <div class="custom-border-bottom"></div>
+            <NuxtLink class="nav-link" to="/about" :class="{ 'current': $route.path === '/about' }">_about-me
+            </NuxtLink>
+            <div class="custom-border-bottom"></div>
+            <!-- <NuxtLink class="nav-link" to="#">_projects</NuxtLink> -->
+            <!-- <div class="custom-border-bottom"></div> -->
+            <NuxtLink class="nav-link" to="/blog" :class="{ 'current': $route.path === '/blog' }">_blog
+            </NuxtLink>
+            <div class="custom-border-bottom"></div>
+            <a class="nav-link" href="mailto:rayan13170@protonmail.com">_contact-me</a>
+            <div class="custom-border-bottom"></div>
+            <NuxtLink class="nav-link" to="/login" :class="{ 'current': $route.path === '/login' }">_login</NuxtLink>
+        </div>
+        <div class="container-fluid">
+            <div class="w-100 mx-3 lg-content">
+                <div class="navbar-nav">
+                    <NuxtLink class="nav-link me-auto" aria-current="page" to="/">rayan.sh</NuxtLink>
+                    <NuxtLink class="nav-link" to="/" :class="{ 'current': $route.path === '/' }">_hello</NuxtLink>
+                    <NuxtLink class="nav-link px-4" to="/about" :class="{ 'current': $route.path === '/about' }">_about-me
+                    </NuxtLink>
+                    <!-- <NuxtLink class="nav-link" to="#">_projects</NuxtLink> -->
+                    <NuxtLink class="nav-link px-4" to="/blog" :class="{ 'current': $route.path === '/blog' }">_blog
+                    </NuxtLink>
+                    <a class="nav-link contact" href="mailto:rayan13170@protonmail.com">_contact-me</a>
+                    <NuxtLink class="nav-link" to="/login" :class="{ 'current': $route.path === '/login' }">_login</NuxtLink>
+                </div>
+            </div>
         </div>
     </nav>
+    <!-- Overlay -->
+    <div v-show="showMenu" class="overlay"></div>
 </template>
-  
 
 
 <style scoped>
+.overlay {
+    position: fixed;
+    top: 60px;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(1, 22, 39, 0.95);
+    z-index: 999;
+}
+
+.icon {
+    font-size: 1.8rem;
+    color: var(--text);
+    background-color: transparent;
+}
 
 .navbar {
-    background-color: transparent;
+    height: 60px;
+    border-bottom: 1px solid #1E2D3D;
 }
 
-/* Navbar elements */
-.nav-link {
-    color: var(--text);
-    font-size: 1.4rem;
-}
-
-
-/* Rayan.sh */
+.nav-link,
 .navbar-brand {
-    font-weight: 600;
-    font-size: 1.7rem;
-    cursor: pointer;
-    color: var(--text);
+    color: #90a2b6;
 }
 
-.navbar-brand:hover,
-.nav-link:hover {
-    color: var(--primary);
-    cursor: pointer;
-}
-
-ul {
-    list-style: none;
-    padding: 0;
-}
-
-li {
-    display: block;
-    margin-left: 15px;
+.contact {
+    margin-left: auto;
 }
 
 
-.toggle-button {
-    width: 60px;
-    background-color: transparent;
-    border: none;
-    outline: none;
-    cursor: pointer;
+/* SMALL CONTENT */
+
+.sm-content {
     display: flex;
     flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+    gap: 1rem;
+    z-index: 1000;
 }
 
-.toggle-button span {
-    display: block;
-    border-radius: 10px;
-    width: 30px;
-    height: 3px;
-    margin: 7px;
-    background-color: var(--text);
-    transition: 0.7s all;
+.custom-border-bottom {
+    width: 100%;
+    border-bottom: 1px solid #1E2D3D;
 }
 
-.toggle-button span:nth-of-type(1) {
-    width: 30%;
+
+/* END SMALL CONTENT */
+
+/* HOVERS */
+
+.nav-link:hover,
+.contact:hover {
+    background-color: #1e2d3d74;
+    color: white;
 }
 
-.toggle-button span:nth-of-type(2) {
-    width: 60%;
-}
 
-.toggle-button span:nth-of-type(3) {
-    width: 30%;
-}
+/* END HOVERS */
 
-.toggle-button.active span:nth-of-type(1) {
-    transform-origin: bottom;
-    transform: rotateZ(45deg) translate(8px, 6px);
-}
 
-.toggle-button.active span:nth-of-type(2) {
-    transform-origin: top;
-    transform: rotateZ(-45deg);
-}
-
-.toggle-button.active span:nth-of-type(3) {
-    transform-origin: bottom;
-    transform: translate(14px, -11px) rotateZ(45deg);
-    width: 35%;
-}
+/* MEDIA QUERIES */
 
 @media (max-width: 1000px) {
     .lg-content {
         display: none;
     }
+
+    .current {
+        color: white;
+    }
 }
 
 @media (min-width: 1000px) {
-    .toggle-button {
+
+    .x-icon,
+    .hamburger-icon {
         display: none;
     }
 
@@ -160,8 +150,16 @@ li {
         display: none;
     }
 
+    .navbar-brand {
+        display: none;
+    }
+
     .current {
-    border-bottom: 1px solid var(--primary);
+        border-bottom: 2px solid var(--accent);
+        color: white;
+    }
 }
-}
+
+
+/* END MEDIA QUERIES */
 </style>

@@ -21,7 +21,7 @@ const showMenu = ref(false);
 
 
 <template>
-    <nav class="navbar navbar-expand-lg pb-5">
+    <nav class="navbar navbar-expand-lg">
         <NuxtLink v-show="$route.path !== '/'" to="/" class="navbar-brand mx-3">Rayan.sh</NuxtLink>
         <button class="toggle-button ms-auto" :class="{ 'active': showMenu }" aria-label="Toggle navigation"
             @click="showMenu = !showMenu">
@@ -31,8 +31,10 @@ const showMenu = ref(false);
         </button>
         <div v-show="showMenu" class="w-100 text-end mx-3 sm-content">
             <ul class="navbar-nav">
-                <NuxtLink v-show="$route.path !== '/blog'" to="/blog" class="about nav-link" :class="{ 'current': $route.path === '/blog' }">Blog</NuxtLink>
-                <NuxtLink v-show="$route.path !== '/about'" to="/about" class="about nav-link" :class="{ 'current': $route.path === '/about' }">About
+                <NuxtLink v-show="$route.path !== '/blog'" to="/blog" class="about nav-link"
+                    :class="{ 'current': $route.path === '/blog' }">Blog</NuxtLink>
+                <NuxtLink v-show="$route.path !== '/about'" to="/about" class="about nav-link"
+                    :class="{ 'current': $route.path === '/about' }">About
                 </NuxtLink>
                 <NuxtLink v-show="!userLoggedIn && $route.path !== '/login'" to="/login" class="about nav-link"
                     :class="{ 'current': $route.path === '/login' }">Login
@@ -43,8 +45,10 @@ const showMenu = ref(false);
         </div>
         <div class="lg-content ms-auto mx-3">
             <ul class="navbar-nav">
-                <NuxtLink v-show="$route.path !== '/blog'" to="/blog" class="about nav-link" :class="{ 'current': $route.path === '/blog' }">Blog</NuxtLink>
-                <NuxtLink v-show="$route.path !== '/about'" to="/about" class="about nav-link" :class="{ 'current': $route.path === '/about' }">About
+                <NuxtLink v-show="$route.path !== '/blog'" to="/blog" class="about nav-link"
+                    :class="{ 'current': $route.path === '/blog' }">Blog</NuxtLink>
+                <NuxtLink v-show="$route.path !== '/about'" to="/about" class="about nav-link"
+                    :class="{ 'current': $route.path === '/about' }">About
                 </NuxtLink>
                 <NuxtLink v-show="!userLoggedIn && $route.path !== '/login'" to="/login" class="about nav-link"
                     :class="{ 'current': $route.path === '/login' }">Login
@@ -60,9 +64,8 @@ const showMenu = ref(false);
 
 
 <style scoped>
-
 .navbar {
-    background-color: var(--background);
+    background-color: transparent;
 }
 
 /* Navbar elements */
@@ -161,7 +164,6 @@ li {
     }
 
     .current {
-    border-bottom: 1px solid var(--primary);
-}
-}
-</style>
+        border-bottom: 1px solid var(--primary);
+    }
+}</style>

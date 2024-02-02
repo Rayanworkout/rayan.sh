@@ -27,14 +27,14 @@ defineProps<{ category: string }>()
 
 
 .category:hover {
-    color: var(--primary);
-    border-color: var(--primary);
+    color: white;
+    border-color: white;
     cursor: pointer;
 }
 
 .category.active {
-    color: var(--primary);
-    border-color: var(--primary);
+    color: white;
+    border-color: white;
     cursor: pointer;
 }
 </style>
