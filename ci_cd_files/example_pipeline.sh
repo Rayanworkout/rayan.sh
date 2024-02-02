@@ -3,7 +3,7 @@
 # npx prisma migrate deploy
 # or
 # node node_modules/prisma/build/index.js migrate deploy
-
+# journalctl -u flask_listener.service --since today
 
 
 # Stop if an error occurs
