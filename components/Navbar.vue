@@ -54,7 +54,10 @@ const showMenu = ref(false);
                     <NuxtLink class="nav-link px-4" to="/blog" :class="{ 'current': $route.path === '/blog' }">_blog
                     </NuxtLink>
                     <a class="nav-link contact" href="mailto:rayan13170@protonmail.com">_contact-me</a>
-                    <NuxtLink class="nav-link" to="/login" :class="{ 'current': $route.path === '/login' }">_login</NuxtLink>
+                    <NuxtLink class="nav-link" to="/login" :class="{ 'current': $route.path === '/login' }">_login
+                    </NuxtLink>
+                    <NuxtLink v-show="userLoggedIn" to="/dashboard" class="about nav-link">_dashboard</NuxtLink>
+                    <NuxtLink v-show="userLoggedIn" @click="logout" class="about nav-link">_logout</NuxtLink>
                 </div>
             </div>
         </div>
@@ -121,6 +124,7 @@ const showMenu = ref(false);
 .contact:hover {
     background-color: #1e2d3d74;
     color: white;
+    cursor: pointer;
 }
 
 

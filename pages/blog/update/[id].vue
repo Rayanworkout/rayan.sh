@@ -101,14 +101,14 @@ const updateSelectedCategory = (e: any) => {
 
 
 <template>
-  <NavbarArticle />
   <section class="main">
+    <Navbar />
     <div class="container">
       <div class="mytoast animate__animated animate__bounceInRight" v-show="state.showToast">{{ state.message }} <i
           class="bi bi-check-circle-fill"></i></div>
       <div class="text-center">
         <form class="mx-auto" @submit.prevent="sendArticle">
-          <h1>Update</h1>
+          <h1 class="mt-5 text-white">Update</h1>
           <div v-show="article.created" class="success">Article created !</div>
           <div class="form-group py-3 mx-auto">
             <input type="text" placeholder="Title" v-model="article.title">
@@ -147,7 +147,7 @@ const updateSelectedCategory = (e: any) => {
 
 <style scoped>
 .main {
-  background-color: var(--background);
+  background-color: var(--new-background);
   width: auto;
   min-height: 100vh;
 }
@@ -179,7 +179,7 @@ select {
   border: 1px solid var(--primary);
   border-radius: 10px;
   padding: 0.5rem;
-  background-color: var(--background);
+  background-color: var(--new-background);
   width: 450px;
 }
 

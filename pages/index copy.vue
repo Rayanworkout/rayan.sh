@@ -39,15 +39,49 @@ onMounted(() => {
     <div class="bg-container">
         <Navbar />
         <div class="container py-5">
-            <NuxtLink to="/" class="navbar-brand title">Rayan.sh<span class="cursor">__</span></NuxtLink>
-            <h1 class="text-center">{{ typewriter }}</h1>
-            <div class="progress" :style="{ '--progress': `${progressBar}%` }">
-                <div class="bar" :style="{ width: progressBar + '%' }"></div>
-            </div>
-            <div v-if="showLink" class="cta">
-                <NuxtLink to="/blog" class="cta animate__animated animate__fadeInUp">Check my blog <i
-                        class="bi bi-box-arrow-up-right"></i>
-                </NuxtLink>
+            <!-- gradients -->
+            <div class="css-blurry-gradient-blue"></div>
+            <div class="css-blurry-gradient-green"></div>
+            <div class="hero my-5">
+                <div class="row">
+                    <div class="col-md-8">
+                        <div class="head">
+                            <span>
+                                Hi all, I am
+                            </span>
+                            <h1>Rayan<span class="cursor">__</span></h1>
+                            <h2>> Backend developer</h2>
+                            <div class="code my-5">
+                                <div class="comments-lg">
+                                    <p>
+                                        // This website showcases some of my work
+                                    </p>
+                                    <p>
+                                        // you can also check my projects on Github
+                                    </p>
+                                </div>
+                                <div class="comments-sm">
+                                    <p>
+                                        // This website showcases <br>some of my work
+                                    </p>
+                                    <p>
+                                        // you can also check my <br>projects on Github
+                                    </p>
+                                </div>
+                                <p>
+                                    <span style="color: #4D5BCE;" class="const">const</span> <span
+                                        style="color: #43D9AD;">githubLink</span> <span class="text-white">=</span> <a
+                                        href="https://github.com/Rayanworkout" target="_blank"
+                                        class="link">"https://github.com/Rayanworkout"</a>
+                                </p>
+                            </div>
+                        </div>
+
+                    </div>
+                    <div class="col-md-4 game">
+                        
+                    </div>
+                </div>
             </div>
         </div>
     </div>
@@ -55,122 +89,116 @@ onMounted(() => {
 
 
 <style scoped>
-body {
-    background: black;
+.bg-container {
+    background-color: var(--new-background);
+    height: 100vh;
 }
+
+.head {
+    margin-left: 155px;
+    margin-top: 4rem;
+}
+
 
 h1 {
-    background-color: transparent;
-    padding-top: 80px;
-    font-size: 70px;
-    font-weight: 500;
+    font-size: 58px;
+    line-height: 1;
+    color: #E5E9F0;
+    padding-top: 1rem;
+    padding-bottom: 1rem;
 }
 
-.title {
-    font-size: 3rem;
-    font-weight: 600;
-    color: var(--text);
-    background-color: transparent;
+.head span {
+    font-size: 18px;
+    line-height: 1;
+    color: #E5E9F0;
 }
 
-.cta,
-.cta i {
-    font-size: 1.5rem;
-    font-weight: 600;
-    color: var(--text);
-    background-color: transparent;
-    text-decoration: none;
-    padding: 5px;
-    background-color: rgba(0, 0, 0, 0.3);
-    border-radius: 10px;
-    transition: all 0.2s ease-in-out;
-    border-radius: 10px;
+.head h2 {
+    font-size: 32px;
+    line-height: 1;
+    color: var(--primary);
 }
 
-.cta:hover,
-.cta i:hover {
-    transform: scale(1.03);
+.link {
+    color: #E99287;
+    text-decoration-line: underline;
+    text-underline-offset: 4px;
 }
 
-.container {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    background-color: transparent;
+.css-blurry-gradient-blue {
+    position: fixed;
+    bottom: 25%;
+    right: 5%;
+    width: 200px;
+    height: 200px;
+    border-radius: 0% 0% 50% 50%;
+    rotate: 10deg;
+    filter: blur(70px);
+    background: radial-gradient(circle at 50% 50%, rgba(77, 91, 206, 1), rgba(76, 0, 255, 0));
+    opacity: 0.5;
+    z-index: 10;
 }
 
-.bg-container {
-    width: 100%;
-    height: 100vh;
-    background-image: url('/img/checks.jpg');
-    background-size: cover;
-    background-position: center;
+.css-blurry-gradient-green {
+    position: absolute;
+    top: 20%;
+    right: 20%;
+    width: 200px;
+    height: 200px;
+    border-radius: 0% 50% 0% 50%;
+    filter: blur(70px);
+    background: radial-gradient(circle at 50% 50%, rgba(67, 217, 173, 1), rgba(76, 0, 255, 0));
+    opacity: 0.5;
+    z-index: 10;
+}
+
+.comments-sm {
+    font-size: 10px;
 }
 
 
+/* MEDIA QUERIES */
 
-/* Progress bar  */
-
-.progress {
-
-    width: 30%;
-    height: 40px;
-    margin: 4em auto;
-    border: 1px solid #fff;
-    padding: 8px 10px;
-    box-shadow: 0 0 10px #aaa;
-}
-
-.progress .bar {
-    height: 100%;
-    background: linear-gradient(#86bbe4, #6096c3, #86bbe4);
-
-    background-repeat: repeat;
-    box-shadow: 0 0 10px 0px rgb(0, 0, 0);
-    animation:
-        shine 4s ease-in infinite,
-        end 1s ease-out 1 7s;
-    transition: width 3s ease 3s;
-}
-
-@property --progress {
-    syntax: "<length>";
-    initial-value: 0%;
-    inherits: true;
-}
-
-@keyframes shine {
-    0% {
-        background-position: 0 0;
-    }
-
-    100% {
-        background-position: 0 50px;
+@media (min-width: 768px) {
+    .comments-sm {
+        display: none;
     }
 }
-
 
 
 @media (max-width: 768px) {
+    .game {
+        display: none;
+    }
+
+    .head {
+        margin-left: 0;
+        margin-top: 0;
+    }
+
     h1 {
-        background-color: transparent;
-        padding-top: 50px;
-        font-size: 50px;
-        font-weight: 500;
+        font-size: 38px;
     }
 
-    .progress {
-        width: 90%;
-        height: 30px;
+    .head h2 {
+        font-size: 20px;
     }
 
-    .cta {
-        font-size: 1.2rem;
+    .link {
+        font-size: 15px;
     }
 
-    .cta i {
-        font-size: 1rem;
+    .comments-lg {
+        display: none;
     }
+
+    .comments-sm {
+        display: block;
+    }
+
 }
+
+
+/* END MEDIA QUERIES */
 </style>

@@ -43,43 +43,28 @@ onMounted(() => {
             <div class="css-blurry-gradient-blue"></div>
             <div class="css-blurry-gradient-green"></div>
             <div class="hero my-5">
-                <div class="row">
-                    <div class="col-md-8">
-                        <div class="head">
-                            <span>
-                                Hi all, I am
-                            </span>
-                            <h1>Rayan<span class="cursor">__</span></h1>
-                            <h2>> Backend developer</h2>
-                            <div class="code my-5">
-                                <div class="comments-lg">
-                                    <p>
-                                        // This website showcases some of my work
-                                    </p>
-                                    <p>
-                                        // you can also check my projects on Github
-                                    </p>
-                                </div>
-                                <div class="comments-sm">
-                                    <p>
-                                        // This website showcases <br>some of my work
-                                    </p>
-                                    <p>
-                                        // you can also check my <br>projects on Github
-                                    </p>
-                                </div>
-                                <p>
-                                    <span style="color: #4D5BCE;" class="const">const</span> <span
-                                        style="color: #43D9AD;">githubLink</span> <span class="text-white">=</span> <a
-                                        href="https://github.com/Rayanworkout" target="_blank"
-                                        class="link">"https://github.com/Rayanworkout"</a>
-                                </p>
-                            </div>
-                        </div>
-
+                <div class="head">
+                    <div class="hello"><span>
+                            Hi all, I am
+                        </span>
+                        <h1>Rayan<span class="cursor">_</span></h1>
+                        <h2>> Backend developer</h2>
                     </div>
-                    <div class="col-md-4 game">
-                        
+                    <div class="code my-5">
+                        <div class="comments">
+                            <p>
+                                // This website showcases some of my work
+                            </p>
+                            <p>
+                                // you can also check my projects on Github
+                            </p>
+                        </div>
+                        <p class="github">
+                            <span style="color: #4D5BCE;" class="const">const</span> <span
+                                style="color: #43D9AD;">githubLink</span> <span class="text-white">=</span> <a
+                                href="https://github.com/Rayanworkout" target="_blank"
+                                class="link">"https://github.com/rayanworkout"</a>
+                        </p>
                     </div>
                 </div>
             </div>
@@ -95,8 +80,10 @@ onMounted(() => {
 }
 
 .head {
-    margin-left: 155px;
-    margin-top: 4rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
 }
 
 
@@ -153,49 +140,34 @@ h1 {
     z-index: 10;
 }
 
-.comments-sm {
-    font-size: 10px;
-}
-
 
 /* MEDIA QUERIES */
 
-@media (min-width: 768px) {
-    .comments-sm {
-        display: none;
-    }
-}
-
 
 @media (max-width: 768px) {
-    .game {
-        display: none;
-    }
 
-    .head {
-        margin-left: 0;
-        margin-top: 0;
-    }
-
-    h1 {
-        font-size: 38px;
-    }
-
-    .head h2 {
+    .comments p {
         font-size: 20px;
     }
 
-    .link {
+    .hello h1,
+    .cursor {
+        font-size: 40px;
+    }
+
+    .hello h2 {
+        font-size: 25px;
+    }
+
+    .github span {
+        font-size: 20px;
+    }
+
+    .github a {
         font-size: 15px;
+    
     }
 
-    .comments-lg {
-        display: none;
-    }
-
-    .comments-sm {
-        display: block;
-    }
 
 }
 
