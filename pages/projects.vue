@@ -1,5 +1,6 @@
 
 <script setup lang="ts">
+import { splitProjects } from "~/utils/frontend/splitElements";
 
 
 const projects = [
@@ -23,11 +24,11 @@ const projects = [
             "icon": "ri:reactjs-fill"
         }, {
             "name": "Python",
-            "icon": "ri:python-fill"
+            "icon": "carbon:logo-python"
 
         }, {
             "name": "NodeJS",
-            "icon": "ri:nodejs-fill"
+            "icon": "teenyicons:nodejs-outline"
         }]
     },
     {
@@ -38,13 +39,74 @@ const projects = [
             "icon": "ri:vuejs-fill"
         }, {
             "name": "Python",
-            "icon": "ri:python-fill"
+            "icon": "carbon:logo-python"
 
         }, {
             "name": "NodeJS",
-            "icon": "ri:nodejs-fill"
+            "icon": "teenyicons:nodejs-outline"
         }]
-    }
+    },
+    {
+        "name": "Project 4",
+        "description": "This is a project description",
+        "techs": [{
+            "name": "VueJS",
+            "icon": "ri:vuejs-fill"
+        }, {
+            "name": "Python",
+            "icon": "carbon:logo-python"
+
+        }, {
+            "name": "NodeJS",
+            "icon": "teenyicons:nodejs-outline"
+        }]
+    },
+    {
+        "name": "Project 4",
+        "description": "This is a project description",
+        "techs": [{
+            "name": "VueJS",
+            "icon": "ri:vuejs-fill"
+        }, {
+            "name": "Python",
+            "icon": "carbon:logo-python"
+
+        }, {
+            "name": "NodeJS",
+            "icon": "teenyicons:nodejs-outline"
+        }]
+    },
+    {
+        "name": "Project 4",
+        "description": "This is a project description",
+        "techs": [{
+            "name": "VueJS",
+            "icon": "ri:vuejs-fill"
+        }, {
+            "name": "Python",
+            "icon": "carbon:logo-python"
+
+        }, {
+            "name": "NodeJS",
+            "icon": "teenyicons:nodejs-outline"
+        }]
+    },
+    {
+        "name": "Project 4",
+        "description": "This is a project description",
+        "techs": [{
+            "name": "VueJS",
+            "icon": "ri:vuejs-fill"
+        }, {
+            "name": "Python",
+            "icon": "carbon:logo-python"
+
+        }, {
+            "name": "NodeJS",
+            "icon": "teenyicons:nodejs-outline"
+        }]
+    },
+
 ]
 
 const techs: string[] = [];
@@ -58,8 +120,11 @@ projects.forEach(project => {
     });
 });
 
+// Monitoring checked techs
 const checkedTechs = ref([]);
 
+// Creating groups of 4 projects to display them inline
+const splittedProjects = splitProjects(projects);
 
 </script>
 
@@ -86,7 +151,27 @@ const checkedTechs = ref([]);
                         </label>
                     </div>
                 </div>
-                <div class="col-md-8 d-flex justify-content-center">col-8</div>
+                <div class="col-md-8">
+                    <div v-for="list, index in splittedProjects" :key="index">
+                        <div class="row">
+                            <div v-for="project in list" :key="project.name" class="card m-2" style="width: 18rem;">
+                                <div class="card-body">
+                                    <h5 class="card-title text-center">{{ project.name }}
+                                        <Icon name="ph:arrow-square-out" />
+                                    </h5>
+                                    <p class="card-text">{{ project.description }}</p>
+                                    <div class="d-flex justify-content-center">
+                                        <div v-for="tech in project.techs" :key="tech.name" class="m-2">
+                                            <Icon :name="tech.icon" size="1.5rem" />
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+
+                </div>
             </div>
         </div>
     </div>
@@ -121,5 +206,18 @@ input[type="checkbox"] {
 
 label {
     cursor: pointer;
+}
+
+
+.card {
+    background-color: var(--new-background);
+    color: white;
+    border: 2px solid var(--text);
+    cursor: pointer;
+}
+
+.card:hover {
+    border: 2px solid white;
+    color: white;
 }
 </style>
