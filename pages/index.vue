@@ -51,20 +51,23 @@ onMounted(() => {
                         <h2>> Backend developer</h2>
                     </div>
                     <div class="code my-5">
-                        <div class="comments">
-                            <p>
-                                // This website showcases some of my work
-                            </p>
-                            <p>
-                                // you can also check my projects on Github
-                            </p>
-                        </div>
-                        <p class="github">
-                            <span style="color: #4D5BCE;" class="const">const</span> <span
-                                style="color: #43D9AD;">githubLink</span> <span class="text-white">=</span> <a
-                                href="https://github.com/Rayanworkout" target="_blank"
-                                class="link">"https://github.com/rayanworkout"</a>
+                        <p>
+                            // this website showcases my projects<br>
+                            // they are visible on GitHub as well<br>
+                            // you can also check out my articles here
                         </p>
+                        <div class="github">
+                            <span style="color: #4D5BCE;" class="const">const </span>
+                            <span style="color: #43D9AD;">github</span> <span class="text-white">= </span>
+                            <a href="https://github.com/Rayanworkout" target="_blank" class="link">"<span
+                                    class="https">https://</span>github.com/rayanworkout"</a>
+                        </div>
+                        <div class="blog my-1">
+                            <span style="color: #4D5BCE;" class="const">const </span>
+                            <span style="color: #43D9AD;">blog</span> <span class="text-white">= </span>
+                            <a href="https://rayan.sh/blog" class="link">"<span
+                                    class="https">https://</span>rayan.sh/blog"</a>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -107,7 +110,8 @@ h1 {
     color: var(--primary);
 }
 
-.link {
+.link,
+.link span {
     color: #E99287;
     text-decoration-line: underline;
     text-underline-offset: 4px;
@@ -146,11 +150,6 @@ h1 {
 
 @media (max-width: 768px) {
 
-    .comments p {
-        font-size: 20px;
-        padding-left: 1rem;
-    }
-
     .hello h1,
     .cursor {
         font-size: 40px;
@@ -160,13 +159,15 @@ h1 {
         font-size: 25px;
     }
 
-    .github span {
-        font-size: 13px;
+    .https {
+        display: none;
     }
 
-    .github a {
-        font-size: 13px;
-    
+    .github span,
+    .github a,
+    .blog span,
+    .blog a {
+        font-size: 16px;
     }
 
 
