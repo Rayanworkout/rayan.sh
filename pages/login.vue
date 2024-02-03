@@ -139,7 +139,7 @@ const githubLogin = async () => {
         <Navbar />
         <div class="text-center form-container mx-auto">
             <form class="mx-auto" @submit.prevent="login">
-                <h1 class="my-3">Login<span class="cursor">__</span></h1>
+                <h1 class="my-3">login<span class="cursor">__</span></h1>
                 <div class="mytoast animate__animated animate__bounceInRight" v-show="state.showToast">{{
                     state.message }} <i class="bi bi-check-circle-fill"></i></div>
                 <div class="form-group py-3 mx-auto">

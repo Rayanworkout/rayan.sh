@@ -15,6 +15,7 @@
     "@types/jsonwebtoken": "^9.0.5",
     "@types/markdown-it": "^13.0.7",
     "nuxt": "^3.9.3",
+    "nuxt-icon": "^0.6.8",
     "nuxt-security": "^1.0.1",
     "vue": "^3.4.14",
     "vue-router": "^4.2.5"

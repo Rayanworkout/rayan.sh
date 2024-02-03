@@ -20,7 +20,7 @@ export default defineNuxtConfig({
     'assets/css/style.css',
     'animate.css',
   ],
-  modules: ['@nuxtjs/google-fonts', 'nuxt-security', '@sidebase/nuxt-auth'],
+  modules: ['@nuxtjs/google-fonts', 'nuxt-security', '@sidebase/nuxt-auth', 'nuxt-icon'],
 
   auth: {
     baseURL: process.env.AUTH_ORIGIN,

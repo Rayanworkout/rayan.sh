@@ -1,15 +1,76 @@
 
 <script setup lang="ts">
 
+const techs = ["React", "VueJS", "Python", "NodeJS"]
+
+
+const projects = [
+    {
+        "name": "Project 1",
+        "description": "This is a project description",
+        "techs": [{
+            "name": "React",
+            "icon": "ri:reactjs-fill"
+        }, {
+            "name": "VueJS",
+            "icon": "ri:vuejs-fill"
+        }]
+
+    },
+    {
+        "name": "Project 2",
+        "description": "This is a project description",
+        "techs": [{
+            "name": "React",
+            "icon": "ri:reactjs-fill"
+        }, {
+            "name": "Python",
+            "icon": "ri:python-fill"
+
+        }, {
+            "name": "NodeJS",
+            "icon": "ri:nodejs-fill"
+        }]
+    },
+    {
+        "name": "Project 3",
+        "description": "This is a project description",
+        "techs": [{
+            "name": "VueJS",
+            "icon": "ri:vuejs-fill"
+        }, {
+            "name": "Python",
+            "icon": "ri:python-fill"
+
+        }, {
+            "name": "NodeJS",
+            "icon": "ri:nodejs-fill"
+        }]
+    }
+]
+
+
+
 </script>
 
 
 <template>
     <div class="bg-container px-1">
         <Navbar />
-        <h1 class="text-center mt-5">ls projects/<span class="cursor">__</span></h1>
-
-
+        <h1 class="text-center mt-5 pb-4">ls projects/<span class="cursor">__</span></h1>
+        <div class="main-frame py-2 mx-2">
+            <div class="row my-5">
+                <div class="col-md-4">
+                    <div v-for="tech in techs" key="tech" style="padding-left: 30px;">
+                        <input class="m-2" type="checkbox" :id="tech" />
+                        <label :for="tech">
+                            <Icon name="ri:reactjs-fill" /> {{ tech }}
+                        </label>
+                    </div>
+                </div>
+                <div class="col-md-8 d-flex justify-content-center">col-8</div>
+            </div>
+        </div>
     </div>
 </template>
 
@@ -20,81 +81,20 @@
     min-height: 1000px;
 }
 
-
-.about {
-    width: 60%;
-    text-align: center;
-    /* border: 1px solid #ccc; */
-    border-radius: 5px;
-    padding: 1rem;
-    margin-bottom: 0.5rem;
-    transition: all 0.2s ease-in-out;
-    /* background-color: rgba(0, 0, 0, 0.55); */
-}
-
-p,
-.infos,
-.infos a,
-.infos i {
-    background-color: transparent;
-    color: white;
-
-}
-
 h1 {
     color: white;
 }
 
-.infos {
-    font-size: 0.8rem;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+
+.main-frame {
+    border: 2px solid var(--text);
+    padding: 20px;
+    /* Padding inside the frame */
 }
 
-.infos a {
-    text-decoration: none;
-    color: var(--text-color);
-}
-
-.infos a:hover {
-    color: var(--primary);
-}
-
-.infos i {
-    font-size: 1.3rem;
-}
-
-
-.my-btn {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    text-decoration: none;
-    color: white;
-    padding: 0.5rem;
-    width: 60px;
-    border-radius: 10px;
-}
-
-.my-btn:hover {
-    border-color: var(--text);
-    background-color: transparent;
-    cursor: pointer;
-}
-
-
-@media (max-width: 768px) {
-    .about {
-        width: 100%;
-    }
-
-    .mail {
-        font-size: 0.85rem;
-    }
-
-    .infos i {
-        font-size: 1.2rem;
-    }
+.frame-column {
+    border-right: 1px solid var(--text);
+    padding-right: 15px;
+    height: 100%;
 }
 </style>
