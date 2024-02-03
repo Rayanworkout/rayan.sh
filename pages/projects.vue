@@ -161,7 +161,7 @@ const splittedProjects = splitProjects(projects);
                                     </h5>
                                     <p class="card-text">{{ project.description }}</p>
                                     <div class="d-flex justify-content-center">
-                                        <div v-for="tech in project.techs" :key="tech.name" class="m-2">
+                                        <div v-for="tech in project.techs" :key="tech.name" class="m-1">
                                             <Icon :name="tech.icon" size="1.5rem" />
                                         </div>
                                     </div>
@@ -169,8 +169,28 @@ const splittedProjects = splitProjects(projects);
                             </div>
                         </div>
                     </div>
+                </div>
+            </div>
 
-
+        </div>
+        <div class="container sm-content">
+            <div class="col-md-8 text-center">
+                <div v-for="list, index in splittedProjects" :key="index">
+                    <div class="row">
+                        <div v-for="project in list" :key="project.name" class="card m-2 mx-auto">
+                            <div class="card-body">
+                                <h5 class="card-title text-center">{{ project.name }}
+                                    <Icon name="ph:arrow-square-out" />
+                                </h5>
+                                <p class="card-text">{{ project.description }}</p>
+                                <div class="d-flex justify-content-center">
+                                    <div v-for="tech in project.techs" :key="tech.name" class="m-1">
+                                        <Icon :name="tech.icon" size="1.5rem" />
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -219,5 +239,43 @@ label {
 .card:hover {
     border: 2px solid white;
     color: white;
+}
+
+.sm-content {
+    display: none;
+}
+
+@media (max-width: 768px) {
+    .col-md-4 {
+        display: none;
+    }
+
+    .sm-content {
+        display: block;
+    }
+
+    .col-md-8 {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .main-frame {
+        display: none;
+    }
+
+    .card {
+        width: 80%;
+    }
+
+    .card h5 {
+        font-size: 1rem;
+    }
+
+    .card-text {
+        font-size: 0.8rem;
+    }
+
 }
 </style>
