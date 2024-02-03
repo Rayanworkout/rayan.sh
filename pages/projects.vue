@@ -1,8 +1,6 @@
 
 <script setup lang="ts">
 
-const techs = ["React", "VueJS", "Python", "NodeJS"]
-
 
 const projects = [
     {
@@ -49,6 +47,18 @@ const projects = [
     }
 ]
 
+const techs: string[] = [];
+
+// Getting tech lists from projects
+projects.forEach(project => {
+    project.techs.forEach(tech => {
+        if (!techs.includes(tech.name)) {
+            techs.push(tech.name);
+        }
+    });
+});
+
+const checkedTechs = ref([]);
 
 
 </script>
@@ -59,10 +69,18 @@ const projects = [
         <Navbar />
         <h1 class="text-center mt-5 pb-4">ls projects/<span class="cursor">__</span></h1>
         <div class="main-frame py-2 mx-2">
+            <div class="my-border-bottom text-center py-1">
+                <div v-if="checkedTechs.length > 0" class="d-flex justify-content-center gap-4">
+                    <div v-for="tech in checkedTechs" :key="tech" class="mb-2 border-right">{{ tech }};</div>
+                </div>
+                <div v-else class="mb-2">
+                    all;
+                </div>
+            </div>
             <div class="row my-5">
                 <div class="col-md-4">
                     <div v-for="tech in techs" key="tech" style="padding-left: 30px;">
-                        <input class="m-2" type="checkbox" :id="tech" />
+                        <input class="m-2" type="checkbox" :id="tech" v-model="checkedTechs" :value="tech" />
                         <label :for="tech">
                             <Icon name="ri:reactjs-fill" /> {{ tech }}
                         </label>
@@ -88,13 +106,20 @@ h1 {
 
 .main-frame {
     border: 2px solid var(--text);
-    padding: 20px;
-    /* Padding inside the frame */
 }
 
-.frame-column {
-    border-right: 1px solid var(--text);
-    padding-right: 15px;
-    height: 100%;
+.my-border-bottom {
+    border-bottom: 2px solid var(--text);
+}
+
+input[type="checkbox"] {
+    width: 18px;
+    height: 15px;
+    cursor: pointer;
+}
+
+
+label {
+    cursor: pointer;
 }
 </style>
