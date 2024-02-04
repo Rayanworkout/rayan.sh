@@ -79,14 +79,21 @@ const splittedProjects = computed(() => splitProjects(filteredProjects.value as 
                         <div class="row">
                             <div v-for="project in list" :key="project.name" class="card m-2" style="width: 18rem;">
                                 <div class="card-body">
-                                    <h5 class="card-title text-center">{{ project.name }}
-                                        <Icon name="ph:arrow-square-out" />
-                                    </h5>
-                                    <p class="card-text">{{ project.description }}</p>
-                                    <div class="d-flex justify-content-center">
-                                        <div v-for="tech in project.techs" :key="tech.name" class="m-1">
-                                            <Icon :name="tech.iconName" size="1.5rem" />
-                                        </div>
+                                    <h5 class="card-title text-center">{{ project.name }}</h5>
+                                    <div class="icon-container">
+                                        <NuxtLink v-show="project.url !== null" :to="project.url" target="_blank">
+                                            <Icon name="ph:arrow-square-out" />
+                                        </NuxtLink>
+                                        <NuxtLink v-show="project.githubUrl !== null" :to="project.githubUrl" target="_blank"><i class="bi bi-github px-2"></i>
+                                        </NuxtLink>
+                                    </div>
+
+
+                                    <p class="card-text mt-4">{{ project.description }}</p>
+                                </div>
+                                <div class="d-flex justify-content-around mb-2">
+                                    <div v-for="tech in project.techs" :key="tech.name" class="m-1">
+                                        <Icon :name="tech.iconName" size="1.5rem" />
                                     </div>
                                 </div>
                             </div>
@@ -146,11 +153,17 @@ input[type="checkbox"] {
     cursor: pointer;
 }
 
+.icon-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+}
 
 label {
     cursor: pointer;
 }
-
 
 .card {
     background-color: var(--new-background);

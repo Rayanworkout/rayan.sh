@@ -7,4 +7,6 @@ iconName: any;
         name: string;
         icon: string;
     }[];
+    githubUrl: string;
+    url: string;
 }
