@@ -91,7 +91,7 @@ const splittedProjects = computed(() => splitProjects(filteredProjects.value as 
                                     </div>
 
 
-                                    <p class="card-text mt-4">{{ project.description }}</p>
+                                    <p class="card-text mt-4">/* {{ project.description }} */</p>
                                 </div>
                                 <div class="d-flex justify-content-around mb-2">
                                     <div v-for="tech in project.techs" :key="tech.name" class="m-1">
@@ -121,7 +121,7 @@ const splittedProjects = computed(() => splitProjects(filteredProjects.value as 
                                             class="bi bi-github px-2"></i>
                                     </NuxtLink>
                                 </div>
-                                <p class="card-text">{{ project.description }}</p>
+                                <p class="card-text">/* {{ project.description }} */</p>
                             </div>
                             <div class="d-flex justify-content-around mb-3">
                                 <div v-for="tech in project.techs" :key="tech.name" class="m-1">
