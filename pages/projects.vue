@@ -81,10 +81,12 @@ const splittedProjects = computed(() => splitProjects(filteredProjects.value as 
                                 <div class="card-body">
                                     <h5 class="card-title text-center">{{ project.name }}</h5>
                                     <div class="icon-container">
-                                        <NuxtLink v-show="project.url !== null" :to="project.url" target="_blank">
-                                            <Icon name="ph:arrow-square-out" />
+                                        <NuxtLink v-show="project.url !== null" :to="project.url" target="_blank"
+                                            class="icon.icon-container">
+                                            <i class="bi bi-box-arrow-up-right"></i>
                                         </NuxtLink>
-                                        <NuxtLink v-show="project.githubUrl !== null" :to="project.githubUrl" target="_blank"><i class="bi bi-github px-2"></i>
+                                        <NuxtLink v-show="project.githubUrl !== null" :to="project.githubUrl"
+                                            target="_blank"><i class="bi bi-github px-2"></i>
                                         </NuxtLink>
                                     </div>
 
@@ -109,14 +111,21 @@ const splittedProjects = computed(() => splitProjects(filteredProjects.value as 
                     <div class="row">
                         <div v-for="project in list" :key="project.name" class="card m-2 mx-auto">
                             <div class="card-body">
-                                <h5 class="card-title text-center">{{ project.name }}
-                                    <Icon name="ph:arrow-square-out" />
-                                </h5>
+                                <h5 class="card-title text-center">{{ project.name }}</h5>
+                                <div class="icon-container my-3">
+                                    <NuxtLink v-show="project.url !== null" :to="project.url" target="_blank"
+                                        class="icon.icon-container">
+                                        <i class="bi bi-box-arrow-up-right"></i>
+                                    </NuxtLink>
+                                    <NuxtLink v-show="project.githubUrl !== null" :to="project.githubUrl" target="_blank"><i
+                                            class="bi bi-github px-2"></i>
+                                    </NuxtLink>
+                                </div>
                                 <p class="card-text">{{ project.description }}</p>
-                                <div class="d-flex justify-content-center">
-                                    <div v-for="tech in project.techs" :key="tech.name" class="m-1">
-                                        <Icon :name="tech.iconName" size="1.5rem" />
-                                    </div>
+                            </div>
+                            <div class="d-flex justify-content-around mb-3">
+                                <div v-for="tech in project.techs" :key="tech.name" class="m-1">
+                                    <Icon :name="tech.iconName" size="1.5rem" />
                                 </div>
                             </div>
                         </div>
@@ -153,12 +162,22 @@ input[type="checkbox"] {
     cursor: pointer;
 }
 
+.icon-container i {
+    color: var(--text);
+    cursor: pointer;
+    font-size: larger;
+}
+
+.icon-container i:hover {
+    color: white;
+}
+
 .icon-container {
     display: flex;
     flex-direction: row;
     justify-content: center;
     align-items: center;
-    gap: 1rem;
+    gap: 2rem;
 }
 
 label {
@@ -211,6 +230,10 @@ label {
 
     .card-text {
         font-size: 0.8rem;
+    }
+
+    .icon-container i {
+        font-size: large;
     }
 
 }
