@@ -36,7 +36,7 @@ if (!projectError.value) {
 // line 1: if no tech is checked, return all projects
 const filteredProjects = computed(() => {
     if (checkedTechs.value.length === 0) {
-        return projects;
+        return projects.value;
     }
     return projects.value.filter(project => {
         // Return projects where at least one tech is checked
