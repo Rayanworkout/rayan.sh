@@ -16,8 +16,8 @@ export const splitElements = (elements: string[] | string | undefined) => {
 export const splitProjects = (projects: Project[] | undefined) => {
     if (projects) {
         const result: Project[][] = [];
-        for (let i = 0; i < projects.length; i += 3) {
-            result.push(projects.slice(i, i + 3));
+        for (let i = 0; i < projects.value.length; i += 3) {
+            result.push(projects.value.slice(i, i + 3));
         }
         return result;
     }

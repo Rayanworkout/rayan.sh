@@ -3,6 +3,9 @@
 import { splitProjects } from "~/utils/frontend/splitElements";
 
 
+// Monitoring checked techs
+const checkedTechs = ref<string[]>([]);
+
 const projects = [
     {
         "name": "Project 1",
@@ -11,24 +14,22 @@ const projects = [
             "name": "React",
             "icon": "ri:reactjs-fill"
         }, {
-            "name": "VueJS",
-            "icon": "ri:vuejs-fill"
+            "name": "Angular",
+            "icon": "ion:logo-angular"
         }]
-
     },
     {
         "name": "Project 2",
         "description": "This is a project description",
         "techs": [{
-            "name": "React",
-            "icon": "ri:reactjs-fill"
+            "name": "VueJS",
+            "icon": "ri:vuejs-fill"
         }, {
             "name": "Python",
             "icon": "carbon:logo-python"
-
         }, {
-            "name": "NodeJS",
-            "icon": "teenyicons:nodejs-outline"
+            "name": "Django",
+            "icon": "simple-icons:django"
         }]
     },
     {
@@ -38,9 +39,8 @@ const projects = [
             "name": "VueJS",
             "icon": "ri:vuejs-fill"
         }, {
-            "name": "Python",
-            "icon": "carbon:logo-python"
-
+            "name": "TypeScript",
+            "icon": "simple-icons:typescript"
         }, {
             "name": "NodeJS",
             "icon": "teenyicons:nodejs-outline"
@@ -50,49 +50,31 @@ const projects = [
         "name": "Project 4",
         "description": "This is a project description",
         "techs": [{
-            "name": "VueJS",
-            "icon": "ri:vuejs-fill"
+            "name": "Angular",
+            "icon": "ion:logo-angular"
         }, {
             "name": "Python",
             "icon": "carbon:logo-python"
-
         }, {
-            "name": "NodeJS",
-            "icon": "teenyicons:nodejs-outline"
+            "name": "Flask",
+            "icon": "simple-icons:flask"
         }]
     },
     {
-        "name": "Project 4",
+        "name": "Project 5",
         "description": "This is a project description",
         "techs": [{
-            "name": "VueJS",
-            "icon": "ri:vuejs-fill"
+            "name": "React",
+            "icon": "ri:reactjs-fill"
         }, {
-            "name": "Python",
-            "icon": "carbon:logo-python"
-
+            "name": "Express",
+            "icon": "simple-icons:express"
         }, {
-            "name": "NodeJS",
-            "icon": "teenyicons:nodejs-outline"
-        }]
-    },
-    {
-        "name": "Project 4",
-        "description": "This is a project description",
-        "techs": [{
-            "name": "VueJS",
-            "icon": "ri:vuejs-fill"
-        }, {
-            "name": "Python",
-            "icon": "carbon:logo-python"
-
-        }, {
-            "name": "NodeJS",
-            "icon": "teenyicons:nodejs-outline"
+            "name": "MongoDB",
+            "icon": "simple-icons:mongodb"
         }]
     }
-
-]
+];
 
 const techsSet = new Set();
 
@@ -107,11 +89,20 @@ projects.forEach(project => {
 // Convert back to array of objects
 const techs = Array.from(techsSet).map(tech => JSON.parse(tech as string));
 
-// Monitoring checked techs
-const checkedTechs = ref([]);
+
+// Filtering the project based on checked techs
+// line 1: if no tech is checked, return all projects
+const filteredProjects = computed(() => {
+    if (checkedTechs.value.length === 0) {
+        return projects;
+    }
+    return projects.filter(project => {
+        return project.techs.some(tech => checkedTechs.value.includes(tech.name));
+    });
+});
 
 // Creating groups of 4 projects to display them inline
-const splittedProjects = splitProjects(projects);
+const splittedProjects = splitProjects(filteredProjects as unknown as Array<any>);
 
 </script>
 
