@@ -2,35 +2,28 @@
 <script setup lang="ts">
 import { splitProjects } from "~/utils/frontend/splitElements";
 
-interface Tech {
-    name: string;
-    icon: string;
-}
 
 // Monitoring checked techs
 const checkedTechs = ref<string[]>([]);
 
-// Ref to hold all techs
-const techsNames = ref<Tech[]>([]);
-
-// And all projects
-const projects = ref<any[]>([]);
-
 // Fetching projects
-const { data: projectsList, error: projectError } = await useFetch('/api/projects/all');
-// And all techs
-const { data: techs, error: techsError } = await useFetch('/api/projects/techs/all');
+const {data: projects, error} = await useFetch('/api/projects/all');
 
-if (!techsError.value) {
-    techsNames.value = techs.value.map((tech: any) => {
-        // Making each tech as { name: React, icon: reactIconName }
-        return { name: tech.name, icon: tech.iconName };
+console.log(projects);
+
+const techsSet = new Set();
+
+// Getting tech lists from projects
+projects.value.forEach(project => {
+    project.techs.forEach(tech => {
+        const newTech = { name: tech.name, icon: tech.icon };
+        techsSet.add(JSON.stringify(newTech)); // Convert to string for structural comparison
     });
-}
+});
 
-if (!projectError.value) {
-    projects.value = projectsList.value;
-}
+// Convert back to array of objects
+const techs = Array.from(techsSet).map(tech => JSON.parse(tech as string));
+
 
 // Filtering the project based on checked techs
 // line 1: if no tech is checked, return all projects
@@ -40,13 +33,13 @@ const filteredProjects = computed(() => {
     }
     return projects.value.filter(project => {
         // Return projects where at least one tech is checked
-        return project.techs.some((tech: { name: string, iconName: string }) => checkedTechs.value.includes(tech.name));
+        return project.techs.some(tech => checkedTechs.value.includes(tech.name));
     });
 });
 
 // Creating groups of 4 projects to display them inline
 // Using computed() to update the value when filteredProjects changes
-const splittedProjects = computed(() => splitProjects(filteredProjects.value as unknown as any[]));
+const splittedProjects = computed(() => splitProjects(filteredProjects.value));
 
 </script>
 
@@ -66,7 +59,7 @@ const splittedProjects = computed(() => splitProjects(filteredProjects.value as 
             </div>
             <div class="row my-5">
                 <div class="col-md-4">
-                    <div v-for="tech in techsNames" key="tech" style="padding-left: 30px;">
+                    <div v-for="tech in techs" key="tech" style="padding-left: 30px;">
                         <input class="m-2" type="checkbox" :id="tech.name" v-model="checkedTechs" :value="tech.name" />
                         <label :for="tech.name">
                             <Icon :name="tech.icon" /> {{ tech.name }}
@@ -84,7 +77,7 @@ const splittedProjects = computed(() => splitProjects(filteredProjects.value as 
                                     <p class="card-text">{{ project.description }}</p>
                                     <div class="d-flex justify-content-center">
                                         <div v-for="tech in project.techs" :key="tech.name" class="m-1">
-                                            <Icon :name="tech.iconName" size="1.5rem" />
+                                            <Icon :name="tech.icon" size="1.5rem" />
                                         </div>
                                     </div>
                                 </div>
