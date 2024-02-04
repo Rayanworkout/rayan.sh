@@ -97,12 +97,14 @@ const filteredProjects = computed(() => {
         return projects;
     }
     return projects.filter(project => {
+        // Return projects where at least one tech is checked
         return project.techs.some(tech => checkedTechs.value.includes(tech.name));
     });
 });
 
 // Creating groups of 4 projects to display them inline
-const splittedProjects = splitProjects(filteredProjects as unknown as Array<any>);
+// Using computed() to update the value when filteredProjects changes
+const splittedProjects = computed(() => splitProjects(filteredProjects.value));
 
 </script>
 
