@@ -48,6 +48,7 @@ const filteredProjects = computed(() => {
 // Using computed() to update the value when filteredProjects changes
 const splittedProjects = computed(() => splitProjects(filteredProjects.value as unknown as any[]));
 
+
 </script>
 
 
@@ -107,7 +108,7 @@ const splittedProjects = computed(() => splitProjects(filteredProjects.value as 
                                 <p class="card-text">{{ project.description }}</p>
                                 <div class="d-flex justify-content-center">
                                     <div v-for="tech in project.techs" :key="tech.name" class="m-1">
-                                        <Icon :name="tech.icon" size="1.5rem" />
+                                        <Icon :name="tech.iconName" size="1.5rem" />
                                     </div>
                                 </div>
                             </div>
