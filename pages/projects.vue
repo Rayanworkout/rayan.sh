@@ -90,35 +90,22 @@ const projects = [
             "name": "NodeJS",
             "icon": "teenyicons:nodejs-outline"
         }]
-    },
-    {
-        "name": "Project 4",
-        "description": "This is a project description",
-        "techs": [{
-            "name": "VueJS",
-            "icon": "ri:vuejs-fill"
-        }, {
-            "name": "Python",
-            "icon": "carbon:logo-python"
-
-        }, {
-            "name": "NodeJS",
-            "icon": "teenyicons:nodejs-outline"
-        }]
-    },
+    }
 
 ]
 
-const techs: string[] = [];
+const techsSet = new Set();
 
 // Getting tech lists from projects
 projects.forEach(project => {
     project.techs.forEach(tech => {
-        if (!techs.includes(tech.name)) {
-            techs.push(tech.name);
-        }
+        const newTech = { name: tech.name, icon: tech.icon };
+        techsSet.add(JSON.stringify(newTech)); // Convert to string for structural comparison
     });
 });
+
+// Convert back to array of objects
+const techs = Array.from(techsSet).map(tech => JSON.parse(tech as string));
 
 // Monitoring checked techs
 const checkedTechs = ref([]);
@@ -145,9 +132,9 @@ const splittedProjects = splitProjects(projects);
             <div class="row my-5">
                 <div class="col-md-4">
                     <div v-for="tech in techs" key="tech" style="padding-left: 30px;">
-                        <input class="m-2" type="checkbox" :id="tech" v-model="checkedTechs" :value="tech" />
-                        <label :for="tech">
-                            <Icon name="ri:reactjs-fill" /> {{ tech }}
+                        <input class="m-2" type="checkbox" :id="tech.name" v-model="checkedTechs" :value="tech.name" />
+                        <label :for="tech.name">
+                            <Icon :name="tech.icon" /> {{ tech.name }}
                         </label>
                     </div>
                 </div>
