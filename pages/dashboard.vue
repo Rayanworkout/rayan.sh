@@ -21,7 +21,7 @@ const state = reactive({
     message: '',
 });
 
-const { data: articles, error } = await useFetch('/api/v1/articles/all');
+const { data: articles, error } = await useFetch('/api/blog/articles/all');
 
 
 if (error.value) {
@@ -39,7 +39,7 @@ const update = (id: number) => {
 };
 
 const publish = async (id: number) => {
-    const { data: response } = await useFetch(`/api/v1/articles/publish/${id}`);
+    const { data: response } = await useFetch(`/api/blog/articles/publish/${id}`);
     showToast("Published", state, '/dashboard');
     setTimeout(() => {
         window.location.reload();
@@ -47,7 +47,7 @@ const publish = async (id: number) => {
 };
 
 const unpublish = async (id: number) => {
-    const { data: response } = await useFetch(`/api/v1/articles/unpublish/${id}`);
+    const { data: response } = await useFetch(`/api/blog/articles/unpublish/${id}`);
     showToast("Unpublished", state, '/dashboard');
     setTimeout(() => {
         window.location.reload();
@@ -63,7 +63,7 @@ const remove = async (id: number) => {
     const confirm = window.confirm('Are you sure you want to delete this article?');
     if (!confirm) return;
 
-    const { data: response, error } = await useFetch(`/api/v1/articles/${id}`,
+    const { data: response, error } = await useFetch(`/api/blog/articles/${id}`,
         {
             method: 'DELETE',
         });

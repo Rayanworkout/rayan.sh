@@ -31,8 +31,8 @@ const newArticle = ref({
 });
 
 // Then I fetch data from the API
-const { data: fetchedCategories } = await useFetch('/api/v1/categories/all');
-const { data: fetchedTags } = await useFetch('/api/v1/tags/all');
+const { data: fetchedCategories } = await useFetch('/api/blog/categories/all');
+const { data: fetchedTags } = await useFetch('/api/blog/tags/all');
 if (fetchedCategories) {
   categories.value = fetchedCategories.value;
 }
@@ -78,7 +78,7 @@ const publish = async (e: any) => {
   newArticle.value.category = category
   newArticle.value.tags = tags
 
-  const { data, error } = await useFetch('/api/v1/articles/create', {
+  const { data, error } = await useFetch('/api/blog/articles/create', {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',

@@ -24,7 +24,7 @@ const article: any = reactive({
 });
 
 
-const { data: fetchedArticle, error } = await useFetch(`/api/v1/articles/${articleId}`);
+const { data: fetchedArticle, error } = await useFetch(`/api/blog/articles/${articleId}`);
 
 
 if (error.value) {
@@ -42,7 +42,7 @@ if (error.value) {
 
 const likeArticle = async () => {
   try {
-    const { data, error } = await useFetch(`/api/v1/articles/like/${articleId}`, {
+    const { data, error } = await useFetch(`/api/blog/articles/like/${articleId}`, {
       method: 'POST',
     });
 
@@ -71,7 +71,7 @@ const likeArticle = async () => {
 
 <template>
   <section>
-    <Navbar/>
+    <Navbar />
     <div class="container py-5">
       <div class="article-container mx-auto">
         <div class="pb-5 text-center">
@@ -100,10 +100,10 @@ const likeArticle = async () => {
 
 
 <style scoped>
-
 h1 {
   color: white;
 }
+
 .bounce {
   animation: bounce 0.4s ease;
 }

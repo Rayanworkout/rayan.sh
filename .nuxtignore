@@ -1,1 +1,1 @@
-server/routes/api/v1/articles/filter.get.ts
+server/routes/api/blog/articles/filter.get.ts
