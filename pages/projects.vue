@@ -73,7 +73,7 @@ const changeColor = (index: number) => {
     <div class="bg-container px-1">
         <Navbar />
         <!-- Mouse follower object -->
-        <div v-show="showFollower" :style="{ ...circleStyle, ...currentColor }" class="mouse-follower"></div>
+        <div v-show="showFollower" :style="{ ...circleStyle, ...currentColor }"></div>
         <h1 class="text-center mt-5 pb-4">ls projects/<span class="cursor">__</span></h1>
         <div class="main-frame py-2 mx-2">
             <div class="my-border-bottom text-center py-1">

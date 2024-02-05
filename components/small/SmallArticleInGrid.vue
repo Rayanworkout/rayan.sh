@@ -1,15 +1,22 @@
 
 <script setup lang="ts">
 import { type Article } from '~/types/article.type'
+// Custom composable to create a little circle following the mouse
+import { useMouseFollower } from '@/composables/useMouseFollower';
 
 defineProps<{ article: Article }>()
+
+const { circleStyle } = useMouseFollower();
+
+const showFollower = ref(false);
 
 </script>
 
 
 <template>
     <NuxtLink :to="`/blog/${article.id}`" class="article-link">
-        <div class="article mx-auto">
+        <div v-show="showFollower" :style="circleStyle" style="background-color: #43D9AD;"></div>
+        <div class="article mx-auto" @mouseenter="showFollower = true" @mouseleave="showFollower = false">
             <div class="row mb-2 border-bottom">
                 <div class="col-md-6">
                     <h4>{{ article.title }}</h4>
