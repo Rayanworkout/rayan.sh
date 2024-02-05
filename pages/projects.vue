@@ -2,6 +2,13 @@
 <script setup lang="ts">
 import { splitProjects } from "~/utils/frontend/splitElements";
 
+// Custom composable to create a little circle following the mouse
+import { useMouseFollower } from '@/composables/useMouseFollower';
+
+const { circleStyle } = useMouseFollower();
+
+const showFollower = ref(false);
+
 interface Tech {
     name: string;
     icon: string;
@@ -48,13 +55,6 @@ const filteredProjects = computed(() => {
 // Using computed() to update the value when filteredProjects changes
 const splittedProjects = computed(() => splitProjects(filteredProjects.value as unknown as any[]));
 
-
-import { useMouseFollower } from '@/composables/useMouseFollower';
-
-const showFollower = ref(false);
-
-const { circleStyle } = useMouseFollower();
-
 </script>
 
 
@@ -88,15 +88,16 @@ const { circleStyle } = useMouseFollower();
                             <div @mouseenter="showFollower = true" @mouseleave="showFollower = false"
                                 v-for="project in list" :key="project.name" class="card m-2" style="width: 18rem;">
                                 <div class="card-body">
-                                    <h5 class="card-title text-center text-white">{{ project.name }}</h5>
-                                    <div @mouseenter="showFollower = false" @mouseleave="showFollower = true"
-                                        class="icon-container">
+                                    <h5 class="card-title text-center">{{ project.name }}</h5>
+                                    <div class="icon-container">
                                         <NuxtLink v-show="project.url !== null" :to="project.url" target="_blank"
                                             class="icon.icon-container">
-                                            <i class="bi bi-box-arrow-up-right"></i>
+                                            <i @mouseenter="showFollower = false" @mouseleave="showFollower = true"
+                                                class="bi bi-box-arrow-up-right"></i>
                                         </NuxtLink>
                                         <NuxtLink v-show="project.githubUrl !== null" :to="project.githubUrl"
-                                            target="_blank"><i class="bi bi-github px-2"></i>
+                                            target="_blank"><i @mouseenter="showFollower = false"
+                                                @mouseleave="showFollower = true" class="bi bi-github px-2"></i>
                                         </NuxtLink>
                                     </div>
                                     <p class="card-text mt-4">/* {{ project.description }} */</p>
@@ -119,7 +120,7 @@ const { circleStyle } = useMouseFollower();
                     <div class="row">
                         <div v-for="project in list" :key="project.name" class="card m-2 mx-auto">
                             <div class="card-body">
-                                <h5 class="card-title text-center text-white">{{ project.name }}</h5>
+                                <h5 class="card-title text-center">{{ project.name }}</h5>
                                 <div class="icon-container my-3">
                                     <NuxtLink v-show="project.url !== null" :to="project.url" target="_blank"
                                         class="icon.icon-container">
@@ -145,6 +146,10 @@ const { circleStyle } = useMouseFollower();
 </template>
 
 <style scoped>
+h5 {
+    color: #43D9AD;
+}
+
 .bg-container {
     background-color: var(--new-background);
     width: 100%;

@@ -9,9 +9,8 @@ export function useMouseFollower() {
       circleStyle.value = {
         position: 'absolute',
         left: `${newX - 14 }px`,
-        top: `${newY - 20}px`,
+        top: `${newY - 15}px`,
         width: '15px',
-        opacity: 0.9,
         height: '15px',
         borderRadius: '50%',
         backgroundColor: '#4D5BCE',
