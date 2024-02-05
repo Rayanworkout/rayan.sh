@@ -55,6 +55,8 @@ const filteredProjects = computed(() => {
 // Using computed() to update the value when filteredProjects changes
 const splittedProjects = computed(() => splitProjects(filteredProjects.value as unknown as any[]));
 
+const colors = ["#E6DB74", "#AE81FF", "#A6E22E", "#FD971F", "#66D9EF", "#F92672", "#A1EFE4", "#F8F8F2"];
+
 </script>
 
 
@@ -86,9 +88,11 @@ const splittedProjects = computed(() => splitProjects(filteredProjects.value as 
                     <div v-for="list, index in splittedProjects" :key="index">
                         <div class="row">
                             <div @mouseenter="showFollower = true" @mouseleave="showFollower = false"
-                                v-for="project in list" :key="project.name" class="card m-2" style="width: 18rem;">
+                                v-for="project, index in list" :key="project.name" class="card m-2" style="width: 18rem;">
                                 <div class="card-body">
-                                    <h5 class="card-title text-center">{{ project.name }}</h5>
+                                    <h5 class="card-title text-center" :style="{ color: colors[index] }">{{
+                                        project.name }}
+                                    </h5>
                                     <div class="icon-container">
                                         <NuxtLink v-show="project.url !== null" :to="project.url" target="_blank"
                                             class="icon.icon-container">
@@ -118,9 +122,9 @@ const splittedProjects = computed(() => splitProjects(filteredProjects.value as 
             <div class="col-md-8 text-center">
                 <div v-for="list, index in splittedProjects" :key="index">
                     <div class="row">
-                        <div v-for="project in list" :key="project.name" class="card m-2 mx-auto">
+                        <div v-for="project, index in list" :key="project.name" class="card m-2 mx-auto">
                             <div class="card-body">
-                                <h5 class="card-title text-center">{{ project.name }}</h5>
+                                <h5 class="card-title text-center" :style="{ color: colors[index] }">{{ project.name }}</h5>
                                 <div class="icon-container my-3">
                                     <NuxtLink v-show="project.url !== null" :to="project.url" target="_blank"
                                         class="icon.icon-container">
@@ -146,10 +150,6 @@ const splittedProjects = computed(() => splitProjects(filteredProjects.value as 
 </template>
 
 <style scoped>
-h5 {
-    color: #43D9AD;
-}
-
 .bg-container {
     background-color: var(--new-background);
     width: 100%;
@@ -194,14 +194,6 @@ input[type="checkbox"] {
 
 label {
     cursor: pointer;
-}
-
-.follower {
-    width: 20px;
-    height: 20px;
-    background-color: white;
-    border-radius: 50%;
-    position: absolute;
 }
 
 .card {
