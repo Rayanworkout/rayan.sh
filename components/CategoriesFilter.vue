@@ -5,7 +5,7 @@ let allCategories: string[][] | undefined;
 
 
 // Fetch categories
-const { data: categories, error: error } = await useFetch('/api/v1/categories/all');
+const { data: categories, error: error } = await useFetch('/api/blog/categories/all');
 
 if (error.value) {
     console.log(error.value);

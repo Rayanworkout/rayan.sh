@@ -32,9 +32,9 @@ const state = reactive({
 });
 
 // Fetch data from the API
-const { data: fetchedArticle, error } = await useFetch(`/api/v1/articles/${articleId}`);
-const { data: tags, error: tagsError } = await useFetch(`/api/v1/tags/all`);
-const { data: fetchedCategories, error: categoriesError } = await useFetch('/api/v1/categories/all');
+const { data: fetchedArticle, error } = await useFetch(`/api/blog/articles/${articleId}`);
+const { data: tags, error: tagsError } = await useFetch(`/api/blog/tags/all`);
+const { data: fetchedCategories, error: categoriesError } = await useFetch('/api/blog/categories/all');
 
 
 // If data is ok, I update the variables
@@ -70,7 +70,7 @@ const clickTag = (tag: string) => {
 
 
 const sendArticle = async () => {
-  const { data, error } = await useFetch(`/api/v1/articles/${articleId}`, {
+  const { data, error } = await useFetch(`/api/blog/articles/${articleId}`, {
     method: 'PATCH',
     headers: {
       'Content-Type': 'application/json'

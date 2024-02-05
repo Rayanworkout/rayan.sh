@@ -54,7 +54,7 @@ onMounted(() => {
                         <p>
                             // this website showcases my projects<br>
                             // they are visible on GitHub as well<br>
-                            // you can also check out my articles here
+                            // you can also check out my blog articles
                         </p>
                         <div class="github">
                             <span style="color: #4D5BCE;" class="const">const </span>

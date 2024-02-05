@@ -2,7 +2,7 @@
 <script setup lang="ts">
 import { ref, onMounted } from 'vue';
 
-const text = "Minimalist 26 years old self-taught developer driven by interests in Web Development, " +
+const text = "> Minimalist 26 years old self-taught developer driven by interests in Web Development, " +
     "Linux, and self-hosted stuff. Mainly Python and Javascript."
 
 const index = ref(0);
@@ -40,18 +40,14 @@ onMounted(() => {
 <template>
     <div class="bg-container px-1">
         <Navbar />
-        <h1 class="text-center mt-5 pt-5 pb-3">About Me<span class="cursor">__</span></h1>
-        <div class="overlay">
-            <div class="about mx-auto">
-                <p>{{ typewriter }}</p>
+        <h1 class="text-center mt-5 pb-3">whoami<span class="cursor">__</span></h1>
+        <div class="about mx-auto">
+            <p>{{ typewriter }}</p>
 
-                <div v-show="showEmail" class="infos animate__animated animate__fadeInUp"><i
-                        class="bi bi-envelope px-2"></i><a href="mailto:rayan13170@protonmail.com"
-                        class="mail">rayan13170@protonmail.com</a></div>
-                <div v-show="showGithub" class="infos animate__animated animate__fadeInUp"><a
-                        href="https://github.com/Rayanworkout" target="_blank"><i
-                            class="bi bi-github px-2"></i>Rayanworkout</a>
-                </div>
+            <div v-show="showEmail" class="infos animate__animated animate__fadeInUp"><i class="bi bi-envelope px-2"></i><a
+                    href="mailto:rayan13170@protonmail.com" class="mail">rayan13170@protonmail.com</a></div>
+            <div v-show="showGithub" class="infos animate__animated animate__fadeInUp"><a
+                    href="https://github.com/Rayanworkout" target="_blank"><i class="bi bi-github px-2"></i>Rayanworkout</a>
             </div>
         </div>
         <div>
@@ -94,6 +90,7 @@ p,
 h1 {
     color: white;
 }
+
 .infos {
     font-size: 0.8rem;
     display: flex;

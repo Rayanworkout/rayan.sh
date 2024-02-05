@@ -12,7 +12,7 @@ const category = ref('');
 const tag = ref('');
 
 const handleCategoryClick = async (e: any) => {
-    const { data: response, error: categoryError } = await useFetch('/api/v1/categories/create', {
+    const { data: response, error: categoryError } = await useFetch('/api/blog/categories/create', {
         method: 'POST',
         body: JSON.stringify({
             name: category.value
@@ -30,7 +30,7 @@ const handleCategoryClick = async (e: any) => {
 }
 
 const handleTagClick = async (e: any) => {
-    const { data: response, error: tagError } = await useFetch('/api/v1/tags/create', {
+    const { data: response, error: tagError } = await useFetch('/api/blog/tags/create', {
         method: 'POST',
         body: JSON.stringify({
             name: tag.value
