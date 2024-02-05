@@ -1,22 +1,29 @@
 
 <script setup lang="ts">
 import { type Article } from '~/types/article.type'
+// Custom composable to create a little circle following the mouse
+import { useMouseFollower } from '@/composables/useMouseFollower';
 
 defineProps<{ article: Article }>()
+
+const { circleStyle } = useMouseFollower();
+
+const showFollower = ref(false);
 
 </script>
 
 
 <template>
     <NuxtLink :to="`/blog/${article.id}`" class="article-link">
-        <div class="article mx-auto">
+        <div v-show="showFollower" :style="circleStyle" style="background-color: #43D9AD;"></div>
+        <div class="article mx-auto" @mouseenter="showFollower = true" @mouseleave="showFollower = false">
             <div class="row mb-2 border-bottom">
                 <div class="col-md-6">
                     <h4>{{ article.title }}</h4>
                     <div class="mb-2 date">
                         <small class="creation">{{ article.createdAt }}</small>
-                        <div class="category"><small><i class="bi bi-arrow-right-short icon text-white"></i>{{
-                            article.category.name }}</small></div>
+                        <div class="category text-white"><i class="bi bi-arrow-right-short icon text-white"></i>{{
+                            article.category.name }}</div>
                         <div v-if="article.likes > 1"><small><i class="bi bi-heart icon"></i> {{ article.likes }}</small>
                         </div>
                     </div>
@@ -66,13 +73,12 @@ h4:hover {
     color: inherit;
 }
 
-.category small {
-    color: var(--primary);
+.category {
+    display: flex;
+    align-items: center;
+    font-size: large;
 }
 
-.icon {
-    font-size: larger;
-}
 
 
 @media (max-width: 768px) {

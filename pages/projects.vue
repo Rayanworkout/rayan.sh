@@ -57,7 +57,15 @@ const filteredProjects = computed(() => {
 // Using computed() to update the value when filteredProjects changes
 const splittedProjects = computed(() => splitProjects(filteredProjects.value as unknown as any[]));
 
-const colors = ["#43D9AD", "#FEA55F", "#4D5BCE"];
+const colors = [
+    "#F92672", // Pink
+    "#66D9EF", // Cyan
+    "#43D9AD", // Green
+    "#FEA55F", // Orange
+    "#4D5BCE", // Purple
+    "#E6DB74", // Yellow
+    "#F8F8F2", // White
+];
 
 // Changing color of the mouse follower when
 // the mouse enters the card. It takes the same color as the heading
@@ -66,6 +74,19 @@ const changeColor = (index: number) => {
     showFollower.value = true;
 };
 
+const shuffleArray = (array: string[]) => {
+    for (let i = array.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [array[i], array[j]] = [array[j], array[i]];
+    };
+};
+
+onMounted(() => {
+    shuffleArray(colors);
+});
+
+
+
 </script>
 
 
@@ -73,7 +94,7 @@ const changeColor = (index: number) => {
     <div class="bg-container px-1">
         <Navbar />
         <!-- Mouse follower object -->
-        <div v-show="showFollower" :style="{ ...circleStyle, ...currentColor }" class="mouse-follower"></div>
+        <div v-show="showFollower" :style="{ ...circleStyle, ...currentColor }"></div>
         <h1 class="text-center mt-5 pb-4">ls projects/<span class="cursor">__</span></h1>
         <div class="main-frame py-2 mx-2">
             <div class="my-border-bottom text-center py-1">
@@ -96,11 +117,11 @@ const changeColor = (index: number) => {
                 <div class="col-md-8">
                     <div v-for="list, index in splittedProjects" :key="index">
                         <div class="row">
-                            <div @mouseenter="changeColor(index)" @mouseleave="showFollower = false"
-                                v-for="project, index in list" :key="project.name" class="card m-2" style="width: 18rem;">
-                                <div class="card-body">
-                                    <h5 class="card-title text-center" :style="{ color: colors[index] }">{{
-                                        project.name }}
+                            <div v-for="project in list" :key="project.name" class="card m-2" style="width: 18rem;">
+                                <div class="card-body" @mouseenter="changeColor(projects.indexOf(project))" @mouseleave="showFollower = false">
+                                    <h5 class="card-title text-center"
+                                        :style="{ color: colors[projects.indexOf(project)] }">{{
+                                            project.name }}
                                     </h5>
                                     <div class="icon-container">
                                         <NuxtLink v-show="project.url !== null" :to="project.url" target="_blank"
