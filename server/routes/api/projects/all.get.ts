@@ -8,7 +8,7 @@ export default defineEventHandler(async (event) => {
             include: {
                 techs: true,
             },
-            orderBy: { createdAt: 'desc' },
+            orderBy: { id: 'asc' },
         });
 
 
