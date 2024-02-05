@@ -13,7 +13,7 @@ export function useMouseFollower() {
         width: '15px',
         height: '15px',
         borderRadius: '50%',
-        backgroundColor: '#4D5BCE',
+        // backgroundColor: '#4D5BCE',
         zIndex: 10000,
         transition: 'all 0.05s ease-in-out'
       };

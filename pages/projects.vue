@@ -5,14 +5,16 @@ import { splitProjects } from "~/utils/frontend/splitElements";
 // Custom composable to create a little circle following the mouse
 import { useMouseFollower } from '@/composables/useMouseFollower';
 
-const { circleStyle } = useMouseFollower();
-
-const showFollower = ref(false);
-
 interface Tech {
     name: string;
     icon: string;
 }
+
+const { circleStyle } = useMouseFollower();
+
+const showFollower = ref(false);
+
+const currentColor = ref({ 'background-color': '' });
 
 // Monitoring checked techs
 const checkedTechs = ref<string[]>([]);
@@ -55,7 +57,14 @@ const filteredProjects = computed(() => {
 // Using computed() to update the value when filteredProjects changes
 const splittedProjects = computed(() => splitProjects(filteredProjects.value as unknown as any[]));
 
-const colors = ["#E6DB74", "#AE81FF", "#A6E22E", "#FD971F", "#66D9EF", "#F92672", "#A1EFE4", "#F8F8F2"];
+const colors = ["#43D9AD", "#FEA55F", "#4D5BCE"];
+
+// Changing color of the mouse follower when
+// the mouse enters the card. It takes the same color as the heading
+const changeColor = (index: number) => {
+    currentColor.value["background-color"] = colors[index];
+    showFollower.value = true;
+};
 
 </script>
 
@@ -64,7 +73,7 @@ const colors = ["#E6DB74", "#AE81FF", "#A6E22E", "#FD971F", "#66D9EF", "#F92672"
     <div class="bg-container px-1">
         <Navbar />
         <!-- Mouse follower object -->
-        <div v-show="showFollower" :style="circleStyle" class="mouse-follower"></div>
+        <div v-show="showFollower" :style="{ ...circleStyle, ...currentColor }" class="mouse-follower"></div>
         <h1 class="text-center mt-5 pb-4">ls projects/<span class="cursor">__</span></h1>
         <div class="main-frame py-2 mx-2">
             <div class="my-border-bottom text-center py-1">
@@ -87,7 +96,7 @@ const colors = ["#E6DB74", "#AE81FF", "#A6E22E", "#FD971F", "#66D9EF", "#F92672"
                 <div class="col-md-8">
                     <div v-for="list, index in splittedProjects" :key="index">
                         <div class="row">
-                            <div @mouseenter="showFollower = true" @mouseleave="showFollower = false"
+                            <div @mouseenter="changeColor(index)" @mouseleave="showFollower = false"
                                 v-for="project, index in list" :key="project.name" class="card m-2" style="width: 18rem;">
                                 <div class="card-body">
                                     <h5 class="card-title text-center" :style="{ color: colors[index] }">{{
@@ -200,7 +209,7 @@ label {
     background-color: var(--new-background);
     color: white;
     border: 2px solid var(--text);
-    cursor: default;
+    cursor: pointer;
 }
 
 .card:hover {
