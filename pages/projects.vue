@@ -57,7 +57,17 @@ const filteredProjects = computed(() => {
 // Using computed() to update the value when filteredProjects changes
 const splittedProjects = computed(() => splitProjects(filteredProjects.value as unknown as any[]));
 
-const colors = ["#43D9AD", "#FEA55F", "#4D5BCE"];
+const colors = [
+    "#F92672", // Pink
+    "#66D9EF", // Cyan
+    "#A6E22E", // Green
+    "#FD971F", // Orange
+    "#AE81FF", // Purple
+    "#E6DB74", // Yellow
+    "#F8F8F2", // White
+    "#75715E", // Grey
+    "#272822"  // Dark
+];
 
 // Changing color of the mouse follower when
 // the mouse enters the card. It takes the same color as the heading
@@ -65,6 +75,19 @@ const changeColor = (index: number) => {
     currentColor.value["background-color"] = colors[index];
     showFollower.value = true;
 };
+
+const shuffleArray = (array: string[]) => {
+    for (let i = array.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [array[i], array[j]] = [array[j], array[i]];
+    };
+};
+
+onMounted(() => {
+    shuffleArray(colors);
+});
+
+
 
 </script>
 
