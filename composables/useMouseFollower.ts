@@ -11,10 +11,12 @@ export function useMouseFollower() {
         left: `${newX - 14 }px`,
         top: `${newY - 20}px`,
         width: '15px',
+        opacity: 0.9,
         height: '15px',
         borderRadius: '50%',
-        backgroundColor: 'white',
+        backgroundColor: '#4D5BCE',
         zIndex: 10000,
+        transition: 'all 0.05s ease-in-out'
       };
     });
   

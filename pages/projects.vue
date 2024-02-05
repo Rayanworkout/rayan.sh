@@ -51,6 +51,8 @@ const splittedProjects = computed(() => splitProjects(filteredProjects.value as 
 
 import { useMouseFollower } from '@/composables/useMouseFollower';
 
+const showFollower = ref(false);
+
 const { circleStyle } = useMouseFollower();
 
 </script>
@@ -59,6 +61,8 @@ const { circleStyle } = useMouseFollower();
 <template>
     <div class="bg-container px-1">
         <Navbar />
+        <!-- Mouse follower object -->
+        <div v-show="showFollower" :style="circleStyle" class="mouse-follower"></div>
         <h1 class="text-center mt-5 pb-4">ls projects/<span class="cursor">__</span></h1>
         <div class="main-frame py-2 mx-2">
             <div class="my-border-bottom text-center py-1">
@@ -79,13 +83,14 @@ const { circleStyle } = useMouseFollower();
                     </div>
                 </div>
                 <div class="col-md-8">
-                    <div :style="circleStyle" class="mouse-follower"></div>
                     <div v-for="list, index in splittedProjects" :key="index">
                         <div class="row">
-                            <div v-for="project in list" :key="project.name" class="card m-2" style="width: 18rem;">
+                            <div @mouseenter="showFollower = true" @mouseleave="showFollower = false"
+                                v-for="project in list" :key="project.name" class="card m-2" style="width: 18rem;">
                                 <div class="card-body">
                                     <h5 class="card-title text-center text-white">{{ project.name }}</h5>
-                                    <div class="icon-container">
+                                    <div @mouseenter="showFollower = false" @mouseleave="showFollower = true"
+                                        class="icon-container">
                                         <NuxtLink v-show="project.url !== null" :to="project.url" target="_blank"
                                             class="icon.icon-container">
                                             <i class="bi bi-box-arrow-up-right"></i>
@@ -94,8 +99,6 @@ const { circleStyle } = useMouseFollower();
                                             target="_blank"><i class="bi bi-github px-2"></i>
                                         </NuxtLink>
                                     </div>
-
-
                                     <p class="card-text mt-4">/* {{ project.description }} */</p>
                                 </div>
                                 <div class="d-flex justify-content-around mb-2">
@@ -173,7 +176,7 @@ input[type="checkbox"] {
 }
 
 .icon-container i:hover {
-    color: white;
+    color: var(--primary);
 }
 
 .icon-container {
