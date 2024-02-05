@@ -24,7 +24,6 @@ logs
 .env.*
 !.env.example
 
-data/
 get_db.sh
 send_db.sh
 

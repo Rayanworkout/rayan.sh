@@ -90,5 +90,9 @@ h4:hover {
     .date {
         text-align: center;
     }
+
+    .category {
+        justify-content: center;
+    }
 }
 </style>
