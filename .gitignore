@@ -26,6 +26,7 @@ logs
 
 data/
 get_db.sh
+send_db.sh
 
 *.db
 *.sqlite

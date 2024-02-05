@@ -94,33 +94,30 @@ const changeColor = (index: number) => {
                     </div>
                 </div>
                 <div class="col-md-8">
-                    <div v-if="splittedProjects?.length ?? 0 > 0">
-                        <div v-for="list, index in splittedProjects" :key="index">
-                            <div class="row">
-                                <div @mouseenter="changeColor(index)" @mouseleave="showFollower = false"
-                                    v-for="project, index in list" :key="project.name" class="card m-2"
-                                    style="width: 18rem;">
-                                    <div class="card-body">
-                                        <h5 class="card-title text-center" :style="{ color: colors[index] }">{{
-                                            project.name }}
-                                        </h5>
-                                        <div class="icon-container">
-                                            <NuxtLink v-show="project.url !== null" :to="project.url" target="_blank"
-                                                class="icon-container">
-                                                <i @mouseenter="showFollower = false" @mouseleave="showFollower = true"
-                                                    class="bi bi-box-arrow-up-right"></i>
-                                            </NuxtLink>
-                                            <NuxtLink v-show="project.githubUrl !== null" :to="project.githubUrl"
-                                                target="_blank"><i @mouseenter="showFollower = false"
-                                                    @mouseleave="showFollower = true" class="bi bi-github px-2"></i>
-                                            </NuxtLink>
-                                        </div>
-                                        <p class="card-text mt-4">/* {{ project.description }} */</p>
+                    <div v-for="list, index in splittedProjects" :key="index">
+                        <div class="row">
+                            <div @mouseenter="changeColor(index)" @mouseleave="showFollower = false"
+                                v-for="project, index in list" :key="project.name" class="card m-2" style="width: 18rem;">
+                                <div class="card-body">
+                                    <h5 class="card-title text-center" :style="{ color: colors[index] }">{{
+                                        project.name }}
+                                    </h5>
+                                    <div class="icon-container">
+                                        <NuxtLink v-show="project.url !== null" :to="project.url" target="_blank"
+                                            class="icon-container">
+                                            <i @mouseenter="showFollower = false" @mouseleave="showFollower = true"
+                                                class="bi bi-box-arrow-up-right"></i>
+                                        </NuxtLink>
+                                        <NuxtLink v-show="project.githubUrl !== null" :to="project.githubUrl"
+                                            target="_blank"><i @mouseenter="showFollower = false"
+                                                @mouseleave="showFollower = true" class="bi bi-github px-2"></i>
+                                        </NuxtLink>
                                     </div>
-                                    <div class="d-flex justify-content-around mb-2">
-                                        <div v-for="tech in project.techs" :key="tech.name" class="m-1">
-                                            <Icon :name="tech.iconName" size="1.5rem" />
-                                        </div>
+                                    <p class="card-text mt-4">/* {{ project.description }} */</p>
+                                </div>
+                                <div class="d-flex justify-content-around mb-2">
+                                    <div v-for="tech in project.techs" :key="tech.name" class="m-1">
+                                        <Icon :name="tech.iconName" size="1.5rem" />
                                     </div>
                                 </div>
                             </div>
@@ -250,11 +247,11 @@ label {
     }
 
     .card h5 {
-        font-size: 1rem;
+        font-size: 1.3rem;
     }
 
     .card-text {
-        font-size: 0.8rem;
+        font-size: 0.95rem;
     }
 
     .icon-container i {

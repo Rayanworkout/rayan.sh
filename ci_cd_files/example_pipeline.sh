@@ -4,6 +4,8 @@
 # or
 # node node_modules/prisma/build/index.js migrate deploy
 # journalctl -u flask_listener.service --since today
+# or
+# journalctl -u flask_listener.service --since today -f
 
 
 # Stop if an error occurs
