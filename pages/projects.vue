@@ -49,6 +49,10 @@ const filteredProjects = computed(() => {
 const splittedProjects = computed(() => splitProjects(filteredProjects.value as unknown as any[]));
 
 
+import { useMouseFollower } from '@/composables/useMouseFollower';
+
+const { circleStyle } = useMouseFollower();
+
 </script>
 
 
@@ -75,11 +79,12 @@ const splittedProjects = computed(() => splitProjects(filteredProjects.value as 
                     </div>
                 </div>
                 <div class="col-md-8">
+                    <div :style="circleStyle" class="mouse-follower"></div>
                     <div v-for="list, index in splittedProjects" :key="index">
                         <div class="row">
                             <div v-for="project in list" :key="project.name" class="card m-2" style="width: 18rem;">
                                 <div class="card-body">
-                                    <h5 class="card-title text-center">{{ project.name }}</h5>
+                                    <h5 class="card-title text-center text-white">{{ project.name }}</h5>
                                     <div class="icon-container">
                                         <NuxtLink v-show="project.url !== null" :to="project.url" target="_blank"
                                             class="icon.icon-container">
@@ -111,7 +116,7 @@ const splittedProjects = computed(() => splitProjects(filteredProjects.value as 
                     <div class="row">
                         <div v-for="project in list" :key="project.name" class="card m-2 mx-auto">
                             <div class="card-body">
-                                <h5 class="card-title text-center">{{ project.name }}</h5>
+                                <h5 class="card-title text-center text-white">{{ project.name }}</h5>
                                 <div class="icon-container my-3">
                                     <NuxtLink v-show="project.url !== null" :to="project.url" target="_blank"
                                         class="icon.icon-container">
@@ -123,7 +128,7 @@ const splittedProjects = computed(() => splitProjects(filteredProjects.value as 
                                 </div>
                                 <p class="card-text">/* {{ project.description }} */</p>
                             </div>
-                            <div class="d-flex justify-content-around mb-3">
+                            <div class="d-flex justify-content-around mb-3 techs">
                                 <div v-for="tech in project.techs" :key="tech.name" class="m-1">
                                     <Icon :name="tech.iconName" size="1.5rem" />
                                 </div>
@@ -146,7 +151,6 @@ const splittedProjects = computed(() => splitProjects(filteredProjects.value as 
 h1 {
     color: white;
 }
-
 
 .main-frame {
     border: 2px solid var(--text);
@@ -184,11 +188,19 @@ label {
     cursor: pointer;
 }
 
+.follower {
+    width: 20px;
+    height: 20px;
+    background-color: white;
+    border-radius: 50%;
+    position: absolute;
+}
+
 .card {
     background-color: var(--new-background);
     color: white;
     border: 2px solid var(--text);
-    cursor: pointer;
+    cursor: default;
 }
 
 .card:hover {
