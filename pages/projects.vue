@@ -60,13 +60,11 @@ const splittedProjects = computed(() => splitProjects(filteredProjects.value as 
 const colors = [
     "#F92672", // Pink
     "#66D9EF", // Cyan
-    "#A6E22E", // Green
-    "#FD971F", // Orange
-    "#AE81FF", // Purple
+    "#43D9AD", // Green
+    "#FEA55F", // Orange
+    "#4D5BCE", // Purple
     "#E6DB74", // Yellow
     "#F8F8F2", // White
-    "#75715E", // Grey
-    "#272822"  // Dark
 ];
 
 // Changing color of the mouse follower when
@@ -119,11 +117,11 @@ onMounted(() => {
                 <div class="col-md-8">
                     <div v-for="list, index in splittedProjects" :key="index">
                         <div class="row">
-                            <div @mouseenter="changeColor(index)" @mouseleave="showFollower = false"
-                                v-for="project, index in list" :key="project.name" class="card m-2" style="width: 18rem;">
-                                <div class="card-body">
-                                    <h5 class="card-title text-center" :style="{ color: colors[index] }">{{
-                                        project.name }}
+                            <div v-for="project in list" :key="project.name" class="card m-2" style="width: 18rem;">
+                                <div class="card-body" @mouseenter="changeColor(projects.indexOf(project))" @mouseleave="showFollower = false">
+                                    <h5 class="card-title text-center"
+                                        :style="{ color: colors[projects.indexOf(project)] }">{{
+                                            project.name }}
                                     </h5>
                                     <div class="icon-container">
                                         <NuxtLink v-show="project.url !== null" :to="project.url" target="_blank"
