@@ -31,8 +31,6 @@ const showMenu = ref(false);
         <div v-show="showMenu" class="w-100 text-end mx-3 sm-content">
             <NuxtLink class="nav-link mt-4" to="/" :class="{ 'current': $route.path === '/' }">_hello</NuxtLink>
             <div class="custom-border-bottom"></div>
-            <NuxtLink class="nav-link" to="/about" :class="{ 'current': $route.path === '/about' }">_about-me
-            </NuxtLink>
             <div class="custom-border-bottom"></div>
             <NuxtLink class="nav-link" to="/projects" :class="{ 'current': $route.path === '/projects' }">_projects
             </NuxtLink>
@@ -50,8 +48,6 @@ const showMenu = ref(false);
                 <div class="navbar-nav">
                     <NuxtLink class="nav-link me-auto" aria-current="page" to="/">rayan.sh</NuxtLink>
                     <NuxtLink class="nav-link" to="/" :class="{ 'current': $route.path === '/' }">_hello</NuxtLink>
-                    <NuxtLink class="nav-link px-4" to="/about" :class="{ 'current': $route.path === '/about' }">_about-me
-                    </NuxtLink>
                     <NuxtLink class="nav-link" to="/projects" :class="{ 'current': $route.path === '/projects' }">_projects
                     </NuxtLink>
                     <NuxtLink class="nav-link px-4" to="/blog" :class="{ 'current': $route.path === '/blog' }">_blog
