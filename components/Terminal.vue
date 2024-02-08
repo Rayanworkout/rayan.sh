@@ -46,6 +46,7 @@ const typeWriter = () => {
 const showEmail = ref(false);
 const showWave = ref(false);
 const showCatCursor = ref(false);
+const showClipBoard = ref(false);
 
 const catCommand = 'echo -n "reach me @ " && cat ./email.txt;'
 
@@ -74,6 +75,21 @@ const typeCat = () => {
 
 
 
+const copyToClipboard = () => {
+    const textToCopy = "rayan13170@protonmail.com";
+    navigator.clipboard.writeText(textToCopy)
+        .then(() => {
+            showClipBoard.value = true;
+            setTimeout(() => {
+                showClipBoard.value = false;
+            }, 2000);
+        })
+        .catch(err => {
+            console.error('Could not copy text: ', err);
+        });
+}
+
+
 onMounted(() => {
     setTimeout(writeWhoami, initialDelay - 1500);
     setTimeout(typeWriter, initialDelay);
@@ -91,16 +107,18 @@ onMounted(() => {
         <div class="terminal-body py-4 mb-4" id="terminal-body">
             <div class="about">
                 <p class="text-white"><span style="color: rgb(221, 221, 50);">rayan</span>@<span
-                        style="color: #43D9AD;">home</span> <span class="ps1">~ </span>{{ whoamiTypewriter }}<span
+                        style="color: #00ff00;">home</span> <span class="ps1">~ </span>{{ whoamiTypewriter }}<span
                         v-show="showCursor" class="cursor">_</span></p>
                 <p class="text-white">{{ typewriter }}</p>
                 <p class="text-white"><span v-show="showWave" class="text-white"><span
-                            style="color: rgb(221, 221, 50);">rayan</span>@<span style="color: #43D9AD;">home</span>
+                            style="color: rgb(221, 221, 50);">rayan</span>@<span style="color: #00ff00;">home</span>
                     </span> <span class="ps1" v-show="showWave">~</span> {{ catTypewriter }}<span v-show="showCatCursor"
                         class="cursor">_</span>
                 </p>
-                <div class="infos mb-4" v-show="showEmail"><a class="mail" href="#">reach me @ rayan13170@protonmail.com</a>
+                <div class="infos mb-4" v-show="showEmail"><a class="mail" href="#" @click="copyToClipboard">reach me @
+                        rayan13170@protonmail.com</a>
                 </div>
+                <p v-show="showClipBoard">email copied clipboard</p>
             </div>
         </div>
     </div>
@@ -155,7 +173,7 @@ h1 {
 }
 
 .infos a:hover {
-    color: var(--primary);
+    text-decoration: underline;
 }
 
 .infos i {
