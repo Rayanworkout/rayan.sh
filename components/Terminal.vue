@@ -3,7 +3,7 @@
 import { ref, onMounted } from 'vue';
 
 
-const whoami = "whoami";
+const whoami = "cat ./about.txt";
 
 const whoamiIndex = ref(0);
 
@@ -94,8 +94,8 @@ const copyToClipboard = () => {
 
 onMounted(() => {
     setTimeout(writeWhoami, initialDelay - 1500);
-    setTimeout(typeWriter, initialDelay);
-    setTimeout(typeCat, initialDelay + 7800);
+    setTimeout(typeWriter, initialDelay + 2000);
+    setTimeout(typeCat, initialDelay + 9200);
 });
 
 </script>
@@ -106,9 +106,9 @@ onMounted(() => {
         <div class="terminal-header">
             <div class="terminal-title mx-auto">Terminal</div>
             <div class="window-buttons">
-                <a class="minimize-button" @click="minimizeWindow">&#8722;</a>
-                <a class="maximize-button" @click="maximizeWindow">&#9633;</a>
-                <a class="close-button" @click="closeWindow">&times;</a>
+                <a class="minimize-button">&#8722;</a>
+                <a class="maximize-button">&#9633;</a>
+                <a class="close-button">&times;</a>
             </div>
         </div>
         <div class="menu-bar">
@@ -145,7 +145,7 @@ onMounted(() => {
 
 <style scoped>
 .terminal {
-    width: 100%;
+    width: 90%;
     max-width: 800px;
     margin: 40px auto;
     border: 1px solid #999;
@@ -173,11 +173,14 @@ onMounted(() => {
     text-decoration: none;
     font-size: 1rem;
     cursor: pointer;
+    padding: 5px;
+    border-radius: 80px;
 }
 
 .window-buttons a:hover {
-    color: #00ff00;
+    background-color: #535353;
 }
+
 
 .terminal-title {
     color: white;
@@ -208,8 +211,6 @@ onMounted(() => {
     border-radius: 4px;
 }
 
-
-
 .menu-bar {
     color: white;
     padding: 5px;
@@ -232,7 +233,7 @@ onMounted(() => {
 
 
 .menu-bar ul li:hover {
-    background-color: #666;
+    background-color: #535353;
 }
 
 

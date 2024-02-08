@@ -1,0 +1,117 @@
+
+<template>
+    <div class="hello"><span>
+            Hi all, I am
+        </span>
+        <h1>Rayan<span class="cursor">_</span></h1>
+        <h2>> Backend developer</h2>
+    </div>
+    <div class="code my-5">
+        <p>
+            // this website showcases my projects<br>
+            // they are visible on GitHub as well<br>
+            // you can also check out my blog articles
+        </p>
+        <div class="github">
+            <span style="color: #4D5BCE;" class="const">const </span>
+            <span style="color: #43D9AD;">github</span> <span class="text-white">= </span>
+            <a href="https://github.com/Rayanworkout" target="_blank" class="link">"<span
+                    class="https">https://</span>github.com/rayanworkout"</a>
+        </div>
+        <div class="blog my-1">
+            <span style="color: #4D5BCE;" class="const">const </span>
+            <span style="color: #43D9AD;">blog</span> <span class="text-white">= </span>
+            <a href="https://rayan.sh/blog" class="link">"<span class="https">https://</span>rayan.sh/blog"</a>
+        </div>
+    </div>
+</template>
+
+
+<style scoped>
+
+h1 {
+    font-size: 58px;
+    line-height: 1;
+    color: #E5E9F0;
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+}
+
+.head span {
+    font-size: 18px;
+    line-height: 1;
+    color: #E5E9F0;
+}
+
+.head h2 {
+    font-size: 32px;
+    line-height: 1;
+    color: var(--primary);
+}
+
+.link,
+.link span {
+    color: #E99287;
+    text-decoration-line: underline;
+    text-underline-offset: 4px;
+}
+
+.css-blurry-gradient-blue {
+    position: fixed;
+    bottom: 25%;
+    right: 5%;
+    width: 200px;
+    height: 200px;
+    border-radius: 0% 0% 50% 50%;
+    rotate: 10deg;
+    filter: blur(70px);
+    background: radial-gradient(circle at 50% 50%, rgba(77, 91, 206, 1), rgba(76, 0, 255, 0));
+    opacity: 0.5;
+    z-index: 10;
+}
+
+.css-blurry-gradient-green {
+    position: absolute;
+    top: 20%;
+    right: 20%;
+    width: 200px;
+    height: 200px;
+    border-radius: 0% 50% 0% 50%;
+    filter: blur(70px);
+    background: radial-gradient(circle at 50% 50%, rgba(67, 217, 173, 1), rgba(76, 0, 255, 0));
+    opacity: 0.5;
+    z-index: 10;
+}
+
+
+/* MEDIA QUERIES */
+
+
+@media (max-width: 768px) {
+
+    .hello h1,
+    .cursor {
+        font-size: 40px;
+    }
+
+    .hello h2 {
+        font-size: 25px;
+    }
+
+    .https {
+        display: none;
+    }
+
+    .github span,
+    .github a,
+    .blog span,
+    .blog a {
+        font-size: 16px;
+    }
+
+
+}
+
+
+/* END MEDIA QUERIES */
+</style>
