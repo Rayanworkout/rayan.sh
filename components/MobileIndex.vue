@@ -47,6 +47,10 @@ h2 {
     color: var(--primary);
 }
 
+.hello, .code {
+    margin-left: 20px;
+}
+
 .link,
 .link span {
     color: #E99287;
@@ -75,7 +79,7 @@ h2 {
     .github a,
     .blog span,
     .blog a {
-        font-size: 16px;
+        font-size: 18px;
     }
 
 
