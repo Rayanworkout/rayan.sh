@@ -91,12 +91,12 @@ onMounted(() => {
 
 
 <template>
-    <div class="bg-container px-1">
+    <div class="bg-container px-1 pb-4">
         <Navbar />
         <!-- Mouse follower object -->
         <div v-show="showFollower" :style="{ ...circleStyle, ...currentColor }"></div>
         <h1 class="text-center mt-5 pb-4">ls projects/<span class="cursor">__</span></h1>
-        <div class="main-frame py-2 mx-2">
+        <div class="main-frame py-2 mx-2 mx-auto">
             <div class="my-border-bottom text-center py-1">
                 <div v-if="checkedTechs.length > 0" class="d-flex justify-content-center gap-4">
                     <div v-for="tech in checkedTechs" :key="tech" class="mb-2 border-right">{{ tech }};</div>
@@ -168,7 +168,7 @@ onMounted(() => {
                                 <p class="card-text">/* {{ project.description }} */</p>
                             </div>
                             <div class="d-flex justify-content-around mb-3 techs">
-                                <div v-for="tech in project.techs" :key="tech.name" class="m-1">
+                                <div v-for="tech in project.techs" :key="tech.name" class="m-2">
                                     <Icon :name="tech.iconName" size="1.5rem" />
                                 </div>
                             </div>
@@ -193,6 +193,7 @@ h1 {
 
 .main-frame {
     border: 2px solid var(--text);
+    max-width: 1440px;
 }
 
 .my-border-bottom {

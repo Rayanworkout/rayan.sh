@@ -31,7 +31,6 @@ const showMenu = ref(false);
         <div v-show="showMenu" class="w-100 text-end mx-3 sm-content">
             <NuxtLink class="nav-link mt-4" to="/" :class="{ 'current': $route.path === '/' }">_hello</NuxtLink>
             <div class="custom-border-bottom"></div>
-            <div class="custom-border-bottom"></div>
             <NuxtLink class="nav-link" to="/projects" :class="{ 'current': $route.path === '/projects' }">_projects
             </NuxtLink>
             <div class="custom-border-bottom"></div>
