@@ -2,7 +2,7 @@
     <div class="row">
         <div class="col-md-4">
             <div class="head">
-                <div class="hello"><span>
+                <div class="hello"><span style="font-size: 18px;">
                         Hi all, I am
                     </span>
                     <h1>Rayan<span class="cursor">_</span></h1>
@@ -58,10 +58,9 @@ h1 {
     padding-bottom: 1rem;
 }
 
-.head span {
-    font-size: 18px;
+.head span, .head a {
+    font-size: 14px;
     line-height: 1;
-    color: #E5E9F0;
 }
 
 .head h2 {
@@ -75,33 +74,6 @@ h1 {
     color: #E99287;
     text-decoration-line: underline;
     text-underline-offset: 4px;
-}
-
-.css-blurry-gradient-blue {
-    position: fixed;
-    bottom: 25%;
-    right: 5%;
-    width: 200px;
-    height: 200px;
-    border-radius: 0% 0% 50% 50%;
-    rotate: 10deg;
-    filter: blur(70px);
-    background: radial-gradient(circle at 50% 50%, rgba(77, 91, 206, 1), rgba(76, 0, 255, 0));
-    opacity: 0.5;
-    z-index: 10;
-}
-
-.css-blurry-gradient-green {
-    position: absolute;
-    top: 20%;
-    right: 20%;
-    width: 200px;
-    height: 200px;
-    border-radius: 0% 50% 0% 50%;
-    filter: blur(70px);
-    background: radial-gradient(circle at 50% 50%, rgba(67, 217, 173, 1), rgba(76, 0, 255, 0));
-    opacity: 0.5;
-    z-index: 10;
 }
 
 

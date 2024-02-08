@@ -49,7 +49,7 @@ const showCatCursor = ref(false);
 const showClipBoard = ref(false);
 const showFinalps1 = ref(false);
 
-const catCommand = 'echo -n "reach me @ " && cat ./email.txt;'
+const catCommand = 'echo -n "reach me @ " && cat ./email.txt'
 
 const catTypewriter = ref('');
 
@@ -61,6 +61,7 @@ const typeCat = () => {
         setTimeout(() => {
             showCatCursor.value = true;
         }, 1000);
+
     }
     if (catIndex.value < catCommand.length) {
         catTypewriter.value += catCommand.charAt(catIndex.value);
@@ -95,7 +96,7 @@ const copyToClipboard = () => {
 onMounted(() => {
     setTimeout(writeWhoami, initialDelay - 1500);
     setTimeout(typeWriter, initialDelay + 2000);
-    setTimeout(typeCat, initialDelay + 9200);
+    setTimeout(typeCat, initialDelay + 9500);
 });
 
 </script>
@@ -177,10 +178,14 @@ onMounted(() => {
     border-radius: 80px;
 }
 
-.window-buttons a:hover {
+.minimize-button:hover,
+.maximize-button:hover {
     background-color: #535353;
 }
 
+.close-button:hover {
+    background-color: #ff5f56;
+}
 
 .terminal-title {
     color: white;

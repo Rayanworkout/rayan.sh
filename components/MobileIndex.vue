@@ -23,12 +23,16 @@
             <span style="color: #43D9AD;">blog</span> <span class="text-white">= </span>
             <a href="https://rayan.sh/blog" class="link">"<span class="https">https://</span>rayan.sh/blog"</a>
         </div>
+        <div class="blog my-1">
+            <span style="color: #4D5BCE;" class="const">const </span>
+            <span style="color: #43D9AD;">projects</span> <span class="text-white">= </span>
+            <a href="https://rayan.sh/blog" class="link">"<span class="https">https://</span>rayan.sh/projects"</a>
+        </div>
     </div>
 </template>
 
 
 <style scoped>
-
 h1 {
     font-size: 58px;
     line-height: 1;
@@ -37,13 +41,7 @@ h1 {
     padding-bottom: 1rem;
 }
 
-.head span {
-    font-size: 18px;
-    line-height: 1;
-    color: #E5E9F0;
-}
-
-.head h2 {
+h2 {
     font-size: 32px;
     line-height: 1;
     color: var(--primary);
@@ -56,36 +54,7 @@ h1 {
     text-underline-offset: 4px;
 }
 
-.css-blurry-gradient-blue {
-    position: fixed;
-    bottom: 25%;
-    right: 5%;
-    width: 200px;
-    height: 200px;
-    border-radius: 0% 0% 50% 50%;
-    rotate: 10deg;
-    filter: blur(70px);
-    background: radial-gradient(circle at 50% 50%, rgba(77, 91, 206, 1), rgba(76, 0, 255, 0));
-    opacity: 0.5;
-    z-index: 10;
-}
-
-.css-blurry-gradient-green {
-    position: absolute;
-    top: 20%;
-    right: 20%;
-    width: 200px;
-    height: 200px;
-    border-radius: 0% 50% 0% 50%;
-    filter: blur(70px);
-    background: radial-gradient(circle at 50% 50%, rgba(67, 217, 173, 1), rgba(76, 0, 255, 0));
-    opacity: 0.5;
-    z-index: 10;
-}
-
-
 /* MEDIA QUERIES */
-
 
 @media (max-width: 768px) {
 
