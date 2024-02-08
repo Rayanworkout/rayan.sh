@@ -101,7 +101,7 @@ const updateSelectedCategory = (e: any) => {
 
 
 <template>
-  <section class="main">
+  <section class="main pb-5">
     <Navbar />
     <div class="container">
       <div class="mytoast animate__animated animate__bounceInRight" v-show="state.showToast">{{ state.message }} <i

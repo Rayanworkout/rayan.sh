@@ -91,12 +91,12 @@ onMounted(() => {
 
 
 <template>
-    <div class="bg-container px-1 pb-4">
+    <div class="bg-container px-1">
         <Navbar />
         <!-- Mouse follower object -->
         <div v-show="showFollower" :style="{ ...circleStyle, ...currentColor }"></div>
         <h1 class="text-center mt-5 pb-4">ls projects/<span class="cursor">__</span></h1>
-        <div class="main-frame py-2 mx-2 mx-auto">
+        <div class="main-frame py-2 mx-2">
             <div class="my-border-bottom text-center py-1">
                 <div v-if="checkedTechs.length > 0" class="d-flex justify-content-center gap-4">
                     <div v-for="tech in checkedTechs" :key="tech" class="mb-2 border-right">{{ tech }};</div>
@@ -105,42 +105,41 @@ onMounted(() => {
                     all;
                 </div>
             </div>
-
-            <div>
-                <div class="filter mx-auto">
-                    <div class="checkbox-container my-5">
-                        <div v-for="tech in techsNames" :key="tech.name" class="checkbox-item mx-auto">
-                            <input class="m-2" type="checkbox" :id="tech.name" v-model="checkedTechs" :value="tech.name" />
-                            <label :for="tech.name">
-                                <Icon :name="tech.icon" /> {{ tech.name }}
-                            </label>
-                        </div>
+            <div class="row my-5">
+                <div class="col-md-4">
+                    <div v-for="tech in techsNames" key="tech" style="padding-left: 30px;">
+                        <input class="m-2" type="checkbox" :id="tech.name" v-model="checkedTechs" :value="tech.name" />
+                        <label :for="tech.name">
+                            <Icon :name="tech.icon" /> {{ tech.name }}
+                        </label>
                     </div>
                 </div>
-                <div v-for="list, index in splittedProjects" :key="index" class="projects">
-                    <div class="row text-center mx-auto">
-                        <div v-for="project in list" :key="project.name" class="card m-4" style="width: 18rem;">
-                            <div class="card-body" @mouseenter="changeColor(projects.indexOf(project))"
-                                @mouseleave="showFollower = false">
-                                <h5 class="card-title text-center" :style="{ color: colors[projects.indexOf(project)] }">{{
-                                    project.name }}
-                                </h5>
-                                <div class="icon-container">
-                                    <NuxtLink v-show="project.url !== null" :to="project.url" target="_blank"
-                                        class="icon-container">
-                                        <i @mouseenter="showFollower = false" @mouseleave="showFollower = true"
-                                            class="bi bi-box-arrow-up-right"></i>
-                                    </NuxtLink>
-                                    <NuxtLink v-show="project.githubUrl !== null" :to="project.githubUrl" target="_blank"><i
-                                            @mouseenter="showFollower = false" @mouseleave="showFollower = true"
-                                            class="bi bi-github px-2"></i>
-                                    </NuxtLink>
+                <div class="col-md-8">
+                    <div v-for="list, index in splittedProjects" :key="index">
+                        <div class="row">
+                            <div v-for="project in list" :key="project.name" class="card m-2" style="width: 18rem;">
+                                <div class="card-body" @mouseenter="changeColor(projects.indexOf(project))" @mouseleave="showFollower = false">
+                                    <h5 class="card-title text-center"
+                                        :style="{ color: colors[projects.indexOf(project)] }">{{
+                                            project.name }}
+                                    </h5>
+                                    <div class="icon-container">
+                                        <NuxtLink v-show="project.url !== null" :to="project.url" target="_blank"
+                                            class="icon-container">
+                                            <i @mouseenter="showFollower = false" @mouseleave="showFollower = true"
+                                                class="bi bi-box-arrow-up-right"></i>
+                                        </NuxtLink>
+                                        <NuxtLink v-show="project.githubUrl !== null" :to="project.githubUrl"
+                                            target="_blank"><i @mouseenter="showFollower = false"
+                                                @mouseleave="showFollower = true" class="bi bi-github px-2"></i>
+                                        </NuxtLink>
+                                    </div>
+                                    <p class="card-text mt-4">/* {{ project.description }} */</p>
                                 </div>
-                                <p class="card-text mt-4">/* {{ project.description }} */</p>
-                            </div>
-                            <div class="d-flex justify-content-around mb-2">
-                                <div v-for="tech in project.techs" :key="tech.name" class="m-1">
-                                    <Icon :name="tech.iconName" size="1.5rem" />
+                                <div class="d-flex justify-content-around mb-2">
+                                    <div v-for="tech in project.techs" :key="tech.name" class="m-1">
+                                        <Icon :name="tech.iconName" size="1.5rem" />
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -168,7 +167,7 @@ onMounted(() => {
                                 <p class="card-text">/* {{ project.description }} */</p>
                             </div>
                             <div class="d-flex justify-content-around mb-3 techs">
-                                <div v-for="tech in project.techs" :key="tech.name" class="m-2">
+                                <div v-for="tech in project.techs" :key="tech.name" class="m-1">
                                     <Icon :name="tech.iconName" size="1.5rem" />
                                 </div>
                             </div>
@@ -193,7 +192,6 @@ h1 {
 
 .main-frame {
     border: 2px solid var(--text);
-    max-width: 1440px;
 }
 
 .my-border-bottom {
@@ -245,31 +243,8 @@ label {
     display: none;
 }
 
-.checkbox-container {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 20px;
-}
-
-.checkbox-item {
-    margin-right: 20px;
-}
-
-
-.filter {
-    max-width: 700px;
-}
-
-.projects {
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    align-items: center;
-    gap: 40px;
-}
-
 @media (max-width: 768px) {
-    .filter {
+    .col-md-4 {
         display: none;
     }
 

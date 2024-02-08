@@ -31,30 +31,27 @@ const showMenu = ref(false);
         <div v-show="showMenu" class="w-100 text-end mx-3 sm-content">
             <NuxtLink class="nav-link mt-4" to="/" :class="{ 'current': $route.path === '/' }">_hello</NuxtLink>
             <div class="custom-border-bottom"></div>
-            <NuxtLink class="nav-link" to="/about" :class="{ 'current': $route.path === '/about' }">_about-me
+            <NuxtLink class="nav-link" to="/projects" :class="{ 'current': $route.path === '/projects' }">_projects
             </NuxtLink>
-            <div class="custom-border-bottom"></div>
-            <NuxtLink class="nav-link" to="/projects">_projects</NuxtLink>
             <div class="custom-border-bottom"></div>
             <NuxtLink class="nav-link" to="/blog" :class="{ 'current': $route.path === '/blog' }">_blog
             </NuxtLink>
             <div class="custom-border-bottom"></div>
             <a class="nav-link" href="mailto:rayan13170@protonmail.com">_contact-me</a>
             <div class="custom-border-bottom"></div>
-            <NuxtLink class="nav-link" to="/login" :class="{ 'current': $route.path === '/login' }">_login</NuxtLink>
+
+
         </div>
         <div class="container-fluid">
             <div class="w-100 mx-3 lg-content">
                 <div class="navbar-nav">
                     <NuxtLink class="nav-link me-auto" aria-current="page" to="/">rayan.sh</NuxtLink>
                     <NuxtLink class="nav-link" to="/" :class="{ 'current': $route.path === '/' }">_hello</NuxtLink>
-                    <NuxtLink class="nav-link px-4" to="/about" :class="{ 'current': $route.path === '/about' }">_about-me
+                    <NuxtLink class="nav-link" to="/projects" :class="{ 'current': $route.path === '/projects' }">_projects
                     </NuxtLink>
-                    <NuxtLink class="nav-link" to="/projects" :class="{ 'current': $route.path === '/projects' }">_projects</NuxtLink>
                     <NuxtLink class="nav-link px-4" to="/blog" :class="{ 'current': $route.path === '/blog' }">_blog
                     </NuxtLink>
-                    <a class="nav-link contact" href="mailto:rayan13170@protonmail.com">_contact-me</a>
-                    <NuxtLink class="nav-link" to="/login" :class="{ 'current': $route.path === '/login' }">_login
+                    <NuxtLink v-show="!userLoggedIn" class="nav-link contact" to="/login" :class="{ 'current': $route.path === '/login' }">_login
                     </NuxtLink>
                     <NuxtLink v-show="userLoggedIn" to="/dashboard" class="about nav-link">_dashboard</NuxtLink>
                     <NuxtLink v-show="userLoggedIn" @click="logout" class="about nav-link">_logout</NuxtLink>
