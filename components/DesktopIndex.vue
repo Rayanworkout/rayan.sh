@@ -28,7 +28,7 @@
                     <div class="blog my-1">
                         <span style="color: #4D5BCE;" class="const">const </span>
                         <span style="color: #43D9AD;">projects</span> <span class="text-white">= </span>
-                        <a href="https://rayan.sh/blog" class="link">"<span
+                        <a href="https://rayan.sh/projects" class="link">"<span
                                 class="https">https://</span>rayan.sh/projects"</a>
                     </div>
                 </div>
