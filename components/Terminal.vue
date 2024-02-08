@@ -164,11 +164,9 @@ onMounted(() => {
 .window-buttons {
     display: flex;
     justify-content: space-between;
-    align-items: center;
     padding: 0 10px;
     gap: 12px;
 }
-
 .window-buttons a {
     color: white;
     text-decoration: none;
@@ -205,7 +203,6 @@ onMounted(() => {
     color: #00ff00;
     vertical-align: middle;
 }
-
 /* Styling scrollbar for terminal body */
 .terminal-body::-webkit-scrollbar {
     width: 8px;
