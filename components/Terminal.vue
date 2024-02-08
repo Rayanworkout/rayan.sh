@@ -18,8 +18,8 @@ const writeWhoami = () => {
 };
 
 
-const text = "minimalist 26 years old self-taught developer driven by interests in Web Development, " +
-    "Linux, and self-hosted stuff. Mainly Python and Javascript."
+const text = "minimalist 26 years old self-taught developer driven by interests in web development, " +
+    "linux and self-hosted stuff. Mainly python and javascript."
 
 const index = ref(0);
 
@@ -47,6 +47,7 @@ const showEmail = ref(false);
 const showWave = ref(false);
 const showCatCursor = ref(false);
 const showClipBoard = ref(false);
+const showFinalps1 = ref(false);
 
 const catCommand = 'echo -n "reach me @ " && cat ./email.txt;'
 
@@ -69,6 +70,7 @@ const typeCat = () => {
         setTimeout(() => {
             showCatCursor.value = false;
             showEmail.value = true;
+            showFinalps1.value = true;
         }, 1000);
     }
 };
@@ -101,10 +103,24 @@ onMounted(() => {
 
 <template>
     <div class="terminal">
-        <div class="terminal-header text-center text-white">
-            Terminal
+        <div class="terminal-header">
+            <div class="terminal-title mx-auto">Terminal</div>
+            <div class="window-buttons">
+                <a class="minimize-button" @click="minimizeWindow">&#8722;</a>
+                <a class="maximize-button" @click="maximizeWindow">&#9633;</a>
+                <a class="close-button" @click="closeWindow">&times;</a>
+            </div>
         </div>
-        <div class="terminal-body py-4 mb-4" id="terminal-body">
+        <div class="menu-bar">
+            <ul>
+                <li>File</li>
+                <li>Edit</li>
+                <li>View</li>
+                <li>Search</li>
+                <li>Help</li>
+            </ul>
+        </div>
+        <div class="terminal-body mb-3" id="terminal-body">
             <div class="about">
                 <p class="text-white"><span style="color: rgb(221, 221, 50);">rayan</span>@<span
                         style="color: #00ff00;">home</span> <span class="ps1">~ </span>{{ whoamiTypewriter }}<span
@@ -115,10 +131,12 @@ onMounted(() => {
                     </span> <span class="ps1" v-show="showWave">~</span> {{ catTypewriter }}<span v-show="showCatCursor"
                         class="cursor">_</span>
                 </p>
-                <div class="infos mb-4" v-show="showEmail"><a class="mail" href="#" @click="copyToClipboard">reach me @
+                <div class="infos mb-3" v-show="showEmail"><a class="mail" href="#" @click="copyToClipboard">reach me @
                         rayan13170@protonmail.com</a>
                 </div>
-                <p v-show="showClipBoard">email copied clipboard</p>
+                <p class="text-white" v-show="showFinalps1"><span style="color: rgb(221, 221, 50);">rayan</span>@<span
+                        style="color: #00ff00;">home</span> <span class="ps1">~ <span v-show="showClipBoard">email copied
+                            clipboard</span></span><span class="cursor">_</span></p>
             </div>
         </div>
     </div>
@@ -131,14 +149,43 @@ onMounted(() => {
     max-width: 800px;
     margin: 40px auto;
     border: 1px solid #999;
-    border-radius: 5px;
+    border-radius: 2px;
     overflow: hidden;
+    background-color: #232c32;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+    border: none;
 }
 
 .terminal-header {
-    background-color: #353535;
-    padding: 5px;
+    display: flex;
 }
+
+.window-buttons {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 10px;
+    gap: 12px;
+}
+
+.window-buttons a {
+    color: white;
+    text-decoration: none;
+    font-size: 1rem;
+    cursor: pointer;
+}
+
+.window-buttons a:hover {
+    color: #00ff00;
+}
+
+.terminal-title {
+    color: white;
+    padding: 5px;
+    font-size: 0.9rem;
+    padding-left: 60px;
+}
+
 
 .terminal-body {
     overflow-y: scroll;
@@ -161,6 +208,40 @@ onMounted(() => {
     border-radius: 4px;
 }
 
+
+
+.menu-bar {
+    color: white;
+    padding: 5px;
+}
+
+.menu-bar ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+
+.menu-bar ul li {
+    display: inline;
+    margin-right: 10px;
+    font-size: 0.75rem;
+    cursor: pointer;
+    color: white;
+    padding: 5px;
+}
+
+
+.menu-bar ul li:hover {
+    background-color: #666;
+}
+
+
+.menu-bar ul li:last-child {
+    margin-right: 0;
+}
+
+
+
 /* ABOUT  */
 .about {
     margin-bottom: 0.5rem;
@@ -181,6 +262,7 @@ h1 {
 }
 
 p,
+p span,
 .mail {
     font-size: 0.9rem;
     text-decoration: none;
