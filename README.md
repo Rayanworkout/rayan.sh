@@ -1,7 +1,6 @@
 # Rayan.sh ✨
 ______
-#### This website is my own, currently in its initial stages, primarily functioning as a tutorial based blog.
-#### I will soon integrate a portfolio to showcase some of my work.
+#### This website is my personal portfolio and blog, showcasing my projects and sharing some knowledge. It's a FullStack web application, built with Nuxt 3, Typescript and hosted on a Debian VPS. It's a part of my learning journey and a platform to share my projects and tutorials.
 ______
 
 ## Purpose
