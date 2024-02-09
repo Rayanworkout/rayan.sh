@@ -29,6 +29,9 @@
             <a href="https://rayan.sh/projects" class="link">"<span class="https">https://</span>rayan.sh/projects"</a>
         </div>
     </div>
+    <div>
+        <Terminal />
+    </div>
 </template>
 
 
@@ -47,7 +50,8 @@ h2 {
     color: var(--primary);
 }
 
-.hello, .code {
+.hello,
+.code {
     margin-left: 20px;
 }
 
@@ -62,10 +66,7 @@ h2 {
 
 @media (max-width: 768px) {
 
-    .hello h1,
-    .cursor {
-        font-size: 40px;
-    }
+
 
     .hello h2 {
         font-size: 25px;
