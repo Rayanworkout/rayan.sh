@@ -167,6 +167,7 @@ onMounted(() => {
     padding: 0 10px;
     gap: 12px;
 }
+
 .window-buttons a {
     color: white;
     text-decoration: none;
@@ -203,6 +204,7 @@ onMounted(() => {
     color: #00ff00;
     vertical-align: middle;
 }
+
 /* Styling scrollbar for terminal body */
 .terminal-body::-webkit-scrollbar {
     width: 8px;
@@ -288,6 +290,16 @@ p span,
         font-size: 1.2rem;
     }
 
+    .terminal-title,
+    .window-buttons a,
+    p,
+    span {
+        font-size: 0.8rem;
+    }
 
-}
-</style>
+    .terminal {
+        width: 100%;
+    }
+
+
+}</style>
