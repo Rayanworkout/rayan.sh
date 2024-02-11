@@ -85,7 +85,7 @@ const copyToClipboard = () => {
             showClipBoard.value = true;
             setTimeout(() => {
                 showClipBoard.value = false;
-            }, 2000);
+            }, 4000);
         })
         .catch(err => {
             console.error('Could not copy text: ', err);
@@ -107,9 +107,15 @@ onMounted(() => {
         <div class="terminal-header">
             <div class="terminal-title mx-auto">Terminal</div>
             <div class="window-buttons">
-                <a class="minimize-button">&#8722;</a>
-                <a class="maximize-button">&#9633;</a>
-                <a class="close-button">&times;</a>
+                <a class="minimize-button">
+                    <Icon name="ic:baseline-minimize" />
+                </a>
+                <a class="maximize-button">
+                    <Icon name="ic:round-crop-square" />
+                </a>
+                <a class="close-button">
+                    <Icon name="material-symbols:close" />
+                </a>
             </div>
         </div>
         <div class="menu-bar">
@@ -137,7 +143,7 @@ onMounted(() => {
                 </div>
                 <p class="text-white" v-show="showFinalps1"><span style="color: rgb(221, 221, 50);">rayan</span>@<span
                         style="color: #00ff00;">home</span> <span class="ps1">~ <span v-show="showClipBoard">email copied
-                            clipboard</span></span><span class="cursor">_</span></p>
+                            clipboard, see you soon !</span></span><span class="cursor">_</span></p>
             </div>
         </div>
     </div>
@@ -164,8 +170,7 @@ onMounted(() => {
 .window-buttons {
     display: flex;
     justify-content: space-between;
-    padding: 0 10px;
-    gap: 12px;
+    padding: 0 3px;
 }
 
 .window-buttons a {
@@ -177,9 +182,11 @@ onMounted(() => {
     border-radius: 80px;
 }
 
+
+
 .minimize-button:hover,
 .maximize-button:hover {
-    background-color: #535353;
+    background-color: #353535;
 }
 
 .close-button:hover {
@@ -190,7 +197,7 @@ onMounted(() => {
     color: white;
     padding: 5px;
     font-size: 0.9rem;
-    padding-left: 60px;
+    padding-left: 70px;
 }
 
 
@@ -258,12 +265,9 @@ h1 {
     color: white;
 }
 
-.infos a:hover {
+.mail:hover {
     text-decoration: underline;
-}
-
-.infos i {
-    font-size: 1.3rem;
+    cursor: pointer;
 }
 
 p,
@@ -302,5 +306,4 @@ p span,
     }
 
 
-}
-</style>
+}</style>
