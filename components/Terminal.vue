@@ -2,6 +2,7 @@
 
 import { ref, onMounted } from 'vue';
 
+const emit = defineEmits(['maximize'])
 
 const whoami = "cat ./about.txt";
 
@@ -24,7 +25,7 @@ const text = "minimalist 26 years old self-taught developer driven by interests 
 const index = ref(0);
 
 const initialDelay = 3500;  // Delay before typing starts
-const delay = 50; // in milliseconds
+const delay = 80; // in milliseconds
 
 const typewriter = ref('');
 
@@ -72,7 +73,7 @@ const typeCat = () => {
             showCatCursor.value = false;
             showEmail.value = true;
             showFinalps1.value = true;
-        }, 1000);
+        }, 500);
     }
 };
 
@@ -96,9 +97,8 @@ const copyToClipboard = () => {
 onMounted(() => {
     setTimeout(writeWhoami, initialDelay - 1500);
     setTimeout(typeWriter, initialDelay + 2000);
-    setTimeout(typeCat, initialDelay + 9500);
+    setTimeout(typeCat, initialDelay + 13500);
 });
-
 </script>
 
 
