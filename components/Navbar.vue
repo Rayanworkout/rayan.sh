@@ -47,9 +47,9 @@ const showMenu = ref(false);
                 <div class="navbar-nav">
                     <NuxtLink class="nav-link me-auto" aria-current="page" to="/">rayan.sh</NuxtLink>
                     <NuxtLink class="nav-link" to="/" :class="{ 'current': $route.path === '/' }">_hello</NuxtLink>
-                    <NuxtLink class="nav-link" to="/projects" :class="{ 'current': $route.path === '/projects' }">_projects
+                    <NuxtLink class="nav-link mx-2" to="/projects" :class="{ 'current': $route.path === '/projects' }">_projects
                     </NuxtLink>
-                    <NuxtLink class="nav-link px-4" to="/blog" :class="{ 'current': $route.path === '/blog' }">_blog
+                    <NuxtLink class="nav-link" to="/blog" :class="{ 'current': $route.path === '/blog' }">_blog
                     </NuxtLink>
                     <NuxtLink v-show="!userLoggedIn" class="nav-link contact" to="/login" :class="{ 'current': $route.path === '/login' }">_login
                     </NuxtLink>

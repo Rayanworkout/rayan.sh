@@ -15,6 +15,21 @@ definePageMeta({
 
 });
 
+
+useHead({
+    title: 'Home',
+    meta: [
+        {
+            name: 'description',
+            content: 'Home page of rayan.sh, welcome !',
+        },
+        {
+            name: 'keywords',
+            content: 'rayan, rayanworkout, rayan.sh, rayan sh, rayanworkout.com, rayanworkout.dev, programming tutorials, portfolio, blog, projects, github, rayanworkout github, rayanworkout blog, rayanworkout projects, rayanworkout dev',
+        },
+    ],
+});
+
 </script>
 
 

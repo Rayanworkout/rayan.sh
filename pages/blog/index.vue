@@ -20,6 +20,20 @@ definePageMeta({
 
 });
 
+useHead({
+    title: 'Blog',
+    meta: [
+        {
+            name: 'description',
+            content: 'Blog page of rayan.sh, enjoy !',
+        },
+        {
+            name: 'keywords',
+            content: 'rayan, rayanworkout, blog, tutorial, rayan.sh, rayan sh, rayanworkout.com, rayanworkout.dev, programming tutorials, portfolio, blog, projects, github, rayanworkout github, rayanworkout blog, rayanworkout projects, rayanworkout dev',
+        },
+    ],
+});
+
 
 
 const allArticles = ref<Article[]>();
