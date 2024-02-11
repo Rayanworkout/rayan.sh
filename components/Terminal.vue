@@ -23,7 +23,7 @@ const text = "minimalist 26 years old self-taught developer driven by interests 
 
 const index = ref(0);
 
-const initialDelay = 5000;  // Delay before typing starts
+const initialDelay = 3500;  // Delay before typing starts
 const delay = 50; // in milliseconds
 
 const typewriter = ref('');
@@ -132,8 +132,8 @@ onMounted(() => {
                     </span> <span class="ps1" v-show="showWave">~</span> {{ catTypewriter }}<span v-show="showCatCursor"
                         class="cursor">_</span>
                 </p>
-                <div class="infos mb-3" v-show="showEmail"><a class="mail" href="#" @click="copyToClipboard">reach me @
-                        rayan13170@protonmail.com</a>
+                <div class="mail mb-3" v-show="showEmail" @click="copyToClipboard">reach me @
+                    rayan13170@protonmail.com
                 </div>
                 <p class="text-white" v-show="showFinalps1"><span style="color: rgb(221, 221, 50);">rayan</span>@<span
                         style="color: #00ff00;">home</span> <span class="ps1">~ <span v-show="showClipBoard">email copied
@@ -302,4 +302,5 @@ p span,
     }
 
 
-}</style>
+}
+</style>

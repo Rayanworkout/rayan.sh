@@ -17,19 +17,17 @@
                     <div class="github">
                         <span style="color: #4D5BCE;" class="const">const </span>
                         <span style="color: #43D9AD;">github</span> <span class="text-white">= </span>
-                        <a href="https://github.com/Rayanworkout" target="_blank" class="link">"<span
-                                class="https">https://</span>github.com/rayanworkout"</a>
+                        <a href="https://github.com/Rayanworkout" target="_blank" class="link">"github.com/rayanworkout"</a>
                     </div>
                     <div class="blog my-1">
                         <span style="color: #4D5BCE;" class="const">const </span>
                         <span style="color: #43D9AD;">blog</span> <span class="text-white">= </span>
-                        <a href="https://rayan.sh/blog" class="link">"<span class="https">https://</span>rayan.sh/blog"</a>
+                        <a href="https://rayan.sh/blog" class="link">"rayan.sh/blog"</a>
                     </div>
                     <div class="blog my-1">
                         <span style="color: #4D5BCE;" class="const">const </span>
                         <span style="color: #43D9AD;">projects</span> <span class="text-white">= </span>
-                        <a href="https://rayan.sh/projects" class="link">"<span
-                                class="https">https://</span>rayan.sh/projects"</a>
+                        <a href="https://rayan.sh/projects" class="link">"rayan.sh/projects"</a>
                     </div>
                 </div>
             </div>
@@ -58,8 +56,9 @@ h1 {
     padding-bottom: 1rem;
 }
 
-.head span, .head a {
-    font-size: 14px;
+.head span,
+.head a {
+    font-size: 17px;
     line-height: 1;
 }
 
@@ -89,10 +88,6 @@ h1 {
 
     .hello h2 {
         font-size: 25px;
-    }
-
-    .https {
-        display: none;
     }
 
     .github span,
