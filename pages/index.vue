@@ -1,6 +1,21 @@
 
-import type DesktopIndexVue from '~/components/DesktopIndex.vue';
+<script setup>
 
+definePageMeta({
+    title: 'Home',
+    description: 'Home page of rayan.sh, welcome !',
+    url: 'https://rayan.sh',
+    type: 'website',
+    site_name: 'rayan.sh',
+    locale: 'en',
+    image: 'https://rayan.sh/img/monkey.png',
+    image_alt: 'programming monkey',
+    keywords: 'rayan, rayanworkout, rayan.sh, rayan sh, rayanworkout.com, rayanworkout.dev, programming tutorials, portfolio, blog, projects, github, rayanworkout github, rayanworkout blog, rayanworkout projects, rayanworkout dev',
+    viewport: 'width=device-width, initial-scale=1.0',
+
+});
+
+</script>
 
 
 <template>
@@ -48,6 +63,4 @@ import type DesktopIndexVue from '~/components/DesktopIndex.vue';
         display: none;
     }
 }
-
-
 </style>

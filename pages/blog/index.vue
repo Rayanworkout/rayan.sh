@@ -4,6 +4,24 @@ import { type Article } from '~/types/article.type'
 import { handleCategoryClicked } from '~/utils/frontend/categoryFilter';
 import { filterArticles } from '~/utils/frontend/filterArticles';
 
+
+
+definePageMeta({
+    title: 'Blog',
+    description: 'Blog page of rayan.sh, enjoy !',
+    url: 'https://rayan.sh/blog',
+    type: 'website',
+    site_name: 'rayan.sh',
+    locale: 'en',
+    image: 'https://rayan.sh/img/monkey.png',
+    image_alt: 'programming monkey',
+    keywords: 'rayan, rayanworkout, blog, tutorial, rayan.sh, rayan sh, rayanworkout.com, rayanworkout.dev, programming tutorials, portfolio, blog, projects, github, rayanworkout github, rayanworkout blog, rayanworkout projects, rayanworkout dev',
+    viewport: 'width=device-width, initial-scale=1.0',
+
+});
+
+
+
 const allArticles = ref<Article[]>();
 const filteredArticles = ref();
 const filteredCategories = ref([]);
