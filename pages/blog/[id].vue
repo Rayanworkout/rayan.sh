@@ -6,6 +6,21 @@ import { type Article } from '~/types/article.type'
 import MarkdownIt from 'markdown-it';
 import mdHighlight from 'markdown-it-highlightjs';
 
+
+
+
+definePageMeta({
+  type: 'website',
+  site_name: 'rayan.sh',
+  locale: 'en',
+  image: 'https://rayan.sh/img/monkey.png',
+  image_alt: 'programming monkey',
+  viewport: 'width=device-width, initial-scale=1.0',
+
+});
+
+
+
 const route = useRoute();
 
 const articleId = route.params.id;
@@ -38,6 +53,16 @@ if (error.value) {
 
 }
 
+
+useHead({
+  title: article.value.title,
+  meta: [
+    {
+      name: 'description',
+      content: article.value.content,
+    },
+  ],
+});
 
 
 const likeArticle = async () => {

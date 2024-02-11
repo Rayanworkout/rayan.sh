@@ -5,6 +5,23 @@ import { splitProjects } from "~/utils/frontend/splitElements";
 // Custom composable to create a little circle following the mouse
 import { useMouseFollower } from '@/composables/useMouseFollower';
 
+
+
+
+definePageMeta({
+    title: 'Projects',
+    description: 'Projects page of rayan.sh !',
+    url: 'https://rayan.sh/projects',
+    type: 'website',
+    site_name: 'rayan.sh',
+    locale: 'en',
+    keywords: 'rayan, rayanworkout, projects, rayan.sh, rayan sh, rayanworkout.com, rayanworkout.dev, programming tutorials, portfolio, blog, projects, github, rayanworkout github, rayanworkout blog, rayanworkout projects, rayanworkout dev',
+    viewport: 'width=device-width, initial-scale=1.0',
+
+});
+
+
+
 interface Tech {
     name: string;
     icon: string;
