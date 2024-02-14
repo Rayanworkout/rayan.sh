@@ -206,6 +206,7 @@ onMounted(() => {
 
 h1 {
     color: white;
+    font-family: 'JetBrains Mono', 'monospace';
 }
 
 .main-frame {
