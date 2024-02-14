@@ -64,6 +64,7 @@ const handleCategoryFilter = (category: string) => {
         allArticles,
         filteredArticles
     );
+
 };
 
 const filterInput = (value: string) => {
@@ -86,7 +87,7 @@ const filterInput = (value: string) => {
 
 <style scoped>
 .bg-container {
-    background-color: var(--new-background);
+    background-color: var(--background);
     width: 100%;
     min-height: 1000px;
 }

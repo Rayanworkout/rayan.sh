@@ -16,7 +16,7 @@
 
 <style scoped>
 .my-container {
-    background-color: var(--new-background);
+    background-color: var(--background);
     height: 100vh;
 }
 

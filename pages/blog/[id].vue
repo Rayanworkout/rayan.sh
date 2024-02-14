@@ -115,7 +115,7 @@ const likeArticle = async () => {
           </div>
         </div>
         <transition name="fade">
-          <div v-if="!error" class="article-content" v-html="article.value.content">
+          <div v-if="!error" class="article-content text-white" v-html="article.value.content">
           </div>
         </transition>
       </div>
@@ -125,6 +125,7 @@ const likeArticle = async () => {
 
 
 <style scoped>
+
 h1 {
   color: white;
 }
@@ -148,7 +149,7 @@ h1 {
 }
 
 section {
-  background-color: var(--new-background);
+  background-color: var(--background);
   min-height: 1000px;
 
 }

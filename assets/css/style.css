@@ -1,18 +1,21 @@
 :root {
   --text: #607B96;
-  --primary: #4D5BCE;
-  --new-background: #011627;
+  --primary: #5d49dc;
+  --background: rgb(8, 36, 58);
   --accent: #FEA55F;
 }
 
 * {
   color: var(--text);
-  font-family: 'Fira Code', 'monospace';
   font-size: 18px;
   line-height: 1.5;
   margin: 0;
   padding: 0;
   scroll-behavior: smooth;
+}
+
+body {
+  font-family: 'open-sans', sans-serif;
 }
 
 /* Code blocks */

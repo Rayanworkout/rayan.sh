@@ -1,4 +1,10 @@
 
+<script setup lang="ts">
+
+const showMacTerminal = ref(true);
+
+</script>
+
 <template>
     <div class="hello"><span>
             Hi all, I am
@@ -30,7 +36,8 @@
         </div>
     </div>
     <div>
-        <Terminal />
+        <MacTerminal @change="showMacTerminal = !showMacTerminal" v-show="showMacTerminal" />
+        <LinuxTerminal @change="showMacTerminal = !showMacTerminal" v-show="!showMacTerminal" />
     </div>
 </template>
 
@@ -65,8 +72,6 @@ h2 {
 /* MEDIA QUERIES */
 
 @media (max-width: 768px) {
-
-
 
     .hello h2 {
         font-size: 25px;

@@ -29,15 +29,15 @@ const showMenu = ref(false);
             <div class="hamburger-icon"><i v-show="!showMenu" class="bi bi-list icon"></i></div>
         </div>
         <div v-show="showMenu" class="w-100 text-end mx-3 sm-content">
-            <NuxtLink class="nav-link mt-4" to="/" :class="{ 'current': $route.path === '/' }">_hello</NuxtLink>
+            <NuxtLink class="nav-link mt-4" to="/" :class="{ 'current': $route.path === '/' }">Hello</NuxtLink>
             <div class="custom-border-bottom"></div>
-            <NuxtLink class="nav-link" to="/projects" :class="{ 'current': $route.path === '/projects' }">_projects
+            <NuxtLink class="nav-link" to="/projects" :class="{ 'current': $route.path === '/projects' }">Projects
             </NuxtLink>
             <div class="custom-border-bottom"></div>
-            <NuxtLink class="nav-link" to="/blog" :class="{ 'current': $route.path === '/blog' }">_blog
+            <NuxtLink class="nav-link" to="/blog" :class="{ 'current': $route.path === '/blog' }">Blog
             </NuxtLink>
             <div class="custom-border-bottom"></div>
-            <a class="nav-link" href="mailto:rayan13170@protonmail.com">_contact-me</a>
+            <a class="nav-link" href="mailto:rayan13170@protonmail.com">Contact-me</a>
             <div class="custom-border-bottom"></div>
 
 
@@ -46,15 +46,17 @@ const showMenu = ref(false);
             <div class="w-100 mx-3 lg-content">
                 <div class="navbar-nav">
                     <NuxtLink class="nav-link me-auto" aria-current="page" to="/">rayan.sh</NuxtLink>
-                    <NuxtLink class="nav-link" to="/" :class="{ 'current': $route.path === '/' }">_hello</NuxtLink>
-                    <NuxtLink class="nav-link mx-2" to="/projects" :class="{ 'current': $route.path === '/projects' }">_projects
+                    <NuxtLink class="nav-link" to="/" :class="{ 'current': $route.path === '/' }">Hello</NuxtLink>
+                    <NuxtLink class="nav-link mx-2" to="/projects" :class="{ 'current': $route.path === '/projects' }">
+                        Projects
                     </NuxtLink>
-                    <NuxtLink class="nav-link" to="/blog" :class="{ 'current': $route.path === '/blog' }">_blog
+                    <NuxtLink class="nav-link" to="/blog" :class="{ 'current': $route.path === '/blog' }">Blog
                     </NuxtLink>
-                    <NuxtLink v-show="!userLoggedIn" class="nav-link contact" to="/login" :class="{ 'current': $route.path === '/login' }">_login
+                    <NuxtLink v-show="!userLoggedIn" class="nav-link contact" to="/login"
+                        :class="{ 'current': $route.path === '/login' }">Login
                     </NuxtLink>
-                    <NuxtLink v-show="userLoggedIn" to="/dashboard" class="about nav-link">_dashboard</NuxtLink>
-                    <NuxtLink v-show="userLoggedIn" @click="logout" class="about nav-link">_logout</NuxtLink>
+                    <NuxtLink v-show="userLoggedIn" to="/dashboard" class="about nav-link">dashboard</NuxtLink>
+                    <NuxtLink v-show="userLoggedIn" @click="logout" class="about nav-link">Logout</NuxtLink>
                 </div>
             </div>
         </div>
@@ -162,5 +164,4 @@ const showMenu = ref(false);
 }
 
 
-/* END MEDIA QUERIES */
-</style>
+/* END MEDIA QUERIES */</style>

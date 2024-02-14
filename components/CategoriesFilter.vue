@@ -47,6 +47,7 @@ defineProps(["clickedCategories"]);
 
 .category {
     font-size: 0.9em;
+    font-family: 'JetBrains Mono', 'monospace';
 }
 
 @media (max-width: 768px) {

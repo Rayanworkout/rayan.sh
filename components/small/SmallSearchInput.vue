@@ -26,7 +26,7 @@ const handleInput = (e: any) => {
 <style scoped>
 input {
     border: 1px solid var(--text);
-    background-color: var(--new-background);
+    background-color: var(--background);
 
     border-radius: 5px;
     padding: 5px;

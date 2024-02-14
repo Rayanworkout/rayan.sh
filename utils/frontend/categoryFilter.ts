@@ -6,7 +6,7 @@ const filterArticles = (
 
     filteredCategories: string[],
 
-    articles: Ref< Article[] | undefined>,
+    articles: Ref<Article[] | undefined>,
 
     filteredArticles: Ref<Article[] | undefined>) => {
 
@@ -25,15 +25,11 @@ export const handleCategoryClicked = (
 
     filteredCategories: Ref<string[]>,
 
-    articles: Ref< Article[] | undefined>,
+    articles: Ref<Article[] | undefined>,
 
     filteredArticles: Ref<Article[] | undefined>) => {
 
     // The category prop passed is the category clicked as string
-
-    // I check if I have articles to filter
-    // If not, I return
-    if (!filteredArticles) return;
 
     // I get the categories clicked with this event handler
     // Then I filter articles and I pass them as props
@@ -56,6 +52,11 @@ export const handleCategoryClicked = (
         filteredCategories.value = [...filteredCategories.value, category];
     }
 
+    // If no category is clicked, I return all articles
+    if (filteredCategories.value.length === 0) {
+        filteredArticles.value = articles.value;
+        return;
+    };
 
     // And finally I filter articles
     filterArticles(filteredCategories.value, articles, filteredArticles as Ref<Article[]>);
