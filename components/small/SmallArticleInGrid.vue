@@ -4,9 +4,6 @@ import { type Article } from '~/types/article.type'
 
 defineProps<{ article: Article }>()
 
-
-const showTags = ref(false);
-
 </script>
 
 
@@ -25,10 +22,7 @@ const showTags = ref(false);
                     </div>
                 </div>
                 <div class="col-md-6 text-center pb-3 d-flex justify-content-center align-items-center">
-                    <span v-for="tag in article.tags" :key="tag.name" v-show="showTags">
-                        <SmallArticleTag :tag="tag.name" />
-                    </span>
-                    <img :src="'/img/' + article.picture" alt="article picture">
+                    <img :src="'/img/' + article.picture" :alt="article.picture">
                 </div>
 
             </div>
@@ -57,6 +51,7 @@ img {
     border-radius: 10px;
 
 }
+
 h4 {
     color: white;
 }
