@@ -19,6 +19,11 @@ defineProps<{ article: Article }>()
                             article.category.name }}</div>
                         <div v-if="article.likes > 1"><small><i class="bi bi-heart icon"></i> {{ article.likes }}</small>
                         </div>
+                        <div class="tags-container my-2">
+                            <div v-for="tag in article.tags" class="tags" style="display: inline-block;">
+                                <SmallArticleTag :tag="tag.name" />
+                            </div>
+                        </div>
                     </div>
                 </div>
                 <div class="col-md-6 text-center pb-3 d-flex justify-content-center align-items-center">
@@ -26,7 +31,7 @@ defineProps<{ article: Article }>()
                 </div>
 
             </div>
-            <p>{{ article.description }}</p>
+            <p class="text-white">{{ article.description }}</p>
         </div>
     </NuxtLink>
 </template>
