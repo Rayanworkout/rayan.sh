@@ -147,7 +147,7 @@ const updateSelectedCategory = (e: any) => {
 
 <style scoped>
 .main {
-  background-color: var(--new-background);
+  background-color: var(--background);
   width: auto;
   min-height: 100vh;
 }
@@ -179,7 +179,7 @@ select {
   border: 1px solid var(--primary);
   border-radius: 10px;
   padding: 0.5rem;
-  background-color: var(--new-background);
+  background-color: var(--background);
   width: 450px;
 }
 

@@ -139,7 +139,7 @@ table th {
 }
 
 table td {
-    background-color: var(--new-background);
+    background-color: var(--background);
     color: white;
 }
 
@@ -153,7 +153,7 @@ input {
     padding: 5px;
     width: 15%;
     max-width: 500px;
-    color: var(--new-background);
+    color: var(--background);
 }
 
 i {
@@ -163,7 +163,7 @@ i {
 }
 
 .main {
-    background-color: var(--new-background);
+    background-color: var(--background);
     min-height: 100vh;
 }
 

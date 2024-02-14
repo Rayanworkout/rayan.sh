@@ -54,7 +54,7 @@ useHead({
 
 <style scoped>
 .bg-container {
-    background-color: var(--new-background);
+    background-color: var(--background);
     min-height: 110vh;
 }
 

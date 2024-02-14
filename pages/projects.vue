@@ -199,7 +199,7 @@ onMounted(() => {
 
 <style scoped>
 .bg-container {
-    background-color: var(--new-background);
+    background-color: var(--background);
     width: 100%;
     min-height: 1000px;
 }
@@ -246,7 +246,7 @@ label {
 }
 
 .card {
-    background-color: var(--new-background);
+    background-color: var(--background);
     color: white;
     border: 2px solid var(--text);
     cursor: pointer;

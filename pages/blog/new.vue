@@ -169,7 +169,7 @@ li {
 }
 
 .main {
-  background-color: var(--new-background);
+  background-color: var(--background);
   width: auto;
   min-height: 100vh;
 }
@@ -208,7 +208,7 @@ select {
   padding: 0.5rem;
   background-color: transparent;
   color: var(--text-color);
-  background-color: var(--new-background);
+  background-color: var(--background);
   width: 450px;
 }
 

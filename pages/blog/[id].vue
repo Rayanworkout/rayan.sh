@@ -148,7 +148,7 @@ h1 {
 }
 
 section {
-  background-color: var(--new-background);
+  background-color: var(--background);
   min-height: 1000px;
 
 }
