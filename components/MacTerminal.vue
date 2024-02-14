@@ -1,6 +1,7 @@
 <script setup lang="ts">
 
 import { ref, onMounted } from 'vue';
+import { getCurrentDateTime } from '~/utils/frontend/getCurrentDateTime';
 
 const emit = defineEmits(['maximize'])
 
@@ -92,12 +93,13 @@ const copyToClipboard = () => {
             console.error('Could not copy text: ', err);
         });
 }
-
+const date = getCurrentDateTime();
 
 onMounted(() => {
     setTimeout(writeWhoami, initialDelay - 1500);
     setTimeout(typeWriter, initialDelay + 2000);
     setTimeout(typeCat, initialDelay + 13500);
+
 });
 </script>
 
@@ -122,7 +124,7 @@ onMounted(() => {
         </div>
         <div class="terminal-body mb-3">
             <div class="about">
-                <p class="last-login">Last login on 22/10/2023 on console</p>
+                <p class="last-login">Last login on {{ date }} on console</p>
                 <p class="text-white"><i class="bi bi-arrow-right-short"></i> <span class="ps1">~ </span>{{ whoamiTypewriter
                 }}<span v-show="showCursor" class="cursor">_</span></p>
                 <p class="text-white">{{ typewriter }}

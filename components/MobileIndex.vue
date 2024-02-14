@@ -30,7 +30,7 @@
         </div>
     </div>
     <div>
-        <Terminal />
+        <MacTerminal />
     </div>
 </template>
 

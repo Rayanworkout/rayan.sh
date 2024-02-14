@@ -35,7 +35,7 @@
             </div>
         </div>
         <div class="col-md-8">
-            <Terminal />
+            <MacTerminal />
         </div>
     </div>
 </template>
