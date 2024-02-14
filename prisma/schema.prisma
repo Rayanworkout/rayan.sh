@@ -32,6 +32,7 @@ model Article {
   title       String
   description String
   content     String?
+  picture     String    @default("default.jpg")
   published   Boolean   @default(false)
   likes       Int       @default(0)
   category    Category? @relation(fields: [categoryId], references: [id], onDelete: SetNull)

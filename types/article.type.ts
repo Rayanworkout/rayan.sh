@@ -5,6 +5,7 @@ export type Article = {
     createdAt: string;
     title: string;
     description: string;
+    picture: string;
     content: string;
     published: boolean;
     likes: number;

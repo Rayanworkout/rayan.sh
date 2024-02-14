@@ -33,4 +33,3 @@ send_db.sh
 *.sql
 *.sqlite3-journal
 .venv
-migrations/
