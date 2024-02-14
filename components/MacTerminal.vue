@@ -105,7 +105,7 @@ onMounted(() => {
 
 
 <template>
-    <div class="terminal">
+    <div class="terminal animate__animated animate__fadeInUp">
         <div class="terminal-header">
             <div class="window-buttons">
                 <a class="close-button" @click="emit('change')">
@@ -119,13 +119,14 @@ onMounted(() => {
                 </a>
             </div>
             <div class="terminal-title mx-auto">
-                <i class="bi bi-folder-fill"></i> rayan - rayan@home - ~ -zsh
+                <i class="bi bi-folder-fill"></i> rayan <span class="home">- rayan@home - ~ -zsh</span>
             </div>
         </div>
         <div class="terminal-body mb-3">
             <div class="about">
                 <p class="last-login">Last login on {{ date }} on console</p>
-                <p class="last-login">If you prefer the Linux terminal, try to close this window <i class="bi bi-emoji-smile-fill"></i></p>
+                <p class="last-login">If you prefer the Linux terminal, close this one <i
+                        class="bi bi-emoji-smile-fill"></i></p>
                 <p class="text-white"><i class="bi bi-arrow-right-short"></i> <span class="ps1">~ </span>{{ whoamiTypewriter
                 }}<span v-show="showCursor" class="cursor">_</span></p>
                 <p class="text-white">{{ typewriter }}
@@ -180,7 +181,6 @@ p i {
 .ps1 {
     color: #55a7ff;
     vertical-align: middle;
-    font-weight: bold;
 }
 
 .terminal-header {
@@ -191,6 +191,10 @@ p i {
     display: flex;
     justify-content: space-between;
     padding: 0 3px;
+}
+
+p {
+    margin-bottom: 15px;
 }
 
 .window-buttons a {
@@ -224,11 +228,11 @@ p i {
     background-color: #353535;
 }
 
-.terminal-title {
+.terminal-title, .home {
     color: white;
     padding: 5px;
     font-size: 0.9rem;
-    padding-right: 100px;
+    padding-right: 50px;
 }
 
 
@@ -288,15 +292,32 @@ p span,
         font-size: 0.85rem;
     }
 
-    .infos i {
-        font-size: 1.2rem;
+    .home {
+        display: none;
     }
 
     .terminal-title,
     .window-buttons a,
-    p,
+    .about p,
     span {
         font-size: 0.8rem;
+    }
+
+    .window-buttons a i {
+        font-size: 0.7rem;
+    }
+
+    .terminal-header {
+        padding: 0 3px;
+    }
+
+    .terminal-title {
+        padding-right: 70px;
+    }
+
+    .terminal-title i,
+    .last-login i {
+        font-size: 0.85rem;
     }
 
     .terminal {

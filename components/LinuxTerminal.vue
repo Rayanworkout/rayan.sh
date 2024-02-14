@@ -103,9 +103,9 @@ onMounted(() => {
 
 
 <template>
-    <div class="terminal">
+    <div class="terminal animate__animated animate__fadeInUp">
         <div class="terminal-header">
-            <div class="terminal-title mx-auto">Linux Terminal</div>
+            <div class="terminal-title mx-auto">Terminal</div>
             <div class="window-buttons">
                 <a class="minimize-button" @click="emit('change')">
                     <Icon name="ic:baseline-minimize" />
@@ -127,7 +127,7 @@ onMounted(() => {
                 <li>Help</li>
             </ul>
         </div>
-        <div class="terminal-body mb-3" id="terminal-body">
+        <div class="terminal-body mb-3">
             <div class="about">
                 <p class="text-white"><span style="color: rgb(221, 221, 50);">rayan</span>@<span
                         style="color: #00ff00;">home</span> <span class="ps1">~ </span>{{ whoamiTypewriter }}<span
@@ -294,9 +294,6 @@ p span,
         font-size: 0.85rem;
     }
 
-    .infos i {
-        font-size: 1.2rem;
-    }
 
     .terminal-title,
     .window-buttons a,
