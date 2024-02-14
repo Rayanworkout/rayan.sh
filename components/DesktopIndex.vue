@@ -1,5 +1,11 @@
 
 
+<script setup lang="ts">
+
+const showMacTerminal = ref(true);
+
+</script>
+
 <template>
     <div class="row">
         <div class="col-md-4">
@@ -35,7 +41,8 @@
             </div>
         </div>
         <div class="col-md-8">
-            <MacTerminal />
+            <MacTerminal @change="showMacTerminal = !showMacTerminal" v-show="showMacTerminal"/>
+            <LinuxTerminal v-if="!showMacTerminal" />
         </div>
     </div>
 </template>
@@ -81,6 +88,10 @@ p,
 .hello span {
     color: #c8c8c8b9;
     font-family: 'JetBrains Mono', 'monospace';
+}
+
+.change-terminal {
+    color: #E5E9F0;
 }
 
 .github span,

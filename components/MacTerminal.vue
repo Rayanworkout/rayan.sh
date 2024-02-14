@@ -3,7 +3,7 @@
 import { ref, onMounted } from 'vue';
 import { getCurrentDateTime } from '~/utils/frontend/getCurrentDateTime';
 
-const emit = defineEmits(['maximize'])
+const emit = defineEmits(['change'])
 
 const whoami = "cat ./about.txt";
 
@@ -107,7 +107,7 @@ onMounted(() => {
 <template>
     <div class="terminal">
         <div class="terminal-header">
-            <div class="window-buttons">
+            <div class="window-buttons" @click="emit('change')">
                 <a class="close-button">
                     <i class="bi bi-circle-fill"></i>
                 </a>

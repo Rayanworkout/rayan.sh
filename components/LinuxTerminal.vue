@@ -2,7 +2,7 @@
 
 import { ref, onMounted } from 'vue';
 
-const emit = defineEmits(['maximize'])
+const emit = defineEmits(['change'])
 
 const whoami = "cat ./about.txt";
 
@@ -163,6 +163,10 @@ onMounted(() => {
     border: none;
 }
 
+.terminal-body {
+    font-family: 'JetBrains Mono', monospace;
+}
+
 .terminal-header {
     display: flex;
 }
@@ -306,4 +310,5 @@ p span,
     }
 
 
-}</style>
+}
+</style>

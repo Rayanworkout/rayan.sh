@@ -10,7 +10,6 @@ export const getCurrentDateTime = () => {
     var day = currentDateTime.getDate();
     var hours = currentDateTime.getHours();
     var minutes = currentDateTime.getMinutes();
-    var seconds = currentDateTime.getSeconds();
 
     // Get the short name of the day of the week
     var daysOfWeek = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
@@ -25,7 +24,7 @@ export const getCurrentDateTime = () => {
     var formattedDate = year + '-' + (month < 9 ? '0' : '') + (month + 1) + '-' + (day < 10 ? '0' : '') + day;
 
     // Format the time as HH:MM:SS
-    var formattedTime = (hours < 10 ? '0' : '') + hours + ':' + (minutes < 10 ? '0' : '') + minutes + ':' + (seconds < 10 ? '0' : '') + seconds;
+    var formattedTime = (hours < 10 ? '0' : '') + hours + ':' + (minutes < 10 ? '0' : '') + minutes + ':' + '34';
 
     // Return the formatted date, day of the week, month, and time
     return shortDayOfWeek + ' ' + shortMonth + ' ' + dayOfWeekIndex + ' ' + formattedTime;
