@@ -105,7 +105,6 @@ onMounted(() => {
 <template>
     <div class="terminal">
         <div class="terminal-header">
-
             <div class="window-buttons">
                 <a class="close-button">
                     <i class="bi bi-circle-fill"></i>
@@ -123,16 +122,20 @@ onMounted(() => {
         </div>
         <div class="terminal-body mb-3">
             <div class="about">
-                <p class="last-login">Last login on 22/10/2023</p>
+                <p class="last-login">Last login on 22/10/2023 on console</p>
                 <p class="text-white"><i class="bi bi-arrow-right-short"></i> <span class="ps1">~ </span>{{ whoamiTypewriter
                 }}<span v-show="showCursor" class="cursor">_</span></p>
-                <p class="text-white">{{ typewriter }}</p>
-                <p class="text-white">{{ catTypewriter }}<span v-show="showCatCursor" class="cursor">_</span>
+                <p class="text-white">{{ typewriter }}
+                </p>
+                <p class="text-white"><i class="bi bi-arrow-right-short" v-show="showWave"></i> <span class="ps1"
+                        v-show="showWave">~ </span> {{ catTypewriter
+                        }}<span v-show="showCatCursor" class="cursor">_</span>
                 </p>
                 <div class="mail mb-3" v-show="showEmail" @click="copyToClipboard">reach me @
                     rayan13170@protonmail.com
                 </div>
-                <p class="text-white" v-show="showFinalps1"><span class="ps1">~ <span v-show="showClipBoard">email copied
+                <p class="text-white" v-show="showFinalps1"><i class="bi bi-arrow-right-short"></i> <span class="ps1">~
+                        <span v-show="showClipBoard">email copied
                             clipboard, see you soon !</span></span><span class="cursor">_</span></p>
             </div>
         </div>
@@ -146,7 +149,7 @@ onMounted(() => {
     max-width: 800px;
     margin: 40px auto;
     border: 1px solid #999;
-    border-radius: 18px;
+    border-radius: 15px;
     overflow: hidden;
     background-color: #232c32;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
@@ -164,13 +167,17 @@ p i {
     color: #00ff00;
 }
 
-.terminal-body p {
-    font-size: 0.8rem;
+.terminal-body p,
+.terminal-body div,
+.terminal-body p span {
+    font-size: 0.85rem;
 }
 
-.terminal-title i, .ps1 {
+.terminal-title i,
+.ps1 {
     color: #55a7ff;
     vertical-align: middle;
+    font-weight: bold;
 }
 
 .terminal-header {
@@ -209,12 +216,9 @@ p i {
 }
 
 .minimize-button:hover,
-.maximize-button:hover {
-    background-color: #353535;
-}
-
+.maximize-button:hover,
 .close-button:hover {
-    background-color: #ff5f56;
+    background-color: #353535;
 }
 
 .terminal-title {
