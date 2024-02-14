@@ -31,15 +31,6 @@ export const handleCategoryClicked = (
 
     // The category prop passed is the category clicked as string
 
-    // I check if I have articles to filter
-    // If not, I return
-    console.log(filteredArticles.value)
-    if (!filteredArticles.value) {
-        console.log('here')
-        filteredArticles.value = articles.value;
-        return;
-    };
-
     // I get the categories clicked with this event handler
     // Then I filter articles and I pass them as props
     if (category === "ALL") {
@@ -61,6 +52,11 @@ export const handleCategoryClicked = (
         filteredCategories.value = [...filteredCategories.value, category];
     }
 
+    // If no category is clicked, I return all articles
+    if (filteredCategories.value.length === 0) {
+        filteredArticles.value = articles.value;
+        return;
+    };
 
     // And finally I filter articles
     filterArticles(filteredCategories.value, articles, filteredArticles as Ref<Article[]>);
