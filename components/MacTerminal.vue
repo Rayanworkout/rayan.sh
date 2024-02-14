@@ -107,8 +107,8 @@ onMounted(() => {
 <template>
     <div class="terminal">
         <div class="terminal-header">
-            <div class="window-buttons" @click="emit('change')">
-                <a class="close-button">
+            <div class="window-buttons">
+                <a class="close-button" @click="emit('change')">
                     <i class="bi bi-circle-fill"></i>
                 </a>
                 <a class="minimize-button">
@@ -125,6 +125,7 @@ onMounted(() => {
         <div class="terminal-body mb-3">
             <div class="about">
                 <p class="last-login">Last login on {{ date }} on console</p>
+                <p class="last-login">If you prefer the Linux terminal, try to close this window <i class="bi bi-emoji-smile-fill"></i></p>
                 <p class="text-white"><i class="bi bi-arrow-right-short"></i> <span class="ps1">~ </span>{{ whoamiTypewriter
                 }}<span v-show="showCursor" class="cursor">_</span></p>
                 <p class="text-white">{{ typewriter }}

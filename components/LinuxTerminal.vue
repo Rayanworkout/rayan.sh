@@ -105,15 +105,15 @@ onMounted(() => {
 <template>
     <div class="terminal">
         <div class="terminal-header">
-            <div class="terminal-title mx-auto">Terminal</div>
+            <div class="terminal-title mx-auto">Linux Terminal</div>
             <div class="window-buttons">
-                <a class="minimize-button">
+                <a class="minimize-button" @click="emit('change')">
                     <Icon name="ic:baseline-minimize" />
                 </a>
                 <a class="maximize-button">
                     <Icon name="ic:round-crop-square" />
                 </a>
-                <a class="close-button">
+                <a class="close-button" @click="emit('change')">
                     <Icon name="material-symbols:close" />
                 </a>
             </div>
