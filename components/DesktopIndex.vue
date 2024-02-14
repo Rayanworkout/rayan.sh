@@ -17,17 +17,17 @@
                         // you can also check out my blog
                     </p>
                     <div class="github">
-                        <span style="color: #6170db;" class="const">const </span>
+                        <span style="color: #6d5ae7;" class="const">const </span>
                         <span style="color: #43D9AD;">github</span> <span class="text-white">= </span>
                         <a href="https://github.com/Rayanworkout" target="_blank" class="link">"github.com/rayanworkout"</a>
                     </div>
                     <div class="blog my-1">
-                        <span style="color: #6170db;" class="const">const </span>
+                        <span style="color: #6d5ae7;" class="const">const </span>
                         <span style="color: #43D9AD;">blog</span> <span class="text-white">= </span>
                         <a href="https://rayan.sh/blog" class="link">"rayan.sh/blog"</a>
                     </div>
                     <div class="blog my-1">
-                        <span style="color: #6170db;" class="const">const </span>
+                        <span style="color: #6d5ae7;" class="const">const </span>
                         <span style="color: #43D9AD;">projects</span> <span class="text-white">= </span>
                         <a href="https://rayan.sh/projects" class="link">"rayan.sh/projects"</a>
                     </div>
@@ -51,7 +51,7 @@
 
 
 h1 {
-    font-size: 58px;
+    font-size: 55px;
     line-height: 1;
     color: #E5E9F0;
     padding-top: 1rem;
@@ -77,8 +77,17 @@ h1 {
     text-underline-offset: 4px;
 }
 
-p {
-    color: #6a9955;
+p,
+.hello span {
+    color: #c8c8c8b9;
+    font-family: 'Fira Code', 'monospace';
+}
+
+.github span,
+.github a,
+.blog span,
+.blog a {
+    font-family: 'Fira Code', 'monospace';
 }
 
 /* MEDIA QUERIES */

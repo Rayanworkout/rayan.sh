@@ -163,6 +163,10 @@ onMounted(() => {
     border: none;
 }
 
+.terminal-body {
+    font-family: 'Fira Code', 'monospace';
+}
+
 .terminal-header {
     display: flex;
 }
@@ -306,4 +310,5 @@ p span,
     }
 
 
-}</style>
+}
+</style>
