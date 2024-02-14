@@ -13,6 +13,7 @@ defineProps<{ tag: string }>()
 
 <style scoped>
 .tag {
+    font-family: 'Fira Code', 'monospace';
     font-size: 0.7em;
     font-weight: 600;
     border: 1px solid var(--text);

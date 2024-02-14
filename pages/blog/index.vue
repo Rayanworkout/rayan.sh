@@ -64,6 +64,8 @@ const handleCategoryFilter = (category: string) => {
         allArticles,
         filteredArticles
     );
+
+    console.log(filteredCategories.value);
 };
 
 const filterInput = (value: string) => {
