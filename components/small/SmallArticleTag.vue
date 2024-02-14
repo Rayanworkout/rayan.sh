@@ -13,7 +13,7 @@ defineProps<{ tag: string }>()
 
 <style scoped>
 .tag {
-    font-family: 'Fira Code', 'monospace';
+    font-family: 'JetBrains Mono', 'monospace';
     font-size: 0.7em;
     font-weight: 600;
     border: 1px solid var(--text);
@@ -26,8 +26,8 @@ defineProps<{ tag: string }>()
 }
 
 .tag.active {
-  background-color: var(--primary);
-  color: var(--background);
+    background-color: var(--primary);
+    color: var(--background);
 }
 
 

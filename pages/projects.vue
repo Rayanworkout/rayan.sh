@@ -215,7 +215,7 @@ h1 {
 
 .my-border-bottom {
     border-bottom: 2px solid var(--text);
-    font-family: 'Fira Code', 'monospace';
+    font-family: 'JetBrains Mono', 'monospace';
 }
 
 input[type="checkbox"] {
@@ -247,7 +247,7 @@ label {
 }
 
 .card {
-    font-family: 'Fira Code', 'monospace';
+    font-family: 'JetBrains Mono', 'monospace';
     background-color: var(--background);
     color: white;
     border: 2px solid var(--text);

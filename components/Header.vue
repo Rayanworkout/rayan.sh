@@ -29,7 +29,7 @@ img {
 
 p {
     color: white;
-    font-family: 'Fira Code', 'monospace';
+    font-family: 'JetBrains Mono', 'monospace';
 }
 
 span {

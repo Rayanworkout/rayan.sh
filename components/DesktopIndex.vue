@@ -80,14 +80,14 @@ h1 {
 p,
 .hello span {
     color: #c8c8c8b9;
-    font-family: 'Fira Code', 'monospace';
+    font-family: 'JetBrains Mono', 'monospace';
 }
 
 .github span,
 .github a,
 .blog span,
 .blog a {
-    font-family: 'Fira Code', 'monospace';
+    font-family: 'JetBrains Mono', 'monospace';
 }
 
 /* MEDIA QUERIES */

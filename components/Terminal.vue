@@ -105,44 +105,34 @@ onMounted(() => {
 <template>
     <div class="terminal">
         <div class="terminal-header">
-            <div class="terminal-title mx-auto">Terminal</div>
+
             <div class="window-buttons">
+                <a class="close-button">
+                    <i class="bi bi-circle-fill"></i>
+                </a>
                 <a class="minimize-button">
-                    <Icon name="ic:baseline-minimize" />
+                    <i class="bi bi-circle-fill"></i>
                 </a>
                 <a class="maximize-button">
-                    <Icon name="ic:round-crop-square" />
-                </a>
-                <a class="close-button">
-                    <Icon name="material-symbols:close" />
+                    <i class="bi bi-circle-fill"></i>
                 </a>
             </div>
+            <div class="terminal-title mx-auto">
+                <i class="bi bi-folder-fill"></i> rayan - rayan@home - ~ -zsh
+            </div>
         </div>
-        <div class="menu-bar">
-            <ul>
-                <li>File</li>
-                <li>Edit</li>
-                <li>View</li>
-                <li>Search</li>
-                <li>Help</li>
-            </ul>
-        </div>
-        <div class="terminal-body mb-3" id="terminal-body">
+        <div class="terminal-body mb-3">
             <div class="about">
-                <p class="text-white"><span style="color: rgb(221, 221, 50);">rayan</span>@<span
-                        style="color: #00ff00;">home</span> <span class="ps1">~ </span>{{ whoamiTypewriter }}<span
-                        v-show="showCursor" class="cursor">_</span></p>
+                <p class="last-login">Last login on 22/10/2023</p>
+                <p class="text-white"><i class="bi bi-arrow-right-short"></i> <span class="ps1">~ </span>{{ whoamiTypewriter
+                }}<span v-show="showCursor" class="cursor">_</span></p>
                 <p class="text-white">{{ typewriter }}</p>
-                <p class="text-white"><span v-show="showWave" class="text-white"><span
-                            style="color: rgb(221, 221, 50);">rayan</span>@<span style="color: #00ff00;">home</span>
-                    </span> <span class="ps1" v-show="showWave">~</span> {{ catTypewriter }}<span v-show="showCatCursor"
-                        class="cursor">_</span>
+                <p class="text-white">{{ catTypewriter }}<span v-show="showCatCursor" class="cursor">_</span>
                 </p>
                 <div class="mail mb-3" v-show="showEmail" @click="copyToClipboard">reach me @
                     rayan13170@protonmail.com
                 </div>
-                <p class="text-white" v-show="showFinalps1"><span style="color: rgb(221, 221, 50);">rayan</span>@<span
-                        style="color: #00ff00;">home</span> <span class="ps1">~ <span v-show="showClipBoard">email copied
+                <p class="text-white" v-show="showFinalps1"><span class="ps1">~ <span v-show="showClipBoard">email copied
                             clipboard, see you soon !</span></span><span class="cursor">_</span></p>
             </div>
         </div>
@@ -156,15 +146,31 @@ onMounted(() => {
     max-width: 800px;
     margin: 40px auto;
     border: 1px solid #999;
-    border-radius: 2px;
+    border-radius: 18px;
     overflow: hidden;
     background-color: #232c32;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
     border: none;
+    padding: 4px;
 }
 
-.terminal-body {
-    font-family: 'Fira Code', 'monospace';
+.terminal-body,
+.terminal-title {
+    font-family: 'JetBrains Mono', monospace;
+}
+
+p i {
+    vertical-align: middle;
+    color: #00ff00;
+}
+
+.terminal-body p {
+    font-size: 0.8rem;
+}
+
+.terminal-title i, .ps1 {
+    color: #55a7ff;
+    vertical-align: middle;
 }
 
 .terminal-header {
@@ -186,7 +192,21 @@ onMounted(() => {
     border-radius: 80px;
 }
 
+.window-buttons a i {
+    font-size: 0.8rem;
+}
 
+.close-button i {
+    color: #EF6351;
+}
+
+.minimize-button i {
+    color: #FFD460;
+}
+
+.maximize-button i {
+    color: #00B05B;
+}
 
 .minimize-button:hover,
 .maximize-button:hover {
@@ -201,20 +221,16 @@ onMounted(() => {
     color: white;
     padding: 5px;
     font-size: 0.9rem;
-    padding-left: 70px;
+    padding-right: 100px;
 }
 
 
 .terminal-body {
     overflow-y: scroll;
-    padding: 15px;
+    padding: 5px;
     height: 300px;
 }
 
-.ps1 {
-    color: #00ff00;
-    vertical-align: middle;
-}
 
 /* Styling scrollbar for terminal body */
 .terminal-body::-webkit-scrollbar {
@@ -226,35 +242,6 @@ onMounted(() => {
     border-radius: 4px;
 }
 
-.menu-bar {
-    color: white;
-    padding: 5px;
-}
-
-.menu-bar ul {
-    list-style-type: none;
-    margin: 0;
-    padding: 0;
-}
-
-.menu-bar ul li {
-    display: inline;
-    margin-right: 10px;
-    font-size: 0.75rem;
-    cursor: pointer;
-    color: white;
-    padding: 5px;
-}
-
-
-.menu-bar ul li:hover {
-    background-color: #535353;
-}
-
-
-.menu-bar ul li:last-child {
-    margin-right: 0;
-}
 
 
 
