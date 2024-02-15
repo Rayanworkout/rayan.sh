@@ -42,7 +42,7 @@ const showMacTerminal = ref(true);
         </div>
         <div class="col-md-8">
             <MacTerminal @change="showMacTerminal = !showMacTerminal" v-show="showMacTerminal" />
-            <LinuxTerminal @change="showMacTerminal = !showMacTerminal" v-show="!showMacTerminal" />
+            <LinuxTerminal @change="showMacTerminal = !showMacTerminal" v-if="!showMacTerminal" />
         </div>
     </div>
 </template>

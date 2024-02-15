@@ -155,7 +155,7 @@ onMounted(() => {
     border: 1px solid #999;
     border-radius: 15px;
     overflow: hidden;
-    background-color: #232c32;
+    background-color: #222222;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
     border: none;
     padding: 4px;
