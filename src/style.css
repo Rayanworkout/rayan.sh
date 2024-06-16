@@ -1,0 +1,53 @@
+:root {
+  --background: #202124;
+}
+
+* {
+  background-color: var(--background);
+  color: white;
+  font-size: 18px;
+  line-height: 1.5;
+  margin: 0;
+  padding: 0;
+  scroll-behavior: smooth;
+}
+
+
+/* Cursor animation */
+
+.cursor {
+  animation: blinkCursor 1.5s infinite;
+  background-color: transparent;
+  color: white;
+}
+
+
+/* Github and medium icons */
+.icons {
+  display: flex;
+  gap: 3rem;
+}
+
+.icons i {
+  font-size: 50px;
+  color: white;
+}
+
+
+.icons i:hover {
+  color: #a2acb874;
+}
+
+@keyframes blinkCursor {
+  0% {
+    opacity: 1;
+  }
+
+  50% {
+    opacity: 0;
+  }
+
+  100% {
+    opacity: 1;
+  }
+}

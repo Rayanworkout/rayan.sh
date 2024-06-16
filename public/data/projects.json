@@ -1,0 +1,30 @@
+[
+    {
+        "id": 1,
+        "title": "another one",
+        "slug": "the-first-article",
+        "category": "python",
+        "created_at": "2021-10-10",
+        "description": "example description",
+        "picture": "ping.jpg",
+        "tags": [
+            "devops",
+            "python"
+        ],
+        "content": "example content of my article lorem ipsum dolor sit amet"
+    },
+    {
+        "id": 2,
+        "title": "The second article",
+        "slug": "the-second-article",
+        "category": "Devops",
+        "created_at": "16/06/2021",
+        "description": "example description",
+        "picture": "python.jpg",
+        "tags": [
+            "devops",
+            "python"
+        ],
+        "content": "example content of my article lorem ipsum dolor sit amet"
+    }
+]
