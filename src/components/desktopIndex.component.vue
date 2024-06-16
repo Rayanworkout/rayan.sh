@@ -33,7 +33,6 @@
     </div>
     <div class="row">
         <div class="skills my-5">
-            <h1 class="text-center">Skills</h1>
         </div>
     </div>
 </template>
