@@ -103,7 +103,10 @@
 
 
 <template>
-    <div class="terminal animate__animated animate__fadeInUp">
+    <div class="my-5 terminal animate__animated animate__fadeInUp">
+        <a href="https://github.com/Rayanworkout" class="link github-logo" target="_blank"><i
+                class="bi bi-github"></i></a>
+        <div class="logo-overlay"></div>
         <div class="terminal-header">
             <div class="window-buttons">
                 <a class="close-button">
@@ -152,7 +155,6 @@
         margin: 40px auto;
         border: 1px solid #b8b8b8;
         border-radius: 15px;
-        overflow: hidden;
         background-color: #202124;
         box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
         padding: 4px;
@@ -255,6 +257,16 @@
         border-radius: 4px;
     }
 
+    .github-logo {
+        position: absolute;
+        right: 45px;
+        top: -34px;
+    }
+
+    .github-logo i {
+        font-size: 1.8rem;
+        color: white;
+    }
 
 
 

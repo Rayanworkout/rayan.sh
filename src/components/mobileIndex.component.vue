@@ -10,15 +10,6 @@
         <h2>> Backend developer</h2>
         <h2>> Devops engineer</h2>
     </div>
-    <div class="code my-5">
-        <div class="icons">
-            <a href="https://github.com/Rayanworkout" class="link" target="_blank"><i
-                    class="bi bi-github text-white"></i></a>
-            <a href="https://medium.com/@0xRayan_" class="link" target="_blank"><i
-                    class="bi bi-medium text-white"></i></a>
-            <a href="mailto:rayan13170@protonmail.com" class="link" target="_blank"><i class="bi bi-envelope"></i></a>
-        </div>
-    </div>
     <div>
         <MacTerminal />
     </div>

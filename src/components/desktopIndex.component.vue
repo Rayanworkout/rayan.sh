@@ -15,16 +15,6 @@
                     <h2>> Backend Developer</h2>
                     <h2>> Devops Enthusiast</h2>
                 </div>
-                <div class="my-5">
-                    <div class="icons">
-                        <a href="https://github.com/Rayanworkout" class="link" target="_blank"><i
-                                class="bi bi-github"></i></a>
-                        <a href="https://medium.com/@0xRayan_" class="link" target="_blank"><i
-                                class="bi bi-medium"></i></a>
-                        <a href="mailto:rayan13170@protonmail.com" class="link" target="_blank"><i
-                                class="bi bi-envelope"></i></a>
-                    </div>
-                </div>
             </div>
         </div>
         <div class="col-md-8">
@@ -62,7 +52,7 @@
     }
 
     .head h2 {
-        font-size: 32px;
+        font-size: 30px;
         line-height: 1;
         color: white;
         font-family: 'JetBrains Mono', 'monospace';

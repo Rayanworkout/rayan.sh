@@ -51,3 +51,18 @@
     opacity: 1;
   }
 }
+
+/* MEDIA QUERIES */
+
+@media screen and (max-width: 768px) {
+  .icons {
+    display: flex;
+    justify-content: start;
+    align-items: center;
+    gap: 2rem;
+  }
+
+  .icons i {
+    font-size: 40px;
+  }
+}
