@@ -4,9 +4,9 @@
         <div class="container-fluid d-flex justify-content-center">
             <div class="navbar-nav">
                 <RouterLink class="nav-link" to="/" :class="{ 'current': $route.path === '/' }">Hello</RouterLink>
-                <RouterLink class="nav-link mx-3" to="/projects" :class="{ 'current': $route.path === '/projects' }">
+                <!-- <RouterLink class="nav-link mx-3" to="/projects" :class="{ 'current': $route.path === '/projects' }">
                     Projects
-                </RouterLink>
+                </RouterLink> -->
             </div>
         </div>
     </nav>
