@@ -28,20 +28,20 @@
     .scroll-wrapper {
         display: flex;
         white-space: nowrap;
-        animation: scroll 50s linear infinite;
+        animation: scroll 40s linear infinite;
     }
 
     @keyframes scroll {
         0% {
-            transform: translateX(-100px);
+            transform: translateX(-200px);
         }
 
         50% {
-            transform: translateX(calc(530px));
+            transform: translateX(calc(200px));
         }
 
         100% {
-            transform: translateX(-100px);
+            transform: translateX(-200px);
         }
     }
 
@@ -67,7 +67,7 @@
     @media (max-width: 768px) {
 
         .scroll-wrapper {
-        animation: scroll 20s linear infinite;
+        animation: scroll 19s linear infinite;
     }
 
         @keyframes scroll {
@@ -76,7 +76,7 @@
         }
 
         50% {
-            transform: translateX(calc(230px));
+            transform: translateX(calc(150px));
         }
 
         100% {
