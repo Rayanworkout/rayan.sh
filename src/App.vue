@@ -19,7 +19,7 @@
               <h2>> Backend Developer</h2>
               <h2>> Devops Enthusiast</h2>
             </div>
-            <div class="my-5 py-4">
+            <div class="my-5">
               <Slider />
             </div>
           </div>
