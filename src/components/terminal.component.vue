@@ -2,6 +2,7 @@
 
     import { ref, onMounted } from 'vue';
     import { getCurrentDateTime } from "../utils/getCurrentDatetime";
+    import { copyToClipboard } from "../utils/copyToClipboard";
 
     const whoami = "cat ./about.txt";
 
@@ -77,20 +78,6 @@
     };
 
 
-
-    const copyToClipboard = () => {
-        const textToCopy = "rayan13170@protonmail.com";
-        navigator.clipboard.writeText(textToCopy)
-            .then(() => {
-                showClipBoard.value = true;
-                setTimeout(() => {
-                    showClipBoard.value = false;
-                }, 4000);
-            })
-            .catch(err => {
-                console.error('Could not copy text: ', err);
-            });
-    }
     const date = getCurrentDateTime();
 
     onMounted(() => {

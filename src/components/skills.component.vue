@@ -32,8 +32,6 @@
 
 <template>
 
-    <h1 class="text-center mb-5">How can I help you ?</h1>
-
     <div v-for="skill in skills" class="skill-section">
         <h3 class="skill-title my-2">{{ skill.title }}</h3>
         <ul class="skill-list">

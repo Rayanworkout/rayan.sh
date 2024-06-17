@@ -4,6 +4,38 @@
   import Slider from './components/slider.component.vue';
   import Skills from './components/skills.component.vue';
 
+  import { copyToClipboard } from "./utils/copyToClipboard";
+
+  import { ref, onMounted } from 'vue';
+
+  const whatCanIdo = ref('');
+
+  let index = 0;
+  const emailCopiedTypewriter = () => {
+    const sentence = "Email copied to clipboard, see you soon !";
+
+    if (index === 0) {
+      whatCanIdo.value = "";
+      copyToClipboard();
+    }
+
+    if (index < sentence.length) {
+      whatCanIdo.value += sentence.charAt(index);
+      index++;
+      setTimeout(emailCopiedTypewriter, 100);
+    } else {
+
+      setTimeout(() => {
+        whatCanIdo.value = "What can I do for you ?";
+      }, 4000);
+    }
+
+  }
+
+  onMounted(() => {
+    whatCanIdo.value = "What can I do for you ?"
+  });
+
 </script>
 
 
@@ -23,7 +55,7 @@
             <div class="my-4">
               <Slider />
             </div>
-            <a href="mailto:rayan13170@protonmail.com" class="cta-button">Contact Me</a>
+            <a class="cta-button" @click="emailCopiedTypewriter">Contact Me</a>
           </div>
         </div>
         <div class="col-md-8">
@@ -31,6 +63,7 @@
         </div>
       </div>
       <div class="row my-5">
+        <h1 class="text-center mb-5">{{ whatCanIdo }}</h1>
         <Skills />
       </div>
     </div>
@@ -83,6 +116,7 @@
 
   .cta-button:hover {
     background-color: #0056b3;
+    cursor: pointer;
   }
 
   /* MEDIA QUERIES */
