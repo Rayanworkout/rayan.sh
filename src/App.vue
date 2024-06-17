@@ -47,11 +47,11 @@
         <div class="col-md-4">
           <div class="head">
             <div class="hello"><span style="font-size: 18px;">
-                Hi all, I am
+                Hello, I am
               </span>
               <h1>Rayan<span class="cursor">_</span></h1>
               <h2>> Backend Developer</h2>
-              <h2>> Devops Enthusiast</h2>
+              <h2>> Devops Engineer</h2>
             </div>
             <div class="my-4">
               <Slider />
@@ -154,8 +154,8 @@
   }
 
   @media (min-width: 768px) {
-    .mailto,
-    .about {
+
+    .mailto {
       display: none;
     }
 
