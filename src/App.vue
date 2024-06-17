@@ -1,6 +1,7 @@
 <script setup>
 
   import MacTerminal from './components/terminal.component.vue';
+  import Slider from './components/slider.component.vue';
 
 </script>
 
@@ -18,8 +19,8 @@
               <h2>> Backend Developer</h2>
               <h2>> Devops Enthusiast</h2>
             </div>
-            <div>
-
+            <div class="my-5 py-4">
+              <Slider />
             </div>
           </div>
         </div>
