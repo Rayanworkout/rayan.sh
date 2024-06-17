@@ -16,6 +16,7 @@ const technologies = [
     // DevOps/CI/CD Tools
     "docker",
     "jenkins",
+    "ansible",
     "github-actions",
     "git",
     "apache",

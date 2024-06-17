@@ -266,6 +266,14 @@
         top: -34px;
     }
 
+    .github-logo svg {
+        fill: white;
+    }
+
+    .github-logo svg:hover {
+        fill: #55a7ff;
+    }
+
     .github-logo::after {
         content: "Github";
         position: absolute;

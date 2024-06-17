@@ -21,7 +21,7 @@
               <h2>> Devops Enthusiast</h2>
             </div>
             <div class="my-5">
-              <Slider />
+              <!-- <Slider /> -->
             </div>
           </div>
         </div>
@@ -29,7 +29,7 @@
           <MacTerminal />
         </div>
       </div>
-      <div class="row">
+      <div class="row my-5">
         <Skills />
       </div>
     </div>
@@ -49,7 +49,6 @@
   h1 {
     font-size: 45px;
     line-height: 1;
-    color: #E5E9F0;
     padding-top: 1rem;
     padding-bottom: 1rem;
   }
@@ -63,13 +62,11 @@
   .head h2 {
     font-size: 30px;
     line-height: 1;
-    color: white;
     font-family: 'JetBrains Mono', 'monospace';
   }
 
   p,
   .hello span {
-    color: #c8c8c8b9;
     font-family: 'JetBrains Mono', 'monospace';
   }
 
