@@ -62,4 +62,26 @@
     .svg-icon:hover {
         cursor: pointer;
     }
+
+
+    @media (max-width: 768px) {
+
+        .scroll-wrapper {
+        animation: scroll 20s linear infinite;
+    }
+
+        @keyframes scroll {
+        0% {
+            transform: translateX(0);
+        }
+
+        50% {
+            transform: translateX(calc(230px));
+        }
+
+        100% {
+            transform: translateX(0);
+        }
+    }
+    }
 </style>
