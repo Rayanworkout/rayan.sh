@@ -271,7 +271,7 @@
     }
 
     .github-logo svg:hover {
-        fill: #55a7ff;
+        fill: var(--primary-blue);
     }
 
     .github-logo::after {

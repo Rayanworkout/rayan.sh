@@ -1,10 +1,12 @@
 :root {
   --background: #202124;
+  --primary-blue: #55a7ff;
+  --text: #abafb8;
 }
 
 * {
   background-color: var(--background);
-  color: #abafb8;
+  color: var(--text);
   font-size: 18px;
   line-height: 1.5;
   margin: 0;

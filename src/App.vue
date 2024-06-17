@@ -23,6 +23,7 @@
             <div class="my-4">
               <Slider />
             </div>
+            <a href="mailto:rayan13170@protonmail.com" class="cta-button">Contact Me</a>
           </div>
         </div>
         <div class="col-md-8">
@@ -68,6 +69,20 @@
   p,
   .hello span {
     font-family: 'JetBrains Mono', 'monospace';
+  }
+
+  .cta-button {
+    padding: 10px 20px;
+    background-color: #007bff;
+    text-decoration: none;
+    font-size: 16px;
+    border-radius: 7px;
+    color: white;
+    transition: background-color 0.3s ease;
+  }
+
+  .cta-button:hover {
+    background-color: #0056b3;
   }
 
   /* MEDIA QUERIES */
