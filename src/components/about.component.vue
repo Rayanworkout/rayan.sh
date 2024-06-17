@@ -1,5 +1,5 @@
 <template>
-    <h1 class="text-center my-5">About me</h1>
+    <h1 class="text-center pb-3">About me</h1>
     <p>I am a 26-year-old self-taught software developer based in Marseille, France.</p>
     <p>Specializing in <b>Backend Development</b> and <b>DevOps</b>, my expertise lies in designing robust server-side
         applications
@@ -15,8 +15,17 @@
 
 
 <style scoped>
+
+    h1 {
+        padding-top: 70px;
+    }
     a {
         text-decoration: none;
         color: #007bff;
     }
+
+    a:hover {
+        text-decoration: underline;
+    }
+
 </style>

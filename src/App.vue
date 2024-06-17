@@ -71,7 +71,7 @@
         </div>
       </div>
       <div class="my-4">
-        <h1 class="text-center mb-5">{{ whatCanIdo }}</h1>
+        <h1 class="text-center mb-3">{{ whatCanIdo }}</h1>
         <Skills />
       </div>
       <div class="about">
