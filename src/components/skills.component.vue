@@ -34,16 +34,37 @@
 
     <h1 class="text-center mb-5">How can I help you ?</h1>
 
-    <div v-for="skill in skills">
-        <h3 class="my-2">- {{ skill.title }}</h3>
-        <div v-for="line in skill.description">
-            <p>{{ line }}</p>
-        </div>
+    <div v-for="skill in skills" class="skill-section">
+        <h3 class="skill-title my-2">{{ skill.title }}</h3>
+        <ul class="skill-list">
+            <li v-for="line in skill.description" class="skill-item">{{ line }}</li>
+        </ul>
     </div>
 
 </template>
 
 <style scoped>
+    .skill-section {
+        margin-bottom: 20px;
+    }
+
+    .skill-title {
+        font-size: 1.5em;
+        font-weight: bold;
+    }
+
+    .skill-list {
+        list-style-type: disc;
+        margin-left: 20px;
+    }
+
+    .skill-item {
+        margin-bottom: 10px;
+        font-size: 1.1em;
+        line-height: 1.5;
+    }
+
+
     @media (max-width: 768px) {
 
         h1 {
