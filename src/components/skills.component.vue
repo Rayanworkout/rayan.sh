@@ -47,7 +47,7 @@
     }
 
     .skill-title {
-        font-size: 1.4em;
+        font-size: 1.5em;
         font-weight: bold;
     }
 
@@ -65,16 +65,8 @@
 
     @media (max-width: 768px) {
 
-        h1 {
-            font-size: 35px;
-        }
-
-        h3 {
-            font-size: 30px;
-        }
-
-        p {
-            font-size: 20px;
+        .skill-title {
+            font-size: 1.2em;
         }
 
     }

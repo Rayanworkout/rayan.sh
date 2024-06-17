@@ -4,7 +4,8 @@
     <p>Specializing in <b>Backend Development</b> and <b>DevOps</b>, my expertise lies in designing robust server-side
         applications
         and optimizing system operations for enhanced performance, integration and reliability.</p>
-    <p>I mostly use <b>Python</b> and <b>JavaScript</b>. Additionally, I use <b>Rust</b> and <b>Java</b> for projects that
+    <p>I mostly use <b>Python</b> and <b>JavaScript</b>. Additionally, I use <b>Rust</b> and <b>Java</b> for projects
+        that
         require high
         performance or low-level system programming.</p>
     <p>If you're seeking a skilled backend developer or a seasoned DevOps engineer, whether for remote collaboration or
@@ -15,10 +16,12 @@
 
 
 <style scoped>
-
     h1 {
         padding-top: 70px;
+        font-size: 40px;
+        font-weight: bold;
     }
+
     a {
         text-decoration: none;
         color: #007bff;
@@ -27,5 +30,4 @@
     a:hover {
         text-decoration: underline;
     }
-
 </style>

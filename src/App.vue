@@ -49,7 +49,7 @@
             <div class="hello"><span style="font-size: 18px;">
                 Hello, I am
               </span>
-              <h1>Rayan<span class="cursor">_</span></h1>
+              <h1 class="name">Rayan<span class="cursor">_</span></h1>
               <h2>> Backend Developer</h2>
               <h2>> Devops Engineer</h2>
             </div>
@@ -70,7 +70,7 @@
           <MacTerminal />
         </div>
       </div>
-      <div class="my-4">
+      <div class="skills-title">
         <h1 class="text-center mb-3">{{ whatCanIdo }}</h1>
         <Skills />
       </div>
@@ -91,7 +91,7 @@
   }
 
 
-  h1 {
+  .name {
     font-size: 45px;
     line-height: 1;
     padding-top: 1rem;
@@ -130,6 +130,15 @@
     cursor: pointer;
   }
 
+  h1 {
+    font-size: 40px;
+    font-weight: bold;
+  }
+
+  .skills-title {
+    margin-top: 150px;
+  }
+
   /* MEDIA QUERIES */
 
   @media (max-width: 768px) {
@@ -157,6 +166,10 @@
     .mailto {
       display: block;
     }
+
+    .skills-title {
+    margin-top: 15px;
+  }
   }
 
   @media (min-width: 768px) {
