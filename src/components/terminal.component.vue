@@ -78,6 +78,11 @@
     };
 
 
+    const localCopyToClipboard = () => {
+        copyToClipboard();
+        showClipBoard.value = true;
+    }
+
     const date = getCurrentDateTime();
 
     onMounted(() => {
@@ -126,7 +131,7 @@
                         v-show="showWave">~ </span> {{ catTypewriter
                     }}<span v-show="showCatCursor" class="cursor">_</span>
                 </p>
-                <div class="mail mb-3" v-show="showEmail" @click="copyToClipboard">reach me @
+                <div class="mail mb-3" v-show="showEmail" @click="localCopyToClipboard">reach me @
                     rayan13170@protonmail.com
                 </div>
                 <p class="text-white" v-show="showFinalps1"><i class="bi bi-arrow-right-short"></i> <span class="ps1">~
@@ -271,7 +276,7 @@
         color: white;
     }
 
-    
+
 
 
     /* ABOUT  */
