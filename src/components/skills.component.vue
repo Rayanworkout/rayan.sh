@@ -34,7 +34,7 @@
 
     <div v-for="skill in skills" class="skill-section">
         <h3 class="skill-title my-2">{{ skill.title }}</h3>
-        <ul class="skill-list">
+        <ul class="skill-list mb-4">
             <li v-for="line in skill.description" class="skill-item">{{ line }}</li>
         </ul>
     </div>
