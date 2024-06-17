@@ -2,6 +2,7 @@
 
   import MacTerminal from './components/terminal.component.vue';
   import Slider from './components/slider.component.vue';
+  import Skills from './components/skills.component.vue';
 
 </script>
 
@@ -27,6 +28,9 @@
         <div class="col-md-8">
           <MacTerminal />
         </div>
+      </div>
+      <div class="row">
+        <Skills />
       </div>
     </div>
   </div>

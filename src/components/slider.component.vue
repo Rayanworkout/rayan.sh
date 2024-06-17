@@ -1,6 +1,6 @@
 <script setup>
 
-const skills = [
+const technologies = [
     // Programming Languages
     "python",
     "rust",
@@ -33,8 +33,8 @@ const skills = [
 
 <template>
     <div class="scroll-wrapper">
-        <div v-for="skill in skills" :key="skill" class="svg-container">
-            <img :src="`/img/skills/${skill}.svg`" :alt="skill" class="svg-icon" />
+        <div v-for="tech in technologies" :key="tech" class="svg-container">
+            <img :src="`/img/skills/${tech}.svg`" :alt="tech" class="svg-icon" />
         </div>
     </div>
 
@@ -45,20 +45,20 @@ const skills = [
     .scroll-wrapper {
         display: flex;
         white-space: nowrap;
-        animation: scroll 20s linear infinite;
+        animation: scroll 60s linear infinite;
     }
 
     @keyframes scroll {
         0% {
-            transform: translateX(-200px);
+            transform: translateX(-470px);
         }
 
         50% {
-            transform: translateX(calc(40px * 5));
+            transform: translateX(calc(70px * 5));
         }
 
         100% {
-            transform: translateX(-200px);
+            transform: translateX(-470px);
         }
     }
 
@@ -72,7 +72,7 @@ const skills = [
     }
 
     .svg-icon {
-        width: 50px;
+        width: 65px;
         height: auto;
     }
 
