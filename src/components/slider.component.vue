@@ -13,6 +13,7 @@
         "docker",
         "github-actions",
         "apache",
+        "ansible",
 
     ];
 
@@ -27,12 +28,12 @@
 
         // DevOps/CI/CD Tools
         "git",
+        "jenkins",
 
         // Databases
         "mongodb",
         "postgresql"
     ];
-
 
 
 </script>
@@ -57,13 +58,13 @@
     .scroll-wrapper {
         display: flex;
         white-space: nowrap;
-        animation: scroll 20s linear infinite;
+        animation: scroll 40s linear infinite;
     }
 
     .scroll-wrapper2 {
         display: flex;
         white-space: nowrap;
-        animation: scroll2 20s linear infinite;
+        animation: scroll2 40s linear infinite;
     }
 
     @keyframes scroll {
@@ -72,7 +73,7 @@
         }
 
         50% {
-            transform: translateX(100px);
+            transform: translateX(150px);
         }
 
         100% {
