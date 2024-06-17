@@ -66,27 +66,5 @@
 
     /* MEDIA QUERIES */
 
-
-    @media (max-width: 768px) {
-
-        .hello h1,
-        .cursor {
-            font-size: 40px;
-        }
-
-        .hello h2 {
-            font-size: 25px;
-        }
-
-        .github span,
-        .github a,
-        .blog span,
-        .blog a {
-            font-size: 16px;
-        }
-
-    }
-
-
     /* END MEDIA QUERIES */
 </style>

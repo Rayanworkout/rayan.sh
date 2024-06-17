@@ -8,7 +8,7 @@
         </span>
         <h1>Rayan<span class="cursor">_</span></h1>
         <h2>> Backend developer</h2>
-        <h2>> Devops engineer</h2>
+        <h2>> Devops Enthusiast</h2>
     </div>
     <div>
         <MacTerminal />
