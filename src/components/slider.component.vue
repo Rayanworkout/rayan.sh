@@ -1,14 +1,31 @@
 <script setup>
 
-    const skills = [
-        "docker",
-        "fastapi",
-        "git",
-        "linux",
-        "mongodb",
-        "postgresql",
-        "python",
-    ]
+const skills = [
+    // Programming Languages
+    "python",
+    "rust",
+    "javascript",
+    "bash",
+
+    // Frameworks/Libraries
+    "django",
+    "vuejs",
+    "react",
+    "fastapi",
+
+    // DevOps/CI/CD Tools
+    "docker",
+    "jenkins",
+    "github-actions",
+    "git",
+    "apache",
+    "linux",
+
+    // Databases
+    "mongodb",
+    "postgresql"
+];
+
 
 
 </script>
@@ -28,7 +45,7 @@
     .scroll-wrapper {
         display: flex;
         white-space: nowrap;
-        animation: scroll 40s linear infinite;
+        animation: scroll 20s linear infinite;
     }
 
     @keyframes scroll {
@@ -37,7 +54,7 @@
         }
 
         50% {
-            transform: translateX(calc(200px));
+            transform: translateX(calc(40px * 5));
         }
 
         100% {
@@ -67,21 +84,21 @@
     @media (max-width: 768px) {
 
         .scroll-wrapper {
-        animation: scroll 19s linear infinite;
-    }
+            animation: scroll 30s linear infinite;
+        }
 
         @keyframes scroll {
-        0% {
-            transform: translateX(0);
-        }
+            0% {
+                transform: translateX(-400px);
+            }
 
-        50% {
-            transform: translateX(calc(150px));
-        }
+            50% {
+                transform: translateX(calc(450px));
+            }
 
-        100% {
-            transform: translateX(0);
+            100% {
+                transform: translateX(-400px);
+            }
         }
-    }
     }
 </style>
