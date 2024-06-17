@@ -1,31 +1,37 @@
 <script setup>
 
-const technologies = [
-    // Programming Languages
-    "python",
-    "rust",
-    "javascript",
-    "bash",
+    const technologies1 = [
 
-    // Frameworks/Libraries
-    "django",
-    "vuejs",
-    "react",
-    "fastapi",
+        // Programming Languages
+        "python",
+        "rust",
+        "javascript",
+        "bash",
 
-    // DevOps/CI/CD Tools
-    "docker",
-    "jenkins",
-    "ansible",
-    "github-actions",
-    "git",
-    "apache",
-    "linux",
+        // DevOps/CI/CD Tools
+        "linux",
+        "docker",
+        "github-actions",
+        "apache",
 
-    // Databases
-    "mongodb",
-    "postgresql"
-];
+    ];
+
+    const technologies2 = [
+
+        // Frameworks/Libraries
+        "django",
+        "vuejs",
+        "react",
+        "fastapi",
+
+
+        // DevOps/CI/CD Tools
+        "git",
+
+        // Databases
+        "mongodb",
+        "postgresql"
+    ];
 
 
 
@@ -34,7 +40,12 @@ const technologies = [
 
 <template>
     <div class="scroll-wrapper">
-        <div v-for="tech in technologies" :key="tech" class="svg-container">
+        <div v-for="tech in technologies1" :key="tech" class="svg-container">
+            <img :src="`/img/skills/${tech}.svg`" :alt="tech" class="svg-icon" />
+        </div>
+    </div>
+    <div class="scroll-wrapper2">
+        <div v-for="tech in technologies2" :key="tech" class="svg-container">
             <img :src="`/img/skills/${tech}.svg`" :alt="tech" class="svg-icon" />
         </div>
     </div>
@@ -46,22 +57,43 @@ const technologies = [
     .scroll-wrapper {
         display: flex;
         white-space: nowrap;
-        animation: scroll 60s linear infinite;
+        animation: scroll 20s linear infinite;
+    }
+
+    .scroll-wrapper2 {
+        display: flex;
+        white-space: nowrap;
+        animation: scroll2 20s linear infinite;
     }
 
     @keyframes scroll {
         0% {
-            transform: translateX(-470px);
+            transform: translateX(-300px);
         }
 
         50% {
-            transform: translateX(calc(70px * 5));
+            transform: translateX(100px);
         }
 
         100% {
-            transform: translateX(-470px);
+            transform: translateX(-300px);
         }
     }
+
+    @keyframes scroll2 {
+        0% {
+            transform: translateX(400px);
+        }
+
+        50% {
+            transform: translateX(-150px);
+        }
+
+        100% {
+            transform: translateX(400px);
+        }
+    }
+
 
 
 

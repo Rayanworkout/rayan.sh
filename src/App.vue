@@ -21,7 +21,7 @@
               <h2>> Devops Enthusiast</h2>
             </div>
             <div class="my-5">
-              <!-- <Slider /> -->
+              <Slider />
             </div>
           </div>
         </div>
