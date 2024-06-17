@@ -40,14 +40,16 @@
 
 
 <template>
-    <div class="scroll-wrapper">
-        <div v-for="tech in technologies1" :key="tech" class="svg-container">
-            <img :src="`/img/skills/${tech}.svg`" :alt="tech" class="svg-icon" />
+    <div class="slider-container">
+        <div class="scroll-wrapper">
+            <div v-for="tech in technologies1" :key="tech" class="svg-container">
+                <img :src="`/img/skills/${tech}.svg`" :alt="tech" class="svg-icon" />
+            </div>
         </div>
-    </div>
-    <div class="scroll-wrapper2">
-        <div v-for="tech in technologies2" :key="tech" class="svg-container">
-            <img :src="`/img/skills/${tech}.svg`" :alt="tech" class="svg-icon" />
+        <div class="scroll-wrapper2">
+            <div v-for="tech in technologies2" :key="tech" class="svg-container">
+                <img :src="`/img/skills/${tech}.svg`" :alt="tech" class="svg-icon" />
+            </div>
         </div>
     </div>
 
@@ -55,6 +57,10 @@
 
 
 <style scoped>
+    .slider-container {
+        overflow: hidden;
+        width: 90vh;
+    }
     .scroll-wrapper {
         display: flex;
         white-space: nowrap;

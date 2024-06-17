@@ -3,6 +3,7 @@
   import MacTerminal from './components/terminal.component.vue';
   import Slider from './components/slider.component.vue';
   import Skills from './components/skills.component.vue';
+  import About from './components/about.component.vue';
 
   import { copyToClipboard } from "./utils/copyToClipboard";
 
@@ -55,16 +56,20 @@
             <div class="my-4">
               <Slider />
             </div>
-            <a class="cta-button" @click="emailCopiedTypewriter">Contact Me</a>
+            <a class="cta" @click="emailCopiedTypewriter">Contact Me</a>
+            <a class="cta mailto" href="mailto:rayan13170@protonmail.com">Contact Me</a>
           </div>
         </div>
-        <div class="col-md-8">
+        <div class="col-md-8 terminal">
           <MacTerminal />
         </div>
       </div>
-      <div class="row my-5">
-        <h1 class="text-center mb-5">{{ whatCanIdo }}</h1>
+      <div class="my-5">
+        <h1 class="text-center mb-3">{{ whatCanIdo }}</h1>
         <Skills />
+      </div>
+      <div class="about">
+        <About />
       </div>
     </div>
   </div>
@@ -104,7 +109,7 @@
     font-family: 'JetBrains Mono', 'monospace';
   }
 
-  .cta-button {
+  .cta {
     padding: 10px 20px;
     background-color: #007bff;
     text-decoration: none;
@@ -114,7 +119,7 @@
     transition: background-color 0.3s ease;
   }
 
-  .cta-button:hover {
+  .cta:hover {
     background-color: #0056b3;
     cursor: pointer;
   }
@@ -137,6 +142,23 @@
     .blog a {
       font-size: 18px;
     }
+
+    .terminal,
+    .cta {
+      display: none;
+    }
+
+    .mailto {
+      display: block;
+    }
+  }
+
+  @media (min-width: 768px) {
+    .mailto,
+    .about {
+      display: none;
+    }
+
   }
 
   /* END MEDIA QUERIES */

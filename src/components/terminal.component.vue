@@ -153,6 +153,7 @@
         background-color: #202124;
         box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
         padding: 4px;
+        margin-left: 150px;
     }
 
     .terminal-header {
