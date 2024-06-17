@@ -61,6 +61,7 @@
         overflow: hidden;
         width: 90vh;
     }
+
     .scroll-wrapper {
         display: flex;
         white-space: nowrap;
@@ -102,8 +103,6 @@
     }
 
 
-
-
     /* SVG Icons */
 
     .svg-container {
@@ -123,21 +122,47 @@
 
     @media (max-width: 768px) {
 
+        .slider-container {
+            width: 50vh;
+        }
+
         .scroll-wrapper {
             animation: scroll 30s linear infinite;
         }
 
+        .scroll-wrapper2 {
+            animation: scroll2 30s linear infinite;
+        }
+
+        .svg-icon {
+            width: 50px;
+        }
+
         @keyframes scroll {
             0% {
-                transform: translateX(-400px);
+                transform: translateX(-300px);
             }
 
             50% {
-                transform: translateX(calc(450px));
+                transform: translateX(100px);
             }
 
             100% {
-                transform: translateX(-400px);
+                transform: translateX(-300px);
+            }
+        }
+
+        @keyframes scroll2 {
+            0% {
+                transform: translateX(300px);
+            }
+
+            50% {
+                transform: translateX(-200px);
+            }
+
+            100% {
+                transform: translateX(300px);
             }
         }
     }
