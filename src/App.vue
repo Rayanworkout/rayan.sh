@@ -28,6 +28,7 @@
 
       setTimeout(() => {
         whatCanIdo.value = "What can I do for you ?";
+        index = 0;
       }, 4000);
     }
 
@@ -71,7 +72,7 @@
         </div>
       </div>
       <div class="skills-title">
-        <h1 class="text-center mb-3">{{ whatCanIdo }}</h1>
+        <h1 class="text-center mb-4">{{ whatCanIdo }}</h1>
         <Skills />
       </div>
       <div class="about">
@@ -148,7 +149,7 @@
     }
 
     h1 {
-      font-size: 35px;
+      font-size: 33px;
     }
 
     .github span,

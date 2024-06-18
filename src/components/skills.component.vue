@@ -13,17 +13,11 @@
         },
         {
             title: 'DevOps',
-            description: ["Build, deploy and maintain efficient CI/CD pipelines using tools like Github actions, Ansible or manually with Bash scripts.",
+            description: ["Build, deploy and maintain efficient CI/CD pipelines using tools like Github actions, Ansible or Bash scripts.",
                 "Facilitate seamless communication between development and operations teams.",
                 "Containerize applications with Docker and manage them using Docker Compose.",
                 "Deploy applications to the cloud using AWS or Google Cloud.",
                 "Administer and secure Linux server instances."
-            ]
-        },
-        {
-            title: 'Frontend Development',
-            description: ["Integrate designs into responsive web applications using HTML, CSS, and JavaScript.",
-                "Develop interactive web applications with Vue.js or React.js, optimized for performance and SEO."
             ]
         }
     ]
