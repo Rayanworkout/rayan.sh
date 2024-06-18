@@ -17,7 +17,7 @@
 
 <style scoped>
     h1 {
-        padding-top: 70px;
+        padding-top: 50px;
         font-size: 40px;
         font-weight: bold;
     }
@@ -30,4 +30,12 @@
     a:hover {
         text-decoration: underline;
     }
+
+    @media (min-width: 768px) {
+        h1 {
+            font-size: 50px;
+            padding-top: 100px;
+        }
+    }
+
 </style>

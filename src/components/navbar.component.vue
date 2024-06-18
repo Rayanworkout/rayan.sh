@@ -1,11 +1,9 @@
 <script setup>
 
-
     const scrollTo = (sectionId) => {
         const element = document.getElementById(sectionId);
         if (element) {
             element.scrollIntoView({ behavior: 'smooth' });
-            history.pushState(null, null, `#${sectionId}`);
         }
     };
 
@@ -16,10 +14,10 @@
     <nav class="navbar navbar-expand">
         <div class="container-fluid d-flex justify-content-center">
             <div class="navbar-nav">
-                <RouterLink class="nav-link text-white" to="/">Hello</RouterLink>
-                <RouterLink class="nav-link mx-3" to="/projects">
+                <a class="nav-link text-white">Hello</a>
+                <a class="nav-link mx-3" @click.prevent="scrollTo('projects')">
                     Projects
-                </RouterLink>
+                </a>
                 <a class="nav-link" @click.prevent="scrollTo('about')">
                     About
                 </a>
@@ -38,6 +36,7 @@
     .nav-link,
     .navbar-brand {
         color: #90a2b6;
+        font-weight: bold;
     }
 
     .current {

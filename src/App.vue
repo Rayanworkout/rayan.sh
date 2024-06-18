@@ -76,8 +76,6 @@
       <div class="skills-title">
         <h1 class="text-center mb-4">{{ whatCanIdo }}</h1>
         <Skills />
-      </div>
-      <div class="about">
         <About />
       </div>
     </div>
@@ -134,7 +132,7 @@
   }
 
   h1 {
-    font-size: 40px;
+    font-size: 50px;
     font-weight: bold;
   }
 
