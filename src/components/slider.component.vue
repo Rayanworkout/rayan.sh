@@ -113,10 +113,12 @@
     .svg-icon {
         width: 65px;
         height: auto;
+        transition: transform 0.3s ease;
     }
 
     .svg-icon:hover {
         cursor: pointer;
+        transform: scale(1.1);
     }
 
 

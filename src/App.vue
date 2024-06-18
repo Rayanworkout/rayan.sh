@@ -1,5 +1,6 @@
 <script setup>
 
+  import Navbar from './components/navbar.component.vue';
   import MacTerminal from './components/terminal.component.vue';
   import Slider from './components/slider.component.vue';
   import Skills from './components/skills.component.vue';
@@ -42,6 +43,7 @@
 
 
 <template>
+  <Navbar />
   <div class="container py-5">
     <div class="my-5">
       <div class="row">
@@ -169,8 +171,8 @@
     }
 
     .skills-title {
-    margin-top: 15px;
-  }
+      margin-top: 15px;
+    }
   }
 
   @media (min-width: 768px) {

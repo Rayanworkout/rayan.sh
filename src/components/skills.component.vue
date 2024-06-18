@@ -13,7 +13,7 @@
         },
         {
             title: 'DevOps',
-            description: ["Build, deploy and maintain efficient CI/CD pipelines using tools like Github actions, Ansible or Bash scripts.",
+            description: ["Build and deploy efficient CI/CD pipelines using tools like Github actions, Ansible or Bash scripts.",
                 "Facilitate seamless communication between development and operations teams.",
                 "Containerize applications with Docker and manage them using Docker Compose.",
                 "Deploy applications to the cloud using AWS or Google Cloud.",
