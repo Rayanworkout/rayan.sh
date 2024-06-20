@@ -15,9 +15,9 @@
         <div class="container-fluid d-flex justify-content-center">
             <div class="navbar-nav">
                 <a class="nav-link text-white">Hello</a>
-                <a class="nav-link mx-3" @click.prevent="scrollTo('projects')">
+                <!-- <a class="nav-link mx-3" @click.prevent="scrollTo('projects')">
                     Projects
-                </a>
+                </a> -->
                 <a class="nav-link" @click.prevent="scrollTo('about')">
                     About
                 </a>
@@ -29,7 +29,7 @@
 
 <style scoped>
     .navbar {
-        height: 60px;
+        height: 70px;
         border-bottom: 1px solid rgb(161, 161, 161);
     }
 
@@ -37,6 +37,8 @@
     .navbar-brand {
         color: #90a2b6;
         font-weight: bold;
+        font-size: 1.2rem;
+        border-radius: 7px;
     }
 
     .current {
@@ -57,6 +59,16 @@
         color: white;
     }
 
-
     /* END HOVERS */
+
+    @media (max-width: 768px) {
+        .navbar {
+            height: 70px;
+        }
+
+        .nav-link,
+        .navbar-brand {
+            font-size: 1rem;
+        }
+    }
 </style>
