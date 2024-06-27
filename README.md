@@ -7,3 +7,5 @@ It follows the [jsonresume](https://jsonresume.org/) standard, it means that you
 Inspired by [this website](https://github.com/jcoelho93/personal-website) but remade from scratch.
 
 Feel free to fork / use with your own json resume.
+
+_Currently under development_
