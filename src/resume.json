@@ -40,21 +40,6 @@
                 "Optimized the company's data pipeline for faster and more efficient data processing."
             ],
             "highlights": []
-        },
-        {
-            "company": "Enoe Energie",
-            "location": "Marseille, France",
-            "description": "",
-            "position": "Data Analyst / DevOps Engineer",
-            "website": "https://www.enoe-energie.fr/",
-            "startDate": "August 2024",
-            "endDate": "",
-            "summary": [
-                "Created a data analysis tool to help the company's clients understand their data better.",
-                "Developed a backend system to automate data processing and analysis.",
-                "Optimized the company's data pipeline for faster and more efficient data processing."
-            ],
-            "highlights": []
         }
     ],
     "volunteer": [],
