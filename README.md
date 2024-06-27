@@ -1,8 +1,9 @@
-# React + Vite
+# My personal website
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Made with React and Vite, hosted on Vercel.
 
-Currently, two official plugins are available:
+It follows the [jsonresume](https://jsonresume.org/) standard, it means that you can use your own json resume to generate your own website.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+Inspired by [this website](https://github.com/jcoelho93/personal-website) but remade from scratch.
+
+Feel free to fork / use with your own json resume.
