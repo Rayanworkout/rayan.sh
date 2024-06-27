@@ -1,0 +1,215 @@
+{
+    "basics": {
+        "name": "Rayan",
+        "label": "Backend, DevOps Engineer",
+        "picture": "hisoka.jpg",
+        "email": "rayan13170@protonmail.com",
+        "phone": "",
+        "website": "rayan.sh",
+        "x_title": "Hey, welcome to my website !",
+        "summary": "I am a 26-year-old self-taught software developer based in Marseille, France. Specializing in <b>Backend Development</b> and <b>DevOps</b>, my expertise lies in designing robust server-side applications and optimizing system operations for enhanced <u>performance</u>, <u>integration</u> and <u>reliability</u>.<br /><br/>Proficient in <b>Python</b> as my primary language, I also have experience with <b>Rust</b> and <b>Java</b> for projects that require high performance. If you're seeking a skilled backend developer or a seasoned DevOps engineer, whether for remote collaboration or on-site services within Marseille, feel free to contact me.",
+        "location": {
+            "address": "",
+            "postalCode": "",
+            "city": "Marseille",
+            "country": "France",
+            "countryCode": "FR",
+            "region": "Bouches-du-Rhône"
+        },
+        "profiles": [
+            {
+                "network": "GitHub",
+                "username": "0xRayan",
+                "url": "https://github.com/Rayanworkout",
+                "icon": "github"
+            }
+        ]
+    },
+    "work": [
+        {
+            "company": "Enoe Energie",
+            "location": "Marseille, France",
+            "description": "",
+            "position": "Data Analyst / DevOps Engineer",
+            "website": "https://www.enoe-energie.fr/",
+            "startDate": "August 2024",
+            "endDate": "",
+            "summary": [
+                "Created a data analysis tool to help the company's clients understand their data better.",
+                "Developed a backend system to automate data processing and analysis.",
+                "Optimized the company's data pipeline for faster and more efficient data processing."
+            ],
+            "highlights": []
+        },
+        {
+            "company": "Enoe Energie",
+            "location": "Marseille, France",
+            "description": "",
+            "position": "Data Analyst / DevOps Engineer",
+            "website": "https://www.enoe-energie.fr/",
+            "startDate": "August 2024",
+            "endDate": "",
+            "summary": [
+                "Created a data analysis tool to help the company's clients understand their data better.",
+                "Developed a backend system to automate data processing and analysis.",
+                "Optimized the company's data pipeline for faster and more efficient data processing."
+            ],
+            "highlights": []
+        }
+    ],
+    "volunteer": [],
+    "education": [
+        {
+            "institution": "",
+            "area": "",
+            "studyType": "",
+            "startDate": "",
+            "endDate": "",
+            "gpa": "",
+            "courses": [
+                ""
+            ]
+        }
+    ],
+    "awards": [
+        {
+            "title": "",
+            "date": "",
+            "awarder": "",
+            "summary": ""
+        }
+    ],
+    "publications": [
+        {
+            "name": "",
+            "publisher": "",
+            "releaseDate": "",
+            "website": "",
+            "summary": ""
+        }
+    ],
+    "skills": [
+        {
+            "name": "Python",
+            "description": [
+                "Writing efficient and scalable applications and APIs.",
+                "Proficient in Django, Flask and FastAPI.",
+                "Collect, clean and analyze data using libraries like Pandas and Numpy."
+            ],
+            "logo": "python",
+            "level": "",
+            "keywords": [
+                ""
+            ]
+        },
+        {
+            "name": "Docker",
+            "description": [
+                "Containerize applications to ensure consistency across environments.",
+                "Use Docker Compose to manage multi-container applications."
+            ],
+            "logo": "docker",
+            "level": "",
+            "keywords": [
+                ""
+            ]
+        },
+        {
+            "name": "CI/CD",
+            "description": [
+                "Build and deploy efficient pipelines using tools like Github actions, Ansible or Bash scripts.",
+                "Deploy applications to the cloud using AWS or Google Cloud."
+            ],
+            "logo": "bash",
+            "level": "",
+            "keywords": [
+                ""
+            ]
+        },
+        {
+            "name": "Linux",
+            "description": [
+                "Proficiency in command-line tools and scripting.",
+                "Managing, configuring, and securing Linux servers for application deployment."
+            ],
+            "logo": "linux",
+            "level": "",
+            "keywords": [
+                ""
+            ]
+        },
+        {
+            "name": "Testing",
+            "description": [
+                "Writing unit, integration, and functional tests to ensure code quality.",
+                "Using testing frameworks such as pytest or unittest."
+            ],
+            "logo": "bug",
+            "level": "",
+            "keywords": []
+        }
+    ],
+    "languages": [
+        {
+            "language": "French",
+            "fluency": "Fluent"
+        },
+        {
+            "language": "English",
+            "fluency": "C1"
+        }
+    ],
+    "interests": [
+        {
+            "name": "",
+            "keywords": [
+                ""
+            ]
+        }
+    ],
+    "references": [
+        {
+            "name": "",
+            "reference": ""
+        },
+        {
+            "name": "",
+            "description": "",
+            "highlights": [],
+            "keywords": [],
+            "startDate": "",
+            "endDate": "",
+            "website": "",
+            "roles": [],
+            "entity": "",
+            "type": ""
+        }
+    ],
+    "projects": [
+        {
+            "name": "Cabmaster",
+            "description": "Professional web app for a small company. Authentication, rate-limit, admin dashboard, legal documents etc ...",
+            "highlights": [],
+            "keywords": [],
+            "startDate": "",
+            "endDate": "",
+            "website": "www.cabmaster.fr",
+            "roles": [],
+            "entity": "",
+            "type": ""
+        }
+    ],
+    "articles": [
+        {
+            "title": "",
+            "description": "",
+            "link": "",
+            "picture": ""
+        }
+    ],
+    "meta": {
+        "canonical": "",
+        "version": "",
+        "lastModified": ""
+    }
+}
