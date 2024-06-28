@@ -32,7 +32,7 @@ export default function Navbar() {
 
 
     return (
-        <header className="top-0 z-[20] mx-auto flex flex-wrap w-full items-center justify-between p-8">
+        <header className="sticky top-0 z-[20] mx-auto flex flex-wrap w-full items-center justify-between p-8">
             <div>
                 <a href="/" className="text-white text-2xl font-bold">{Resume.basics.name}</a>
             </div>
