@@ -16,28 +16,6 @@ html {
 
 /* NAVBAR */
 
-.overlay {
-    background-color: rgba(0, 0, 0, 0.2);
-    width: 100%;
-    height: 100vh;
-    position: fixed;
-    top: 0;
-    left: 0;
-    z-index: 1;
-}
-
-.basic-name {
-    font-size: 2rem;
-    margin-left: 8rem;
-}
-
-.nav-link {
-    font-size: 1.2rem;
-}
-
-.last-nav-link {
-    margin-right: 3rem;
-}
 
 .github-logo {
     font-size: 2rem;
@@ -51,14 +29,13 @@ html {
 
 /* HERO */
 
-
-
 .hero {
     display: flex;
     flex-direction: column;
     margin-top: 14rem;
     align-items: left;
     color: white;
+    z-index: 10;
 }
 
 .hero-text {
@@ -172,7 +149,7 @@ html {
         font-size: 1rem;
     }
 
-    
+
     /* ABOUT */
     .about {
         height: 100vh;
@@ -187,6 +164,7 @@ html {
     .exp-card a {
         font-size: 0.9rem;
     }
+
     .exp-card div,
     .exp-card p {
         font-size: 0.8rem;

@@ -21,9 +21,7 @@ export default function Header() {
                 <Hero />
                 <a href={`mailto:${Resume.basics.email}`} className="cta text-center" onClick={copyToClipboard}>Contact Me</a>
             </div>
-        <div className="overlay"></div>
         </section>
 
     )
-
 }
