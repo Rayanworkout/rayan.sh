@@ -16,7 +16,6 @@ html {
 
 /* NAVBAR */
 
-
 .github-logo {
     font-size: 2rem;
     color: white;
@@ -117,6 +116,23 @@ html {
     transform: translateX(10px);
 }
 
+/* SVG Icons */
+
+.svg-container {
+    display: inline-block;
+    margin: 10px;
+}
+
+.svg-icon {
+    width: 80px;
+    height: auto;
+}
+
+.svg-icon:hover {
+    cursor: pointer;
+}
+
+
 
 /* MEDIA QUERIES */
 
@@ -126,8 +142,13 @@ html {
 
     /* HERO */
 
+    .hero {
+        margin-top: 10rem;
+    }
+
     .bg-image {
-        background-image: url('/images/marseille.jpg');
+        /* background-image: url('/images/marseille.jpg'); */
+        background-color: #333;
         background-repeat: no-repeat;
         background-attachment: fixed;
         background-size: cover;
@@ -148,6 +169,41 @@ html {
     .hero-text h2 {
         font-size: 1rem;
     }
+
+    /* SLIDER */
+    .slider-container {
+        margin-top: 3rem;
+        width: 100%;
+        overflow: hidden;
+    }
+
+    .scroll-wrapper {
+        display: flex;
+        animation: scroll 50s linear infinite;
+    }
+
+    .svg-container {
+        flex: 0 0 auto;
+    }
+
+    .svg-icon {
+        width: 50px;
+    }
+
+    @keyframes scroll {
+        0% {
+            transform: translateX(-1000px);
+        }
+
+        50% {
+            transform: translateX(100px);
+        }
+
+        100% {
+            transform: translateX(-1000px);
+        }
+    }
+
 
 
     /* ABOUT */
@@ -179,6 +235,10 @@ html {
         height: 100vh;
 
     }
+
+    .slider-container {
+        display: none;
+    }
 }
 
 
@@ -200,5 +260,9 @@ html {
     .github-logo {
         font-size: 3rem;
         margin-right: 5rem;
+    }
+
+    .slider-container {
+        display: none;
     }
 }

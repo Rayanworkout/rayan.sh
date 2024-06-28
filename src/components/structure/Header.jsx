@@ -4,6 +4,7 @@ import Resume from "../../resume.json";
 // Components
 import Hero from "../elements/Hero";
 import Navbar from "../elements/Navbar";
+import Slider from "../elements/Slider";
 
 const copyToClipboard = () => {
     navigator.clipboard.writeText(Resume.basics.email)
@@ -21,6 +22,7 @@ export default function Header() {
                 <Hero />
                 <a href={`mailto:${Resume.basics.email}`} className="cta text-center" onClick={copyToClipboard}>Contact Me</a>
             </div>
+            <Slider />
         </section>
 
     )
