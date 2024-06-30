@@ -226,6 +226,12 @@ html {
         font-size: 0.8rem;
     }
 
+    /* PROJECTS */
+    .projects-links a {
+        font-size: 0.8rem;
+        margin: 0.5rem;
+    }
+
 
 }
 

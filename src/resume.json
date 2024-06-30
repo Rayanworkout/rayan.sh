@@ -193,7 +193,7 @@
         },
         {
             "name": "Mini Web Server",
-            "image": "server",
+            "image": "globe",
             "description": "Implementation of a mini web server from scratch in Python. Supports GET requests, static files, and dynamic content.",
             "highlights": [],
             "keywords": [
@@ -216,6 +216,8 @@
             "highlights": [],
             "keywords": [
                 "python",
+                "pandas",
+                "API REST",
                 "django",
                 "react"
             ],
@@ -223,6 +225,80 @@
             "endDate": "",
             "link": "https://drug-analytics.rayan.sh",
             "githubLink": "https://github.com/Rayanworkout/Predicting-Drug-Consumption",
+            "roles": [],
+            "entity": "",
+            "type": ""
+        },
+        {
+            "name": "Find & Replace",
+            "image": "thunder",
+            "description": "A fast and lightweight Rust CLI tool designed to search and replace multiple text pattern occurrences within files.",
+            "highlights": [],
+            "keywords": [
+                "rust",
+                "cli",
+                "tools"
+            ],
+            "startDate": "",
+            "endDate": "",
+            "link": "",
+            "githubLink": "https://github.com/Rayanworkout/Find-and-Replace",
+            "roles": [],
+            "entity": "",
+            "type": ""
+        },
+        {
+            "name": "Email Spam Detector",
+            "image": "ladybug",
+            "description": "Small machine learning project to determine wether an email is a spam or not using the random forest algorithm.",
+            "highlights": [],
+            "keywords": [
+                "python",
+                "machine learning",
+                "scikit-learn"
+            ],
+            "startDate": "",
+            "endDate": "",
+            "link": "",
+            "githubLink": "https://github.com/Rayanworkout/Email-Spam-Detector",
+            "roles": [],
+            "entity": "",
+            "type": ""
+        },
+        {
+            "name": "Simple Continuous Integration",
+            "image": "pipeline",
+            "description": "A Python based Continuous Integration system that runs automated tests on your projects when you push on their repos. Basic UI to monitor your logs. Easy to use, easy to extend.",
+            "highlights": [],
+            "keywords": [
+                "python",
+                "flask",
+                "automation",
+                "bash"
+            ],
+            "startDate": "",
+            "endDate": "",
+            "link": "https://simple-ci.rayan.sh/",
+            "githubLink": "https://github.com/Rayanworkout/Simple-CI",
+            "roles": [],
+            "entity": "",
+            "type": ""
+        },
+        {
+            "name": "InstantGrammable",
+            "image": "fluffy",
+            "description": "VueJS based professional showcase website.",
+            "highlights": [],
+            "keywords": [
+                "vuejs",
+                "javascript",
+                "css",
+                "html"
+            ],
+            "startDate": "",
+            "endDate": "",
+            "link": "https://instant-grammable.vercel.app/",
+            "githubLink": "https://github.com/Rayanworkout/InstantGrammable",
             "roles": [],
             "entity": "",
             "type": ""
