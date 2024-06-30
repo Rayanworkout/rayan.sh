@@ -29,11 +29,11 @@ export default function Slider() {
     ];
 
     return (<>
-        <div class="slider-container">
-            <div class="scroll-wrapper">
+        <div className="slider-container">
+            <div className="scroll-wrapper">
                 {technologies && technologies.map((tech, index) => (
-                    <div key={index} class="svg-container">
-                        <img src={`/images/skills/${tech}.svg`} alt={tech} class="svg-icon" />
+                    <div key={index} className="svg-container">
+                        <img src={`/images/skills/${tech}.svg`} alt={tech} className="svg-icon" />
                     </div>
                 ))}
             </div>
