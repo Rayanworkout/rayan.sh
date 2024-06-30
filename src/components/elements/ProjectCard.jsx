@@ -3,7 +3,7 @@ export default function ProjectCard({ project }) {
 
 
     return (
-        <div className="rounded shadow-lg">
+        <div className="rounded shadow-lg h-[100%]">
             <img className="w-full" src={`/images/projects/${project.image}.jpg`} alt={project.name} />
             <div className="px-6 py-4">
                 <div className="font-bold text-xl mb-2">{project.name}</div>
@@ -19,14 +19,12 @@ export default function ProjectCard({ project }) {
                 </p>
             </div>
             <div className="px-6 pt-4 pb-2">
-                <a href={project.link} target="_blank" className="inline-block bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
+                {project.link !== "" && <a href={project.link} target="_blank" className="inline-block bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
                     Direct Link
-                </a>
-                <a href={project.githubLink} target="_blank" className="inline-block bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 ml-3 rounded">
+                </a>}
+                {project.github !== "" && <a href={project.githubLink} target="_blank" className="inline-block bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 ml-3 rounded">
                     Source Code & Docs
-                </a>
-
-
+                </a>}
             </div>
         </div>
     );

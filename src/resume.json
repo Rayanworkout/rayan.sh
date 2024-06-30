@@ -192,27 +192,37 @@
             "type": ""
         },
         {
-            "name": "SCH",
-            "image": "hisoka",
-            "description": "Professional web app for a small company. Authentication, rate-limit, admin dashboard, legal documents etc ...",
+            "name": "Mini Web Server",
+            "image": "server",
+            "description": "Implementation of a mini web server from scratch in Python. Supports GET requests, static files, and dynamic content.",
             "highlights": [],
-            "keywords": [],
+            "keywords": [
+                "python",
+                "socket",
+                "http"
+            ],
             "startDate": "",
             "endDate": "",
-            "link": "www.cabmaster.fr",
+            "link": "",
+            "githubLink": "https://github.com/Rayanworkout/MinimalistWebServer",
             "roles": [],
             "entity": "",
             "type": ""
         },
         {
-            "name": "Haisess",
-            "image": "hisoka",
-            "description": "Professional web app for a small company. Authentication, rate-limit, admin dashboard, legal documents etc ...",
+            "name": "Predicting Drug Consumption",
+            "image": "drug",
+            "description": "Full stack Django Ninja / React App showcasing an interactive statistical analysis about drug consumption and personality.",
             "highlights": [],
-            "keywords": [],
+            "keywords": [
+                "python",
+                "django",
+                "react"
+            ],
             "startDate": "",
             "endDate": "",
-            "link": "www.cabmaster.fr",
+            "link": "https://drug-analytics.rayan.sh",
+            "githubLink": "https://github.com/Rayanworkout/Predicting-Drug-Consumption",
             "roles": [],
             "entity": "",
             "type": ""
