@@ -173,12 +173,39 @@
     "projects": [
         {
             "name": "Cabmaster",
+            "image": "hisoka.jpg",
             "description": "Professional web app for a small company. Authentication, rate-limit, admin dashboard, legal documents etc ...",
             "highlights": [],
             "keywords": [],
             "startDate": "",
             "endDate": "",
-            "website": "www.cabmaster.fr",
+            "link": "www.cabmaster.fr",
+            "roles": [],
+            "entity": "",
+            "type": ""
+        },
+        {
+            "name": "SCH",
+            "image": "hisoka.jpg",
+            "description": "Professional web app for a small company. Authentication, rate-limit, admin dashboard, legal documents etc ...",
+            "highlights": [],
+            "keywords": [],
+            "startDate": "",
+            "endDate": "",
+            "link": "www.cabmaster.fr",
+            "roles": [],
+            "entity": "",
+            "type": ""
+        },
+        {
+            "name": "Haisess",
+            "image": "hisoka.jpg",
+            "description": "Professional web app for a small company. Authentication, rate-limit, admin dashboard, legal documents etc ...",
+            "highlights": [],
+            "keywords": [],
+            "startDate": "",
+            "endDate": "",
+            "link": "www.cabmaster.fr",
             "roles": [],
             "entity": "",
             "type": ""
