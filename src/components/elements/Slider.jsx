@@ -28,7 +28,7 @@ export default function Slider() {
         "fastapi",
     ];
 
-    return (<>
+    return (
         <div className="slider-container">
             <div className="scroll-wrapper">
                 {technologies && technologies.map((tech, index) => (
@@ -38,7 +38,7 @@ export default function Slider() {
                 ))}
             </div>
         </div>
-    </>)
+    )
 
 
 

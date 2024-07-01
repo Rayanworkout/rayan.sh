@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react'
 import ProjectCard from '../elements/ProjectCard'
 import Resume from '../../resume.json'
 
-const Carousel = ({ children, autoSlide = true, autoSlideInterval = 5000 }) => {
+const Carousel = ({ children, autoSlide = true, autoSlideInterval = 6000 }) => {
 
     const [current, setCurrent] = useState(0)
 
@@ -36,12 +36,12 @@ const Carousel = ({ children, autoSlide = true, autoSlideInterval = 5000 }) => {
                 ))}
             </div>
             <div className="absolute inset-0 max-h-[35%] flex items-end justify-between p-4">
-                <button onClick={prevSlide} className="p-1 rounded-full shadow bg-white-80 text-gray-800 hover:bg-white">
+                <button onClick={prevSlide} className="p-1 rounded-full shadow bg-white-80 text-gray-800 bg-white">
                     <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
                     </svg>
                 </button>
-                <button onClick={nextSlide} className="p-1 rounded-full shadow text-gray-800 hover:bg-white">
+                <button onClick={nextSlide} className="p-1 rounded-full shadow text-gray-800 bg-white">
                     <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
                     </svg>
@@ -58,7 +58,7 @@ export default function Projects() {
     return (
         <div className="projects mx-auto max-w-lg">
             <h1 className="text-center text-4xl font-bold mt-20 mb-10">Projects</h1>
-            <Carousel autoSlide={false}>
+            <Carousel autoSlide={true}>
                 {Resume.projects.map((project, idx) => (
                     <ProjectCard key={idx} project={project} />
                 ))}
