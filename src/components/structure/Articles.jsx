@@ -7,28 +7,33 @@ export default function Articles() {
             title: "How to build a website with React and Tailwind CSS",
             description: "Learn how to build a website with React and Tailwind CSS",
             link: "https://www.example.com",
-            image: "react-tailwind"
+            image: "drug"
         },
         {
             title: "How to build a website with Vue and Tailwind CSS",
             description: "Learn how to build a website with Vue and Tailwind CSS",
             link: "https://www.example.com",
-            image: "vue-tailwind"
+            image: "drug"
         },
         {
             title: "How to build a website with Angular and Tailwind CSS",
             description: "Learn how to build a website with Angular and Tailwind CSS",
             link: "https://www.example.com",
-            image: "angular-tailwind"
+            image: "drug"
         },
     ]
     return (
-        <div className="slider-container">
+        <div className="articles-slider-container">
             <div className="scroll-wrapper">
-                {articles && articles.map((tech, index) => (
-                   {/* articles  */}
-
-                   
+                {articles && articles.map((article, index) => (
+                    <div key={index} className="article-card">
+                        <img src={`/images/articles/${article.image}.jpg`} alt={article.title} />
+                        <div className="article-content">
+                            <h3>{article.title}</h3>
+                            <p>{article.description}</p>
+                            <a href={article.link} target="_blank" className="read-more">Read More</a>
+                        </div>
+                    </div>
                 ))}
             </div>
         </div>

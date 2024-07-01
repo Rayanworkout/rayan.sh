@@ -116,6 +116,27 @@ html {
     transform: translateX(10px);
 }
 
+/* ARTICLES */
+
+.scroll-wrapper {
+    display: flex;
+    animation: articles-scroll 50s linear infinite;
+}
+
+@keyframes articles-scroll {
+    0% {
+        transform: translateX(-1000px);
+    }
+
+    50% {
+        transform: translateX(100px);
+    }
+
+    100% {
+        transform: translateX(-1000px);
+    }
+}
+
 /* SVG Icons */
 
 .svg-container {
@@ -190,20 +211,6 @@ html {
         width: 50px;
     }
 
-    @keyframes scroll {
-        0% {
-            transform: translateX(-1000px);
-        }
-
-        50% {
-            transform: translateX(100px);
-        }
-
-        100% {
-            transform: translateX(-1000px);
-        }
-    }
-
 
 
     /* ABOUT */
@@ -274,5 +281,12 @@ html {
 
     .slider-container {
         display: none;
+    }
+
+    /* ARTICLES */
+    .articles-slider-container {
+        margin-top: 3rem;
+        width: 100%;
+        overflow: hidden;
     }
 }
