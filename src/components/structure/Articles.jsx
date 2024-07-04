@@ -1,37 +1,18 @@
-
+import Resume from '../../resume.json'
 
 
 export default function Articles() {
-    const articles = [
-        {
-            title: "How to build a website with React and Tailwind CSS",
-            description: "Learn how to build a website with React and Tailwind CSS",
-            link: "https://www.example.com",
-            image: "drug"
-        },
-        {
-            title: "How to build a website with Vue and Tailwind CSS",
-            description: "Learn how to build a website with Vue and Tailwind CSS",
-            link: "https://www.example.com",
-            image: "drug"
-        },
-        {
-            title: "How to build a website with Angular and Tailwind CSS",
-            description: "Learn how to build a website with Angular and Tailwind CSS",
-            link: "https://www.example.com",
-            image: "drug"
-        },
-    ]
     return (
-        <div className="articles-slider-container">
+        <div className="articles-slider-container mx-auto pb-10">
+            <h1 id='articles' className="text-center text-4xl font-bold mt-20 mb-10">Articles</h1>
             <div className="scroll-wrapper">
-                {articles && articles.map((article, index) => (
-                    <div key={index} className="article-card">
-                        <img src={`/images/articles/${article.image}.jpg`} alt={article.title} />
+                {Resume.articles && Resume.articles.map((article, index) => (
+                    <div key={index} className="card m-2 border border-gray-300">
+                        <img src={`/images/articles/${article.image}.jpg`} alt={article.title} className="card-image" />
                         <div className="article-content">
-                            <h3>{article.title}</h3>
-                            <p>{article.description}</p>
-                            <a href={article.link} target="_blank" className="read-more">Read More</a>
+                            <h3 className="card-title">{article.title}</h3>
+                            <p className="card-description">{article.description}</p>
+                            <a href={article.link} target="_blank" className="card-button">Read</a>
                         </div>
                     </div>
                 ))}

@@ -28,11 +28,11 @@ function App() {
     <div>
       <Header />
       <About />
-      <Suspense fallback={<div>Loading Skills...</div>}>
+      <Suspense fallback={<div className="text-center text-xl">Loading Skills...</div>}>
         <Skills />
       </Suspense>
       {/* <Experience /> */}
-      <Suspense fallback={<div>Loading Projects...</div>}>
+      <Suspense fallback={<div className="text-center text-xl">Loading Projects...</div>}>
         <Projects />
       </Suspense>
       <Articles />
