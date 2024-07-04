@@ -99,7 +99,6 @@ html {
 .exp-card,
 .skill-card {
     transition: transform 0.3s;
-    cursor: pointer;
     max-width: 500px;
 }
 
@@ -209,6 +208,20 @@ html {
 
     .svg-icon {
         width: 50px;
+    }
+
+    @keyframes scroll {
+        0% {
+            transform: translateX(-1000px);
+        }
+    
+        50% {
+            transform: translateX(100px);
+        }
+    
+        100% {
+            transform: translateX(-1000px);
+        }
     }
 
 

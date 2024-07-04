@@ -35,7 +35,7 @@ function App() {
       <Suspense fallback={<div>Loading Projects...</div>}>
         <Projects />
       </Suspense>
-      {/* <Articles /> */}
+      <Articles />
     </div>
   )
 }
