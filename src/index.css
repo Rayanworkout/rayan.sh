@@ -115,29 +115,28 @@ html {
     transform: translateX(10px);
 }
 
+/* SVG Icons */
+
+.svg-container {
+    display: inline-block;
+    margin: 10px;
+}
+
+.svg-icon {
+    width: 80px;
+    height: auto;
+}
+
+.svg-icon:hover {
+    cursor: pointer;
+}
+
+
+
 /* ARTICLES */
 
-@keyframes articles-scroll {
-    0% {
-        transform: translateX(-500px);
-    }
-
-    50% {
-        transform: translateX(1000px);
-    }
-
-    100% {
-        transform: translateX(-500px);
-    }
-}
-
-.scroll-wrapper {
+.articles-container {
     display: flex;
-    height: 550px;
-    animation: articles-scroll 100s linear infinite;
-}
-
-.articles-slider-container {
     width: 90%;
     height: 100%;
     overflow: hidden;
@@ -148,8 +147,6 @@ html {
     background-color: #ffffff;
     border-radius: 8px;
     box-shadow: 0 10px 15px rgba(0, 0, 0, 0.1);
-    padding: 14px;
-    overflow: hidden;
     transition: all 0.3s ease-in-out;
 }
 
@@ -195,24 +192,6 @@ html {
     background-color: #3b82f6dd;
 }
 
-/* SVG Icons */
-
-.svg-container {
-    display: inline-block;
-    margin: 10px;
-}
-
-.svg-icon {
-    width: 80px;
-    height: auto;
-}
-
-.svg-icon:hover {
-    cursor: pointer;
-}
-
-
-
 /* MEDIA QUERIES */
 
 
@@ -226,7 +205,6 @@ html {
     }
 
     .bg-image {
-        /* background-image: url('/images/marseille.jpg'); */
         background-color: #333;
         background-repeat: no-repeat;
         background-attachment: fixed;
@@ -313,6 +291,21 @@ html {
 
     .project-card {
         margin: 0.5rem;
+    }
+
+    /* ARTICLES */
+    .card-title {
+        font-size: 0.9rem;
+    }
+
+    .articles-container {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .card {
+        width: 90%;
+        margin: 1rem;
     }
 
 

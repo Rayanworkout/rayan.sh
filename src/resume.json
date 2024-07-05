@@ -306,32 +306,32 @@
     ],
     "articles": [
         {
-            "title": "[Tutoriel] Améliorez la sécurité de votre projet Django en générant une clé privée robuste",
-            "description": "Django génère automatiquement une clé privée pour chaque projet. Cette clé est nécessaire au bon fonctionnement du projet et sert notamment aux opérations cryptographiques.",
+            "title": "[Tutoriel] Améliorez la sécurité de votre projet Django en générant une clé privée robuste.",
+            "description": "Apprenez comment générer une clé privée robuste pour votre projet Django, et comment l’utiliser pour sécuriser vos données sensibles.",
             "link": "https://medium.com/@0xRayan_/tutoriel-am%C3%A9liorez-la-s%C3%A9curit%C3%A9-de-votre-projet-django-en-g%C3%A9n%C3%A9rant-une-cl%C3%A9-priv%C3%A9e-robuste-6e243fcbc514",
             "image": "django"
         },
         {
             "title": "[Tutoriel] Supprimez entièrement Docker de votre système en toute sécurité.",
-            "description": "Si vous avez précédemment installé Docker sur votre système mais n’en avez plus besoin, que vous cherchez à alléger votre système ou que vous envisagez une réinstallation complète, ce tutoriel est pour vous.",
+            "description": "Docker est un outil puissant qui comprend plusieurs composants. Apprenez comment supprimer Docker de votre système en toute sécurité.",
             "link": "https://medium.com/@0xRayan_/tutoriel-supprimez-enti%C3%A8rement-docker-de-votre-syst%C3%A8me-en-toute-s%C3%A9curit%C3%A9-838ef3c895d8",
             "image": "docker"
         },
         {
-            "title": "James Harris Simons, un mathématicien à Wall Street",
-            "description": "Cet individu vous est peut-être inconnu, mais il n’est autre que le meilleur gérant de fonds de la planète, et un investisseur hors pair. Zoom sur son parcours et ses accomplissements.",
+            "title": "James Harris Simons, un mathématicien à Wall Street.",
+            "description": "Zoom sur le parcours et les accomplissements du meilleur gérant de fonds de la planète.",
             "link": "https://medium.com/@0xRayan_/james-harris-simons-un-math%C3%A9maticien-%C3%A0-wall-street-6eb96fe0356d",
             "image": "jim-simons"
         },
         {
             "title": "Stablecoins & Collatéralisation.",
-            "description": "Bien que connu sous un autre nom, le “Peg” est un mécanisme qui est depuis longtemps utilisé dans la finance traditionnelle; il est cependant relativement récent dans l’univers de la finance décentralisée.",
+            "description": "Explorez en profondeur le concept de stablecoins et la manière dont ils sont collatéralisés pour garantir leur stabilité et leur valeur intrinsèque.",
             "link": "https://medium.com/@0xRayan_/stablecoins-collat%C3%A9ralisation-1d6f0de63dfe",
             "image": "stablecoins"
         },
         {
-            "title": "Qu’est ce que la MEV, ou comment les Bots et les Mineurs s’engraissent sur votre dos ?",
-            "description": "Comment certains individus avertis tirent profit de chaque transaction qui présente une opportunité, notamment grâce à leur position privilégiée ou à l’utilisation de moyens techniques.",
+            "title": "Qu’est ce que la MEV, ou comment les bots et les mineurs s’engraissent sur votre dos ?",
+            "description": "Découvrez ce qu'est la MEV dans le monde la blockchain, et comment les individus avertis en bénéficient.",
             "link": "https://medium.com/@0xRayan_/quest-ce-que-la-mev-ou-comment-les-bots-et-les-mineurs-s-engraissent-sur-votre-dos-734660675b33",
             "image": "mev"
         }
