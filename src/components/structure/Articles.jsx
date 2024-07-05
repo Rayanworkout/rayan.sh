@@ -3,10 +3,10 @@ import Resume from '../../resume.json'
 export default function Articles() {
     return (
         <div className="pb-10">
-            <h1 id='articles' className="text-center text-4xl font-bold mt-20 mb-10">Articles</h1>
+            <h1 id='articles' className="text-center text-4xl font-bold mt-10 mb-10">Articles</h1>
             <div className='articles-container mx-auto gap-4 flex-wrap'>
                 {Resume.articles && Resume.articles.map((article, index) => (
-                    <div key={index} className="card m-2 p-4 border border-gray-300 flex flex-col">
+                    <div key={index} className="card m-2 p-4 border border-gray-300 flex flex-col mx-auto">
                         <img src={`/images/articles/${article.image}.jpg`} alt={article.title} className="card-image mb-4 w-full h-auto object-cover" />
                         <div className="article-content flex flex-col flex-grow">
                             <h3 className="card-title text-xl font-semibold mb-2">{article.title}</h3>
