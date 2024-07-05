@@ -57,7 +57,7 @@ export default function Projects() {
 
     return (
         <div className="projects mx-auto max-w-lg">
-            <h1 className="text-center text-4xl font-bold mt-20 mb-10">Projects</h1>
+            <h1 id='projects' className="text-center text-4xl font-bold mt-20 mb-10 pt-5">Projects</h1>
             <Carousel autoSlide={true} autoSlideInterval={8000}>
                 {Resume.projects.map((project, idx) => (
                     <ProjectCard key={idx} project={project} />
