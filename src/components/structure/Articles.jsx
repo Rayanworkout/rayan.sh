@@ -3,7 +3,7 @@ import Resume from '../../resume.json'
 export default function Articles() {
     return (
         <div className="pb-10">
-            <h1 id='articles' className="text-center text-4xl font-bold mt-10 mb-10">Articles</h1>
+            <h1 id='articles' className="text-center text-4xl font-bold mt-10 mb-10 pt-5">Articles</h1>
             <div className='articles-container mx-auto gap-4 flex-wrap'>
                 {Resume.articles && Resume.articles.map((article, index) => (
                     <div key={index} className="card m-2 p-4 border border-gray-300 flex flex-col mx-auto">

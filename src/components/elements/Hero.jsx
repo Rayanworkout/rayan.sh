@@ -3,7 +3,7 @@ import Resume from "../../resume.json";
 
 export default function Hero() {
     return (
-        <div className="hero-text">
+        <div className="hero-text mt-8">
             <p>
                 I'm a
             </p>

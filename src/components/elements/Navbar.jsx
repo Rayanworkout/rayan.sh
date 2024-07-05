@@ -5,7 +5,7 @@ import { useState } from "react";
 const NavLink = ({ link, href }) => {
     return (
         <>
-            <a href={`#${href}`} className="text-white text-xl flex justify-center items-center hover:border-b-2">{link}</a>
+            <a href={`#${href}`} className="text-white text-xl flex justify-center items-center hover:border-b-2 text-nowrap">{link}</a>
         </>
     )
 }
@@ -16,6 +16,7 @@ const NavLinks = () => {
         <>
             <NavLink link={"About Me"} href={"about"} />
             <NavLink link={"Skills"} href={"skills"} />
+            <NavLink link={"Projects"} href={"projects"} />
             <NavLink link={"Articles"} href={"articles"} />
             <a href="https://github.com/Rayanworkout" target="_blank" className="text-white github-logo"><i className="bi bi-github"></i></a>
         </>
@@ -37,7 +38,7 @@ export default function Navbar() {
                 <a href="/" className="text-white text-2xl font-bold">{Resume.basics.name}</a>
             </div>
             <nav className="w-1/3">
-                <div className="hidden justify-between md:flex">
+                <div className="hidden justify-between md:flex gap-6">
                     <NavLinks />
                 </div>
                 <div className="md:hidden text-end">

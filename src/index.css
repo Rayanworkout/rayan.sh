@@ -347,4 +347,8 @@ html {
     .slider-container {
         display: none;
     }
+
+    #articles {
+        margin-top: 5rem;
+    }
 }
