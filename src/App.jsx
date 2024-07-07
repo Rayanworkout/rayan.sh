@@ -3,7 +3,6 @@ import Resume from "./resume.json";
 
 // Components
 import Header from "./components/structure/Header";
-import About from "./components/structure/About";
 // import Skills from "./components/structure/Skills";
 // import Projects from "./components/structure/Projects";
 import Experience from "./components/structure/Experience";
@@ -27,7 +26,6 @@ function App() {
   return (
     <div>
       <Header />
-      <About />
       <Suspense fallback={<div className="text-center text-xl">Loading Skills...</div>}>
         <Skills />
       </Suspense>

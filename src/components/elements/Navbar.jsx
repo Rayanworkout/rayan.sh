@@ -14,11 +14,9 @@ const NavLink = ({ link, href }) => {
 const NavLinks = () => {
     return (
         <>
-            <NavLink link={"About Me"} href={"about"} />
             <NavLink link={"Skills"} href={"skills"} />
             <NavLink link={"Projects"} href={"projects"} />
             <NavLink link={"Articles"} href={"articles"} />
-            <a href="https://github.com/Rayanworkout" target="_blank" className="text-white github-logo"><i className="bi bi-github"></i></a>
         </>
     )
 };
@@ -64,7 +62,7 @@ export default function Navbar() {
                 </div>
             </nav>
             {isOpen && (
-                <div className="flex flex-col items-end mt-10 md:hidden gap-5 absolute top-10 right-9">
+                <div className="flex flex-col items-end mt-10 md:hidden gap-3 absolute top-6 right-9">
                     <NavLinks />
                 </div>
             )}

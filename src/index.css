@@ -8,85 +8,62 @@
 
 :root {
     --primary-blue: #3273dc;
+    --background-color: #E2E8F0;
+    --cards-bg: #ffffff;
 }
 
 html {
     scroll-behavior: smooth;
-}
-
-/* NAVBAR */
-
-.github-logo {
-    font-size: 2rem;
-    color: white;
-    transition: transform 0.3s;
-}
-
-.github-logo:hover {
-    transform: scale(1.1);
+    background-color: var(--background-color);
 }
 
 /* HERO */
 
-.hero {
+.bg-blue {
+    background-color: var(--primary-blue);
+}
+
+.header-container {
+    margin-top: 5rem;
+}
+
+/* SLIDER */
+.slider-container {
+    margin-top: 0.5rem;
+    width: 100%;
+    overflow: hidden;
+}
+
+.scroll-wrapper {
     display: flex;
-    flex-direction: column;
-    margin-top: 14rem;
-    align-items: left;
-    color: white;
-    z-index: 10;
+    /* animation: scroll 50s linear infinite; */
 }
 
-.hero-text {
-    margin-left: 6rem;
+/* SVG Icons */
+
+.svg-container {
+    margin: 5px;
 }
 
-.hero-text h1 {
-    font-size: 2.5rem;
+.svg-icon {
+    width: 100px;
+    height: auto;
 }
 
-.hero-text h2 {
-    font-size: 1.5rem;
+@keyframes scroll {
+    0% {
+        transform: translateX(-1000px);
+    }
+
+    50% {
+        transform: translateX(100px);
+    }
+
+    100% {
+        transform: translateX(-1000px);
+    }
 }
 
-.hero-text p {
-    font-size: 1.3rem;
-}
-
-.hero-text p span {
-    display: none;
-}
-
-.cta {
-    margin-left: 6rem;
-    margin-top: 1.5rem;
-    width: 120px;
-    padding: 10px;
-    background-color: var(--primary-blue);
-    text-decoration: none;
-    font-size: 16px;
-    border-radius: 7px;
-    color: white;
-    transition: transform 0.3s ease;
-}
-
-.cta:hover {
-    transform: scale(1.05);
-}
-
-
-/* ABOUT */
-
-.about {
-    height: 75vh;
-    background-color: var(--primary-blue);
-}
-
-
-.about-text {
-    max-width: 40%;
-    font-size: 1.1rem;
-}
 
 /* SKILLS */
 
@@ -115,23 +92,6 @@ html {
     transform: translateX(10px);
 }
 
-/* SVG Icons */
-
-.svg-container {
-    display: inline-block;
-    margin: 10px;
-}
-
-.svg-icon {
-    width: 80px;
-    height: auto;
-}
-
-.svg-icon:hover {
-    cursor: pointer;
-}
-
-
 
 /* ARTICLES */
 
@@ -146,7 +106,6 @@ html {
     width: 40%;
     background-color: #ffffff;
     border-radius: 8px;
-    box-shadow: 0 10px 15px rgba(0, 0, 0, 0.1);
     transition: all 0.3s ease-in-out;
 }
 
@@ -192,86 +151,21 @@ html {
     background-color: #3b82f6dd;
 }
 
+
+
 /* MEDIA QUERIES */
 
 
 /* Mobile */
 @media (max-width: 768px) {
 
-    /* HERO */
-
-    .hero {
-        margin-top: 10rem;
-    }
-
-    .bg-image {
-        background-color: #333;
-        background-repeat: no-repeat;
-        background-attachment: fixed;
-        background-size: cover;
-        width: 100%;
-        height: 100vh;
-    }
-
-    .hero-text,
-    .socials,
-    .cta {
-        margin-left: 2rem;
-    }
-
-    .hero-text h1 {
-        font-size: 1.5rem;
-    }
-
-    .hero-text h2 {
-        font-size: 1rem;
+    .bg-icons {
+        display: none;
     }
 
     /* SLIDER */
-    .slider-container {
-        margin-top: 3rem;
-        width: 100%;
-        overflow: hidden;
-    }
-
-    .scroll-wrapper {
-        display: flex;
-        animation: scroll 50s linear infinite;
-    }
-
-    .svg-container {
-        flex: 0 0 auto;
-    }
-
-    .svg-icon {
-        width: 50px;
-    }
-
-    @keyframes scroll {
-        0% {
-            transform: translateX(-1000px);
-        }
-
-        50% {
-            transform: translateX(100px);
-        }
-
-        100% {
-            transform: translateX(-1000px);
-        }
-    }
 
 
-
-    /* ABOUT */
-    .about {
-        height: 100vh;
-    }
-
-    .about-text {
-        max-width: 80%;
-        font-size: 1rem;
-    }
 
     /* EXPERIENCE */
     .exp-card a {
@@ -313,12 +207,7 @@ html {
 
 /* TABLET */
 @media (min-width: 768px) and (max-width: 1024px) {
-    .about {
-        height: 100vh;
-
-    }
-
-    .slider-container {
+    .bg-icons {
         display: none;
     }
 }
@@ -326,29 +215,7 @@ html {
 
 /* DESKTOP */
 @media (min-width: 1024px) {
-    .bg-image {
-        background-image: url('/images/marseille.jpg');
-        background-repeat: no-repeat;
-        background-attachment: fixed;
-        background-size: cover;
-        width: 100%;
-        height: 100vh;
-    }
-
-    .hero {
-        height: 100vh;
-    }
-
-    .github-logo {
-        font-size: 3rem;
-        margin-right: 5rem;
-    }
-
     .slider-container {
         display: none;
-    }
-
-    #articles {
-        margin-top: 5rem;
     }
 }

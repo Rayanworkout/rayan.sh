@@ -1,7 +1,7 @@
 
 export default function SkillCard({ skill }) {
     return (
-        <div className="skill-card max-w-sm rounded overflow-hidden shadow-lg bg-white p-6 m-4 border border-gray-300">
+        <div className="skill-card max-w-sm rounded overflow-hidden shadow-lg bg-gray-100 p-6 m-4 border border-gray-300">
             <div className="flex items-center">
                 <div className="w-1/3 flex justify-center">
                     <img src={`/images/skills/${skill.logo}.svg`} alt={skill.logo} className="h-16 w-16 object-contain" />

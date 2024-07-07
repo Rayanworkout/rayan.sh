@@ -2,6 +2,13 @@
 
 export default function Slider() {
     const technologies = [
+
+        // DevOps/CI/CD Tools
+        "git",
+        "jenkins",
+        "linux",
+        "docker",
+
         // Programming Languages
         "python",
         "rust",
@@ -9,11 +16,7 @@ export default function Slider() {
         "bash",
 
         // DevOps/CI/CD Tools
-        "git",
-        "jenkins",
-        "linux",
-        "docker",
-        "github-actions",
+        // "github-actions",
         "apache",
         "ansible",
 
