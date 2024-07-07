@@ -27,44 +27,6 @@ html {
     margin-top: 5rem;
 }
 
-/* SLIDER */
-.slider-container {
-    margin-top: 0.5rem;
-    width: 100%;
-    overflow: hidden;
-}
-
-.scroll-wrapper {
-    display: flex;
-    /* animation: scroll 50s linear infinite; */
-}
-
-/* SVG Icons */
-
-.svg-container {
-    margin: 5px;
-}
-
-.svg-icon {
-    width: 100px;
-    height: auto;
-}
-
-@keyframes scroll {
-    0% {
-        transform: translateX(-1000px);
-    }
-
-    50% {
-        transform: translateX(100px);
-    }
-
-    100% {
-        transform: translateX(-1000px);
-    }
-}
-
-
 /* SKILLS */
 
 .skill-card:hover {
@@ -164,6 +126,25 @@ html {
     }
 
     /* SLIDER */
+
+    .scroll-wrapper {
+        animation: scroll 50s linear infinite;
+    }
+
+    @keyframes scroll {
+        0% {
+            transform: translateX(-1000px);
+        }
+
+        50% {
+            transform: translateX(100px);
+        }
+
+        100% {
+            transform: translateX(-1000px);
+        }
+    }
+
 
 
 

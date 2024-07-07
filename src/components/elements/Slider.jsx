@@ -33,10 +33,10 @@ export default function Slider() {
 
     return (
         <div className="slider-container">
-            <div className="scroll-wrapper">
+            <div className="scroll-wrapper flex my-4 gap-5">
                 {technologies && technologies.map((tech, index) => (
-                    <div key={index} className="svg-container">
-                        <img src={`/images/skills/${tech}.svg`} alt={tech} className="svg-icon" />
+                    <div key={index}>
+                        <img src={`/images/skills/${tech}.svg`} alt={tech} className="m-10" width={100} />
                     </div>
                 ))}
             </div>

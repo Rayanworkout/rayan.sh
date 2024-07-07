@@ -21,10 +21,10 @@ export default function Header() {
         { name: "python", left: "2%", top: "38%" },
         { name: "rust", left: "88%", top: "63%" },
         { name: "javascript", left: "79%", top: "21%" },
-        { name: "bash", left: "37%", top: "75%" },
+        { name: "bash", left: "37%", top: "82%" },
         { name: "django", left: "67%", top: "82%" },
         { name: "vuejs", left: "20%", top: "16%" },
-        { name: "react", left: "50%", top: "72%" },
+        { name: "react", left: "50%", top: "86%" },
         { name: "fastapi", left: "50%", top: "7%" },
     ];
 
