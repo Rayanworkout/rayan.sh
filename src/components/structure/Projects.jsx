@@ -28,7 +28,7 @@ const Carousel = ({ children, autoSlide = true, autoSlideInterval = 6000 }) => {
 
     return (
         <div className='overflow-hidden relative rounded border'>
-            <div className='flex transition-transform ease-out duration-1000'>
+            <div className='flex transition-transform ease-out duration-1000' style={{ width: '100%', transform: `translateX(-${current * 100}%)` }}>
                 {children.map((slide, index) => (
                     <div key={index} className="flex-none w-full">
                         {slide}
@@ -56,15 +56,13 @@ const Carousel = ({ children, autoSlide = true, autoSlideInterval = 6000 }) => {
 export default function Projects() {
 
     return (
-        <div style={{ backgroundColor: "var(--background-color)" }}>
-            <h1 id='projects' className="text-center text-4xl font-bold mb-9 pt-11">Projects</h1>
-            <div className="max-w-lg mx-auto">
-                <Carousel autoSlide={true} autoSlideInterval={8000}>
-                    {Resume.projects.map((project, idx) => (
-                        <ProjectCard key={idx} project={project} />
-                    ))}
-                </Carousel>
-            </div>
+        <div className="projects mx-auto max-w-lg">
+            <h1 id='projects' className="text-center text-4xl font-bold mt-20 mb-10 pt-5">Projects</h1>
+            <Carousel autoSlide={true} autoSlideInterval={8000}>
+                {Resume.projects.map((project, idx) => (
+                    <ProjectCard key={idx} project={project} />
+                ))}
+            </Carousel>
 
         </div>
     )
