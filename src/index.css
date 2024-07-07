@@ -27,6 +27,26 @@ html {
     margin-top: 5rem;
 }
 
+/* SLIDER */
+
+.scroll-wrapper {
+    animation: scroll 50s linear infinite;
+}
+
+@keyframes scroll {
+    0% {
+        transform: translateX(-1000px);
+    }
+
+    50% {
+        transform: translateX(100px);
+    }
+
+    100% {
+        transform: translateX(-1000px);
+    }
+}
+
 /* SKILLS */
 
 .skill-card:hover {
@@ -124,29 +144,6 @@ html {
     .bg-icons {
         display: none;
     }
-
-    /* SLIDER */
-
-    .scroll-wrapper {
-        animation: scroll 50s linear infinite;
-    }
-
-    @keyframes scroll {
-        0% {
-            transform: translateX(-1000px);
-        }
-
-        50% {
-            transform: translateX(100px);
-        }
-
-        100% {
-            transform: translateX(-1000px);
-        }
-    }
-
-
-
 
     /* EXPERIENCE */
     .exp-card a {
