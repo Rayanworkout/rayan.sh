@@ -99,7 +99,7 @@
             ]
         },
         {
-            "name": "CI/CD",
+            "name": "CI / CD",
             "description": [
                 "Build and deploy efficient pipelines using tools like Github actions, Ansible or Bash scripts.",
                 "Deploy applications to the cloud using AWS or Google Cloud."
@@ -131,6 +131,80 @@
             "logo": "bug",
             "level": "",
             "keywords": []
+        }
+    ],
+    "skills_logos": [
+        {
+            "name": "git",
+            "left": "14%",
+            "top": "87%",
+            "size": "80"
+        },
+        {
+            "name": "linux",
+            "left": "65%",
+            "top": "35%",
+            "size": "100"
+        },
+        {
+            "name": "docker",
+            "left": "26%",
+            "top": "32%",
+            "size": "120"
+        },
+        {
+            "name": "javascript",
+            "left": "2%",
+            "top": "38%",
+            "size": "60"
+        },
+        {
+            "name": "java",
+            "left": "5%",
+            "top": "65%",
+            "size": "65"
+        },
+        {
+            "name": "rust",
+            "left": "88%",
+            "top": "63%",
+            "size": "80"
+        },
+        {
+            "name": "python",
+            "left": "79%",
+            "top": "21%",
+            "size": "100"
+        },
+        {
+            "name": "bash",
+            "left": "37%",
+            "top": "82%",
+            "size": "100"
+        },
+        {
+            "name": "django",
+            "left": "67%",
+            "top": "82%",
+            "size": "110"
+        },
+        {
+            "name": "vuejs",
+            "left": "20%",
+            "top": "16%",
+            "size": "70"
+        },
+        {
+            "name": "react",
+            "left": "50%",
+            "top": "86%",
+            "size": "70"
+        },
+        {
+            "name": "fastapi",
+            "left": "50%",
+            "top": "7%",
+            "size": "60"
         }
     ],
     "languages": [

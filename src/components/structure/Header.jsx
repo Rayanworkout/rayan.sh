@@ -5,29 +5,7 @@ import Resume from "../../resume.json";
 import Navbar from "../elements/Navbar";
 import Slider from "../elements/Slider";
 
-const copyToClipboard = () => {
-    navigator.clipboard.writeText(Resume.basics.email)
-        .catch(err => {
-            console.error('Could not copy text: ', err);
-        });
-};
-
 export default function Header() {
-
-    const technologies = [
-        { name: "git", left: "14%", top: "87%" },
-        { name: "linux", left: "65%", top: "34%" },
-        { name: "docker", left: "26%", top: "35%" },
-        { name: "javascript", left: "2%", top: "38%" },
-        { name: "rust", left: "88%", top: "63%" },
-        { name: "python", left: "79%", top: "21%" },
-        { name: "bash", left: "37%", top: "82%" },
-        { name: "django", left: "67%", top: "82%" },
-        { name: "vuejs", left: "20%", top: "16%" },
-        { name: "react", left: "50%", top: "86%" },
-        { name: "fastapi", left: "50%", top: "7%" },
-    ];
-
 
 
     return (
@@ -36,14 +14,14 @@ export default function Header() {
 
             {/* Icons in Background */}
             <div className="absolute inset-0 flex items-center justify-center bg-icons">
-                {technologies && technologies.map((tech, index) => (
-                    <div key={index} className="absolute"
+                {Resume.skills_logos && Resume.skills_logos.map((tech, index) => (
+                    <div key={index} className="absolute bg-icon"
                         style={{
                             left: tech.left,
                             top: tech.top,
                         }}
                     >
-                        <img src={`/images/skills/${tech.name}.svg`} alt={tech.name} className="w-[100px] h-auto" />
+                        <img src={`/images/skills/${tech.name}.svg`} alt={tech.name} className="h-auto" width={tech.size} />
                     </div>
                 ))}
 
@@ -56,7 +34,7 @@ export default function Header() {
                     <h1 className="font-bold text-white text-2xl md:text-4xl mb-4">
                         {Resume.basics.label.replace(',', ' / ')}
                     </h1>
-                    <a href="https://github.com/Rayanworkout" target="_blank" className="text-white text-5xl"><i className="bi bi-github"></i></a>
+                    <a href="https://github.com/Rayanworkout" target="_blank" className="text-white github-logo"><img src="/images/github.svg" alt="github logo" className="w-12 mx-auto" /></a>
                 </div>
             </div>
 

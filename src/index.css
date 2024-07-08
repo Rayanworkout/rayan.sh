@@ -27,6 +27,24 @@ html {
     margin-top: 5rem;
 }
 
+.github-logo img {
+    transition: transform 0.3s;
+}
+
+.github-logo img:hover {
+    transform: scale(1.1);
+}
+
+.bg-icon {
+    transition: transform 0.3s;
+}
+
+.bg-icon:hover {
+    transform: scale(1.1);
+}
+
+
+
 /* SLIDER */
 
 .scroll-wrapper {
