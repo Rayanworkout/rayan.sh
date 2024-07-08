@@ -14,6 +14,7 @@ export default function Slider() {
         "rust",
         "javascript",
         "bash",
+        "java",
 
         // DevOps/CI/CD Tools
         // "github-actions",

@@ -48,20 +48,20 @@ html {
 /* SLIDER */
 
 .scroll-wrapper {
-    animation: scroll 50s linear infinite;
+    animation: scroll 60s linear infinite;
 }
 
 @keyframes scroll {
     0% {
-        transform: translateX(-1000px);
+        transform: translateX(-1600px);
     }
 
     50% {
-        transform: translateX(100px);
+        transform: translateX(200px);
     }
 
     100% {
-        transform: translateX(-1000px);
+        transform: translateX(-1600px);
     }
 }
 
