@@ -34,9 +34,9 @@
             "startDate": "August 2024",
             "endDate": "",
             "summary": [
-                "Created a data analysis tool to help the company's clients understand their data better.",
-                "Developed a backend system to automate data processing and analysis.",
-                "Optimized the company's data pipeline for faster and more efficient data processing."
+                "Created some automation and data analysis tools to help the company's data processing.",
+                "Deployed, secured and maintained the company's applications on a local Linux server using Docker.",
+                "Created many Power BI reports to help showcase the company's data."
             ],
             "highlights": []
         }
@@ -244,6 +244,24 @@
         }
     ],
     "projects": [
+        {
+            "name": "Indexium",
+            "image": "rocket",
+            "description": "A fast and efficient search engine built on Apache Lucene, in the form of a simple REST API.",
+            "highlights": [],
+            "keywords": [
+                "java",
+                "search engine",
+                "tools"
+            ],
+            "startDate": "",
+            "endDate": "",
+            "link": "",
+            "githubLink": "https://github.com/Rayanworkout/Indexium",
+            "roles": [],
+            "entity": "",
+            "type": ""
+        },
         {
             "name": "Cabmaster.fr",
             "image": "cabmaster",
