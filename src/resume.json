@@ -34,9 +34,9 @@
             "startDate": "August 2024",
             "endDate": "",
             "summary": [
-                "Created some automation and data analysis tools to help the company's data processing.",
-                "Deployed, secured and maintained the company's applications on a local Linux server using Docker.",
-                "Created many Power BI reports to help showcase the company's data."
+                "- Created some automation and data analysis tools to help the company's data processing.",
+                "- Deployed, secured, and maintained applications on Linux servers, ensuring robust performance and high availability.",
+                "- Designed and created a variety of Power BI reports, providing insightful visualizations and actionable analytics to effectively showcase and leverage the company’s data."
             ],
             "highlights": []
         }
