@@ -245,6 +245,25 @@
     ],
     "projects": [
         {
+            "name": "python_runner",
+            "image": "pipeline",
+            "description": "Automatically run your scripts with precise monitoring, logging and email notifications.",
+            "highlights": [],
+            "keywords": [
+                "python",
+                "logging",
+                "monitoring",
+                "tools"
+            ],
+            "startDate": "",
+            "endDate": "",
+            "link": "",
+            "githubLink": "https://github.com/Rayanworkout/python_runner",
+            "roles": [],
+            "entity": "",
+            "type": ""
+        },
+        {
             "name": "Indexium",
             "image": "rocket",
             "description": "A fast and efficient search engine built on Apache Lucene, in the form of a simple REST API.",
