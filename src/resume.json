@@ -245,7 +245,7 @@
     ],
     "projects": [
         {
-            "name": "python_runner",
+            "name": "Python Runner",
             "image": "pipeline",
             "description": "Automatically run your scripts with precise monitoring, logging and email notifications.",
             "highlights": [],
